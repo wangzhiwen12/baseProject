@@ -1,0 +1,11 @@
+com/wechat/manage/pojo/Sysbuttom.class
+com/wechat/manage/pojo/SysUserLogin.class
+com/wechat/manage/pojo/SysLog.class
+com/wechat/manage/pojo/SysServerInfo.class
+com/wechat/manage/pojo/SysResources.class
+com/wechat/manage/pojo/SysRole.class
+com/wechat/manage/pojo/system/UserFormMap.class
+com/wechat/manage/pojo/system/SysUser.class
+com/wechat/manage/pojo/system/ResFormMap.class
+com/wechat/manage/pojo/SysUserRoleKey.class
+com/wechat/manage/pojo/SysResUserKey.class
