@@ -2,7 +2,7 @@ package com.wechat.manage.shiro;
 
 
 import com.wechat.manage.mapper.system.ResourcesMapper;
-import com.wechat.manage.pojo.system.ResFormMap;
+import com.wechat.manage.pojo.system.entity.ResFormMap;
 import com.wechat.manage.utils.ConfigUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.config.Ini;

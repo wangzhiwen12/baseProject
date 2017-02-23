@@ -1,7 +1,7 @@
 package com.wechat.manage.mapper.system;
 
-import com.wechat.manage.pojo.system.StoreAppReturnDto;
-import com.wechat.manage.pojo.system.StoreInfo;
+import com.wechat.manage.pojo.system.vo.StoreAppReturnDto;
+import com.wechat.manage.pojo.system.entity.StoreInfo;
 
 import java.util.List;
 import java.util.Map;

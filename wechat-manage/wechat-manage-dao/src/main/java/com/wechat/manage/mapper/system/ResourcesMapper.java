@@ -1,7 +1,7 @@
 package com.wechat.manage.mapper.system;
 
 import com.wechat.manage.mapper.base.BaseMapper;
-import com.wechat.manage.pojo.system.ResFormMap;
+import com.wechat.manage.pojo.system.entity.ResFormMap;
 
 import java.util.List;
 

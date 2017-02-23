@@ -1,6 +1,6 @@
 package com.wechat.manage.service.system.intf;
 
-import com.wechat.manage.pojo.system.SysUser;
+import com.wechat.manage.pojo.system.entity.SysUser;
 
 /**
  * @author kongqf

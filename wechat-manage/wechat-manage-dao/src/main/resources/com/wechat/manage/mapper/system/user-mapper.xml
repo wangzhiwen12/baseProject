@@ -22,7 +22,7 @@
 		createTime
 	</sql>
 
-	<select id="findUserPage" resultType="com.wechat.manage.pojo.system.UserFormMap">
+	<select id="findUserPage" resultType="com.wechat.manage.pojo.system.entity.UserFormMap">
 		select
 		<include refid="selectId" />
 		from ly_user

@@ -1,7 +1,7 @@
 package com.wechat.manage.shiro.filter;
 
 import com.wechat.manage.mapper.system.UserMapper;
-import com.wechat.manage.pojo.system.UserFormMap;
+import com.wechat.manage.pojo.system.entity.UserFormMap;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.web.filter.PathMatchingFilter;
 

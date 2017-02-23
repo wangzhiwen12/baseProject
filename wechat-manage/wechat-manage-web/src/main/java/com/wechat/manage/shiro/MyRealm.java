@@ -2,8 +2,8 @@ package com.wechat.manage.shiro;
 
 import com.wechat.manage.mapper.system.ResourcesMapper;
 import com.wechat.manage.mapper.system.UserMapper;
-import com.wechat.manage.pojo.system.ResFormMap;
-import com.wechat.manage.pojo.system.UserFormMap;
+import com.wechat.manage.pojo.system.entity.ResFormMap;
+import com.wechat.manage.pojo.system.entity.UserFormMap;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

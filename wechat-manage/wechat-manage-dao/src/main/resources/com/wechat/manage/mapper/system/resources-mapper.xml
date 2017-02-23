@@ -21,14 +21,14 @@
 		icon,
 		description
 	</sql>
-	<select id="findChildlists" resultType="com.wechat.manage.pojo.system.ResFormMap">
+	<select id="findChildlists" resultType="com.wechat.manage.pojo.system.entity.ResFormMap">
 		SELECT
 		<include refid="selectId" />
 		from ly_resources
 		where parentId = #{id}
 	</select>
 	<!-- 获取该用户的权限 -->
-	<select id="findRes" parameterType="String" resultType="com.wechat.manage.pojo.system.ResFormMap">
+	<select id="findRes" parameterType="String" resultType="com.wechat.manage.pojo.system.entity.ResFormMap">
 		SELECT
 		<include refid="selectId" />
 		from ly_resources where id in(
@@ -51,7 +51,7 @@
 
 	<!-- 根据账号Id获取该用户的权限 -->
 	<select id="findUserResourcess" parameterType="String"
-		resultType="com.wechat.manage.pojo.system.ResFormMap">
+		resultType="com.wechat.manage.pojo.system.entity.ResFormMap">
 		SELECT
 		<include refid="selectId" />
 		from ly_resources where id in(

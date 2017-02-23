@@ -1,7 +1,7 @@
 package com.wechat.manage.service.system.impl;
 
 import com.wechat.manage.mapper.system.SysUserMapper;
-import com.wechat.manage.pojo.system.SysUser;
+import com.wechat.manage.pojo.system.entity.SysUser;
 import com.wechat.manage.service.system.intf.SysUserService;
 import org.springframework.stereotype.Service;
 

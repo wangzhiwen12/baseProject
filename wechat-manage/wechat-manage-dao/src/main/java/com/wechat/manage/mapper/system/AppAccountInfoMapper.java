@@ -1,7 +1,7 @@
 package com.wechat.manage.mapper.system;
 
-import com.wechat.manage.pojo.system.AppAccountInfo;
-import com.wechat.manage.pojo.system.WechatAppDto;
+import com.wechat.manage.pojo.system.entity.AppAccountInfo;
+import com.wechat.manage.pojo.system.vo.WechatAppDto;
 
 import java.util.List;
 import java.util.Map;

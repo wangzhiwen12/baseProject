@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wechat.manage.mapper.system.AppAccountInfoMapper">
-    <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.system.AppAccountInfo">
+    <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.system.entity.AppAccountInfo">
         <id column="sid" property="sid" jdbcType="BIGINT"/>
         <result column="appid" property="appid" jdbcType="VARCHAR"/>
         <result column="appsecret" property="appsecret" jdbcType="VARCHAR"/>
@@ -30,14 +30,14 @@
 		delete from appaccountinfo
 		where sid = #{sid,jdbcType=BIGINT}
 	</delete>
-    <insert id="insert" parameterType="com.wechat.manage.pojo.system.AppAccountInfo">
+    <insert id="insert" parameterType="com.wechat.manage.pojo.system.entity.AppAccountInfo">
 		insert into appaccountinfo (sid, appid, appsecret,
 		storecode, del_flag)
 		values (#{sid,jdbcType=BIGINT}, #{appid,jdbcType=VARCHAR},
 		#{appsecret,jdbcType=VARCHAR},
 		#{storecode,jdbcType=VARCHAR}, #{delFlag,jdbcType=INTEGER})
 	</insert>
-    <insert id="insertSelective" parameterType="com.wechat.manage.pojo.system.AppAccountInfo">
+    <insert id="insertSelective" parameterType="com.wechat.manage.pojo.system.entity.AppAccountInfo">
         insert into appaccountinfo
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="sid != null">
@@ -80,7 +80,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.system.AppAccountInfo">
+    <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.system.entity.AppAccountInfo">
         update appaccountinfo
         <set>
             <if test="appid != null">
@@ -101,7 +101,7 @@
         </set>
         where sid = #{sid,jdbcType=BIGINT}
     </update>
-    <update id="updateByStoreCode" parameterType="com.wechat.manage.pojo.system.AppAccountInfo">
+    <update id="updateByStoreCode" parameterType="com.wechat.manage.pojo.system.entity.AppAccountInfo">
         update appaccountinfo
         <set>
             <if test="cardId != null">
@@ -116,7 +116,7 @@
         </set>
         where storecode =  #{storecode,jdbcType=VARCHAR} and del_flag=0
     </update>
-    <update id="updateByStorecodeSelective" parameterType="com.wechat.manage.pojo.system.AppAccountInfo">
+    <update id="updateByStorecodeSelective" parameterType="com.wechat.manage.pojo.system.entity.AppAccountInfo">
         update appaccountinfo
         <set>
             <if test="appid != null">
@@ -137,7 +137,7 @@
         </set>
         where storecode = #{storecode,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.system.AppAccountInfo">
+    <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.system.entity.AppAccountInfo">
 		update appaccountinfo
 		set appid = #{appid,jdbcType=VARCHAR},
 		appsecret = #{appsecret,jdbcType=VARCHAR},
@@ -173,8 +173,8 @@
         </where>
     </select>
 
-    <select id="selectAppInfoListByParam" resultType="com.wechat.manage.pojo.system.WechatAppDto"
-            parameterType="com.wechat.manage.pojo.system.WechatAppDto">
+    <select id="selectAppInfoListByParam" resultType="com.wechat.manage.pojo.system.vo.WechatAppDto"
+            parameterType="com.wechat.manage.pojo.system.vo.WechatAppDto">
         SELECT  app.sid,app.appid,app.appsecret,app.storecode,app.card_id as cardId,app.card_url as cardUrl,
         app.developer_id as developerId ,store.business_name as storename,
         store.localImgUrl as logoPic,

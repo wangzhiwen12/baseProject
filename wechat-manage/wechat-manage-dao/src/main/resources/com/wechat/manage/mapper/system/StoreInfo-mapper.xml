@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wechat.manage.mapper.system.StoreInfoMapper">
-    <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.system.StoreInfo">
+    <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.system.entity.StoreInfo">
         <id column="sid" property="sid" jdbcType="BIGINT"/>
         <result column="store_code" property="storeCode" jdbcType="VARCHAR"/>
         <result column="poi_id" property="poiId" jdbcType="VARCHAR"/>
@@ -49,7 +49,7 @@
         </foreach>
     </delete>
 
-    <insert id="insert" parameterType="com.wechat.manage.pojo.system.StoreInfo">
+    <insert id="insert" parameterType="com.wechat.manage.pojo.system.entity.StoreInfo">
     insert into storeinfo (sid, store_code, business_name, 
       branch_name, province, city, 
       district, address, telephone, 
@@ -66,7 +66,7 @@
       #{recommend,jdbcType=VARCHAR}, #{channelType,jdbcType=INTEGER})
   </insert>
 
-    <insert id="insertSelective" parameterType="com.wechat.manage.pojo.system.StoreInfo">
+    <insert id="insertSelective" parameterType="com.wechat.manage.pojo.system.entity.StoreInfo">
         insert into storeinfo
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="sid != null">
@@ -218,7 +218,7 @@
         </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.system.StoreInfo">
+    <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.system.entity.StoreInfo">
         update storeinfo
         <set>
             <if test="storeCode != null">
@@ -285,7 +285,7 @@
         where sid = #{sid,jdbcType=BIGINT}
     </update>
 
-    <update id="updateByParaSelective" parameterType="com.wechat.manage.pojo.system.StoreInfo">
+    <update id="updateByParaSelective" parameterType="com.wechat.manage.pojo.system.entity.StoreInfo">
         update storeinfo
         <set>
             <if test="poiId != null">
@@ -358,7 +358,7 @@
         </if>
     </update>
 
-    <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.system.StoreInfo">
+    <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.system.entity.StoreInfo">
     update storeinfo
     set store_code = #{storeCode,jdbcType=VARCHAR},
       business_name = #{businessName,jdbcType=VARCHAR},
@@ -532,7 +532,7 @@
         </if>
     </select>
 
-    <select id="selectStoreAppInfoListByParam" parameterType="java.util.Map" resultType="com.wechat.manage.pojo.system.StoreAppReturnDto">
+    <select id="selectStoreAppInfoListByParam" parameterType="java.util.Map" resultType="com.wechat.manage.pojo.system.vo.StoreAppReturnDto">
         SELECT
         app.appid AS appid,
         app.appsecret AS appsecret,
