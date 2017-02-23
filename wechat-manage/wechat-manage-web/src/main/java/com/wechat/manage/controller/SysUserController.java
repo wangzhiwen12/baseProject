@@ -2,7 +2,7 @@ package com.wechat.manage.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wechat.manage.pojo.system.SysUser;
-import com.wechat.manage.service.SysUserService;
+import com.wechat.manage.service.system.intf.SysUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
