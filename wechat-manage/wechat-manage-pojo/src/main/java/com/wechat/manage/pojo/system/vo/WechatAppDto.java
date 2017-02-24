@@ -1,5 +1,7 @@
 package com.wechat.manage.pojo.system.vo;
 
+import com.wechat.manage.vo.PageBase;
+
 /**
  * 公众号管理
  *
