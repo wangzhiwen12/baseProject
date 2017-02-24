@@ -51,23 +51,24 @@
         <load-on-startup>1</load-on-startup>
         <async-supported>true</async-supported>
     </servlet>
-    <!--<servlet-mapping>
-        <servlet-name>spring-mvc</servlet-name>
-        <url-pattern>*.html</url-pattern>
-    </servlet-mapping>-->
-    <servlet-mapping>
-        <servlet-name>spring-mvc</servlet-name>
-        <url-pattern>*.djs</url-pattern>
-    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>spring-mvc</servlet-name>
         <url-pattern>*.json</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>spring-mvc</servlet-name>
+        <url-pattern>*.shtml</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.html</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.djs</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.eot</url-pattern>
