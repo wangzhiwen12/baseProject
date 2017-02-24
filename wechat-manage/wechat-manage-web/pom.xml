@@ -27,10 +27,10 @@
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
-     <!--   <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-        </dependency>-->
+        <!--   <dependency>
+               <groupId>javax.servlet</groupId>
+               <artifactId>servlet-api</artifactId>
+           </dependency>-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -75,4 +75,43 @@
             <version>1</version>
         </dependency>
     </dependencies>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources-${resources.active}</directory>
+            </resource>
+        </resources>
+    </build>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <resources.active>dev</resources.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>sit</id>
+            <properties>
+                <resources.active>sit</resources.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>pre</id>
+            <properties>
+                <resources.active>pre</resources.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>prd</id>
+            <properties>
+                <resources.active>prd</resources.active>
+            </properties>
+        </profile>
+    </profiles>
 </project>
