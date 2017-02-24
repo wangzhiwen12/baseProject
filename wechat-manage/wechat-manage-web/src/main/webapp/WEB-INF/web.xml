@@ -111,11 +111,16 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>default</servlet-name>
+        <url-pattern>*.woff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
         <url-pattern>*.txt</url-pattern>
     </servlet-mapping>
-
-
-
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.woff2</url-pattern>
+    </servlet-mapping>
     <filter>
         <description>浏览器不支持put,delete等method,由该filter将/blog?_method=delete转换为标准的http delete方法</description>
         <filter-name>hiddenHttpMethodFilter</filter-name>
