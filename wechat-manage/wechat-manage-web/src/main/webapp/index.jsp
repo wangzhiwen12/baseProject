@@ -3881,49 +3881,22 @@ License: You must have a valid license purchased only from themeforest(the above
                     });
                 }
                 var tb = $("#loadhtml");
-                $("[nav-n]")
-                        .each(
-                        function () {
-                            $(this)
-                                    .bind(
-                                    "click",
-                                    function () {
-                                        $("li")
-                                                .removeClass(
-                                                "active");
-                                        $(this)
-                                                .parent()
-                                                .parent()
-                                                .parent()
-                                                .addClass(
-                                                "active");
-                                        $(this)
-                                                .parent()
-                                                .addClass(
-                                                "active");
-                                        var nav = $(
-                                                this)
-                                                .attr(
-                                                "nav-n");
-                                        var sn = nav
-                                                .split(",");
+                $("[nav-n]").each(function () {
+                            $(this).bind("click", function () {
+                                        $("li").removeClass("active");
+                                        $(this).parent().parent().parent().addClass("active");
+                                        $(this).parent().addClass("active");
+                                        var nav = $(this) .attr("nav-n");
+                                        var sn = nav.split(",");
                                         var html = '<li><i class="fa fa-home"></i>';
                                         html += '<a href="index.shtml">Home</a></li>';
                                         for (var i = 0; i < 2; i++) {
-                                            html += '<li><a href="javascript:void(0)">'
-                                                    + sn[i]
-                                                    + '</a></li>';
+                                            html += '<li><a href="javascript:void(0)">'+ sn[i] + '</a></li>';
                                         }
-                                        $("#topli")
-                                                .html(
-                                                html);
+                                        $("#topli").html(html);
                                         var tb = $("#loadhtml");
-                                        tb
-                                                .html(CommnUtil
-                                                        .loadingImg());
-                                        tb
-                                                .load(rootPath
-                                                + sn[2]);
+                                        tb.html(CommnUtil.loadingImg());
+                                        tb.load(rootPath+ sn[2]);
                                     });
                         });
             });
@@ -3940,8 +3913,7 @@ License: You must have a valid license purchased only from themeforest(the above
         if (byId && options) {
             if (options.url && options.textFiled && options.valueFiled
                     && options.name) {
-                $
-                        .ajax({
+                $.ajax({
                             type: "post", //使用get方法访问后台
                             dataType: "json", //json格式的数据
                             async: true, //同步   不写的情况下 默认为true
@@ -3949,23 +3921,17 @@ License: You must have a valid license purchased only from themeforest(the above
                             data: options.data,
                             success: function (data) {
                                 for (var i = 0; i < data.length; i++) {
-                                    var selectObj = $("#" + byId)
-                                            .find("ul");
+                                    var selectObj = $("#" + byId).find("ul");
                                     if (selectObj) {
                                         if (options.value == "" && i == 0) {
-                                            $("#" + byId)
-                                                    .append(
+                                            $("#" + byId).append(
                                                     "<button data-toggle='dropdown' class='btn btn-sm btn-default dropdown-toggle'> "
-                                                    + "<span class='dropdown-label'>"
-                                                    + data[i][options.textFiled]
+                                                    + "<span class='dropdown-label'>" + data[i][options.textFiled]
                                                     + "</span> <span class='caret'></span></button>");
-                                            $("#" + byId)
-                                                    .find("ul")
-                                                    .append(
+                                            $("#" + byId).find("ul").append(
                                                     "<li class='active'><a href='#'><input type='radio' name=" + options.name +
                                                     " value=" + data[i][options.valueFiled] + " checked='checked'>"
-                                                    + data[i][options.textFiled]
-                                                    + "</a></li>");
+                                                    + data[i][options.textFiled]+ "</a></li>");
                                         } else {
                                             if (options.value == data[i][options.valueFiled]) {
                                                 $("#" + byId)
