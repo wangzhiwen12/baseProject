@@ -71,6 +71,22 @@
             <groupId>org.weixin4j</groupId>
             <artifactId>weixin4j</artifactId>
         </dependency>
+
+        <!-- redis -->
+        <dependency>
+            <groupId>biz.paluch.redis</groupId>
+            <artifactId>lettuce</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.wfj.platform</groupId>
+            <artifactId>redis-cluster-cache</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
