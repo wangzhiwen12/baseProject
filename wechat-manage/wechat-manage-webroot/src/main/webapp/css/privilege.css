@@ -1,0 +1,413 @@
+
+.pageTitle, .hoverOperationFooter {
+	visibility: hidden;
+}
+
+.hoverOperationCot {
+	opacity: 0;
+	border: none;
+}
+
+.homeSwiper .show .swiper-slide:nth-child(2) {
+	display: none;
+}
+
+body .wx-head-round-left img, body .wx-head-round-right img {
+	padding-top: 13px;
+	width: 36px !important;
+	height: auto !important;
+}
+
+.wx-head-round-middle img {
+	width: 60px;
+	height: 60px;
+	border-radius: 99px;
+	border: 2px solid #d9d9d9;
+}
+
+.wx-roundin, .wx-head-round-level {
+	display: block;
+}
+
+.wx-roundin {
+	padding: 0 40px;
+}
+
+</
+style> <style>.test-card {
+	height: 38px;
+}
+
+.ctl {
+	width: 640px;
+	position: absolute;
+	top: 0;
+	left: 340px;
+	padding: 20px;
+	margin-bottom: 100px;
+}
+
+.ctl:after {
+	content: "";
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 6px 7px 6px 0;
+	border-color: transparent #fff transparent transparent;
+	position: absolute;
+	left: -6px;
+	top: 19px;
+}
+
+.ctl:before {
+	content: "";
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 6px 7px 6px 0;
+	border-color: transparent #ccc transparent transparent;
+	position: absolute;
+	left: -6px;
+	top: 19px;
+}
+
+.common {
+	position: relative;
+	min-height: 32px;
+	/*cursor: move;*/
+}
+
+.common .handle {
+	cursor: move;
+}
+
+.list {
+	/*padding:20px;*/
+	border: 1px solid #ddd;
+}
+
+html, body {
+	background: #fff !important;
+}
+
+.toJson {
+	display: none;
+	width: 320px;
+	position: fixed;
+	top: 100px;
+	right: 0;
+	background: #eee;
+	padding: 20px;
+	max-height: 400px;
+	overflow: auto;
+}
+
+.common .ctl {
+	display: none;
+}
+
+.cur .ctl {
+	display: block;
+}
+
+.common .handle {
+	/*display: none;*/
+	/*visibility: hidden;*/
+	opacity: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: 2px dashed rgba(255, 0, 0, 0.5);
+	z-index: 2;
+}
+
+.handle-editer {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.container {
+	padding: 0 !important;
+	width: 100% !important;
+}
+
+.handle-editer span {
+	cursor: pointer;
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.3);
+	color: #fff;
+	padding: 0 5px;
+	margin-left: 1px;
+	font-size: 12px;
+}
+
+.cur .handle {
+	opacity: 1;
+	/*display: block;*/
+}
+
+.common:not (.cur ) .handle:hover {
+	opacity: 1;
+	/*display: block;*/
+	/*cursor: move;*/
+	/*visibility: visible;*/
+}
+
+/*_*PC*/
+#P {
+	min-height: 480px;
+}
+
+#div_container>.row>.content-wrapper {
+	overflow: visible;
+}
+
+#p-data .weui_cell_primary p {
+	margin: 0;
+}
+
+.container {
+	height: auto;
+	overflow-y: visible;
+}
+
+.weui_cell_primary p, .w-tit-item {
+	text-align: left;
+}
+
+.w-img-nav .repeat-wrapper {
+	display: flex;
+	width: 100%;
+}
+
+.ctl .list {
+	padding: 20px;
+}
+
+.add-common {
+	cursor: pointer;
+}
+
+.add-common:hover {
+	background-color: #3f3f3f;
+}
+
+/*滑块*/
+.test-result {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	line-height: 1;
+}
+
+.range-slider span {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	height: 19px;
+	width: 18px;
+}
+
+.range-slider i {
+	background: #cccccc none repeat scroll 0 0;
+	border-radius: 4px;
+	display: block;
+	height: 11px;
+	left: 1px;
+	position: absolute;
+	top: 4px;
+}
+
+.range-slider {
+	width: 300px;
+	height: 20px;
+	margin: 0 auto 1em;
+	position: relative;
+	cursor: e-resize;
+}
+
+.range-slider:before {
+	background-color: #fff;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	content: "";
+	display: block;
+	height: 11px;
+	left: 0;
+	position: absolute;
+	top: 3px;
+	width: 100%;
+}
+
+.range-slider span {
+	display: block;
+	height: inherit;
+	position: relative;
+	z-index: 2;
+	background-color: #e6e6e6;
+	cursor: inherit;
+}
+
+.wPopup {
+	position: absolute;
+}
+
+body .wPopup::before {
+	border-color: transparent transparent #fff;
+	border-style: solid;
+	border-width: 0 8px 10px;
+	content: "";
+	display: inline-block;
+	height: 0;
+	left: 12px;
+	position: absolute;
+	top: -9px;
+	width: 0;
+	z-index: 2;
+}
+
+body .wPopup::after {
+	border-color: transparent transparent #333;
+	border-style: solid;
+	border-width: 0 8px 10px;
+	content: "";
+	display: inline-block;
+	height: 0;
+	left: 12px;
+	position: absolute;
+	top: -10px;
+	width: 0;
+	z-index: 1;
+}
+
+body .wPopup .wPopupBtn a {
+	border-radius: 3px;
+	margin-right: 7px;
+	padding: 3px 7px;
+}
+
+body .wPopup .wPopupBtn a.determine {
+	background: #0077dd none repeat scroll 0 0;
+	color: #fff;
+}
+
+body .wPopup .wPopupBtn a.cancel {
+	border: 1px solid #dddddd;
+}
+
+body .wPopup .wPopupCot {
+	padding: 15px 0;
+}
+
+.wPopup {
+	background: #fff none repeat scroll 0 0;
+	border: 1px solid #333;
+	border-radius: 5px;
+	box-shadow: 5px 5px 5px #cccccc;
+	padding: 7px;
+	position: absolute;
+	width: 260px;
+	z-index: 9999;
+}
+
+body .selectLink .ret {
+	background: #468847 none repeat scroll 0 0;
+	border-radius: 5px;
+	color: #fff;
+	padding: 2px 7px;
+}
+
+body .selectLink .ret .cot {
+	display: inline-block;
+	line-height: 15px;
+	max-width: 151px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.common .dropdown {
+	display: inline;
+}
+
+.cancle {
+	cursor: pointer;
+}
+
+.grid-nav-bar.list {
+	position: relative;
+}
+
+.insertCommon {
+	color: #fff;
+	position: absolute;
+	background: #545454;
+	z-index: 999;
+}
+
+.wdn {
+	display: none;
+}
+
+.insertCommon:after {
+	content: "";
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 6px 7px 6px 0;
+	border-color: transparent #545454 transparent transparent;
+	position: absolute;
+	left: -6px;
+	top: 19px;
+}
+
+.comheader-title {
+	position: absolute;
+	display: block;
+	text-align: center;
+	top: -45px;
+	left: 0;
+	width: 100%;
+	font-size: 16px;
+	color: #fff;
+}
+
+.select-pic-common .img-warp {
+	display: inline-block;
+	width: 120px;
+	height: 120px;
+	position: relative;
+}
+
+.select-pic-common .img-warp .clearPic {
+	position: absolute;
+	right: -6px;
+	top: -6px;
+	cursor: pointer;
+}
+
+div[data-scope="comheader_default.title"] {
+	display: none;
+	position: absolute;
+	width: 100%;
+	top: -48px;
+	font-size: 18px;
+	color: #fff;
+}
+
+/*H5, PC 公用样式*/
+.head-style-1 .my-top, .head-style-2 .my-top {
+	display: none;
+}
+
+.head-style-1 .show-style-1 {
+	display: block;
+}
+
+.head-style-2 .show-style-2 {
+	display: block;
+}

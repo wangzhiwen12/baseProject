@@ -1,0 +1,49 @@
+
+a:link {
+        text-decoration: none;
+    }
+     .selectAct a {
+         color: #0077dd;
+     }
+    .controlShow .control-label {
+        float: left;
+        width: 112px;
+        padding-top: 5px;
+        text-align: right;
+    }
+
+    .help-block {
+        opacity: 0.6;
+        line-height: 14px;
+        font-size: 12px;
+        margin-top: 6px !important;
+        margin-bottom: 0;
+    }
+
+    .control-group {
+        margin-bottom: 20px;
+    }
+
+    .controls {
+        margin-left: 118px;
+    }
+
+        .controls a {
+            color: #07d;
+            text-decoration: none;
+        }
+    .ui-node-img2 {
+        height: auto !important;
+    }
+
+    .ui-node-card .ui-form-field-inner {
+        height: auto !important;
+        padding: 0 !important;
+    }
+
+        .ui-node-card .ui-form-field-inner img {
+            position: relative !important;
+        }
+    .footerview img {
+        max-width: 100%;
+    }
