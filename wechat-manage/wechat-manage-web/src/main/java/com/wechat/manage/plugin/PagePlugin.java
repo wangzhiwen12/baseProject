@@ -1,7 +1,6 @@
 package com.wechat.manage.plugin;
 
 import com.wechat.manage.annotation.TableSeg;
-import com.wechat.manage.utils.FormMap;
 import org.apache.ibatis.executor.statement.BaseStatementHandler;
 import org.apache.ibatis.executor.statement.RoutingStatementHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
@@ -20,6 +19,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
+import com.wechat.manage.utils.FormMap;
 
 /**
  * Mybatis的分页查询插件，通过拦截StatementHandler的prepare方法来实现。 

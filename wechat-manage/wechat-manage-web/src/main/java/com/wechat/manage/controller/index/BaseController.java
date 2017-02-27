@@ -8,14 +8,13 @@ import com.wechat.manage.pojo.system.entity.ResFormMap;
 import com.wechat.manage.pojo.system.entity.UserFormMap;
 import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
 import com.wechat.manage.utils.Common;
-import com.wechat.manage.utils.FormMap;
 import com.wechat.manage.utils.RedisUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
+import com.wechat.manage.utils.FormMap;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;

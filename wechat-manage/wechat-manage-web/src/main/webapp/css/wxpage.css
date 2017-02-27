@@ -1,0 +1,256 @@
+.phoneViews{
+    width:325px;
+    /*background: #ccc;*/
+    display: table-cell;
+    vertical-align: top;
+}
+.controlShow{
+    display: table-cell;
+    vertical-align: top;
+    padding:0 20px;
+}
+.phoneShow{
+    display: table;
+    width: 100%;
+}
+
+.ui-form-field {
+    background: #fff none repeat scroll 0 0;
+    border-bottom: 1px solid #eaeaea;
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    width: 100%;
+}
+.ui-form-field {
+    line-height: 42px;
+}
+.ui-form-field-inner {
+    display: block;
+    padding: 0 10px;
+}
+.ui-form-field b {
+    font-size: 14px;
+    font-weight: normal;
+    margin-right: 20px;
+}
+.ui-input-operation {
+    display: table;
+    float: right;
+    height: 42px;
+}
+.ui-input-operation-cell {
+    display: table-cell;
+    line-height: normal;
+    vertical-align: middle;
+}
+.ui-form-field b img{
+    height: 21px;
+    vertical-align: middle;
+}
+
+
+.ui-node-card .ui-form-field-inner {
+    /*line-height: 74px;*/
+    height: 180px;
+    line-height:auto;
+    padding: 35px 10px 40px;
+}
+.ui-node-img {
+    height: 144px;
+    line-height: normal;
+}
+
+.ui-field-group{
+    margin-bottom:15px;
+}
+
+
+.bg-blue {
+    background-color: #4c71b8;
+}
+
+.ui-field-group{
+    margin-bottom: 15px;
+}
+
+
+.c-gray {
+    color: #aaaaaa;
+}
+
+
+.f-r {
+    float: right;
+}
+
+.phoneViews .ui-page{
+    border: 2px solid #797979;
+    border-radius: 0 0 7px 7px;
+    min-height: 430px;
+    position: relative;
+    width: 308px;
+    padding:10px;
+    margin:0 auto;
+    background: #dddddd;
+}
+.phoneViews .phoneViewsHead{
+    background: #797979 none repeat scroll 0 0;
+    color: #ffffff;
+    border-radius: 7px 7px 0 0;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    width: 308px;
+    margin:0 auto;
+}
+.ui-cio-24{
+    font-size: 24px;
+}
+
+
+.ui-node-img b img {
+    border-radius: 100px;
+    height: 32px;
+    width: 32px;
+}
+.display-block {
+    display: block;
+}
+
+.ui-node-img b {
+    float: left;
+}
+.f-l {
+    float: left;
+}
+
+.c-white {
+    color: #fff;
+}
+
+a.ui-form-field, a.ui-form-field:hover{
+    color: #000;
+    text-decoration: none;
+}
+
+.fz-24{
+    font-size: 12px;
+}
+.fz-28{
+    font-size: 28px;
+}
+.fz-32{
+    font-size: 16px;
+}
+.fz-44{
+    font-size: 22px;
+}
+.fz-48{
+    font-size: 24px;
+}
+.fz-54{
+    font-size: 27px;
+}
+
+body label{
+    margin:0;
+}
+.ui-node-img2{
+    height: 100px;
+}
+.ui-node-card02 .ui-form-field-inner{
+    height:116px;
+}
+
+.ui-node-card02 .ui-node-card-footer{
+    padding:0 10px;
+}
+
+
+
+.ui-nm {
+    background: #45c01a none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    height: 17px;
+    line-height: 17px;
+    margin:0 10px;
+    text-align: center;
+    width: 17px;
+}
+.phoneShow p{
+    margin:0
+}
+.text-center{
+    padding:7px 0;
+}
+
+
+.hoverOperation{
+    position: relative;
+}
+.hoverOperation .hoverOperationCot{
+    display: none;
+}
+.hoverOperationCot{
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+    border:2px dashed #f00;
+}
+.hoverOperation:hover .hoverOperationCot{
+    display: block;
+
+}
+
+.hoverOperationFooter{
+    position: absolute;
+    right: 0;
+    bottom:0;
+
+}
+.hoverOperationFooter a{
+    background: #333;
+    color: #fff;
+    display: inline-block;
+    padding:3px 7px;
+}
+
+.hoverOperationCenter{
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.hoverCell{
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    text-align: right;
+}
+.showHover{
+    position: relative;
+}
+.showHover .showHoverCot{
+    display: none;
+    width: 100%;
+    padding:7px;
+    position: absolute;
+    left:0;
+    top:30px;
+    background: #fff;
+    border:1px solid #ddd;
+    z-index: 999;
+}
+
+.showHover:hover .showHoverCot{
+    display: block;
+
+}

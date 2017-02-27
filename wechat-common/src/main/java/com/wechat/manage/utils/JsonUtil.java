@@ -3,6 +3,8 @@ package com.wechat.manage.utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.*;
@@ -163,5 +165,43 @@ public class JsonUtil {
         jsonobj.addProperty(pro, val);
 
         return jsonobj.toString();
+    }
+
+
+    public static List<Map<String, Object>> parseJSONList(String jsonStr){
+        JSONArray jsonArr = JSONArray.fromObject(jsonStr);
+        List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
+        Iterator<JSONObject> it = jsonArr.iterator();
+        while(it.hasNext()){
+            JSONObject JSON = it.next();
+            list.add(parseJSONMap(JSON.toString()));
+        }
+        return list;
+    }
+
+    public static Map<String, Object> parseJSONMap(String jsonStr){
+        Map<String, Object> map = new HashMap<String, Object>();
+        try {
+            //最外层解析
+            JSONObject json = JSONObject.fromObject(jsonStr);
+            for (Object k : json.keySet()) {
+                Object v = json.get(k);
+                //如果内层还是数组的话，继续解析
+                if (v instanceof JSONArray) {
+                    List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+                    Iterator<JSONObject> it = ((JSONArray) v).iterator();
+                    while (it.hasNext()) {
+                        JSONObject JSON = it.next();
+                        list.add(parseJSONMap(JSON.toString()));
+                    }
+                    map.put(k.toString(), list);
+                } else {
+                    map.put(k.toString(), v);
+                }
+            }
+        } catch (Exception e) {
+            map.put("exception", jsonStr);
+        }
+        return map;
     }
 }

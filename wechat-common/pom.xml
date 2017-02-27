@@ -8,6 +8,7 @@
         <artifactId>wechat-parent</artifactId>
         <groupId>com.wechat.parent</groupId>
         <version>1.0-SNAPSHOT</version>
+
         <!--<relativePath>../wechat-parent/pom.xml</relativePath>-->
     </parent>
 
@@ -87,6 +88,22 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.fusesource</groupId>
+            <artifactId>sigar</artifactId>
+        </dependency>
+
+        <!-- poi -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
