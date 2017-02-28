@@ -2,8 +2,10 @@ package com.wechat.manage.service.system.impl;
 
 import com.wechat.manage.mapper.system.StoreInfoMapper;
 import com.wechat.manage.mapper.system.UserAuthorizationStoreMapper;
+import com.wechat.manage.mapper.system.UserMapper;
 import com.wechat.manage.pojo.system.entity.StoreInfo;
 import com.wechat.manage.pojo.system.entity.UserAuthorizationStore;
+import com.wechat.manage.pojo.system.entity.UserFormMap;
 import com.wechat.manage.pojo.system.vo.UserAuthorizationStoreDto;
 import com.wechat.manage.service.system.intf.UserAuthorizationStoreService;
 import org.apache.log4j.Logger;
@@ -26,6 +28,8 @@ public class UserAuthorizationStoreServiceImpl implements UserAuthorizationStore
     private UserAuthorizationStoreMapper userAuthorizationStoreMapper;
     @Autowired
     private StoreInfoMapper storeInfoMapper;
+    @Autowired
+    private UserMapper userMapper;
 
     private static Logger logger = Logger.getLogger(UserAuthorizationStoreService.class);
 
@@ -75,11 +79,34 @@ public class UserAuthorizationStoreServiceImpl implements UserAuthorizationStore
      */
     public List<UserAuthorizationStore> getselectListByUserId(Map<String, Object> paramMap) throws Exception {
         Map<String, Object> paraMap = new HashMap<String, Object>();
-        paraMap.put("userId", paramMap.get("userNumber") + "");
+        String userSid=paramMap.get("userNumber") + "";
+        List<UserAuthorizationStore> userStoreList=new ArrayList<UserAuthorizationStore>();
+        paraMap.put("userId", userSid);
         paraMap.put("isLoseEfficacy", "0");
-
         List<UserAuthorizationStore> userAuthorizationStoreList = userAuthorizationStoreMapper.selectListByParam(paraMap);
-        return userAuthorizationStoreList;
+        if(userAuthorizationStoreList!=null&& userAuthorizationStoreList.size()>0){
+            return userAuthorizationStoreList;
+        }else{
+            UserFormMap userFormMap=new UserFormMap();
+            userFormMap.put("id",userSid);
+            List<UserFormMap> lstUserFormMap=userMapper.findUserPage(userFormMap);
+            if(lstUserFormMap!=null&&lstUserFormMap.size()>0){
+                String groupCode=lstUserFormMap.get(0).get("organization_code").toString();
+                Map<String, Object> paraMap1 = new HashMap<String, Object>();
+                paraMap1.put("groupId",groupCode);
+                List<StoreInfo> storeList = storeInfoMapper.selectListByParam(paraMap1);
+                if(storeList!=null &&storeList.size()>0){
+                   for (StoreInfo item:storeList){
+                       UserAuthorizationStore usa=new UserAuthorizationStore();
+                       usa.setBusinessName(item.getBusinessName());
+                       usa.setStoreCode(item.getStoreCode());
+                       userStoreList.add(usa);
+                   }
+                    return userStoreList;
+                }
+            }
+            return userStoreList;
+        }
     }
 
 

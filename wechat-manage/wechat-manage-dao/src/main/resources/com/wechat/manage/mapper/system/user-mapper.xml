@@ -19,7 +19,8 @@
 		description,
 		locked,
 		credentialsSalt,
-		createTime
+		createTime,
+		organization_code
 	</sql>
 
 	<select id="findUserPage" resultType="com.wechat.manage.pojo.system.entity.UserFormMap">

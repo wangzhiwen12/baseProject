@@ -2,10 +2,10 @@ jQuery.validator.addMethod("checkaccgg", function(value, element) {
 	return this.optional(element)
 		|| ((value.length <= 30) && (value.length >= 3));
 }, "请选择集团");
-jQuery.validator.addMethod("checkatt", function(value, element) {
-	return this.optional(element)
-		|| ((value.length <= 30) && (value.length >= 3));
-}, "请选择门店");
+// jQuery.validator.addMethod("checkatt", function(value, element) {
+// 	return this.optional(element)
+// 		|| ((value.length <= 30) && (value.length >= 3));
+// }, "请选择门店");
 //单独验证某一个input  class="checkpass"
 jQuery.validator.addMethod("checkacc", function(value, element) {
 	return this.optional(element)
@@ -50,6 +50,7 @@ $(function() {
 
 
 
+
 	//下拉出发事件
 	$("#groupType").bind("change",function(){
 		if($(this).val()==0){
@@ -62,7 +63,7 @@ $(function() {
 					$("#organization_name").val(val[item].organizationName);
 				}
 			}
-			getStore($(this).val());
+			// getStore($(this).val());
 		}
 	});
 	//下拉出发事件
@@ -110,15 +111,19 @@ $(function() {
 
 
 
-
-
+	$("#store_code").val("00000");
+	$("#business_name").val("全部门店");
+	$("#parentId").val(0);
 	$("form").validate({
 		submitHandler : function(form) {// 必须写在验证前面，否则无法ajax提交
 			ly.ajaxSubmit(form, {// 验证新增是否成功
 				type : "post",
 				dataType : "json",
 				success : function(data) {
+					layer.alert('见到你真的很高兴', {icon: 6});
+					console.log("data:"+data);
 					if (data == "success") {
+						layer.alert('添加');
 						layer.confirm('添加成功!是否关闭窗口?', function(index) {
 							window.parent.userList();
 							parent.layer.close(parent.pageii);

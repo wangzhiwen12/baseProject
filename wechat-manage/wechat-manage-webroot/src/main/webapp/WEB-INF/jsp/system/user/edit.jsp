@@ -36,14 +36,14 @@
 						  id="organization_name" disabled=true>
 				</div>
 			</div>
-			<div class="form-group">
-			<label class="col-sm-3 control-label">门店</label>
-			<div class="col-sm-9">
-				<input type="text" class="form-control"
-					 value="${user.business_name}"
-					   id="business_name" disabled=true>
-			</div>
-		  </div>
+			<%--<div class="form-group">--%>
+			<%--<label class="col-sm-3 control-label">门店</label>--%>
+			<%--<div class="col-sm-9">--%>
+				<%--<input type="text" class="form-control"--%>
+					 <%--value="${user.business_name}"--%>
+					   <%--id="business_name" disabled=true>--%>
+			<%--</div>--%>
+		  <%--</div>--%>
 
 
 

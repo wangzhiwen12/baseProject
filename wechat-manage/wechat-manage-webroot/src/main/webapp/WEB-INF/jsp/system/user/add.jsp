@@ -118,18 +118,22 @@
                 </div>
 
             </div>
-            <div class="form-group">
-                <div class="col-sm-3">
-                    <label class="control-label">门店</label>
-                </div>
-                <div class="col-sm-9">
-                    <%--name="offsetType"--%>
-                    <select id="storeType" name="userFormMap.store_code" class="table-group-action-input form-control input-inline input-small input-sm checkatt">
-                    </select>
-                </div>
-            </div>
+            <%--<div class="form-group">--%>
+                <%--<div class="col-sm-3">--%>
+                    <%--<label class="control-label">门店</label>--%>
+                <%--</div>--%>
+                <%--<div class="col-sm-9">--%>
+                    <%--&lt;%&ndash;name="offsetType"&ndash;%&gt;--%>
+                    <%--<select id="storeType" name="userFormMap.store_code" class="table-group-action-input form-control input-inline input-small input-sm checkatt">--%>
+                    <%--</select>--%>
+                <%--</div>--%>
+            <%--</div>--%>
             <input type="hidden" class="form-control"  name="userFormMap.organization_name" id="organization_name">
             <input type="hidden" class="form-control"  name="userFormMap.business_name" id="business_name">
+            <input type="hidden" class="form-control"  name="userFormMap.store_code" id="store_code">
+            <input type="hidden" class="form-control"  name="userFormMap.business_name" id="business_name">
+            <input type="hidden" class="form-control"  name="userFormMap.parentId" id="parentId">
+
             <div class="form-group">
                 <div class="col-sm-3">
                     <label class="control-label">用户名</label>
