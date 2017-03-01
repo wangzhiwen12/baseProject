@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wechat.CouponTemplateMapper" >
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.wechat.entity.CouponTemplate" >
+    <id column="sid" property="sid" jdbcType="INTEGER" />
+    <result column="no_length" property="noLength" jdbcType="VARCHAR"/>
+    <result column="prefix_str" property="prefixStr" jdbcType="VARCHAR"/>
+    <result column="start_no" property="startNo" jdbcType="VARCHAR"/>
+    <result column="suffix_length" property="suffixLength" jdbcType="VARCHAR"/>
+    <result column="background" property="background" jdbcType="VARCHAR"/>
+	<result column="coupon_type" property="couponType" jdbcType="VARCHAR" />
+    <result column="coupon_value" property="couponValue" jdbcType="VARCHAR" />
+    <result column="coupon_price_limit" property="couponPriceLimit" jdbcType="VARCHAR" />
+    <result column="create_userId" property="createUserid" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="ifdel" property="ifdel" jdbcType="INTEGER" />
+    <result column="store_code" property="storeCode" jdbcType="VARCHAR" />
+    <result column="coupon_name" property="couponName" jdbcType="VARCHAR" />
+    <result column="create_userName" property="createUserName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, coupon_type, coupon_value, coupon_price_limit, create_userId, create_time, update_time, 
+    ifdel, store_code, coupon_name, create_userName,no_length,prefix_str,start_no,suffix_length,
+    background
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from coupon_template
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from coupon_template
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wechat.manage.pojo.wechat.entity.CouponTemplate" >
+    insert into coupon_template (sid, coupon_type, coupon_value, 
+      coupon_price_limit, create_userId, create_time, 
+      update_time, ifdel, store_code, 
+      coupon_name, create_userName)
+    values (#{sid,jdbcType=INTEGER}, #{couponType,jdbcType=VARCHAR}, #{couponValue,jdbcType=VARCHAR}, 
+      #{couponPriceLimit,jdbcType=VARCHAR}, #{createUserid,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{ifdel,jdbcType=INTEGER}, #{storeCode,jdbcType=VARCHAR}, 
+      #{couponName,jdbcType=VARCHAR}, #{createUserName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wechat.manage.pojo.wechat.entity.CouponTemplate" >
+    insert into coupon_template
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="couponType != null" >
+        coupon_type,
+      </if>
+      <if test="couponValue != null" >
+        coupon_value,
+      </if>
+      <if test="couponPriceLimit != null" >
+        coupon_price_limit,
+      </if>
+      <if test="createUserid != null" >
+        create_userId,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="ifdel != null" >
+        ifdel,
+      </if>
+      <if test="storeCode != null" >
+        store_code,
+      </if>
+      <if test="couponName != null" >
+        coupon_name,
+      </if>
+      <if test="createUserName != null" >
+        create_userName,
+      </if>
+      <if test="noLength != null">
+      	no_length,
+      </if>
+      <if test="prefixStr != null">
+      	prefix_str,
+      </if>
+      <if test="startNo != null">
+      	start_no,
+      </if>
+      <if test="suffixLength != null">
+      	suffix_length,
+      </if>
+      <if test="background != null">
+      	background,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="couponType != null" >
+        #{couponType,jdbcType=VARCHAR},
+      </if>
+      <if test="couponValue != null" >
+        #{couponValue,jdbcType=VARCHAR},
+      </if>
+      <if test="couponPriceLimit != null" >
+        #{couponPriceLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserid != null" >
+        #{createUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ifdel != null" >
+        #{ifdel,jdbcType=INTEGER},
+      </if>
+      <if test="storeCode != null" >
+        #{storeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="couponName != null" >
+        #{couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserName != null" >
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="noLength != null">
+      	#{noLength,jdbcType=VARCHAR},
+      </if>
+      <if test="prefixStr != null">
+      	#{prefixStr,jdbcType=VARCHAR},
+      </if>
+      <if test="startNo != null">
+      	#{startNo,jdbcType=VARCHAR},
+      </if>
+      <if test="suffixLength != null">
+      	#{suffixLength,jdbcType=VARCHAR},
+      </if>
+      <if test="background != null">
+      	#{background,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.wechat.entity.CouponTemplate" >
+    update coupon_template
+    <set >
+      <if test="couponType != null" >
+        coupon_type = #{couponType,jdbcType=VARCHAR},
+      </if>
+      <if test="couponValue != null" >
+        coupon_value = #{couponValue,jdbcType=VARCHAR},
+      </if>
+      <if test="couponPriceLimit != null" >
+        coupon_price_limit = #{couponPriceLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserid != null" >
+        create_userId = #{createUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ifdel != null" >
+        ifdel = #{ifdel,jdbcType=INTEGER},
+      </if>
+      <if test="storeCode != null" >
+        store_code = #{storeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="couponName != null" >
+        coupon_name = #{couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserName != null" >
+        create_userName = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="noLength != null">
+      	no_length = #{noLength,jdbcType=VARCHAR},
+      </if>
+      <if test="prefixStr != null">
+      	prefix_str = #{prefixStr,jdbcType=VARCHAR},
+      </if>
+      <if test="startNo != null">
+      	start_no = #{startNo,jdbcType=VARCHAR},
+      </if>
+      <if test="suffixLength != null">
+      	suffix_length = #{suffixLength,jdbcType=VARCHAR},
+      </if>
+      <if test="background != null">
+      	background = #{background,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.wechat.entity.CouponTemplate" >
+    update coupon_template
+    set coupon_type = #{couponType,jdbcType=VARCHAR},
+      coupon_value = #{couponValue,jdbcType=VARCHAR},
+      coupon_price_limit = #{couponPriceLimit,jdbcType=VARCHAR},
+      create_userId = #{createUserid,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      ifdel = #{ifdel,jdbcType=INTEGER},
+      store_code = #{storeCode,jdbcType=VARCHAR},
+      coupon_name = #{couponName,jdbcType=VARCHAR},
+      create_userName = #{createUserName,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  
+  
+  <select id="selectListByParam" resultMap="BaseResultMap"
+		parameterType="HashMap">
+		select
+		<include refid="Base_Column_List" />
+		from coupon_template
+		<where>
+			<if test="sid != null">
+				and sid = #{sid,jdbcType=INTEGER}
+			</if>
+			<if test="couponType != null" >
+			  and coupon_type = #{couponType,jdbcType=VARCHAR}
+			</if>
+			<if test="couponValue != null" >
+			  and coupon_value = #{couponValue,jdbcType=VARCHAR}
+			</if>
+			<if test="couponPriceLimit != null" >
+			  and coupon_price_limit = #{couponPriceLimit,jdbcType=VARCHAR}
+			</if>
+			<if test="createUserid != null" >
+			  and create_userId = #{createUserid,jdbcType=VARCHAR}
+			</if>
+			<if test="createTime != null" >
+			  and create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="updateTime != null" >
+			  and update_time = #{updateTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="ifdel != null" >
+			  and ifdel = #{ifdel,jdbcType=INTEGER}
+			</if>
+			<if test="ifdel == null" >
+			  and ifdel = 0
+			</if>
+			<if test="storeCode != null" >
+			  and store_code = #{storeCode,jdbcType=VARCHAR}
+			</if>
+			<if test="couponName != null" >
+			  and coupon_name = #{couponName,jdbcType=VARCHAR}
+			</if>
+			<if test="createUserName != null" >
+			  and create_userName = #{createUserName,jdbcType=VARCHAR}
+			</if>
+			<if test="noLength != null">
+		      and no_length = #{noLength,jdbcType=VARCHAR}
+		    </if>
+			<if test="prefixStr != null">
+				and prefix_str = #{prefixStr,jdbcType=VARCHAR}
+			</if>
+			<if test="startNo != null">
+				and start_no = #{startNo,jdbcType=VARCHAR}
+			</if>
+			<if test="suffixLength != null">
+				and suffix_length = #{suffixLength,jdbcType=VARCHAR}
+			</if>
+			<if test="background != null">
+				and background = #{background,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectPageListByParam" resultMap="BaseResultMap"
+		parameterType="HashMap">
+		select
+		<include refid="Base_Column_List" />
+		from coupon_template
+		<where>
+			<if test="sid != null">
+				and sid = #{sid,jdbcType=INTEGER}
+			</if>
+			<if test="couponType != null" >
+			  and coupon_type = #{couponType,jdbcType=VARCHAR}
+			</if>
+			<if test="couponValue != null" >
+			  and coupon_value = #{couponValue,jdbcType=VARCHAR}
+			</if>
+			<if test="couponPriceLimit != null" >
+			  and coupon_price_limit = #{couponPriceLimit,jdbcType=VARCHAR}
+			</if>
+			<if test="createUserid != null" >
+			  and create_userId = #{createUserid,jdbcType=VARCHAR}
+			</if>
+			<if test="createTime != null" >
+			  and create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="updateTime != null" >
+			  and update_time = #{updateTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="ifdel != null" >
+			  and ifdel = #{ifdel,jdbcType=INTEGER}
+			</if>
+			<if test="ifdel == null" >
+			  and ifdel = 0
+			</if>
+			<if test="storeCode != null" >
+			  and store_code = #{storeCode,jdbcType=VARCHAR}
+			</if>
+			<if test="couponName != null" >
+			  and coupon_name = #{couponName,jdbcType=VARCHAR}
+			</if>
+			<if test="createUserName != null" >
+			  and create_userName = #{createUserName,jdbcType=VARCHAR}
+			</if>
+			<if test="noLength != null">
+		      and no_length = #{noLength,jdbcType=VARCHAR}
+		    </if>
+			<if test="prefixStr != null">
+				and prefix_str = #{prefixStr,jdbcType=VARCHAR}
+			</if>
+			<if test="startNo != null">
+				and start_no = #{startNo,jdbcType=VARCHAR}
+			</if>
+			<if test="suffixLength != null">
+				and suffix_length = #{suffixLength,jdbcType=VARCHAR}
+			</if>
+			<if test="background != null">
+				and background = #{background,jdbcType=VARCHAR}
+			</if>
+		</where>
+		order by
+		sid asc
+		limit
+		#{start}, #{limit}
+	</select>
+	<select id="getCountByParam" resultType="java.lang.Integer"
+		parameterType="HashMap">
+		select
+		count(sid)
+		from coupon_template
+		<where>
+			<if test="sid != null">
+				and sid = #{sid,jdbcType=INTEGER}
+			</if>
+			<if test="couponType != null" >
+			  and coupon_type = #{couponType,jdbcType=VARCHAR}
+			</if>
+			<if test="couponValue != null" >
+			  and coupon_value = #{couponValue,jdbcType=VARCHAR}
+			</if>
+			<if test="couponPriceLimit != null" >
+			  and coupon_price_limit = #{couponPriceLimit,jdbcType=VARCHAR}
+			</if>
+			<if test="createUserid != null" >
+			  and create_userId = #{createUserid,jdbcType=VARCHAR}
+			</if>
+			<if test="createTime != null" >
+			  and create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="updateTime != null" >
+			  and update_time = #{updateTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="ifdel != null" >
+			  and ifdel = #{ifdel,jdbcType=INTEGER}
+			</if>
+			<if test="ifdel == null" >
+			  and ifdel = 0
+			</if>
+			<if test="storeCode != null" >
+			  and store_code = #{storeCode,jdbcType=VARCHAR}
+			</if>
+			<if test="couponName != null" >
+			  and coupon_name = #{couponName,jdbcType=VARCHAR}
+			</if>
+			<if test="createUserName != null" >
+			  and create_userName = #{createUserName,jdbcType=VARCHAR}
+			</if>
+			<if test="noLength != null">
+		      and no_length = #{noLength,jdbcType=VARCHAR}
+		    </if>
+			<if test="prefixStr != null">
+				and prefix_str = #{prefixStr,jdbcType=VARCHAR}
+			</if>
+			<if test="startNo != null">
+				and start_no = #{startNo,jdbcType=VARCHAR}
+			</if>
+			<if test="suffixLength != null">
+				and suffix_length = #{suffixLength,jdbcType=VARCHAR}
+			</if>
+			<if test="background != null">
+				and background = #{background,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+  
+</mapper>

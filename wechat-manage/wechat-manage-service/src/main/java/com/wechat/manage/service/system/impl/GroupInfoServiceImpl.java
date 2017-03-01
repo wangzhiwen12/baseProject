@@ -3,7 +3,7 @@ package com.wechat.manage.service.system.impl;
 import com.wechat.manage.pojo.system.vo.ReturnDto;
 import com.wechat.manage.pojo.system.entity.OrganizationInfo;
 import com.wechat.manage.pojo.system.entity.GroupFormMap;
-import com.wechat.manage.pojo.system.entity.CouponTemplate;
+import com.wechat.manage.pojo.wechat.entity.CouponTemplate;
 import com.wechat.manage.mapper.system.OrganizationInfoMapper;
 import com.wechat.manage.utils.StringUtils;
 import com.wechat.manage.vo.DataTableResult;

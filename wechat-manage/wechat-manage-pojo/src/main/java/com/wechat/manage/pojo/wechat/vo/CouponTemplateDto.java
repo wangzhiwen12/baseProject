@@ -1,10 +1,10 @@
-package com.wechat.manage.pojo.system.entity;
+package com.wechat.manage.pojo.wechat.vo;
 
-import com.wechat.manage.pojo.system.vo.PageBase;
+import com.wechat.manage.pojo.wechat.entity.DataTableParams;
 
 import java.util.Date;
 
-public class CouponTemplate extends PageBase {
+public class CouponTemplateDto extends DataTableParams {
 	private Integer sid;
 
 	private String couponType;
@@ -25,53 +25,7 @@ public class CouponTemplate extends PageBase {
 
 	private String couponName;
 
-	private String createUserName;
-
-	private String noLength;
-	private String prefixStr;
-	private String startNo;
-	private String suffixLength;
-	private String background;
-
-	public String getNoLength() {
-		return noLength;
-	}
-
-	public void setNoLength(String noLength) {
-		this.noLength = noLength;
-	}
-
-	public String getPrefixStr() {
-		return prefixStr;
-	}
-
-	public void setPrefixStr(String prefixStr) {
-		this.prefixStr = prefixStr;
-	}
-
-	public String getStartNo() {
-		return startNo;
-	}
-
-	public void setStartNo(String startNo) {
-		this.startNo = startNo;
-	}
-
-	public String getSuffixLength() {
-		return suffixLength;
-	}
-
-	public void setSuffixLength(String suffixLength) {
-		this.suffixLength = suffixLength;
-	}
-
-	public String getBackground() {
-		return background;
-	}
-
-	public void setBackground(String background) {
-		this.background = background;
-	}
+	private String filed3;
 
 	public Integer getSid() {
 		return sid;
@@ -153,23 +107,21 @@ public class CouponTemplate extends PageBase {
 		this.couponName = couponName;
 	}
 
-	public String getCreateUserName() {
-		return createUserName;
+	public String getFiled3() {
+		return filed3;
 	}
 
-	public void setCreateUserName(String createUserName) {
-		this.createUserName = createUserName;
+	public void setFiled3(String filed3) {
+		this.filed3 = filed3;
 	}
 
 	@Override
 	public String toString() {
-		return "CouponTemplate [sid=" + sid + ", couponType=" + couponType + ", couponValue="
+		return "CouponTemplateDto [sid=" + sid + ", couponType=" + couponType + ", couponValue="
 				+ couponValue + ", couponPriceLimit=" + couponPriceLimit + ", createUserid="
 				+ createUserid + ", createTime=" + createTime + ", updateTime=" + updateTime
 				+ ", ifdel=" + ifdel + ", storeCode=" + storeCode + ", couponName=" + couponName
-				+ ", createUserName=" + createUserName + ", noLength=" + noLength + ", prefixStr="
-				+ prefixStr + ", startNo=" + startNo + ", suffixLength=" + suffixLength
-				+ ", background=" + background + "]";
+				+ ", filed3=" + filed3 + "]";
 	}
 
 }
