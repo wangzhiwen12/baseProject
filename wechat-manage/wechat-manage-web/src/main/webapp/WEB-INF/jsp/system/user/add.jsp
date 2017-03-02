@@ -113,7 +113,7 @@
                 </div>
                 <div class="col-sm-9">
                     <%-- name="offsetType"--%>
-                    <select id="groupType" name="userFormMap.organization_code"   class="table-group-action-input form-control input-inline input-small input-sm checkaccgg">
+                    <select id="groupType" disabled="disabled" name="userFormMap.organization_code"   class="table-group-action-input form-control input-inline input-small input-sm checkaccgg">
                     </select>
                 </div>
 
@@ -129,6 +129,7 @@
                 </div>
             </div>
             <input type="hidden" class="form-control"  name="userFormMap.organization_name" id="organization_name">
+            <input type="hidden" class="form-control"  name="userFormMap.organization_code" id="organization_code">
             <input type="hidden" class="form-control"  name="userFormMap.business_name" id="business_name">
             <div class="form-group">
                 <div class="col-sm-3">
