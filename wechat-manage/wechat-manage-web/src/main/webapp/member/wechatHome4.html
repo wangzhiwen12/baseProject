@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no"/>
+    <title>我的会员信息</title>
+    <link rel="stylesheet" href="css/center_conf.css">
+    <link rel="stylesheet" href="css/wxhome.css">
+    <style type="text/css">
+        /*H5, PC 公用样式*/
+        .head-style-1 ._hide, .head-style-2 ._hide {
+            display: block;
+        }
+
+        .head-style-2 .show-style-1 {
+            display: block;
+        }
+
+        .head-style-2 .show-style-2 {
+            display: block;
+        }
+
+        .show-style-3 {
+            display: block;
+        }
+
+        .actPhone {
+            font-size: 14px;
+            border: 1px solid #fff;
+            padding: 4px 7px;
+            border-radius: 3px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="head-style-2">
+    <div id="wxHeadSpanHasBind">
+        <div class="my-top _hide show-style-1">
+            <div class="my-top-ac"
+                 style="background-image: url(http://cdn.ezrpro.com/img/1/ba693652ff4e.jpg); background-size: 100%;">
+                <div class="my-top-bg">
+                    <div class="my-top-logo">
+                                    <span>
+                                        <img class="BrandLogo" alt=""
+                                             src="http://cdn.ezrpro.com/img/3/ba68b759f5ce.jpg">
+                                    </span>
+
+                        <div class="logo-side">
+                            <a href="javascript:;" class="logo-lt showvipar">
+                                <img src="http://static.ezrpro.com/wx/imgs/w_lt.png" alt="">
+                            </a>
+                            <a href="/vip/vipinfo/{品牌}" class="logo-rt">
+                                <img src="http://static.ezrpro.com/wx/imgs/w_rt.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="my-top-mid">
+                        <p><span class="fz-32">{会员等级}</span></p>
+
+                        <p data-scope="comheader_default.cardno" data-tgt="cot">{会员老卡号}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="my-top _hide show-style-2">
+            <div class="my-top-ac1"
+                 style="background-image: url(http://cdn.ezrpro.com/img/1/ba693652ff4e.jpg); background-size: 100%;"
+                 data-scope="comheader_default.img" data-tgt="bg">
+                <div class="my-top-bg">
+                    <div class="my-top-logo">
+                                    <span>
+                                        <img class="BrandLogo" alt=""
+                                             src="http://cdn.ezrpro.com/img/3/ba68b759f5ce.jpg">
+                                    </span>
+
+                        <div class="logo-side">
+                            <a href="membership_card.html" class="logo-lt">
+                                <img src="http://static.ezrpro.com/wx/imgs/w_lt.png" alt="">
+                            </a>
+                            <a href="personal_infor.html" class="logo-rt">
+                                <img src="http://static.ezrpro.com/wx/imgs/w_rt.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="my-top-mid">粉丝</div>
+                    <div class="my-top-bt">
+                        <span style="padding-left: 10px;"><span class="fz-32">{会员等级}</span> <span
+                                data-scope="comheader_default.cardno" data-tgt="cot">{会员老卡号}</span></span>
+                        <a href="javascript:;" class="fr showvipar">
+                            <img src="http://static.ezrpro.com/wx/imgs/w_right.png" width="12">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="my-top show-style-3" id="wxHeadSpanNoBind">
+        <div class="my-top-ac"
+             style="background-image: url(http://cdn.ezrpro.com/img/1/ba693652ff4e.jpg); background-size: 100%;"
+             data-scope="comheader_default.img" data-tgt="bg">
+            <div class="my-top-bg">
+                <div class="my-top-logo">
+								<span>
+									<img class="BrandLogo" alt="" src="http://cdn.ezrpro.com/img/3/ba68b759f5ce.jpg">
+								</span>
+                </div>
+                <div class="my-top-mid">
+                    <!--<p><span class="fz-32">{会员等级}</span></p>-->
+
+                    <p style="margin-top: 10px;">
+                        <a class="actPhone" href="/vip/bindentitycard/{品牌}">
+                            立即激活手机号
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="weui_cells weui_cells_access w-text-nav">
+    <div class="list repeat-wrapper" data-repeat="text-navigation_1477904092260.list">
+        <a class="weui_cell repeat"
+           href="/vip/myBonus/{品牌}"
+           data-tgt="href"
+           data-scope="text-navigation_1477904092260.list.link">
+            <div class="weui_cell_hd">
+                <img src="http://static.ezrpro.com/assets/icon/ico-nav-3.png" alt="" class="ezp-cell-icon"
+                     data-scope="text-navigation_1477904092260.list.picture" data-tgt="src">
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <p data-scope="text-navigation_1477904092260.list.title" data-tgt="cot">我的积分</p>
+            </div>
+            <div class="weui_cell_ft"></div>
+        </a><a class="weui_cell repeat" href="/vip/bindentitycard/{品牌}" data-tgt="href"
+               data-scope="text-navigation_1477904092260.list.link">
+        <div class="weui_cell_hd">
+            <img src="http://static.ezrpro.com/assets/icon/ico-nav-2.png" alt="" class="ezp-cell-icon"
+                 data-scope="text-navigation_1477904092260.list.picture" data-tgt="src">
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <p data-scope="text-navigation_1477904092260.list.title" data-tgt="cot">绑定实体会员卡</p>
+        </div>
+        <div class="weui_cell_ft"></div>
+    </a><a class="weui_cell repeat" href="/vip/updatepwd/{品牌}" data-tgt="href"
+           data-scope="text-navigation_1477904092260.list.link">
+        <div class="weui_cell_hd">
+            <img src="http://static.ezrpro.com/assets/icon/ico-nav-15.png" alt="" class="ezp-cell-icon"
+                 data-scope="text-navigation_1477904092260.list.picture" data-tgt="src">
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <p data-scope="text-navigation_1477904092260.list.title" data-tgt="cot">修改支付密码</p>
+        </div>
+        <div class="weui_cell_ft"></div>
+    </a><a class="weui_cell repeat" href="/coupon/mycoupons/{品牌}" data-tgt="href"
+           data-scope="text-navigation_1477904092260.list.link">
+        <div class="weui_cell_hd">
+            <img src="http://static.ezrpro.com/assets/icon/ico-nav-4.png" alt="" class="ezp-cell-icon"
+                 data-scope="text-navigation_1477904092260.list.picture" data-tgt="src">
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <p data-scope="text-navigation_1477904092260.list.title" data-tgt="cot">我的优惠券</p>
+        </div>
+        <div class="weui_cell_ft"></div>
+    </a><a class="weui_cell repeat" href="/vip/myprivilege/{品牌}" data-tgt="href"
+           data-scope="text-navigation_1477904092260.list.link">
+        <div class="weui_cell_hd">
+            <img src="http://static.ezrpro.com/assets/icon/ico-nav-6.png" alt="" class="ezp-cell-icon"
+                 data-scope="text-navigation_1477904092260.list.picture" data-tgt="src">
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <p data-scope="text-navigation_1477904092260.list.title" data-tgt="cot">会员权益</p>
+        </div>
+        <div class="weui_cell_ft"></div>
+    </a></div>
+</div>
+</body>
+</html>

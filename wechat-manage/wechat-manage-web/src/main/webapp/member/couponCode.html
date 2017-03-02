@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="js/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="js/font/font-awesome-4.3.0/css/font-awesome.min.css">
+    <!--   <link rel="stylesheet" href="css/example.css">-->
+    <title>会员消费码</title>
+</head>
+<body style="text-align: center;">
+	<div style="margin-top: 10%;">
+        <label>优惠券编码</label>
+        <div id="couponDiv">
+            
+        </div>
+    </div>
+	<div>
+        <div id="code" style="position: absolute;left: 50%;top: 40%;width:200px;height:100px;margin-left:-100px;margin-top:-50px;">
+        </div>
+    </div>
+</body>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<script src="js/jquery.qrcode.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript">
+	var rootPath = getContextPath();
+	$(function(){
+		var openId = "abcd";
+		var sid = getUrlDataByKey("sid");
+		$.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + "/couponMember/getCouponCodeByOpenIdAndCardId.json",
+            async: false,
+            dataType: "json",
+            data: {
+                "openId": openId,
+                "cardId": sid
+            },
+            success: function (dto) {
+            	var couponCode = '<label>' + dto.couponCode + '</label><br>';
+            	var img = '<img src="'+dto.imageName+'" style="height: 50%;width: 80%;margin-top: 300px;" >';
+            	$('#couponDiv').append(couponCode);
+            	generQRCode(dto.couponQRCode);
+            	$('#couponDiv').append(img);
+            }
+        });
+	});
+	
+	function generQRCode(obj) {
+	    var str = toUtf8(obj);
+	    $("#code").qrcode({
+	        render: "table",
+	        width: 200,
+	        height: 200,
+	        text: str
+	    });
+	}
+
+	function toUtf8(str) {
+	    var out, i, len, c;
+	    out = "";
+	    len = str.length;
+	    for (i = 0; i < len; i++) {
+	        c = str.charCodeAt(i);
+	        if ((c >= 0x0001) && (c <= 0x007F)) {
+	            out += str.charAt(i);
+	        } else if (c > 0x07FF) {
+	            out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+	            out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+	            out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+	        } else {
+	            out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
+	            out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+	        }
+	    }
+	    return out;
+	}
+</script>
+</html>

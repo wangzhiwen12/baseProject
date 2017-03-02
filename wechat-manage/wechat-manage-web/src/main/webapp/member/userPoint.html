@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>我的积分</title>
+</head>  
+<body>
+	<table style="width: 100%;text-align: center;" >
+		<tr>
+			<td style="width: 50%;"><font size="2%">总积分</font><br><label id="totalPoints" style="color: red"></label></td>
+			<td style="width: 50%;"><font size="2%">可用积分</font><br><label id="availablePoints" style="color: red"></label></td>
+		</tr>
+	</table>
+	<hr>
+	<table id="table_jf" style="width: 100%;text-align: center;" >
+		<tr>
+			<td style="width: 50%;"><font size="2%">积分时间/消费时间</font></td>
+			<td style="width: 50%;"><font size="2%">积分值</font></td>
+		</tr>
+	</table>
+</body>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<script src="js/jquery.qrcode.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript">
+	var rootPath = getContextPath();
+	var openId = "oXgrswaivgssEkjxLmSIPRrd_JlA";
+	var storeCode = "21011";
+	$(function(){
+		$.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + "/memberInfo/getMemberPoint.json",
+            async: false,
+            dataType: "json",
+            data: {
+                "memberCode": openId,
+                "storeCode": storeCode
+            },
+            success: function (resultMap) {
+            	var dto = JSON.parse(resultMap);
+            	$('#totalPoints').html(dto.obj.totalPoints);
+            	$('#availablePoints').html(dto.obj.availablePoints);
+            }
+        });
+	});
+	
+	$(function(){
+		$.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + "/memberInfo/getMemberPointInfo.json",
+            async: false,
+            dataType: "json",
+            data: {
+                "memberCode": openId,
+                "storeCode": storeCode,
+                "cardNo": 1
+            },
+            success: function (resultMap) {
+            	var dto = JSON.parse(resultMap);
+            	var list = dto.obj;
+            	for(var i =0;i<list.length;i++){
+            		var tr ='<tr>'+
+			        			'<td style="width: 50%;"><font size="2%">'+ list[i].pointTimeView +'</font></td>'+
+			        			'<td style="width: 50%;"><font size="2%">'+list[i].points+'</font></td>'+
+			        		'</tr>';
+            		$('#table_jf').append(tr);
+            	}
+            }
+        });
+	});
+
+	$(window).scroll(function () {
+	    var scrollTop = $(this).scrollTop();
+	    var scrollHeight = $(document).height();
+	    var windowHeight = $(this).height();
+	    if (scrollTop + windowHeight == scrollHeight) {
+	    	
+	  	//此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+	
+		//var page = Number($("#redgiftNextPage").attr('currentpage')) + 1;
+		//redgiftList(page);
+		//$("#redgiftNextPage").attr('currentpage', page + 1);
+	    }
+	});
+</script>
+</html> 

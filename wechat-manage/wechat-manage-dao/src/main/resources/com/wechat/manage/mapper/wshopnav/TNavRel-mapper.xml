@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wshopnav.TNavRelMapper" >
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.wshopnav.entity.TNavRel" >
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="page_type_sid" property="pageTypeSid" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, shop_id, page_type_sid, create_time
+  </sql>
+  
+  <select id="navRelByShopId" resultType="Map" parameterType="java.lang.Long" >
+    SELECT
+		page.sid as sid,
+		page.page_type_name as pageTypeName,
+		navRel.shop_id as shopId,
+		navRel.page_type_sid as pageTypeSid
+	FROM
+		t_page_type AS page
+	LEFT JOIN t_nav_rel AS navRel ON navRel.page_type_sid = page.sid
+	AND navRel.shop_id = #{shopId,jdbcType=BIGINT}
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_nav_rel
+    where sid = #{sid,jdbcType=BIGINT}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_nav_rel
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+  
+  <delete id="deleteByShopId" parameterType="java.lang.Long" >
+    delete from t_nav_rel
+    where shop_id = #{shopId,jdbcType=BIGINT}
+  </delete>
+  
+  <insert id="insert" parameterType="com.wechat.manage.pojo.wshopnav.entity.TNavRel" >
+    insert into t_nav_rel (sid, shop_id, page_type_sid, 
+      create_time)
+    values (#{sid,jdbcType=BIGINT}, #{shopId,jdbcType=BIGINT}, #{pageTypeSid,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wechat.manage.pojo.wshopnav.entity.TNavRel" >
+    insert into t_nav_rel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="pageTypeSid != null" >
+        page_type_sid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="pageTypeSid != null" >
+        #{pageTypeSid,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.wshopnav.entity.TNavRel" >
+    update t_nav_rel
+    <set >
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="pageTypeSid != null" >
+        page_type_sid = #{pageTypeSid,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.wshopnav.entity.TNavRel" >
+    update t_nav_rel
+    set shop_id = #{shopId,jdbcType=BIGINT},
+      page_type_sid = #{pageTypeSid,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wshopnav.TNavMapper" >
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.wshopnav.entity.TNav" >
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="parent_sid" property="parentSid" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="link" property="link" jdbcType="VARCHAR" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="InfoByShopMap" type="com.wechat.manage.pojo.wshopnav.vo.TNavDto" >
+    <id column="sid" property="sid" />
+    <result column="title" property="title" />
+    <result column="linkUrl" property="linkUrl" />
+    <result column="shopSid" property="shopSid" />
+    <collection property="second" column="parentSid"  javaType="ArrayList" ofType="com.wechat.manage.pojo.wshopnav.vo.TNavDtoList">
+	    <result column="parentSid" property="parentSid" />
+	  	<result column="sid2" property="sid" />
+	    <result column="title2" property="title" />
+	    <result column="linkUrl2" property="linkUrl" />
+	    <result column="shopSid2" property="shopSid" />
+    </collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, parent_sid, name, link, shop_id, create_user, create_time, update_time
+  </sql>
+  <select id="selectByShopId" resultMap="InfoByShopMap" parameterType="java.lang.Long" >
+    SELECT
+		nav1.link as linkUrl,
+		nav1.`name` as title,
+		nav1.shop_id as shopSid,
+		nav1.sid as sid,
+		nav2.link as linkUrl2,
+		nav2.`name` as title2,
+		nav2.shop_id as shopSid2,
+		nav2.sid as sid2,
+		nav2.parent_sid as parentSid
+	FROM
+		t_nav as nav1
+	LEFT JOIN
+		t_nav as nav2 ON nav1.sid = nav2.parent_sid
+	WHERE
+		nav1.shop_id = #{shopId,jdbcType=BIGINT}
+	AND
+		nav1.parent_sid = 0
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_nav
+    where sid = #{sid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_nav
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByShopId" parameterType="java.lang.String">
+  	delete from t_nav
+    where shop_id = #{shopId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wechat.manage.pojo.wshopnav.entity.TNav" >
+    insert into t_nav (sid, parent_sid, name, 
+      link, shop_id, create_user, 
+      create_time, update_time)
+    values (#{sid,jdbcType=BIGINT}, #{parentSid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{link,jdbcType=VARCHAR}, #{shopId,jdbcType=BIGINT}, #{createUser,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wechat.manage.pojo.wshopnav.entity.TNav" useGeneratedKeys="true" keyProperty="sid" >
+    insert into t_nav
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="parentSid != null" >
+        parent_sid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="link != null" >
+        link,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="parentSid != null" >
+        #{parentSid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null" >
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.wshopnav.entity.TNav" >
+    update t_nav
+    <set >
+      <if test="parentSid != null" >
+        parent_sid = #{parentSid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null" >
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.wshopnav.entity.TNav" >
+    update t_nav
+    set parent_sid = #{parentSid,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      link = #{link,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=BIGINT},
+      create_user = #{createUser,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+</mapper>

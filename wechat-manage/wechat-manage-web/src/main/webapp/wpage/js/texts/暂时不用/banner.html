@@ -1,0 +1,31 @@
+<div class="control-group">
+    <div class="custom-image-swiper">
+        <div class="swiper-container" style="height: 100px">
+            <div class="swiper-wrapper">
+                <script type="text/template" id="demo">
+                    <%
+                    for(var i=0; i<languages.length; i++) {
+                    echo( '<div class="swiper-slide" style="height: 100px"><a href='+languages[i].url+' style="height: 100px;"><img src='+languages[i].imgurl+' style="height: 100px;"></a></div>' );
+                    }
+                    %>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="actions">
+    <div class="actions-wrap">
+        <span class="action edit">编辑</span>
+        <span class="action add">加内容</span>
+        <span class="action delete">删除</span>
+    </div>
+</div>
+<div class="sort">    <i class="sort-handler"></i></div>
+<script>
+    var languages=[
+        {url:"http://www.wangfujing.com",imgurl:"http://img1.wfjimg.com//wfjpic/zt_index/supk-list04.jpg"},
+        {url:"http://www.wangfujing.com",imgurl:"http://img2.wfjimg.com//wfjpic/zt_index/supk-list02.jpg"},
+        {url:"http://www.baidu.com",imgurl:"https://img.yzcdn.cn/upload_files/2015/01/23/Fh9a9u4ZitxiVY82piyVt6dSyQWW.png"}
+    ];
+    $(".swiper-wrapper").html( tpl('#demo', languages) );
+</script>

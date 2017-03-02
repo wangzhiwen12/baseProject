@@ -53,5 +53,5 @@
 		destroy-method="close" />
 	
 	<bean id="redisUtil" class="com.wechat.manage.utils.RedisUtil" />
-	<bean id="wechatUtil" class="com.wechat.manage.utils.WechatUtil" />
+	<bean id="wechatUtil" class="com.wechat.manage.service.util.WechatUtil" />
 </beans>

@@ -1,0 +1,964 @@
+body {
+	padding-bottom: 1000px;
+}
+
+form {
+	display: inline;
+	float: left;
+}
+/*20150917*/
+.msg {
+	display: none;
+}
+
+.error {
+	display: block;
+	color: #f00;
+	padding-left: 90px;
+}
+
+/* 滑动 */
+.range-slider {
+	width: 300px;
+	height: 20px;
+	/*margin: 0 auto 1em;*/
+	position: relative;
+	cursor: e-resize;
+}
+
+.range-slider:before {
+	background-color: #fff;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	content: "";
+	display: block;
+	height: 13px;
+	left: 0;
+	position: absolute;
+	top: 3px;
+	width: 100%;
+}
+
+.range-slider span {
+	display: block;
+	height: inherit;
+	position: relative;
+	z-index: 2;
+	background-color: #e6e6e6;
+	cursor: inherit;
+}
+
+/* Test result */
+.test-result {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	line-height: 1;
+}
+
+.range-slider span {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	height: 19px;
+	width: 18px;
+}
+
+.range-slider i {
+	background: #cccccc none repeat scroll 0 0;
+	border-radius: 4px;
+	display: block;
+	height: 11px;
+	left: 1px;
+	position: absolute;
+	top: 4px;
+}
+
+.showNodeImg img {
+	width: 70px;
+	height: 70px;
+}
+/*20150919*/
+/*四个的*/
+.vItemsList {
+	/*width: 25% !important;*/
+	
+}
+
+.sliderControlPoints {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	display: none;
+}
+
+.sliderControlPoints i {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 100px;
+	background: #ddd;
+}
+
+.show .sliderControlPoints {
+	display: block;
+}
+
+.sliderControlPoints i:first-child {
+	background: #fff;
+}
+
+.hoverOperationFooter a {
+	font-size: 12px;
+	margin-left: 3px;
+	padding: 3px 6px;
+}
+
+.homeSwiper .show .swiper-slide:nth-child(2) {
+	display: none;
+}
+
+#controllerTgt .cur {
+	position: relative;
+}
+/*20150919*/
+/*四个的*/
+.hoverOperationFooter a {
+	font-size: 12px;
+	margin-left: 3px;
+	padding: 3px 6px;
+}
+
+.phoneViews .ui-page {
+	border: 2px solid #797979 !important;
+	background: #fff !important;
+}
+
+.phoneViews .phoneViewsHead {
+	background: #797979 !important;
+}
+
+body #controllerTgt &gt ; div.cur {
+	border: 1px solid #d1d1d1;
+	background: #f8f8f8;
+	width: 580px;
+}
+
+body #controllerTgt {
+	background: #fff;
+}
+
+body #controllerTgt &gt ; div.cur {
+	position: relative;
+}
+
+body #controllerTgt &gt ; div.cur:before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	/*left:-20px;
+top:10px;
+*/
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 8px 10px 8px 0;
+	border-color: transparent #f8f8f8 transparent transparent;
+	position: absolute;
+	left: -8px;
+	top: 19px;
+	z-index: 2;
+}
+
+body #controllerTgt &gt ; div.cur:after {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	/*left:-20px;
+top:10px;
+*/
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 8px 10px 8px 0;
+	border-color: transparent #d1d1d1 transparent transparent;
+	position: absolute;
+	left: -10px;
+	top: 19px;
+	z-index: 1;
+}
+
+body .nodeItem {
+	background: #f8f8f8;
+}
+
+body .showNodeImg {
+	display: inline-block;
+	border: 1px solid #e5e5e5;
+	height: 96px;
+	width: 96px;
+	text-align: center;
+}
+
+body .selIcon {
+	display: inline-block;
+	width: 96px;
+	text-align: center;
+}
+
+body .showNodeImg img {
+	height: 96px;
+	width: 96px;
+}
+
+body .choice-image {
+	width: 96px;
+	text-align: center;
+}
+
+body .selectLink .ret {
+	background: #468847;
+	color: #fff;
+	padding: 2px 7px;
+	border-radius: 5px;
+}
+
+body .selectLink .ret .cot {
+	max-width: 151px;
+	display: inline-block;
+	white-space: nowrap;
+	line-height: 18px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	float: left;
+}
+
+body .cItemsList .handel span {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 100px;
+	background: #ddd;
+	color: #fff;
+	text-align: center;
+	line-height: 18px;
+	cursor: pointer;
+	font-size: 8px;
+	font-weight: 100;
+}
+
+body .cItemsList .handel span:hover {
+	background: #333;
+}
+
+body2 .wPopup {
+	margin-top: 15px;
+}
+
+body .wPopup:before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	/*left:-20px;
+    top:10px;
+    */
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	/*border-width: 8px 10px 8px 0;*/
+	border-width: 0 8px 10px 8px;
+	border-color: transparent transparent #fff transparent;
+	position: absolute;
+	left: 12px;
+	top: -9px;
+	z-index: 2;
+}
+
+body .wPopup:after {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	/*left:-20px;
+    top:10px;
+    */
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	/*border-width: 8px 10px 8px 0;*/
+	border-width: 0 8px 10px 8px;
+	border-color: transparent transparent #333 transparent;
+	position: absolute;
+	left: 12px;
+	top: -10px;
+	z-index: 1;
+}
+
+body .wPopup .wPopupBtn a {
+	padding: 3px 7px;
+	border-radius: 3px;
+	margin-right: 7px;
+}
+
+body .wPopup .wPopupBtn a.determine {
+	background: #0077dd;
+	color: #fff;
+}
+
+body .wPopup .wPopupBtn a.cancel {
+	border: 1px solid #dddddd;
+}
+
+body .wPopup .wPopupCot {
+	padding: 15px 0;
+}
+
+body .phoneViews {
+	padding-bottom: 300px;
+}
+
+body #controllerTgt .cur {
+	position: relative;
+}
+
+.imgNav img {
+	width: 24px !important;
+	height: 24px !important;
+}
+
+.imgNav b {
+	padding-left: 20px;
+}
+
+body .wx-head-round-left img {
+	padding-top: 13px;
+	width: 36px !important;
+	height: auto !important;
+}
+
+body .wx-head-round-right img {
+	padding-top: 13px;
+	width: 36px !important;
+	height: auto !important;
+}
+
+.wx-head-round-middle img {
+	width: 60px;
+	height: 60px;
+	border-radius: 99px;
+	border: 2px solid #d9d9d9;
+}
+
+.wx-roundin {
+	display: block;
+}
+
+.wx-head-round-level {
+	display: block;
+}
+
+.wx-roundin {
+	padding: 0 40px;
+}
+/*微信页面管理 20151228 end*/
+.ui-node-img a img {
+	border-radius: 100px;
+	height: 32px;
+	width: 32px;
+}
+
+div[data-tpl="nodeNavTitleTpl"] .list .ui-form-field {
+	height: auto !important;
+	line-height: 20px;
+	padding-top: 10px;
+}
+
+.head-style-2 .home-card {
+	background: #ddd none repeat scroll 0 0;
+	display: block;
+	height: 36px;
+	left: 0;
+	line-height: 36px;
+	padding: 0 60px 0 20px;
+	position: absolute;
+	text-align: left;
+	top: 90px;
+	width: 100%;
+}
+
+.head-style-2 .home-card span {
+	display: inline;
+	float: left;
+	line-height: 37px;
+	padding-right: 24px;
+}
+
+.head-style-2 .wx-head-round-left {
+	bottom: 55px;
+	position: absolute;
+	right: 11px;
+	z-index: 999;
+}
+
+.head-style-2 .wx-head-round-right {
+	display: none;
+}
+
+.head-style-2 .wx-head-round-left img {
+	border-radius: 0;
+	display: inline-block !important;
+	height: 24px !important;
+	padding: 0;
+	width: 24px !important;
+}
+
+.head-style-2 .wx-head-round-left .qc-img {
+	display: none !important;
+}
+
+.test-card {
+	height: 38px;
+}
+
+.ctl {
+	width: 640px;
+	position: absolute;
+	top: 0;
+	left: 340px;
+	padding: 20px;
+	margin-bottom: 100px;
+}
+
+.ctl:after {
+	content: "";
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 6px 7px 6px 0;
+	border-color: transparent #fff transparent transparent;
+	position: absolute;
+	left: -6px;
+	top: 19px;
+}
+
+.ctl:before {
+	content: "";
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 6px 7px 6px 0;
+	border-color: transparent #ccc transparent transparent;
+	position: absolute;
+	left: -6px;
+	top: 19px;
+}
+
+.common {
+	position: relative;
+	min-height: 32px;
+	/*cursor: move;*/
+	text-align: left;
+}
+
+.common .handle {
+	cursor: move;
+}
+
+.list {
+	/*padding:20px;*/
+	border: 1px solid #ddd;
+}
+
+html, body {
+	background: #fff !important;
+}
+
+.toJson {
+	display: none;
+	width: 320px;
+	position: fixed;
+	top: 100px;
+	right: 0;
+	background: #eee;
+	padding: 20px;
+	max-height: 400px;
+	overflow: auto;
+}
+
+.common .ctl {
+	display: none;
+}
+
+.cur .ctl {
+	display: block;
+}
+
+.common .handle {
+	/*display: none;*/
+	/*visibility: hidden;*/
+	opacity: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: 2px dashed rgba(255, 0, 0, 0.5);
+	z-index: 2;
+}
+
+.handle-editer {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.container {
+	padding: 0 !important;
+	width: 100% !important;
+}
+
+.handle-editer span {
+	cursor: pointer;
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.3);
+	color: #fff;
+	padding: 0 5px;
+	margin-left: 1px;
+	font-size: 12px;
+}
+
+.cur .handle {
+	opacity: 1;
+	/*display: block;*/
+}
+
+.common:not (.cur ) .handle:hover {
+	opacity: 1;
+	/*display: block;*/
+	/*cursor: move;*/
+	/*visibility: visible;*/
+}
+
+/*_*PC*/
+#P {
+	min-height: 360px;
+}
+
+#div_container &gt ; .row &gt ; .content-wrapper {
+	overflow: visible;
+}
+
+#p-data .weui_cell_primary p {
+	margin: 0;
+}
+
+.container {
+	height: auto;
+	overflow-y: visible;
+}
+
+.weui_cell_primary p, .w-tit-item {
+	text-align: left;
+}
+
+.w-img-nav .repeat-wrapper {
+	display: flex;
+	width: 100%;
+}
+
+.ctl .list {
+	padding: 20px;
+}
+
+.add-common {
+	cursor: pointer;
+}
+
+.add-common:hover {
+	background-color: #3f3f3f;
+}
+
+.ui-form-fields &gt ; :first-child {
+	width: 25%;
+}
+
+/*滑块*/
+.test-result {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	line-height: 1;
+}
+
+.range-slider span {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	height: 19px;
+	width: 18px;
+}
+
+.range-slider i {
+	background: #cccccc none repeat scroll 0 0;
+	border-radius: 4px;
+	display: block;
+	height: 11px;
+	left: 1px;
+	position: absolute;
+	top: 4px;
+}
+
+.range-slider {
+	width: 300px;
+	height: 20px;
+	/*margin:0 auto 1em;*/
+	position: relative;
+	cursor: e-resize;
+}
+
+.range-slider:before {
+	background-color: #fff;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	content: "";
+	display: block;
+	height: 11px;
+	left: 0;
+	position: absolute;
+	top: 3px;
+	width: 100%;
+}
+
+.range-slider span {
+	display: block;
+	height: inherit;
+	position: relative;
+	z-index: 2;
+	background-color: #e6e6e6;
+	cursor: inherit;
+}
+
+.wPopup {
+	position: absolute;
+}
+
+body .wPopup::before {
+	border-color: transparent transparent #fff;
+	border-style: solid;
+	border-width: 0 8px 10px;
+	content: "";
+	display: inline-block;
+	height: 0;
+	left: 12px;
+	position: absolute;
+	top: -9px;
+	width: 0;
+	z-index: 2;
+}
+
+body .wPopup::after {
+	border-color: transparent transparent #333;
+	border-style: solid;
+	border-width: 0 8px 10px;
+	content: "";
+	display: inline-block;
+	height: 0;
+	left: 12px;
+	position: absolute;
+	top: -10px;
+	width: 0;
+	z-index: 1;
+}
+
+body .wPopup .wPopupBtn a {
+	border-radius: 3px;
+	margin-right: 7px;
+	padding: 3px 7px;
+}
+
+body .wPopup .wPopupBtn a.determine {
+	background: #0077dd none repeat scroll 0 0;
+	color: #fff;
+}
+
+body .wPopup .wPopupBtn a.cancel {
+	border: 1px solid #dddddd;
+}
+
+body .wPopup .wPopupCot {
+	padding: 15px 0;
+}
+
+.wPopup {
+	background: #fff none repeat scroll 0 0;
+	border: 1px solid #333;
+	border-radius: 5px;
+	box-shadow: 5px 5px 5px #cccccc;
+	padding: 7px;
+	position: absolute;
+	width: 260px;
+	z-index: 9999;
+}
+
+body .selectLink .ret {
+	background: #468847 none repeat scroll 0 0;
+	border-radius: 5px;
+	color: #fff;
+	padding: 2px 7px;
+}
+
+.common .dropdown {
+	display: inline;
+}
+
+.cancle {
+	cursor: pointer;
+}
+
+.grid-nav-bar.list {
+	position: relative;
+}
+
+.insertCommon {
+	color: #fff;
+	position: absolute;
+	background: #545454;
+	z-index: 999;
+}
+
+.wdn {
+	display: none;
+}
+
+.insertCommon:after {
+	content: "";
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 6px 7px 6px 0;
+	border-color: transparent #545454 transparent transparent;
+	position: absolute;
+	left: -6px;
+	top: 19px;
+}
+
+.comheader-title {
+	position: absolute;
+	display: block;
+	text-align: center;
+	top: -45px;
+	left: 0;
+	width: 100%;
+	font-size: 16px;
+	color: #fff;
+}
+
+.select-pic-common .img-warp {
+	background: #eee;
+	display: inline-block;
+	width: 72px;
+	height: 72px;
+	position: relative;
+}
+
+.select-pic-common .img-warp .clearPic {
+	position: absolute;
+	right: -6px;
+	top: -6px;
+	cursor: pointer;
+}
+
+div[data-scope="comheader_default.title"] {
+	text-align: center;
+	position: absolute;
+	width: 100%;
+	top: -48px;
+	font-size: 18px;
+	color: #fff;
+}
+
+.com-slt {
+	visibility: hidden;
+	width: 0;
+}
+
+#P form {
+	float: none;
+}
+
+.handle-editer {
+	padding: 3px;
+	/*background-color: #fcc6c2;*/
+	background-color: rgba(252, 198, 194, 0.5);
+}
+
+.grid-nav-bar.list.repeat .ctlEditer {
+	display: none;
+}
+
+.grid-nav-bar.list.repeat:hover {
+	background: #f9f9f9;
+}
+
+.grid-nav-bar.list.repeat:hover .ctlEditer {
+	display: block;
+}
+
+.ctlEditer {
+	position: absolute;
+	right: 6px;
+	top: 6px;
+}
+
+.handle-editer a, .ctlEditer a {
+	background: #eeeeee none repeat scroll 0 0;
+	border-radius: 99px;
+	color: #fff;
+	display: inline-block;
+	margin-left: 7px;
+	padding: 9px !important;
+}
+
+.ctlEditer a {
+	background: none;
+}
+
+.ctlEditer a:hover {
+	background: #eee;
+}
+
+._insert-common {
+	position: relative;
+	height: 37px;
+}
+
+._insert-common img {
+	visibility: hidden;
+	/*display: none;*/
+}
+
+._insert-common:after {
+	content: " ";
+	display: block;
+	width: 18px;
+	height: 0;
+	border-bottom: 2px solid #6c6d6a;
+	position: absolute;
+	left: 9px;
+	top: 17px;
+	/*display: none;*/
+}
+
+._insert-common:before {
+	content: " ";
+	display: block;
+	width: 0;
+	height: 17px;
+	border-right: 2px solid #6c6d6a;
+	left: 17px;
+	top: 10px;
+	position: absolute;
+	/*display: none;*/
+}
+
+.select-pic-common .img-warp .clearPic {
+	display: none;
+}
+
+.select-pic-common .img-warp:hover .clearPic {
+	display: block;
+}
+
+.select-pic-common .img-warp .clearPic span {
+	position: relative;
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: #eee;
+	border-radius: 100px;
+	transform: rotate(45deg);
+	-ms-transform: rotate(45deg); /* Internet Explorer */
+	-moz-transform: rotate(45deg); /* Firefox */
+	-webkit-transform: rotate(45deg); /* Safari 和 Chrome */
+	-o-transform: rotate(45deg); /* Opera */
+}
+
+.select-pic-common .img-warp .clearPic span:after {
+	content: " ";
+	display: block;
+	width: 13px;
+	height: 0;
+	border-bottom: 1px solid #6c6d6a;
+	position: absolute;
+	left: 4px;
+	top: 9px;
+	/*display: none;*/
+}
+
+.select-pic-common .img-warp .clearPic span:before {
+	content: " ";
+	display: block;
+	width: 0;
+	height: 13px;
+	border-right: 1px solid #6c6d6a;
+	left: 10px;
+	top: 3px;
+	position: absolute;
+	/*display: none;*/
+}
+
+.grid-nav-bar.list.repeat {
+	padding-right: 72px;
+	cursor: move;
+}
+
+#P p {
+	margin: 10px 0;
+}
+
+.selectPicWrap a {
+	color: #23527c;
+	text-decoration: underline;
+}
+
+.ctl .ui-btn-default.handler {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background: #ddefc9;
+	border: none;
+}
+
+.ctl .repeat-wrapper {
+	padding-bottom: 48px;
+}
+
+.show-style-3 {
+	display: none;
+}
+
+.popover {
+	display: none !important;
+}
+
+/*H5, PC 公用样式*/
+.head-style-1 ._hide, .head-style-2 ._hide {
+	display: none;
+}
+
+.head-style-1 .show-style-1 {
+	display: block;
+}
+
+.head-style-2 .show-style-2 {
+	display: block;
+}
+
+.actPhone {
+	font-size: 14px;
+	border: 1px solid #fff;
+	padding: 4px 7px;
+	border-radius: 3px;
+	color: #fff;
+}

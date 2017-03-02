@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>会员注册</title>
+    <style type="text/css">
+        .weui-vcode-btn, .weui-vcode-img {
+            height: 20px;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        .weui-vcode-btn {
+            border-left: 1px solid #e5e5e5;
+            color: #3cc51f;
+            display: inline-block;
+            font-size: 14px;
+            line-height: 20px;
+            padding: 0 0.6em 0 0.7em;
+        }
+    </style>
+</head>
+<body ontouchstart="">
+<div id="container" class="container">
+    <div class="page dialog js_show">
+        <div class="page input js_show">
+
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">手机号</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" pattern="[0-9]*" placeholder="请输入手机号" type="tel" id="mobile">
+                    </div>
+                    <div class="weui-cell__ft">
+                        <button class="weui-vcode-btn">获取验证码</button>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">验证码</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" placeholder="请输入验证码" type="number">
+                    </div>
+                </div>
+            </div>
+            <div class="weui-btn-area">
+                <a href="#" class="weui-btn weui-btn_primary" id="showIOSDialog2">立即提交</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="100000" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="tc">
+                    <h5 id="modal_lable"></h5>
+
+                    <p class="mt10 tishi" id="modal_msg"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="tc gr-col" id="ok_button">确定</div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<div class="modal-backdrop fade in" style="display: none;"></div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/public.js"></script>
+<script src="js/phoneCheckCode.js"></script>
+<script type="text/javascript">
+    var rootPath = getContextPath();
+    var appId = getUrlDataByKey("appId");
+    var openId = getUrlDataByKey("openId");
+    var unionId = getUrlDataByKey("unionId");
+    var storeCode = getUrlDataByKey("storeCode");
+</script>
+<script>
+    //会员用户注册
+    function userRegister() {
+        $.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + "/memberInfo/registerMember_2.json",
+            async: false,
+            data: {
+                "storeCode": storeCode,
+                "mobile": $("#mobile").val(),
+                "openId": openId
+            },
+            dataType: "json",
+            success: function (response) {
+                response = JSON.parse(response);
+                if (response.success) {
+                    alert("成功");
+                   /* $("#modal_lable").text("恭喜");
+                    $("#modal_msg").text(response.msg);
+                    $("#ok_button").attr("onclick", "modalShowOrHide(0, 1)");
+                    modalShowOrHide(1);*/
+                } else {
+                    alert("失败");
+               /*     $("#modal_lable").text("抱歉，注册失败！");
+                    $("#modal_msg").text(response.msg);
+                    $("#ok_button").attr("onclick", "modalShowOrHide(0, 0)");
+                    modalShowOrHide(1);*/
+                }
+            }
+        });
+    }
+
+    $(function () {
+   console.log("storeCode",storeCode);
+   console.log("openId",openId);
+   console.log("mobile", $("#mobile").val());
+        modalShowOrHide(0);
+        var $iosDialog2 = $('#iosDialog2');
+
+        $('#showIOSDialog2').on('click', function () {
+
+//            $iosDialog2.fadeIn(200);
+            userRegister();
+        });
+        /* $("#btnSubmit").click(function () {
+         alert("11111");
+         userRegister();
+         /!* $("#backIndex").prop("href", "javascript:loadIndex()");*!/
+         });*/
+    });
+
+</script>
+</body>
+</html>

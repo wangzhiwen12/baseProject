@@ -25,7 +25,6 @@ public class ChainDefinitionSectionMetaSource implements FactoryBean<Ini.Section
     private String filterChainDefinitions = null;
 
     public Ini.Section getObject() throws Exception {
-        resourcesMapper.findRes(new ResFormMap());
         new ConfigUtils().initTableField(resourcesMapper);
         Ini ini = new Ini();
         // 加载默认的url

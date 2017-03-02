@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.mauto{margin: 0 auto;}
+.posr{position: relative;}
+.posa{position: absolute}
+.tc{text-align: center;}
+.tr{text-align: right;}
+.dn{display: none;}
+.fl{float: left}
+.fr{float: right;}
+body {background-color: #efeff4}
+.ico-nav {width: 20px;margin-right: 15px;display: block}
+.page__hd {padding: 40px;}
+.btn_regist {color: #cbab60;font-size: 16px;left: 30%;top: 28%;}
+.ka_num{left: 10%;top:77%;font-size:16px;color: #CBAB60;}
+
+.page__hd {padding: 40px;}
+.page__hd10 {padding: 10px;}
