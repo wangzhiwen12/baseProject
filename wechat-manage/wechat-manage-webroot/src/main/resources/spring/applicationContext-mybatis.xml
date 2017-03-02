@@ -24,7 +24,7 @@
         <!--最新mybatis的配置文件位置-->
         <!--  <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>-->
         <property name="mapperLocations" value="classpath:com/wechat/manage/mapper/*/*mapper.xml"/>
-        <property name="typeAliasesPackage" value="com.wechat.manage.pojo"/>
+        <property name="typeAliasesPackage" value="com.wechat.manage.pojo.**.entity"/>
         <property name="plugins">
             <array>
                 <ref bean="pagePlugin"/>
