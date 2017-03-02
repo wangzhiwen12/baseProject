@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no"/>
+    <title>我的会员信息</title>
+    <link rel="stylesheet" href="css/center_conf.css">
+    <link rel="stylesheet" href="css/wxhome.css">
+    <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="js/public.js" type="text/javascript"></script>
+    <style type="text/css">
+        /*H5, PC 公用样式*/
+        .head-style-1 ._hide, .head-style-2 ._hide, .show-style-3 ._hide {
+            display: none;
+        }
+
+        /*  .head-style-2 .show-style-1 {
+              display: none;
+          }
+
+          .head-style-2 .show-style-2 {
+              display: none;
+          }*/
+
+        .show-style-3 {
+            display: block;
+        }
+
+        .actPhone {
+            font-size: 14px;
+            border: 1px solid #fff;
+            padding: 4px 7px;
+            border-radius: 3px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="head-style-2">
+    <div id="wxHeadSpanHasBind">
+        <div class="my-top _hide show-style-1">
+            <div class="my-top-ac"
+                 style="background-image: url(http://cdn.ezrpro.com/img/1/ba693652ff4e.jpg); background-size: 100%;">
+                <div class="my-top-bg">
+                    <div class="my-top-logo">
+                                    <span>
+                                        <img class="BrandLogo" alt=""
+                                             src="http://cdn.ezrpro.com/img/3/ba68b759f5ce.jpg">
+                                    </span>
+
+                        <div class="logo-side">
+                            <a href="javascript:;" class="logo-lt showvipar">
+                                <img src="http://static.ezrpro.com/wx/imgs/w_lt.png" alt="">
+                            </a>
+                            <a href="/vip/vipinfo/{品牌}" class="logo-rt">
+                                <img src="http://static.ezrpro.com/wx/imgs/w_rt.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="my-top-mid">
+                        <p><span class="fz-32 vipcard-type">{会员等级}</span></p>
+
+                        <p class="vipcard-NO">{会员老卡号}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="my-top _hide show-style-2">
+            <div class="my-top-ac1"
+                 style="background-image: url(http://cdn.ezrpro.com/img/1/ba693652ff4e.jpg); background-size: 100%;"
+                 data-scope="comheader_default.img" data-tgt="bg">
+                <div class="my-top-bg">
+                    <div class="my-top-logo">
+                                    <span>
+                                        <img class="BrandLogo" alt=""
+                                             src="http://cdn.ezrpro.com/img/3/ba68b759f5ce.jpg">
+                                    </span>
+
+                        <div class="logo-side">
+                            <a href="membership_card.html" class="logo-lt">
+                                <img src="http://static.ezrpro.com/wx/imgs/w_lt.png" alt="">
+                            </a>
+                            <a href="personal_infor.html" class="logo-rt">
+                                <img src="http://static.ezrpro.com/wx/imgs/w_rt.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="my-top-mid">粉丝</div>
+                    <div class="my-top-bt">
+                        <span style="padding-left: 10px;"><span class="fz-32 vipcard-type">{会员等级}</span> <span
+                                class="vipcard-NO">{会员老卡号}</span></span>
+                        <a href="javascript:;" class="fr showvipar">
+                            <img src="http://static.ezrpro.com/wx/imgs/w_right.png" width="12">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="my-top show-style-3 _hide" id="wxHeadSpanNoBind">
+        <div class="my-top-ac"
+             style="background-image: url(http://cdn.ezrpro.com/img/1/ba693652ff4e.jpg); background-size: 100%;"
+             data-scope="comheader_default.img" data-tgt="bg">
+            <div class="my-top-bg">
+                <div class="my-top-logo">
+								<span>
+									<img class="BrandLogo" alt="" src="http://cdn.ezrpro.com/img/3/ba68b759f5ce.jpg">
+								</span>
+                </div>
+                <div class="my-top-mid">
+                    <!--<p><span class="fz-32">{会员等级}</span></p>-->
+
+                    <p style="margin-top: 10px;">
+                        <a class="actPhone">
+                            立即激活手机号
+                        </a>
+                        <a class="actPhone2">
+                            立即激活手机号
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="weui_cells weui_cells_access w-text-nav">
+    <div class="list repeat-wrapper" data-repeat="text-navigation_1477904092260.list">
+        <a id="myBonus" class="weui_cell repeat"
+           href="{root}/member/myMemberDetailInfo.html?appId={appId}&storeCode={storeCode}">
+            <div class="weui_cell_hd">
+                <img src="http://static.ezrpro.com/assets/icon/ico-nav-3.png" alt="" class="ezp-cell-icon">
+            </div>
+            <div class="weui_cell_bd weui_cell_primary"><p>我的积分</p></div>
+            <div class="weui_cell_ft"></div>
+        </a><a id="wxVipCard" class="weui_cell repeat"
+               href="{root}/member/bindMemberInfo.html?bindType=2&unionId={unionId}&appId={appId}&openId={openId}&storeCode={storeCode}&registType={registType}">
+        <div class="weui_cell_hd">
+            <img src="http://static.ezrpro.com/assets/icon/ico-nav-2.png" alt="" class="ezp-cell-icon">
+        </div>
+        <div class="weui_cell_bd weui_cell_primary"><p>绑定实体会员卡</p></div>
+        <div class="weui_cell_ft"></div>
+    </a><a id="updatepwd" class="weui_cell repeat"
+           href="{root}/member/editPassword.html?appId={appId}&openId={openId}=&storeCode={storeCode}&memberCode={memberCode}&cardNo={cardNo}&phone={phone}">
+        <div class="weui_cell_hd">
+            <img src="http://static.ezrpro.com/assets/icon/ico-nav-15.png" alt="" class="ezp-cell-icon">
+        </div>
+        <div class="weui_cell_bd weui_cell_primary"><p>修改支付密码</p></div>
+        <div class="weui_cell_ft"></div>
+    </a><a id="mycoupons" class="weui_cell repeat"
+           href="{root}/member/userCoupon.html?openId={openId}&storeCode={storeCode}">
+        <div class="weui_cell_hd">
+            <img src="http://static.ezrpro.com/assets/icon/ico-nav-4.png" alt="" class="ezp-cell-icon">
+        </div>
+        <div class="weui_cell_bd weui_cell_primary"><p>我的优惠券</p>
+        </div>
+        <div class="weui_cell_ft"></div>
+    </a><a id="myprivilege" class="weui_cell repeat"
+           href="{root}/member/storeMemBenefitsHtml/memberBenefits_{storeCode}.html">
+        <div class="weui_cell_hd">
+            <img src="http://static.ezrpro.com/assets/icon/ico-nav-6.png" alt="" class="ezp-cell-icon">
+        </div>
+        <div class="weui_cell_bd weui_cell_primary"><p>会员权益</p>
+        </div>
+        <div class="weui_cell_ft"></div>
+    </a></div>
+</div>
+</body>
+<script type="text/javascript">
+    var rootPath = getContextPath();
+    var openId = getUrlDataByKey("openId");
+    var cardNo = getUrlDataByKey("cardNo");//卡号
+    var custType = getUrlDataByKey("custType");//等级
+    var qrcode = getUrlDataByKey("qrcode");//二维码
+    var phone = getUrlDataByKey("mobile");//手机号
+    var storeCode = getUrlDataByKey("storeCode");//门店号
+    var memberCode = getUrlDataByKey("memberCode");//会员编码
+    var cardType = getUrlDataByKey("cardType");
+    var url = "";
+
+    //    storeCode = "9999";
+    var appId = getUrlDataByKey("appId");
+    //    appId = "wx7aec942c6742752d";
+    var registType = "", unionId = "";
+    $(function () {
+        loadPageInfo();
+        url = location.href.split('#')[0];
+        initializationConfig();
+    });
+
+    function loadPageInfo() {
+        $.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + "/wechatpage/getWxPageInfo.json",
+            async: false,
+            data: {
+                "storeCode": "9999",
+                "pageType": "1"
+            },
+            dataType: "json",
+            success: function (response) {
+                if (!!response && response.success) {
+                    re_root = new RegExp("{root}", "g");
+                    re_appId = new RegExp("{appId}", "g");
+                    re_storeCode = new RegExp("{storeCode}", "g");
+                    re_openId = new RegExp("{openId}", "g");
+                    re_unionId = new RegExp("{unionId}", "g");
+                    re_registType = new RegExp("{registType}", "g");
+                    re_memberCode = new RegExp("{memberCode}", "g");
+                    re_cardNo = new RegExp("{cardNo}", "g");
+                    re_cardNo2 = new RegExp("{会员老卡号}", "g");
+                    re_phone = new RegExp("{phone}", "g");
+                    re_custType = new RegExp("{会员等级}", "g");
+                    $("body").empty();
+                    var wxhtml = response.data.wxhomehtml.replace(re_appId, appId);
+                    wxhtml = wxhtml.replace(re_storeCode, storeCode);
+                    wxhtml = wxhtml.replace(re_root, rootPath);
+                    wxhtml = wxhtml.replace(re_openId, openId);
+                    wxhtml = wxhtml.replace(re_unionId, unionId);
+                    wxhtml = wxhtml.replace(re_registType, registType);
+                    wxhtml = wxhtml.replace(re_memberCode, memberCode);
+                    wxhtml = wxhtml.replace(re_cardNo, cardNo);
+                    wxhtml = wxhtml.replace(re_cardNo2, cardNo);
+                    wxhtml = wxhtml.replace(re_cardNo2, cardNo);
+                    wxhtml = wxhtml.replace(re_phone, phone);
+                    wxhtml = wxhtml.replace(re_custType, custType);
+                    $("body").html(wxhtml);
+                    var template = response.data.template;
+                    $(".wx_title").hide();
+                    if (typeof(cardType) == "undefined" || cardType == '0') {
+                        cardUrl();
+                    }
+                    else {
+                        $(".show-style-3").addClass("_hide");
+                        if (!!template && 'head-style-1' == template) {
+                            $(".show-style-1").removeClass("_hide");
+                        }
+                        if (!!template && 'head-style-2' == template) {
+                            $(".show-style-2").removeClass("_hide");
+                        }
+//                        $(".vipcard-type").text(custType);
+//                        $(".vipcard-NO").text(cardNo);
+                        myBonus();
+                        showvip();
+                        bindVipCard();
+                        updatePwd();
+                        myCoupons();
+                    }
+                    myPrivilege();
+                } else {
+                }
+            }
+        });
+    }
+
+    //卡包链接
+    function cardUrl() {
+        $.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + "/appAccountInfo/findAppAccountInfoByPara.json",
+            async: false,
+            data: {
+                "storecode": storeCode
+            },
+            dataType: "json",
+            success: function (response) {
+                response = JSON.parse(response);
+                if (!!response && response.success) {
+//                    $(".actPhone2").attr("href", response.list[0].cardUrl);
+//                    $(".actPhone3").attr("href", "http://10.6.2.49:8080/notebook/member/userRegister3.html");
+                    $(".show-style-3").removeClass("_hide");
+                    $(".fz-32").addClass("_hide");
+                } else {
+
+                }
+            }
+        });
+    }
+
+    /*投卡 start--------2017年1月11日--------------*/
+
+
+    function initializationConfig() {
+//        var appId = "wx7aec942c6742752d";
+        //获取 config 参数
+        $.ajax({
+            async: false,
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + '/wechat/getSing2.json',
+            dataType: "json",
+            data: {
+                "url": url,
+                "storePara": appId
+            },
+            success: function (response) {
+                var timestamp = response.data.obj.timestamp;
+                var nonceStr = response.data.obj.nonceStr;
+                var signature = response.data.obj.signature;
+
+                //js sdk 初始化
+                // 开启debug  上线后关调debug（debug: true为开启，debug: false 关闭）
+                wx.config({
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    appId: appId, // 必填，公众号的唯一标识  wx871d0104ae72e615
+                    timestamp: timestamp, // 必填，生成签名的时间戳
+                    nonceStr: nonceStr, // 必填，生成签名的随机串
+                    signature: signature,// 必填，签名，见附录1
+                    jsApiList: ['addCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                });
+                // config 初始化 走 wx.ready 方法
+                wx.ready(function () {
+                    // 12.1 添加卡券
+                    document.querySelector('.actPhone').onclick = function () {
+                        var cards = "";
+                        var card = "";
+                        //获取 cardExt
+                        $.ajax({
+                            type: "post",
+                            async: false,
+                            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                            url: rootPath + '/wechat/getCartSing2.shtml',
+                            dataType: "json",
+                            data: "storePara=" + appId,
+                            success: function (response) {
+//                                alert(response.success == "true");
+                                if (response.success == "true") {
+                                    cards = response.data.cardExts;
+                                    card = response.data.cards;
+//                                    alert("appId++++++:" + appId);
+//                                    alert("card++++++:" + card);
+//                                    alert("cardExt++++++:" + cards);
+                                    wx.addCard({
+                                        cardList: [
+                                            {
+                                                cardId: card,
+                                                cardExt: cards
+                                            }
+                                        ],
+                                        success: function (res) {
+//                                alert('已添加卡券：' + JSON.stringify(res.cardList));
+                                        },
+                                        cancel: function (res) {
+//                                alert('res' + JSON.stringify(res))
+                                        }
+                                    });
+                                }
+
+                            },
+                            error: function (response) {
+                                alert("add error");
+                            }
+                        });
+                    }
+                });
+                wx.error(function (res) {
+                    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+                    alert('错误：' + res);
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                ;
+                alert("初始化方法error");
+            }
+        });
+    }
+
+
+    /*调试用  上线可以删除*/
+    function testadd() {
+        alert("add card start");
+        alert("appId:" + appId);
+        //获取 cardExt
+        var cards = "";
+        card = 'pXgrswetJB8yxkS5-U4ZeM3g9TpY';
+        $.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + '/wechat/getCartSing2.shtml',
+            dataType: "json",
+            data: "storePara=" + appId,
+            success: function (response) {
+                alert("'" + response.data.cardExts + "'");
+                cards += "'" + response.data.cardExts + "'";
+                alert("xx:" + cards);
+            },
+            error: function (response) {
+                alert("add card error");
+            }
+        });
+    }
+    ;
+
+    /*投卡 end-----------2017年1月11日-----------*/
+
+
+
+    //会员积分
+    function myBonus() {
+        var myBonusUrl = rootPath + "/member/myMemberDetailInfo.html?";
+        myBonusUrl += "appId=" + appId;
+        myBonusUrl += "&storeCode=" + storeCode;
+        $("#myBonus").attr("href", myBonusUrl);
+    }
+
+    //二维码
+    function showvip() {
+        var showvipUrl = rootPath + "/member/wxVipCard.html?cardNo=" + cardNo+"&custType="+custType;
+        $(".showvipar").attr("href", showvipUrl);
+    }
+
+
+    //绑定实体卡
+    function bindVipCard() {
+        var url = rootPath + "/member/bindMemberInfo.html?bindType=2";
+        url += "&unionId=" + unionId;
+        url += "&appId=" + appId;
+        url += "&openId=" + openId;
+        url += "&storeCode=" + storeCode;
+        url += "&registType=" + registType;
+        $("#wxVipCard").attr("href", url);
+    }
+
+    //修改支付密码
+    function updatePwd() {
+        var url = rootPath + "/member/editPassword.html?";
+        url += "appId=" + appId;
+        url += "&openId=" + openId;
+        url += "&storeCode=" + storeCode;
+        url += "&memberCode=" + memberCode;
+        url += "&cardNo=" + cardNo;
+        url += "&phone=" + phone;
+        $("#updatepwd").attr("href", url);
+    }
+
+
+    //会员权益
+    function myPrivilege() {
+        var myprivilegeUrl = rootPath + "/member/storeMemBenefitsHtml/memberBenefits_" + storeCode + ".html";
+        $("#myprivilege").attr("href", myprivilegeUrl);
+    }
+
+
+    //优惠券
+    function myCoupons() {
+        var url = rootPath + "/member/userCoupon.html?";
+        url += "openId=" + openId;
+        url += "&storeCode=" + storeCode;
+        $("#myCoupons").attr("href", url);
+    }
+</script>
+</html>

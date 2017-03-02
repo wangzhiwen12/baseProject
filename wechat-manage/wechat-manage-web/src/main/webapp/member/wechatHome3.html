@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <!--   <link rel="stylesheet" href="css/example.css">-->
+    <title>我的会员信息</title>
+</head>
+<body ontouchstart="">
+<div class="weui-toptips weui-toptips_warn js_tooltips">错误提示</div>
+<div id="container" class="container">
+    <div class="weui-cells cardNo">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <input class="weui-input" placeholder="卡号" type="text" id="txtCardNo">
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" placeholder="卡等级" type="text" id="txtCardLevel">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div id="small_qrcode"></div>
+        </div>
+    </div>
+
+    <a href="#" class="weui-btn weui-btn_default" id="activePhone">立即激活手机号</a>
+    <a href="#" class="weui-btn weui-btn_default" id="activePhone2">立即激活手机号</a>
+
+
+    <div class="weui-cells">
+        <a class="weui-cell weui-cell_access" href="javascript:;" id="memberCen">
+            <div class="weui-cell__hd">
+                <img src="images/ico-nav-3.png" alt="" class="ico-nav"></div>
+            <div class="weui-cell__bd">
+                <p>我的积分</p>
+            </div>
+            <div class="weui-cell__ft">
+            </div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="javascript:;" id="bindEntityCard">
+            <div class="weui-cell__hd"><img src="images/ico-nav-2.png" alt=""
+                                            class="ico-nav"></div>
+            <div class="weui-cell__bd">
+                <p>绑定实体卡</p>
+            </div>
+            <div class="weui-cell__ft">
+            </div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="javascript:;" id="updatePwd">
+            <div class="weui-cell__hd"><img src="images/ico-nav-15.png" alt=""
+                                            class="ico-nav"></div>
+            <div class="weui-cell__bd">
+                <p>修改支付密码</p>
+            </div>
+            <div class="weui-cell__ft">
+            </div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="javascript:;" id="userCoupon">
+            <div class="weui-cell__hd"><img src="images/ico-nav-4.png" alt=""
+                                            class="ico-nav"></div>
+            <div class="weui-cell__bd">
+                <p>我的优惠券</p>
+            </div>
+            <div class="weui-cell__ft">
+            </div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="javascript:;" id="memberBen">
+            <div class="weui-cell__hd"><img src="images/ico-nav-6.png" alt=""
+                                            class="ico-nav"></div>
+            <div class="weui-cell__bd">
+                <p>会员权益</p>
+            </div>
+            <div class="weui-cell__ft">
+            </div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="javascript:;" id="addCard">
+            <div class="weui-cell__hd"><img src="images/ico-nav-6.png" alt=""
+                                            class="ico-nav"></div>
+            <div class="weui-cell__bd">
+                <p>会员权益</p>
+            </div>
+            <div class="weui-cell__ft">
+            </div>
+        </a>
+    </div>
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/jquery.qrcode.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+    var rootPath = getContextPath();
+    var openId = getUrlDataByKey("openId");
+    var cardNo = getUrlDataByKey("cardNo");//卡号
+    var custType = getUrlDataByKey("custType");//等级
+    var qrcode = getUrlDataByKey("qrcode");//二维码
+    var phone = getUrlDataByKey("mobile");//手机号
+    var storeCode = getUrlDataByKey("storeCode");//门店号
+    var memberCode = getUrlDataByKey("memberCode");//会员编码
+    var cardType = getUrlDataByKey("cardType");
+    var appId = getUrlDataByKey("appId");
+    var registType = "", unionId = "";
+    $("#addCard").attr("href", rootPath + "/member/cartTicket.html");
+    $(function () {
+        console.log("cardType:", typeof(cardType) != "undefined");
+        if (typeof(cardType) == "undefined" || cardType == '0') {
+            //$("#activePhone").attr("href", "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3be6367203f983ac&redirect_uri=https%3A%2F%2Fmp.weixin.qq.com%2Fbizmall%2Fcardlandingpage%3Fbiz%3DMzIyOTU5MTcyOQ%3D%3D%26page_id%3D5%26scene%3D1&response_type=code&scope=snsapi_base#wechat_redirect");
+            cardUrl();
+            $(".cardNo").hide();
+        }
+        else {
+            $("#activePhone").hide();
+            if (typeof(qrcode) != "undefined" && qrcode != '') {
+                $("#small_qrcode").qrcode({
+                    render: "canvas", //table方式
+                    foreground: "#C42605",
+                    width: 60, //宽度
+                    height: 60, //高度
+                    text: toUtf8(qrcode) //任意内容
+                });
+            }
+            $("#txtCardNo").val(cardNo);
+            $("#txtCardLevel").val(custType);
+            $("#bindEntityCard").click(bindEntityCard);
+            $("#updatePwd").click(updatePwd);
+            $("#userCoupon").click(memeberCoupon);
+            memberCen();
+        }
+
+        memberBen();
+
+        getWXConfig();
+        getWXReady();
+
+    });
+
+
+    function cardUrl() {
+        $.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + "/appAccountInfo/findAppAccountInfoByPara.json",
+            async: false,
+            data: {
+                "storecode": storeCode
+            },
+            dataType: "json",
+            success: function (response) {
+                response = JSON.parse(response);
+                if (!!response && response.success) {
+                    $("#activePhone").attr("href", response.list[0].cardUrl);
+                } else {
+                }
+            }
+        });
+    }
+
+    //会员积分
+    function memberCen() {
+        var memberCenUrl = rootPath + "/member/myMemberDetailInfo.html?";
+        memberCenUrl += "appId=" + appId;
+        memberCenUrl += "&openId=" + openId;
+        memberCenUrl += "&cardNo=" + cardNo;
+        memberCenUrl += "&registType=" + registType;
+        memberCenUrl += "&storeCode=" + storeCode;
+        memberCenUrl += "&memberCode=" + memberCode;
+        $("#memberCen").attr("href", memberCenUrl);
+    }
+    //会员权益
+    function memberBen() {
+        var memberBenUrl = rootPath + "/member/storeMemBenefitsHtml/memberBenefits_" + storeCode + ".html";
+        $("#memberBen").attr("href", memberBenUrl);
+    }
+
+    //绑定实体卡
+    function bindEntityCard() {
+        var bindEntityCardUrl = rootPath + "/member/bindMemberInfo.html?bindType=2";
+        bindEntityCardUrl += "&unionId=" + unionId;
+        bindEntityCardUrl += "&appId=" + appId;
+        bindEntityCardUrl += "&openId=" + openId;
+        bindEntityCardUrl += "&storeCode=" + storeCode;
+        bindEntityCardUrl += "&registType=" + registType;
+        location.href = bindEntityCardUrl;
+    }
+    //修改密码
+    function updatePwd() {
+        var updatePwdUrl = rootPath + "/member/editPassword.html?";
+        updatePwdUrl += "appId=" + appId;
+        updatePwdUrl += "&openId=" + openId;
+        updatePwdUrl += "&storeCode=" + storeCode;
+        updatePwdUrl += "&memberCode=" + memberCode;
+        updatePwdUrl += "&cardNo=" + cardNo;
+        updatePwdUrl += "&phone=" + phone;
+        location.href = updatePwdUrl;
+    }
+    //修改密码
+    function memeberCoupon() {
+        var url = rootPath + "/member/userCoupon.html?";
+        url += "openId=" + openId;
+        url += "&storeCode=" + storeCode;
+        location.href = url;
+    }
+
+    /*识别中文*/
+    function toUtf8(str) {
+        var out, i, len, c;
+        out = "";
+        len = str.length;
+        for (i = 0; i < len; i++) {
+            c = str.charCodeAt(i);
+            if ((c >= 0x0001) && (c <= 0x007F)) {
+                out += str.charAt(i);
+            } else if (c > 0x07FF) {
+                out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+                out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+            } else {
+                out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
+                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+            }
+        }
+        return out;
+    }
+
+</script>
+<script type="text/javascript">
+
+
+    var curUrl = location.href.split('#')[0];
+    function getWXConfig() {
+        $.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + '/wechat/getSing2.shtml',
+            dataType: "json",
+            data: {
+                "url": curUrl,
+                "storePara": appId
+            },
+            success: function (response) {
+                console.log("111:", response);
+                if (!!response && response.code == "0") {
+                    var timestamp = response.obj.timestamp,
+                            nonceStr = response.obj.nonceStr,
+                            signature = response.obj.signature;
+                    wx.config({
+                        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId: appId, // 必填，公众号的唯一标识  wx871d0104ae72e615
+                        timestamp: timestamp, // 必填，生成签名的时间戳
+                        nonceStr: nonceStr, // 必填，生成签名的随机串
+                        signature: signature,// 必填，签名，见附录1
+                        jsApiList: ['addCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                    });
+
+                }
+            },
+            error: function (response) {
+                alert("初始化方法error");
+            }
+        });
+    }
+
+    function getWXReady() {
+        //获取 cardExt
+        $.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + '/wechat/getCartSing2.shtml',
+            dataType: "json",
+            data: {
+                "storePara": appId
+            },
+            success: function (response) {
+                response = JSON.parse(response);
+//                cardExt = response;
+                console.log(response);
+                var timestamp = response.timestamp,
+                        signature = response.signature;
+                alert("cardExt::" + response);
+                alert("timestamp:" + timestamp + "--signature:" + signature);
+                wx.ready(function () {
+                    alert("验证 config 正常");
+                    document.querySelector('#activePhone2').onclick = function () {
+                        alert("activePhone2");
+                        var cardExt = "";
+                        alert('wx.addCard start');
+                        wx.addCard({
+                            cardList: [
+                                {
+                                    cardId: 'psah_wAb1_OhNNNqscWu-rK5zx1g',
+//                                    cardExt: cardExt
+                                    cardExt: '{"code": "", "openid": "", "timestamp": "' + timestamp + '", "signature":"' + signature + '"}'
+
+//                                    cardId: 'pDF3iY9tv9zCGCj4jTXFOo1DxHdo',
+//                                    cardExt: '{"code": "", "openid": "", "timestamp": "1418301401", "signature":"ad9cf9463610bc8752c95084716581d52cd33aa0"}'
+                                }
+                            ],
+                            success: function (res) {
+                                alert("cardExt" + cardExt);
+                                alert('已添加卡券：' + JSON.stringify(res.cardList));
+                            },
+                            cancel: function (res) {
+                                alert('res' + JSON.stringify(res))
+                            },
+                        });
+                        alert("wx.addCard end");
+                    }
+                });
+            },
+            error: function (response) {
+                alert("error");
+            }
+        });
+        wx.error(function (res) {
+            // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+            alert('错误：' + res);
+        });
+    }
+</script>
+<!--<script type="text/javascript" src="js/weui.min.js"></script>-->
+<!--<script type="text/javascript" src="js/zepto.min.js"></script>-->
+<!--<script type="text/javascript" src="js/example.js"></script>-->
+</body>
+</html>

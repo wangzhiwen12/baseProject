@@ -1,0 +1,419 @@
+
+.ui-form-field-cot {
+    position: relative;
+}
+.ui-form-field-cot .validationMessage {
+    bottom: -20px;
+    left: 0;
+    position: absolute;
+}
+.col-nav {
+    overflow: hidden;
+}
+.col-nav-4 .col-nav-item {
+    float: left;
+    width: 25%;
+}
+.col-nav-3 .col-nav-item {
+    float: left;
+    width: 33.333%;
+}
+.col-nav-2 .col-nav-item {
+    float: left;
+    width: 50%;
+}
+.col-nav .col-nav-item:not(:last-child) {
+    border-right: 1px solid #e6e6e5;
+}
+.clear-margin {
+    margin: 0 !important;
+}
+.clear-border {
+    border: medium none !important;
+}
+.appphone_header {
+    background-image: url("../images/app_01.png");
+    height: 91px;
+    width: 361px;
+}
+.appphone_container {
+    background-image: url("../images/app_02.png");
+    min-height: 573px;
+    position: relative;
+    width: 361px;
+}
+.appphone_btn {
+    background-image: url("../images/app_btn.png");
+    height: 186px;
+    left: -1px;
+    position: absolute;
+    width: 6px;
+}
+.appphone_main {
+    margin-left: 23px;
+    width: 316px;
+}
+.appphone_bottom {
+    background-image: url("../images/app_03.png");
+    height: 91px;
+    width: 361px;
+}
+.appphone_top {
+    background-image: url("../images/ceremony_top.png");
+    background-repeat: no-repeat;
+    color: #fff;
+    height: 61px;
+    padding-top: 30px;
+    position: relative;
+    text-align: center;
+}
+.appphone_banner {
+    height: 158px;
+    width: 316px;
+}
+.appphone_content_nav {
+    background-color: #fff;
+    padding: 10px;
+}
+.appphone_content_navitem:not(:last-child) {
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.ui-input-color {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    height: 40px;
+    padding: 2px 30px 2px 2px;
+    position: relative;
+    width: 64px;
+}
+.ui-input-color::after {
+    content: "øÆ";
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    position: absolute;
+    right: 9px;
+    top: 9px;
+    z-index: 1;
+}
+.ui-triangle-left {
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #fff;
+    border-top: 10px solid transparent;
+    height: 0;
+    left: -10px;
+    position: absolute;
+    width: 0;
+}
+.ui-triangle-up {
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    height: 0;
+    position: absolute;
+    right: 10px;
+    top: -10px;
+    width: 0;
+}
+.ui-bottom-fixedbtn {
+    background: #fff none repeat scroll 0 0;
+    bottom: 0;
+    left: 235px;
+    padding: 10px 0;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+.ui-shop-selector {
+    background: #fff none repeat scroll 0 0 !important;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;
+    padding: 10px 30px 8px 10px;
+    position: relative;
+    z-index: 2;
+}
+.ui-shop-selector::after {
+    content: "øÆ";
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    z-index: 1;
+}
+.ui-presell {
+    background: #f44336 none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #fff;
+    padding: 3px 5px;
+}
+.ui-table-tdfixed {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 110px;
+}
+.cursor-p {
+    cursor: pointer;
+}
+input[type="checkbox"], input[type="radio"] {
+    vertical-align: middle;
+}
+label, input[type="checkbox"], input[type="radio"] {
+    margin: -1px 0 0;
+}
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+.edui-default .edui-editor-iframeholder {
+    width: 100% !important;
+}
+.ui-btn-default:hover, .ui-btn-default:focus, .ui-btn-default.focus {
+    background-color: #71a436;
+    border-color: #71a436;
+    color: #fff;
+}
+.jstree-icon.jstree-themeicon.greyflag {
+    background-image: url("../images/icom_02.png") !important;
+    background-position: center center !important;
+}
+.jstree-icon.jstree-themeicon.default {
+    background-image: url("../images/icom_01.png") !important;
+    background-position: center center !important;
+}
+.clear-border td {
+    border: medium none !important;
+    padding: 5px !important;
+}
+a.color-light-green-500:hover {
+    color: #8bc34a;
+}
+.help_associatedouter {
+    position: relative;
+}
+.help_froglogo, .help_dynamic {
+    cursor: pointer;
+    position: absolute;
+    transition: all 0.3s ease 0s;
+}
+.help_froglogo {
+    background: rgba(0, 0, 0, 0) url("../images/anim1.png") repeat scroll 0 0;
+    cursor: pointer;
+    height: 72px;
+    right: 0;
+    width: 36px;
+    z-index: 999999;
+}
+.help_dynamic {
+    background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+    padding: 0 10px;
+    right: -320px;
+    top: 40px;
+    width: 320px;
+    z-index: 99999;
+}
+.help_associated:hover .help_dynamic {
+    right: 0;
+}
+.dynamic_content {
+    border-bottom: 1px dotted #eee;
+    color: #fff;
+    line-height: 24px;
+    padding: 10px;
+}
+.top_light {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+.top_light {
+    animation: 3s ease 0.3s normal none infinite running swing;
+}
+@keyframes swing {
+5%, 10%, 15%, 20%, 100% {
+    transform-origin: center center 0;
+}
+5% {
+    transform: rotate(-15deg);
+}
+10% {
+    transform: rotate(15deg);
+}
+15% {
+    transform: rotate(-15deg);
+}
+20% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(0deg);
+}
+}
+@keyframes swing {
+5%, 10%, 15%, 20%, 100% {
+    transform-origin: center center 0;
+}
+5% {
+    transform: rotate(-15deg);
+}
+10% {
+    transform: rotate(15deg);
+}
+15% {
+    transform: rotate(-15deg);
+}
+20% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(0deg);
+}
+}
+@keyframes swing {
+5%, 10%, 15%, 20%, 100% {
+    transform-origin: center center 0;
+}
+5% {
+    transform: rotate(-15deg);
+}
+10% {
+    transform: rotate(15deg);
+}
+15% {
+    transform: rotate(-15deg);
+}
+20% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(0deg);
+}
+}
+.help_froglogo:hover .top_light {
+    animation: 1s ease 0s normal none 1 running swingg;
+}
+@keyframes swingg {
+50%, 100% {
+    transform-origin: center center 0;
+}
+50% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(0deg);
+}
+}
+@keyframes swingg {
+50%, 100% {
+    transform-origin: center center 0;
+}
+50% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(0deg);
+}
+}
+@keyframes swingg {
+50%, 100% {
+    transform-origin: center center 0;
+}
+50% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(0deg);
+}
+}
+.bd_spider {
+    left: 10px;
+    position: absolute;
+    top: 0;
+    transition: left 0.3s ease 0s;
+}
+.bd_spider:hover {
+    left: 0;
+}
+.top_eye, .bt_eye {
+    left: 15px;
+    line-height: 0;
+    position: absolute;
+}
+.top_eye {
+    top: 24px;
+}
+.bt_eye {
+    top: 45px;
+}
+.bd_spider:hover .top_eye, .bd_spider:hover .bt_eye {
+    animation: 2.5s ease 0.3s normal none infinite running zayaza;
+}
+@keyframes zayaza {
+5%, 10%, 15%, 20%, 100% {
+    transform-origin: center center 0;
+}
+5% {
+    transform: scaleX(0);
+}
+10% {
+    transform: scaleX(1);
+}
+15% {
+    transform: scaleX(0);
+}
+20% {
+    transform: scaleX(1);
+}
+100% {
+    transform: scaleX(1);
+}
+}
+@keyframes zayaza {
+5%, 10%, 15%, 20%, 100% {
+    transform-origin: center center 0;
+}
+5% {
+    transform: scaleX(0);
+}
+10% {
+    transform: scaleX(1);
+}
+15% {
+    transform: scaleX(0);
+}
+20% {
+    transform: scaleX(1);
+}
+100% {
+    transform: scaleX(1);
+}
+}
+@keyframes zayaza {
+5%, 10%, 15%, 20%, 100% {
+    transform-origin: center center 0;
+}
+5% {
+    transform: scaleX(0);
+}
+10% {
+    transform: scaleX(1);
+}
+15% {
+    transform: scaleX(0);
+}
+20% {
+    transform: scaleX(1);
+}
+100% {
+    transform: scaleX(1);
+}
+}

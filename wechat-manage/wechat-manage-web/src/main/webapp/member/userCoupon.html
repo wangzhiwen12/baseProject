@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="js/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="js/font/font-awesome-4.3.0/css/font-awesome.min.css">
+    <!--   <link rel="stylesheet" href="css/example.css">-->
+    <title>会员优惠券</title>
+</head>
+<body>
+	<div>
+		<ul id="ul_btn" style="text-align: center;list-style-type:none;">
+			
+		</ul>
+	</div>
+</body>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<script src="js/jquery.qrcode.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript">
+	var rootPath = getContextPath();
+	var openId = getUrlDataByKey("openId");
+	var storeCode = getUrlDataByKey("storeCode");
+	//var openId = 'oXgrswSQP7S3oASouY2l';
+	//var storeCode = '21011';
+	
+	function get_coupon(sid){
+		window.location.href="couponCode.html?sid=" + sid;
+	}
+	
+	$(function(){
+		$.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + "/couponInfo/getCouponInfoByOpenIdAndStoreCode.json",
+            async: false,
+            dataType: "json",
+            data: {
+                "openId": openId,
+                "storeCode": storeCode
+            },
+            success: function (list) {
+            	list = JSON.parse(list);
+           		$('#ul_btn *').remove();
+            	for(var i =0;i<list.length;i++){
+            		var li = '<li style="margin-top: 10px;">' + 
+	    				'<button onclick="get_coupon('+list[i].memSid+');" type="button" class="btn btn-default btn-sm" style="width: 95%;">' + 
+	    					'<div style="height: 100%;float: left;width: 30%;">' + 
+	    						'<img src="images/logo.jpg" style="width: 100%;height: 100%;" class="img-circle">' + 
+	    					'</div>' + 
+	    					'<div style="height: 100%;float: right;width: 70%;">' + 
+	    						'<div style="margin-top: 5%;width: 100%;"><span style="float: left;"><font size="2%">'+list[i].storeName+'</font></span></div><br>' + 
+	    						'<div style="margin-top: 5%;width: 100%;"><span style="float: left;"><font size="4%">'+list[i].couponValue+list[i].title+'</font></span></div>' + 
+	    						'<div style="width: 100%;margin-top: 20%"><span style="float: right;"><font size="2%">'+list[i].district+'</font></span></div>' + 
+	    					'</div>' + 
+	    		        '</button>' + 
+	    			'</li>'
+        			$('#ul_btn').append(li);
+        		}
+            }
+        });
+	});
+</script>
+</html>

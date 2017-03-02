@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="js/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="js/font/font-awesome-4.3.0/css/font-awesome.min.css">
+	<title>卡券发送</title>
+</head>
+<body><!-- １．获取该门店没有领券的用户，２．筛选，３．领券后群发信息通知 -->
+	<div>
+		<ul id="ul_btn" style="text-align: center;list-style-type:none;">
+			
+		</ul>
+		<button type="button" id="btn5" >发送</button>
+		<ul id="member_view" style="text-align: center;list-style-type:none;">
+			
+		</ul>
+	</div>
+</body>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<script src="js/jquery.qrcode.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript">
+	var rootPath = getContextPath();
+	var storeCode = getUrlDataByKey("storeCode");
+	var infoSid = getUrlDataByKey("infoSid");
+
+	function sendCoupon(str){
+		$.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + "/couponInfo/sendCoupon.json",
+            async: false,
+            dataType: "json",
+            data: {
+                "openIds": str,
+                "infoSid": infoSid,
+                "storeCode": storeCode
+            },
+            success: function (json) {
+            	alert(json);
+            }
+        });
+	}
+	$(function(){
+		$("#btn5").click(function(){//输出选中的值
+			var str="";
+			$("input[name='checkbox']:checked").each(function(){
+				str+=$(this).val()+";";
+			})
+			sendCoupon(str);
+		});
+		
+		$.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + "/couponInfo/getCouponInfoByStoreCode.json",
+            async: false,
+            dataType: "json",
+            data: {
+                "storeCode": storeCode,
+                "infoSid":infoSid
+            },
+            success: function (list) {
+            	list = JSON.parse(list);
+           		$('#ul_btn *').remove();
+            	for(var i =0;i<list.length;i++){
+            		var li = '<li style="margin-top: 10px;">' + 
+	    				'<button type="button" class="btn btn-default btn-sm" style="width: 95%;">' + 
+	    					'<div style="height: 100%;float: left;width: 30%;">' + 
+	    						'<img src="images/logo.jpg" style="width: 100%;height: 100%;" class="img-circle">' + 
+	    					'</div>' + 
+	    					'<div style="height: 100%;float: right;width: 70%;">' + 
+	    						'<div style="margin-top: 5%;width: 100%;"><span style="float: left;"><font size="2%">'+list[i].storeName+'</font></span></div><br>' + 
+	    						'<div style="margin-top: 5%;width: 100%;"><span style="float: left;"><font size="4%">'+list[i].couponValue+list[i].title+'</font></span></div>' + 
+	    						'<div style="width: 100%;margin-top: 20%"><span style="float: right;"><font size="2%">'+list[i].district+'</font></span></div>' + 
+	    					'</div>' + 
+    						'<div style="width: 100%;margin-top: 20%;"><span style="float: left;"><font size="2%">结束时间：'+list[i].endTime+'</font></span></div>' + 
+    						'<div style="width: 100%;"><span style="float: right;"><font size="2%">剩余数量：'+list[i].currentNum+'</font></span></div>' + 
+	    		        '</button>' + 
+	    			'</li>'
+        			$('#ul_btn').append(li);
+        		}
+            }
+        });
+		$.ajax({
+            type: "post",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            url: rootPath + "/couponInfo/getMemberViewList.json",
+            async: false,
+            dataType: "json",
+            data: {
+                "couponSid": infoSid
+            },
+            success: function (list) {
+            	list = JSON.parse(list);
+            	$('#member_view *').remove();
+            	for(var i =0;i<list.length;i++){
+            		var li = 
+            		'<li style="margin-top: 10px;">' +  
+            			'<div style="width: 90%;margin-left: 5%;">' +
+	    					'<div style="height: 100%;float: left;width: 95%;">' + 
+	    						'<img src="'+list[i].headImgUrl+'" style="width: 20%;height: 20%;float: left;" class="img-circle">' + 
+	    						'<span style="margin-top: 10%;float: left;" class="glyphicon glyphicon-user"><font size="2%">'+list[i].nickName+'</font></span>|' + 
+	    						'<span style="margin-top: 10%;" class="glyphicon glyphicon-earphone"><font size="2%">'+list[i].mobile+'</font></span>' + 
+	    					'</div>' + 
+    						'<div style="width: 100%;"><span style="float: right;"><font size="2%">已领数量：'+list[i].count+'</font></span></div>' + 
+    						'<div style="width: 100%;"><input type="checkbox" name="checkbox" value="'+list[i].openId+'" /></div>' + 
+    					'</div>' + 
+    				'</li>';
+        			$('#member_view').append(li);
+        		}
+            }
+        });
+	});
+</script>
+</html>
