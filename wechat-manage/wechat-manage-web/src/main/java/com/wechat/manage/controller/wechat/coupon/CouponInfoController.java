@@ -13,7 +13,7 @@ import com.wechat.manage.service.wechat.intf.CouponMemberService;
 import com.wechat.manage.service.wechat.intf.IAppAccountInfoService;
 import com.wechat.manage.utils.HttpUtils;
 import com.wechat.manage.utils.JsonUtil;
-import com.wechat.manage.utils.WechatUtil;
+import com.wechat.manage.service.util.WechatUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
