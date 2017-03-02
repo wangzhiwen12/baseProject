@@ -61,7 +61,7 @@ public class MenuController extends BaseController {
         logger.info("storeInfo ================ " + storeInfo);
         String appid = storeInfo.getAppId();
         String secret = storeInfo.getSecret();*/
-        UserBaseInfoDto curUser=getCurUserInfo();
+        UserBaseInfoDto curUser = getCurUserInfo();
         String appid = curUser.getAppId();
         String secret = curUser.getAppSecret();
         WechatMenu menuModel = new WechatMenu();
@@ -114,6 +114,7 @@ public class MenuController extends BaseController {
     public String addUI(Model model) {
         return Common.BACKGROUND_PATH + "/wechat/menu/add";
     }
+
 
     /**
      * 菜单预览
@@ -237,7 +238,7 @@ public class MenuController extends BaseController {
         logger.info("storeInfo ================ " + storeInfo);
         String appid = storeInfo.getAppId();
         String secret = storeInfo.getSecret();*/
-        UserBaseInfoDto curUser=getCurUserInfo();
+        UserBaseInfoDto curUser = getCurUserInfo();
         String appid = curUser.getAppId();
         String secret = curUser.getAppSecret();
         WechatMenu menuModel = new WechatMenu();
