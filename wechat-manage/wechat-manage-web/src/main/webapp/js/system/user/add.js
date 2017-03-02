@@ -26,8 +26,6 @@ $(function() {
 		success: function (response) {
 			if (response.code == "0") {
 				var soption = $("#groupType");//列表框id
-				 //方法1：添加默认节点
-				soption.append("<option value='-1'>--请选择--</option>");
 				//转成Json对象
 				var result = eval(response.obj);
 				val=result;
@@ -35,7 +33,7 @@ $(function() {
 				$(result).each(function (key) {
 				//第一种方法
 
-				var opt = $("<option></option>").text(result[key].organizationName).val(result[key].organizationCode);
+				var opt = $("<option></option>").text(result[key].organization_name).val(result[key].organization_code);
 					soption.append(opt);
 				});
 			} else {

@@ -20,7 +20,11 @@
 		locked,
 		credentialsSalt,
 		createTime,
-		organization_code
+		organization_code,
+		organization_name,
+		store_code,
+		business_name,
+		parentId
 	</sql>
 
 	<select id="findUserPage" resultType="com.wechat.manage.pojo.system.entity.UserFormMap">
@@ -31,9 +35,12 @@
 		<if test="accountName != null and accountName != ''">
 			and accountName like '%${accountName}%'
 		</if>
-        <if test="id != null">
+        <if test="id != nullK">
         	and id = ${id}
         </if>
+		<if test="parentId != null and parentId != ''">
+			and parentId = ${parentId}
+		</if>
 		<if test="column != null">
           order by ${column} ${sort}
         </if>

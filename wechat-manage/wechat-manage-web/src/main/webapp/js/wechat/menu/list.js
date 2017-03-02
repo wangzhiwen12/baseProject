@@ -96,7 +96,6 @@ function delFun() {
         var s = CommnUtil.ajax(url, {
             ids: ids.join()
         }, "json");
-        console.log("11111:",s);
         if (s == "success") {
             layer.msg('删除成功');
             refreshTree();

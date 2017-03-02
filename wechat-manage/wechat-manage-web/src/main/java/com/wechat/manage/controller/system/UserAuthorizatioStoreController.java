@@ -6,6 +6,7 @@ import com.wechat.manage.controller.index.BaseController;
 import  com.wechat.manage.pojo.system.vo.AuthorizationStoreDto;
 import com.wechat.manage.pojo.system.vo.UserAuthorizationStoreDto;
 import com.wechat.manage.pojo.system.entity.UserAuthorizationStore;
+import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
 import com.wechat.manage.service.system.intf.UserAuthorizationStoreService;
 import com.wechat.manage.utils.Common;
 import net.sf.json.JSONArray;
@@ -50,18 +51,45 @@ public class UserAuthorizatioStoreController extends BaseController {
 	}
 
 
-	@RequestMapping("userAuthorizatioStore")
-	public String permissions(String userId, Model model) {
+	@RequestMapping("userAuthorizatioStoreweb")
+	public String permissionsweb(String userId, Model model) {
+		UserBaseInfoDto userBaseInfoDto= getCurUserInfo();
 		Map<String,Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("userId",userId);
+		paramMap.put("userId",userId);//客户端 选中的用户ID
+		paramMap.put("userNumber",userBaseInfoDto.getUserId());//登陆用户的ID
 		List<UserAuthorizationStoreDto> userAuthorizationStoreDtoList = null;
 		try{
-			userAuthorizationStoreDtoList =	userAuthorizationStoreService.selectListByUserId(paramMap);
+//			userAuthorizationStoreDtoList =	userAuthorizationStoreService.selectListByUserId(paramMap);
+			userAuthorizationStoreDtoList =	userAuthorizationStoreService.selectListByUserIdweb(paramMap);
+
 		}catch (Exception e){
 
 		}
 
 		model.addAttribute("userAuthorizatioStoreList", userAuthorizationStoreDtoList);
+		model.addAttribute("userNumber",userId);//客户端 选中的用户ID
+		System.out.println(JSON.toJSONString(userAuthorizationStoreDtoList));
+		return Common.BACKGROUND_PATH + "/system/userAuthorizationStore/userAuthorizationStore";
+	}
+
+
+	@RequestMapping("userAuthorizatioStore")
+	public String permissions(String userId, Model model) {
+		UserBaseInfoDto userBaseInfoDto= getCurUserInfo();
+		Map<String,Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("userId",userId);//客户端 选中的用户ID
+		paramMap.put("userNumber",userBaseInfoDto.getUserId());//登陆用户的ID
+		List<UserAuthorizationStoreDto> userAuthorizationStoreDtoList = null;
+		try{
+//			userAuthorizationStoreDtoList =	userAuthorizationStoreService.selectListByUserId(paramMap);
+			userAuthorizationStoreDtoList =	userAuthorizationStoreService.selectListByUserIdweb(paramMap);
+
+		}catch (Exception e){
+
+		}
+
+		model.addAttribute("userAuthorizatioStoreList", userAuthorizationStoreDtoList);
+		model.addAttribute("userNumber",userId);//客户端 选中的用户ID
 		System.out.println(JSON.toJSONString(userAuthorizationStoreDtoList));
 		return Common.BACKGROUND_PATH + "/system/userAuthorizationStore/userAuthorizationStore";
 	}

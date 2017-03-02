@@ -15,6 +15,14 @@ public interface UserAuthorizationStoreService {
     List<UserAuthorizationStoreDto> selectListByUserId(Map<String, Object> paramMap) throws Exception;
 
     /**
+     * 改权限后
+     * @param paramMap
+     * @return
+     * @throws Exception
+     */
+    List<UserAuthorizationStoreDto> selectListByUserIdweb(Map<String, Object> paramMap) throws Exception;
+
+    /**
      * 查询授权门店
      *
      * @param paramMap
