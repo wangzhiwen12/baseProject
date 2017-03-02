@@ -15,7 +15,7 @@ import com.wechat.manage.service.wechat.intf.MsgReplyService;
 import com.wechat.manage.utils.Common;
 import com.wechat.manage.utils.MenuUtil;
 import com.wechat.manage.utils.PropertiesUtils;
-import com.wechat.manage.utils.WechatUtil;
+import com.wechat.manage.service.util.WechatUtil;
 import com.wechat.manage.utils.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

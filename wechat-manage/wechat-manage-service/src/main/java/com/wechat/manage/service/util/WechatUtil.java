@@ -1,13 +1,15 @@
-package com.wechat.manage.utils;
+package com.wechat.manage.service.util;
 
-
-import com.wechat.manage.pojo.system.entity.AppAccountInfo;
 import com.wechat.manage.pojo.system.vo.StoreInfoDto;
+import com.wechat.manage.pojo.system.entity.AppAccountInfo;
 import com.wechat.manage.pojo.wechat.vo.AccessTokenDto;
 import com.wechat.manage.pojo.wechat.vo.MemberInfo;
 import com.wechat.manage.pojo.wechat.vo.WechatMemberCard;
 import com.wechat.manage.service.wechat.impl.AppAccountInfoServiceImpl;
 import com.wechat.manage.service.wechat.intf.IAppAccountInfoService;
+import com.wechat.manage.utils.RedisUtil;
+import com.wechat.manage.utils.HttpUtil;
+import com.wechat.manage.utils.JsonUtil;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,7 +103,7 @@ public class WechatUtil {
         String subscribers = HttpUtil.sendGet(PropertiesUtils.findPropertiesKey("openidUserinfoUrl"), params);
         logger.info(subscribers);
         MemberInfo memberInfo = new MemberInfo(); // memberInfo = JsonUtil.getDTO(subscribers,MemberInfo.class);
-        if (StringUtils.isNotEmpty(subscribers)) {
+        if (com.wechat.manage.utils.StringUtils.isNotEmpty(subscribers)) {
             JSONObject jsonObject = JSONObject.fromObject(subscribers);
             try {
                 if (jsonObject.has("unionid")) {
@@ -270,11 +272,11 @@ public class WechatUtil {
         String token = getAccessToken(appid, secret);
         String result = "";
         try {
-            System.out.println("55555555token:" + token);
+            System.out.println("55555555token:"+token);
             System.out.println("2222222222222222222222222");
             System.out.println(cardInfo);
             result = HttpUtil.sendPostBuffer(PropertiesUtils.findPropertiesKey("createCardUrl") + token, cardInfo);
-            System.out.println("333333333333333333333333result:" + result);
+            System.out.println("333333333333333333333333result:"+result);
         } catch (Exception e) {
             logger.error(e);
         }
@@ -293,10 +295,10 @@ public class WechatUtil {
         String token = getAccessToken(appid, secret);
         String result = "";
         try {
-            System.out.println("55555555token:" + token);
+            System.out.println("55555555token:"+token);
             System.out.println(putCardInfo);
             result = HttpUtil.sendPostBuffer(PropertiesUtils.findPropertiesKey("putCardUrl") + token, putCardInfo);
-            System.out.println("4444444444444:" + result);
+            System.out.println("4444444444444:"+result);
         } catch (Exception e) {
             logger.error(e);
         }
