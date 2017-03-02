@@ -8,7 +8,9 @@ import com.wechat.manage.pojo.system.entity.UserAuthorizationStore;
 import com.wechat.manage.pojo.system.entity.UserFormMap;
 import com.wechat.manage.pojo.system.vo.UserAuthorizationStoreDto;
 import com.wechat.manage.service.system.intf.UserAuthorizationStoreService;
+import com.wechat.manage.utils.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,110 @@ public class UserAuthorizationStoreServiceImpl implements UserAuthorizationStore
     private UserMapper userMapper;
 
     private static Logger logger = Logger.getLogger(UserAuthorizationStoreService.class);
+
+    public List<UserAuthorizationStoreDto> selectListByUserIdweb(Map<String, Object> paramMap) throws Exception{
+        List<UserAuthorizationStoreDto> userAuthStoreList = new ArrayList<UserAuthorizationStoreDto>();
+        String userSid=paramMap.get("userNumber") + "";
+        List<UserAuthorizationStore> userStoreList=new ArrayList<UserAuthorizationStore>();
+
+        //查父账号ID
+        Map<String, Object> paraMap = new HashMap<String, Object>();
+        paraMap.put("userId", paramMap.get("userNumber"));
+        paraMap.put("isLoseEfficacy", "0");
+        List<UserAuthorizationStore> userAuthorizationStoreListf = userAuthorizationStoreMapper.selectListByParam(paraMap);
+        Map<String, Object> paraMap1 = new HashMap<String, Object>();
+        paraMap1.put("userId", paramMap.get("userId"));
+        paraMap1.put("isLoseEfficacy", "0");
+        List<UserAuthorizationStore> userAuthorizationStoreListz = userAuthorizationStoreMapper.selectListByParam(paraMap1);
+        if(userAuthorizationStoreListf!=null  && userAuthorizationStoreListf.size()>0){
+            if(userAuthorizationStoreListz!=null && userAuthorizationStoreListz.size()>0){
+                for (UserAuthorizationStore f:userAuthorizationStoreListf) {
+                    f.setIsLoseEfficacy(1);
+                    for (UserAuthorizationStore z:userAuthorizationStoreListz) {
+                        if(f.getStoreCode().equals(z.getStoreCode())){
+                            f.setIsLoseEfficacy(z.getIsLoseEfficacy());
+                        }
+                    }
+
+                }
+            }
+            for (UserAuthorizationStore item:userAuthorizationStoreListf) {
+                UserAuthorizationStoreDto dto=new UserAuthorizationStoreDto();
+                BeanUtils.copyProperties(item, dto);
+                userAuthStoreList.add(dto);
+            }
+        }else
+        {
+            UserFormMap userFormMap=new UserFormMap();
+            userFormMap.put("id", userSid);//
+            List<UserFormMap> lstUserFormMap=userMapper.findUserPage(userFormMap);
+            if(lstUserFormMap!=null&&lstUserFormMap.size()>0){
+                String groupCode=lstUserFormMap.get(0).get("organization_code").toString();
+                Map<String, Object> paraMap2 = new HashMap<String, Object>();
+                paraMap1.put("groupId",groupCode);
+                List<StoreInfo> storeList = storeInfoMapper.selectListByParam(paraMap2);
+                if(storeList!=null &&storeList.size()>0){
+                    for (StoreInfo item:storeList){
+                        UserAuthorizationStore usa=new UserAuthorizationStore();
+                        usa.setBusinessName(item.getBusinessName());
+                        usa.setStoreCode(item.getStoreCode());
+                        userStoreList.add(usa);
+                    }
+                }
+                for (UserAuthorizationStore userf:userStoreList) {
+                     userf.setIsLoseEfficacy(1);
+                    for (UserAuthorizationStore z:userAuthorizationStoreListz) {
+                        if(userf.getStoreCode().equals(z.getStoreCode())){
+                            userf.setIsLoseEfficacy(z.getIsLoseEfficacy());
+                        }
+                    }
+
+                }
+                for (UserAuthorizationStore item:userStoreList) {
+                    UserAuthorizationStoreDto dto=new UserAuthorizationStoreDto();
+                    BeanUtils.copyProperties(item, dto);
+                    userAuthStoreList.add(dto);
+                }
+            }
+        }
+
+        return   userAuthStoreList;
+    }
+
+
+    private List<UserAuthorizationStore> get(Map<String, Object> paramMap){
+        Map<String, Object> paraMap = new HashMap<String, Object>();
+        String userSid=paramMap.get("userNumber") + "";
+        List<UserAuthorizationStore> userStoreList=new ArrayList<UserAuthorizationStore>();
+        paraMap.put("userId", userSid);
+        paraMap.put("isLoseEfficacy", "0");
+        List<UserAuthorizationStore> userAuthorizationStoreList = userAuthorizationStoreMapper.selectListByParam(paraMap);
+        if(userAuthorizationStoreList!=null&& userAuthorizationStoreList.size()>0){
+            return userAuthorizationStoreList;
+        }else{
+            UserFormMap userFormMap=new UserFormMap();
+            userFormMap.put("id",userSid);
+            List<UserFormMap> lstUserFormMap=userMapper.findUserPage(userFormMap);
+            if(lstUserFormMap!=null&&lstUserFormMap.size()>0){
+                String groupCode=lstUserFormMap.get(0).get("organization_code").toString();
+                Map<String, Object> paraMap1 = new HashMap<String, Object>();
+                paraMap1.put("groupId",groupCode);
+                List<StoreInfo> storeList = storeInfoMapper.selectListByParam(paraMap1);
+                if(storeList!=null &&storeList.size()>0){
+                    for (StoreInfo item:storeList){
+                        UserAuthorizationStore usa=new UserAuthorizationStore();
+                        usa.setBusinessName(item.getBusinessName());
+                        usa.setStoreCode(item.getStoreCode());
+                        userStoreList.add(usa);
+                    }
+                    return userStoreList;
+                }
+            }
+            return userStoreList;
+        }
+
+
+    }
 
 
     public List<UserAuthorizationStoreDto> selectListByUserId(Map<String, Object> paramMap) throws Exception {
@@ -128,7 +234,7 @@ public class UserAuthorizationStoreServiceImpl implements UserAuthorizationStore
                 userStoreMap.put(userAuthorizationStore.getStoreCode(), userAuthorizationStore);
             }
 
-            for (UserAuthorizationStoreDto userAuthorizationStoreDto : dtoList) {
+                for (UserAuthorizationStoreDto userAuthorizationStoreDto : dtoList) {
                 if (userStoreMap.get(userAuthorizationStoreDto.getStoreCode()) == null) {
                     UserAuthorizationStore entity = new UserAuthorizationStore();
                     entity.setUserId(userAuthorizationStoreDto.getUserId());

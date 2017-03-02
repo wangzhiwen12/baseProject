@@ -157,7 +157,7 @@
                 // var isLoseEfficacyState = $(".isLoseEfficacy").attr("name");
                 businessName = $(this).find("td").eq(1).text();
                 storeCode = $(this).find("td").eq(2).text();
-                userId = $(".userId").attr("name");
+                userId = $("#userNumber").val();//$(".userId").attr("name");
 
                 a = {
                     "storeCode":storeCode,
