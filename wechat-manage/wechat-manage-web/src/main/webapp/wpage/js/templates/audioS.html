@@ -1,0 +1,66 @@
+<form class="form-horizontal edit-audio" novalidate="">
+    <div class="control-group">
+        <label class="control-label">音频：</label>
+        <div class="controls">
+            <input name="audio" type="hidden">
+
+            <a href="javascript:;" class="js-choose-audio control-action">选择音频</a>
+
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">样式：</label>
+        <div class="controls">
+            <label class="radio">
+                <input name="style" value="0" checked="" type="radio">模仿微信对话样式
+            </label>
+
+            <div class="control-group control-group-inner">
+                <label class="control-label">头像：</label>
+                <div class="controls">
+                    <div class="clearfix">
+                        <img src="https://img.yzcdn.cn/upload_files/shop2.png?imageView2/2/w/80/h/80/q/75/format/png" class="edit-audio-avatar">
+                        <div class="edit-audio-avatar-action">
+                            <div>
+                                <a href="javascript:;" class="js-upload-avatar">上传头像</a>
+                                <span class="c-gray"> | </span>
+                                <a href="javascript:;" class="js-use-default-avatar">使用店铺logo</a>
+                            </div>
+                            <p class="help-desc">建议尺寸80*80像素</p>
+                            <p class="help-desc">如果不设置，默认将使用店铺logo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group control-group-inner">
+                <label class="control-label">气泡：</label>
+                <div class="controls">
+                    <label class="radio inline">
+                        <input name="bubble" value="left" checked="" type="radio">
+                        居左
+                    </label>
+                    <label class="radio inline">
+                        <input name="bubble" value="right" type="radio">
+                        居右
+                    </label>
+                </div>
+            </div>
+
+            <label class="radio">
+                <input name="style" value="1" type="radio">简易音乐播放器
+            </label>
+
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">播放：</label>
+        <div class="controls">
+            <label class="radio">
+                <input name="reload" value="1" checked="" type="radio">暂停后再恢复播放时，从头开始
+            </label>
+            <label class="radio">
+                <input name="reload" value="0" type="radio">暂停后再恢复播放时，从暂停位置开始
+            </label>
+        </div>
+    </div>
+</form>
