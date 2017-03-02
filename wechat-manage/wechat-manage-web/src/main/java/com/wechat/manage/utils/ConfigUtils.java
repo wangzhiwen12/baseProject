@@ -25,7 +25,7 @@ public class ConfigUtils {
 			if(db.indexOf("?")>-1){
 				db=db.substring(0, db.indexOf("?"));
 			}
-			String packageName = "com.wechat.manage.pojo";
+			String packageName = "com.wechat.manage.pojo.system.entity";
 			// List<String> classNames = getClassName(packageName);
 			List<String> classNames = ClassUtil.getClassName(packageName, true);//true包含子目录
 			String tabs = "";

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wechat.WxPageHomeMapper">
+    <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.wechat.entity.WxPageHome">
+        <id column="sid" property="sid" jdbcType="BIGINT"/>
+        <result column="page_code" property="pageCode" jdbcType="VARCHAR"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="cardno" property="cardno" jdbcType="VARCHAR"/>
+        <result column="template" property="template" jdbcType="VARCHAR"/>
+        <result column="img" property="img" jdbcType="VARCHAR"/>
+        <result column="WxHeadHtml" property="wxheadhtml" jdbcType="VARCHAR"/>
+        <result column="WxHomeHtml" property="wxhomehtml" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="create_userId" property="createUserid" jdbcType="VARCHAR"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="update_userId" property="updateUserid" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    sid, page_code, title, cardno, template, img, WxHeadHtml, WxHomeHtml, create_time, 
+    create_userId, update_time, update_userId
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from wxpage_home
+        where sid = #{sid,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from wxpage_home
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.wechat.manage.pojo.wechat.entity.WxPageHome">
+    insert into wxpage_home (sid, page_code, title, 
+      cardno, template, img, 
+      WxHeadHtml, WxHomeHtml, create_time, 
+      create_userId, update_time, update_userId
+      )
+    values (#{sid,jdbcType=BIGINT}, #{pageCode,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{cardno,jdbcType=VARCHAR}, #{template,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
+      #{wxheadhtml,jdbcType=VARCHAR}, #{wxhomehtml,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createUserid,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUserid,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.wechat.manage.pojo.wechat.entity.WxPageHome">
+        insert into wxpage_home
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                sid,
+            </if>
+            <if test="pageCode != null">
+                page_code,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="cardno != null">
+                cardno,
+            </if>
+            <if test="template != null">
+                template,
+            </if>
+            <if test="img != null">
+                img,
+            </if>
+            <if test="wxheadhtml != null">
+                WxHeadHtml,
+            </if>
+            <if test="wxhomehtml != null">
+                WxHomeHtml,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="createUserid != null">
+                create_userId,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="updateUserid != null">
+                update_userId,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                #{sid,jdbcType=BIGINT},
+            </if>
+            <if test="pageCode != null">
+                #{pageCode,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="cardno != null">
+                #{cardno,jdbcType=VARCHAR},
+            </if>
+            <if test="template != null">
+                #{template,jdbcType=VARCHAR},
+            </if>
+            <if test="img != null">
+                #{img,jdbcType=VARCHAR},
+            </if>
+            <if test="wxheadhtml != null">
+                #{wxheadhtml,jdbcType=VARCHAR},
+            </if>
+            <if test="wxhomehtml != null">
+                #{wxhomehtml,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUserid != null">
+                #{createUserid,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUserid != null">
+                #{updateUserid,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.wechat.entity.WxPageHome">
+        update wxpage_home
+        <set>
+            <!--  <if test="pageCode != null">
+                  page_code = #{pageCode,jdbcType=VARCHAR},
+              </if>-->
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="cardno != null">
+                cardno = #{cardno,jdbcType=VARCHAR},
+            </if>
+            <if test="template != null">
+                template = #{template,jdbcType=VARCHAR},
+            </if>
+            <if test="img != null">
+                img = #{img,jdbcType=VARCHAR},
+            </if>
+            <if test="wxheadhtml != null">
+                WxHeadHtml = #{wxheadhtml,jdbcType=VARCHAR},
+            </if>
+            <if test="wxhomehtml != null">
+                WxHomeHtml = #{wxhomehtml,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUserid != null">
+                create_userId = #{createUserid,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUserid != null">
+                update_userId = #{updateUserid,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where sid = #{sid,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.wechat.entity.WxPageHome">
+    update wxpage_home
+    set page_code = #{pageCode,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      cardno = #{cardno,jdbcType=VARCHAR},
+      template = #{template,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      WxHeadHtml = #{wxheadhtml,jdbcType=VARCHAR},
+      WxHomeHtml = #{wxhomehtml,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_userId = #{createUserid,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_userId = #{updateUserid,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+
+    <select id="selectPageHomeByPara" resultMap="BaseResultMap" parameterType="com.wechat.manage.pojo.wechat.entity.WxPageHome">
+        select
+        <include refid="Base_Column_List"/>
+        from wxpage_home
+        <where>
+            page_code = #{pageCode,jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <select id="selectPageHomeByStoreCode" resultMap="BaseResultMap" parameterType="com.wechat.manage.pojo.wechat.entity.WxPageHome">
+        select
+        page_code, title, cardno, template, img, WxHomeHtml
+        from wxpage_home
+        <where>
+            page_code = #{pageCode,jdbcType=VARCHAR}
+        </where>
+    </select>
+</mapper>
