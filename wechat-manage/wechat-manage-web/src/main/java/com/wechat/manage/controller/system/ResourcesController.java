@@ -142,7 +142,9 @@ public class ResourcesController extends BaseController {
 	@RequestMapping("permissions")
 	public String permissions(Model model) {
 		ResFormMap resFormMap = getFormMap(ResFormMap.class);
-		List<ResFormMap> mps = resourcesMapper.findByWhere(resFormMap);
+//		resFormMap.put("",getCurUserInfo().getUserId());
+		List<ResFormMap> mps=resourcesMapper.findUserResourcess(getCurUserInfo().getUserId());
+//		List<ResFormMap> mps = resourcesMapper.findByWhere(resFormMap);
 		List<TreeObject> list = new ArrayList<TreeObject>();
 		for (ResFormMap map : mps) {
 			TreeObject ts = new TreeObject();
