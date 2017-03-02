@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wechat.MsgMassMapper" >
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.wechat.entity.MsgMass" >
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="msg_id" property="msgId" jdbcType="INTEGER" />
+    <result column="store_code" property="storeCode" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="msg_type" property="msgType" jdbcType="VARCHAR" />
+    <result column="media_id" property="mediaId" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.wechat.manage.pojo.wechat.entity.MsgMass" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, msg_id, store_code, create_time, msg_type, content, media_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from msg_mass
+    where sid = #{sid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from msg_mass
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wechat.manage.pojo.wechat.entity.MsgMass" >
+    insert into msg_mass (sid, msg_id, store_code, 
+      create_time, msg_type, media_id, 
+      content)
+    values (#{sid,jdbcType=BIGINT}, #{msgId,jdbcType=INTEGER}, #{storeCode,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{msgType,jdbcType=VARCHAR}, #{mediaId,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wechat.manage.pojo.wechat.entity.MsgMass" useGeneratedKeys="true"
+		keyProperty="sid">
+    insert into msg_mass
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="msgId != null" >
+        msg_id,
+      </if>
+      <if test="storeCode != null" >
+        store_code,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="msgType != null" >
+        msg_type,
+      </if>
+      <if test="mediaId != null" >
+        media_id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="msgId != null" >
+        #{msgId,jdbcType=INTEGER},
+      </if>
+      <if test="storeCode != null" >
+        #{storeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msgType != null" >
+        #{msgType,jdbcType=VARCHAR},
+      </if>
+      <if test="mediaId != null" >
+        #{mediaId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.wechat.entity.MsgMass" >
+    update msg_mass
+    <set >
+      <if test="msgId != null" >
+        msg_id = #{msgId,jdbcType=INTEGER},
+      </if>
+      <if test="storeCode != null" >
+        store_code = #{storeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msgType != null" >
+        msg_type = #{msgType,jdbcType=VARCHAR},
+      </if>
+      <if test="mediaId != null" >
+        media_id = #{mediaId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wechat.manage.pojo.wechat.entity.MsgMass" >
+    update msg_mass
+    set msg_id = #{msgId,jdbcType=INTEGER},
+      store_code = #{storeCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      msg_type = #{msgType,jdbcType=VARCHAR},
+      media_id = #{mediaId,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.wechat.entity.MsgMass" >
+    update msg_mass
+    set msg_id = #{msgId,jdbcType=INTEGER},
+      store_code = #{storeCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      msg_type = #{msgType,jdbcType=VARCHAR},
+      media_id = #{mediaId,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectListByParam" resultMap="BaseResultMap"
+		parameterType="com.wechat.manage.pojo.wechat.entity.MsgReply">
+		select
+		<include refid="Base_Column_List" />
+		from msg_mass
+		<where>
+			<if test="sid != null">
+				and sid = #{sid,jdbcType=INTEGER}
+			</if>
+			<if test="msgId != null" >
+			  	and msg_id = #{msgId,jdbcType=INTEGER}
+			</if>
+			<if test="storeCode != null" >
+			  	and store_code = #{storeCode,jdbcType=VARCHAR}
+			</if>
+			<if test="createTime != null" >
+			  	and create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="msgType != null" >
+			  	and msg_type = #{msgType,jdbcType=VARCHAR}
+			</if>
+			<if test="mediaId != null" >
+			  	and media_id = #{mediaId,jdbcType=VARCHAR}
+			</if>
+			<if test="content != null" >
+			  	and content = #{content,jdbcType=LONGVARCHAR}
+			</if>
+		</where>
+	</select>
+	<select id="selectPageListByParam" resultMap="BaseResultMap"
+		parameterType="com.wechat.manage.pojo.wechat.entity.MsgReply">
+		select
+		<include refid="Base_Column_List" />
+		from msg_mass
+		<where>
+			<if test="sid != null">
+				and sid = #{sid,jdbcType=INTEGER}
+			</if>
+			<if test="msgId != null" >
+			  	and msg_id = #{msgId,jdbcType=INTEGER}
+			</if>
+			<if test="storeCode != null" >
+			  	and store_code = #{storeCode,jdbcType=VARCHAR}
+			</if>
+			<if test="createTime != null" >
+			  	and create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="msgType != null" >
+			  	and msg_type = #{msgType,jdbcType=VARCHAR}
+			</if>
+			<if test="mediaId != null" >
+			  	and media_id = #{mediaId,jdbcType=VARCHAR}
+			</if>
+			<if test="content != null" >
+			  	and content = #{content,jdbcType=LONGVARCHAR}
+			</if>
+		</where>
+		order by
+		sid asc
+		limit
+		#{start}, #{limit}
+	</select>
+	<select id="getCountByParam" resultType="java.lang.Integer"
+		parameterType="com.wechat.manage.pojo.wechat.entity.MsgReply">
+		select
+		count(sid)
+		from msg_mass
+		<where>
+			<if test="sid != null">
+				and sid = #{sid,jdbcType=INTEGER}
+			</if>
+			<if test="msgId != null" >
+			  	and msg_id = #{msgId,jdbcType=INTEGER}
+			</if>
+			<if test="storeCode != null" >
+			  	and store_code = #{storeCode,jdbcType=VARCHAR}
+			</if>
+			<if test="createTime != null" >
+			  	and create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="msgType != null" >
+			  	and msg_type = #{msgType,jdbcType=VARCHAR}
+			</if>
+			<if test="mediaId != null" >
+			  	and media_id = #{mediaId,jdbcType=VARCHAR}
+			</if>
+			<if test="content != null" >
+			  	and content = #{content,jdbcType=LONGVARCHAR}
+			</if>
+		</where>
+	</select>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wechat.MsgMemberMapper" >
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.wechat.entity.MsgMember" >
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="msg_sid" property="msgSid" jdbcType="BIGINT" />
+    <result column="member_sid" property="memberSid" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, msg_sid, member_sid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from msg_member
+    where sid = #{sid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from msg_member
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wechat.manage.pojo.wechat.entity.MsgMember" >
+    insert into msg_member (sid, msg_sid, member_sid
+      )
+    values (#{sid,jdbcType=BIGINT}, #{msgSid,jdbcType=BIGINT}, #{memberSid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wechat.manage.pojo.wechat.entity.MsgMember" >
+    insert into msg_member
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="msgSid != null" >
+        msg_sid,
+      </if>
+      <if test="memberSid != null" >
+        member_sid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="msgSid != null" >
+        #{msgSid,jdbcType=BIGINT},
+      </if>
+      <if test="memberSid != null" >
+        #{memberSid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.wechat.entity.MsgMember" >
+    update msg_member
+    <set >
+      <if test="msgSid != null" >
+        msg_sid = #{msgSid,jdbcType=BIGINT},
+      </if>
+      <if test="memberSid != null" >
+        member_sid = #{memberSid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.wechat.entity.MsgMember" >
+    update msg_member
+    set msg_sid = #{msgSid,jdbcType=BIGINT},
+      member_sid = #{memberSid,jdbcType=BIGINT}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+</mapper>
