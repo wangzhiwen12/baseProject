@@ -1,0 +1,58 @@
+<form class="form-horizontal" novalidate="">
+    <div class="control-group">
+        <label class="control-label"><em class="required">*</em>标题名：</label>
+        <div class="controls">
+            <input name="title" value="" maxlength="100" type="text">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">标题模版：</label>
+        <div class="controls">
+            <label class="radio inline">
+                <input name="title_template" value="0" checked="" type="radio">传统样式
+            </label>
+            <label class="radio inline">
+                <input name="title_template" value="1" type="radio">模仿微信图文页样式
+            </label>
+        </div>
+    </div>
+
+
+    <div class="control-group">
+        <label class="control-label">副标题：</label>
+        <div class="controls">
+            <input class="js-time-holder hasDatepicker" id="dp1483670927413" type="hidden">
+            <input name="sub_title" value="" maxlength="100" type="text">
+            <a href="javascript: void(0);" class="js-time">日期</a>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">显示：</label>
+        <div class="controls">
+
+            <label class="radio inline">
+                <input name="show_method" value="0" checked="" type="radio">居左显示
+            </label>
+            <label class="radio inline">
+                <input name="show_method" value="1" type="radio">居中显示
+            </label>
+            <label class="radio inline">
+                <input name="show_method" value="2" type="radio">居右显示
+            </label>
+
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">背景颜色：</label>
+        <div class="controls">
+            <input value="#ffffff" name="color" type="color">
+            <button class="btn js-reset-bg" type="button">重置</button>
+        </div>
+    </div>
+    <div class="control-group js-collection-region"><ul class="choices"></ul></div>
+    <div class="control-group options" style="display: block;">
+        <a href="javascript:void(0);" class="add-option js-add-option"><i class="icon-add"></i> 添加一个文本导航</a>
+    </div>
+
+
+</form>
