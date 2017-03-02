@@ -20,7 +20,7 @@ $(function() {
 	$.ajax({
 		type: "post",
 		contentType: "application/x-www-form-urlencoded;charset=utf-8",
-		url: rootPath + '/group/getGroupList.json',
+		url: rootPath + '/user/getUserInfobyid.json',
 		dataType: "json",
 		data: "",
 		success: function (response) {
@@ -35,7 +35,10 @@ $(function() {
 
 				var opt = $("<option></option>").text(result[key].organization_name).val(result[key].organization_code);
 					soption.append(opt);
+					$("#organization_name").val(result[key].organization_name);
+					$("#organization_code").val(result[key].organization_code);
 				});
+				getStore($("#groupType").val());
 			} else {
 				layer.msg('加载集团失败');
 			}
@@ -49,20 +52,20 @@ $(function() {
 
 
 	//下拉出发事件
-	$("#groupType").bind("change",function(){
-		if($(this).val()==0){
-			return;
-		}
-		else{
-			var code=$(this).val();
-			for(var item in val) {
-				if(val[item].organizationCode==code){
-					$("#organization_name").val(val[item].organizationName);
-				}
-			}
-			getStore($(this).val());
-		}
-	});
+	// $("#groupType").bind("change",function(){
+	// 	if($(this).val()==0){
+	// 		return;
+	// 	}
+	// 	else{
+	// 		var code=$(this).val();
+	// 		for(var item in val) {
+	// 			if(val[item].organizationCode==code){
+	// 				$("#organization_name").val(val[item].organizationName);
+	// 			}
+	// 		}
+	// 		getStore($(this).val());
+	// 	}
+	// });
 	//下拉出发事件
 	$("#storeType").bind("change",function(){
 		if($(this).val()==0){

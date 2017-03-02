@@ -150,6 +150,7 @@ public class UserController extends BaseController {
 			PasswordHelper passwordHelper = new PasswordHelper();
 			userFormMap.set("password","123456789");
 			passwordHelper.encryptPassword(userFormMap);
+			userFormMap.put("parentId",getCurUserInfo().getUserId());
 			userMapper.addEntity(userFormMap);//新增后返回新增信息
 			if (!Common.isEmpty(txtGroupsSelect)) {
 				String[] txt = txtGroupsSelect.split(",");
@@ -291,6 +292,20 @@ public class UserController extends BaseController {
 			rd.setObj(new HashMap());
 			e.printStackTrace();
 		}
+		return rd;
+	}
+
+
+
+	@ResponseBody
+	@RequestMapping("getUserInfobyid")
+	public ReturnDto getUserInfobyid() throws Exception {
+		ReturnDto rd=new ReturnDto();
+		UserFormMap userFormMap = getFormMap(UserFormMap.class);
+		userFormMap.put("id",getCurUserInfo().getUserId());
+	    List<UserFormMap> lst=userMapper.findUserPage(userFormMap);
+		rd.setCode("0");
+		rd.setObj(lst);
 		return rd;
 	}
 }
