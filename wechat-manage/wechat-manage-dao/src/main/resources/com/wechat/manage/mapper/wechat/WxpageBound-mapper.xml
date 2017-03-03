@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wechat.WxpageBoundMapper" >
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.wechat.entity.WxpageBound" >
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="store_code" property="storeCode" jdbcType="VARCHAR" />
+    <result column="wx_page_type" property="wxPageType" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="wx_head_html" property="wxHeadHtml" jdbcType="LONGVARCHAR" />
+    <result column="wx_home_html" property="wxHomeHtml" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, store_code, wx_page_type, create_time, create_user, update_time, update_user,wx_head_html, wx_home_html
+  </sql>
+  <select id="getInfoByStroeCodeAndType" resultMap="BaseResultMap" parameterType="Map">
+  	select
+  		<include refid="Base_Column_List" />
+  	from wxpage_bound
+  	where
+		store_code = #{storeCode,jdbcType=VARCHAR}
+		and wx_page_type = #{wxPageType,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from wxpage_bound
+    where sid = #{sid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from wxpage_bound
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.wechat.manage.pojo.wechat.entity.WxpageBound" >
+    insert into wxpage_bound
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="wxPageType != null">
+      	wx_page_type,
+      </if>
+      <if test="storeCode != null">
+      	store_code,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="wxHeadHtml != null" >
+        wx_head_html,
+      </if>
+      <if test="wxHomeHtml != null" >
+        wx_home_html,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="wxPageType != null">
+      	#{wxPageType,jdbcType=INTEGER},
+      </if>
+      <if test="storeCode != null">
+      	#{storeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="wxHeadHtml != null" >
+        #{wxHeadHtml,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="wxHomeHtml != null" >
+        #{wxHomeHtml,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.wechat.entity.WxpageBound" >
+    update wxpage_bound
+    <set>
+	  <if test="storeCode != null">
+      	store_code = #{storeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="wxHeadHtml != null" >
+        wx_head_html = #{wxHeadHtml,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="wxHomeHtml != null" >
+        wx_home_html = #{wxHomeHtml,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+</mapper>
