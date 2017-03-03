@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <%--<%@include file="/common/common.jspf" %>--%>
+    <%@include file="/common/common.jspf"%>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>弹框</title>
     <style>
@@ -157,7 +157,7 @@
                 // var isLoseEfficacyState = $(".isLoseEfficacy").attr("name");
                 businessName = $(this).find("td").eq(1).text();
                 storeCode = $(this).find("td").eq(2).text();
-                userId = $("#userNumber").val();//$(".userId").attr("name");
+                userId =${userNumber};//$(".userId").attr("name");
 
                 a = {
                     "storeCode":storeCode,
@@ -167,7 +167,6 @@
                 }
 
                 userAuthorizatioStoreList.push(a);
-                console.log(userAuthorizatioStoreList);
             });
             var pathName = document.location.pathname;
             var index = pathName.substr(1).indexOf("/");
@@ -198,15 +197,12 @@
 //            var pathName = document.location.pathname;
 //            var index = pathName.substr(1).indexOf("/");
 //            var result = pathName.substr(0, index + 1);
-//
-//            alert(result);
-//            alert(userAuthorizatioStoreList);
 //            $.post(result+ '/userAuthorizatioStore/adduserAuthorizationStore.shtml',{userAuthorizatioStoreList},function(json){
 //                // 这里是赵同学进行的保存后台操作
 //            }, "json")
-//        })
+//        });
 
-    })
+    });
 
     function closeWin(){
         layer.confirm('是否关闭窗口？', {icon: 3,offset: '20px'}, function(index) {
