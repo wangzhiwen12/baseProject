@@ -1,4 +1,4 @@
-package com.wechat.manage.controller.wechat;
+package com.wechat.manage.controller.system;
 
 import com.wechat.manage.annotation.SystemLog;
 import com.wechat.manage.controller.index.BaseController;
