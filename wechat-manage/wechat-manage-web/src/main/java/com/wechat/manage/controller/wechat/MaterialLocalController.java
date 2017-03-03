@@ -1,18 +1,15 @@
 package com.wechat.manage.controller.wechat;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.wechat.manage.controller.index.BaseController;
+import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
+import com.wechat.manage.pojo.wechat.entity.Material;
+import com.wechat.manage.pojo.wechat.vo.*;
+import com.wechat.manage.service.util.PropertiesUtils;
+import com.wechat.manage.service.wechat.intf.MaterialLocalService;
+import com.wechat.manage.utils.Common;
+import com.wechat.manage.utils.JsonUtil;
+import com.wechat.manage.vo.DataTableParams;
+import com.wechat.manage.vo.DataTableResult;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
 import org.apache.log4j.Logger;
@@ -24,21 +21,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.wechat.manage.controller.index.BaseController;
-import com.wechat.manage.pojo.wechat.vo.ArticleDto;
-import com.wechat.manage.pojo.wechat.vo.ArticleRe;
-import com.wechat.manage.pojo.wechat.vo.ContentDto;
-import com.wechat.manage.pojo.wechat.vo.ErrorDto;
-import com.wechat.manage.pojo.wechat.vo.MaterialListDto;
-import com.wechat.manage.pojo.wechat.vo.MediaDto;
-import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
-import com.wechat.manage.pojo.wechat.entity.DataTableParams;
-import com.wechat.manage.pojo.wechat.entity.DataTableResult;
-import com.wechat.manage.pojo.wechat.entity.Material;
-import com.wechat.manage.service.wechat.intf.MaterialLocalService;
-import com.wechat.manage.utils.Common;
-import com.wechat.manage.utils.JsonUtil;
-import com.wechat.manage.service.util.PropertiesUtils;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 @RequestMapping("materialLocal")

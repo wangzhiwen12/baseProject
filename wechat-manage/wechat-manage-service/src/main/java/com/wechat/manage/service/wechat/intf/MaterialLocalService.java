@@ -1,16 +1,9 @@
 package com.wechat.manage.service.wechat.intf;
 
-import java.util.List;
-import java.util.Map;
-
-import com.wechat.manage.pojo.wechat.vo.ArticleDto;
-import com.wechat.manage.pojo.wechat.vo.ArticleRe;
-import com.wechat.manage.pojo.wechat.vo.ContentDto;
-import com.wechat.manage.pojo.wechat.vo.MaterialListDto;
-import com.wechat.manage.pojo.wechat.vo.MediaDto;
 import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
-import com.wechat.manage.pojo.wechat.entity.DataTableResult;
 import com.wechat.manage.pojo.wechat.entity.Material;
+import com.wechat.manage.pojo.wechat.vo.*;
+import com.wechat.manage.vo.DataTableResult;
 
 import java.util.List;
 import java.util.Map;

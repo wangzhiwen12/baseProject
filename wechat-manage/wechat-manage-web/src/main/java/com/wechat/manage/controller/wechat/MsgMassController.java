@@ -2,14 +2,14 @@ package com.wechat.manage.controller.wechat;
 
 import com.wechat.manage.controller.index.BaseController;
 import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
-import com.wechat.manage.pojo.wechat.entity.DataTableParams;
-import com.wechat.manage.pojo.wechat.entity.DataTableResult;
 import com.wechat.manage.pojo.wechat.entity.Material;
 import com.wechat.manage.pojo.wechat.entity.MsgMass;
 import com.wechat.manage.service.wechat.intf.IMsgMassService;
 import com.wechat.manage.service.wechat.intf.MaterialLocalService;
 import com.wechat.manage.utils.Common;
 import com.wechat.manage.utils.PropertiesUtils;
+import com.wechat.manage.vo.DataTableParams;
+import com.wechat.manage.vo.DataTableResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

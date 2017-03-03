@@ -1,6 +1,7 @@
 package com.wechat.manage.pojo.wechat.vo;
 
-import com.wechat.manage.pojo.wechat.entity.DataTableParams;
+
+import com.wechat.manage.vo.DataTableParams;
 
 public class CouponMemberDto extends DataTableParams {
 	private String memberSid;// 会员ID

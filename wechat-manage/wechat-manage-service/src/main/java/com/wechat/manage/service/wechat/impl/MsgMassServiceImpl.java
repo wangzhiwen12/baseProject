@@ -1,18 +1,18 @@
 package com.wechat.manage.service.wechat.impl;
 
-import com.wechat.manage.pojo.wechat.vo.MsgMassReDto;
-import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
-import com.wechat.manage.pojo.wechat.entity.DataTableResult;
-import com.wechat.manage.pojo.wechat.entity.MemberInfo;
-import com.wechat.manage.pojo.wechat.entity.MsgMass;
-import com.wechat.manage.pojo.wechat.entity.MsgMember;
 import com.wechat.manage.mapper.wechat.MemberInfoMapper;
 import com.wechat.manage.mapper.wechat.MsgMassMapper;
 import com.wechat.manage.mapper.wechat.MsgMemberMapper;
+import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
+import com.wechat.manage.pojo.wechat.entity.MemberInfo;
+import com.wechat.manage.pojo.wechat.entity.MsgMass;
+import com.wechat.manage.pojo.wechat.entity.MsgMember;
+import com.wechat.manage.pojo.wechat.vo.MsgMassReDto;
+import com.wechat.manage.service.util.WechatUtil;
 import com.wechat.manage.service.wechat.intf.IMsgMassService;
 import com.wechat.manage.utils.HttpUtils;
 import com.wechat.manage.utils.JsonUtil;
-import com.wechat.manage.service.util.WechatUtil;
+import com.wechat.manage.vo.DataTableResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

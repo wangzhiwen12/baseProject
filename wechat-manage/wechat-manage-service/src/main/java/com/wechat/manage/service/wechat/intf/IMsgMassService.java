@@ -1,8 +1,8 @@
 package com.wechat.manage.service.wechat.intf;
 
 import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
-import com.wechat.manage.pojo.wechat.entity.DataTableResult;
 import com.wechat.manage.pojo.wechat.entity.MsgMass;
+import com.wechat.manage.vo.DataTableResult;
 
 import java.util.Map;
 

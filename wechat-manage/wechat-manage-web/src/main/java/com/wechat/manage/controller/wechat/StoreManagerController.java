@@ -7,14 +7,12 @@ import com.wechat.manage.mapper.system.StoreInfoMapper;
 import com.wechat.manage.pojo.system.entity.AppAccountInfo;
 import com.wechat.manage.pojo.system.entity.StoreInfo;
 import com.wechat.manage.pojo.system.vo.ReturnDto;
-
-import com.wechat.manage.pojo.wechat.entity.DataTableParams;
-import com.wechat.manage.pojo.wechat.entity.DataTableResult;
 import com.wechat.manage.pojo.wechat.vo.GroupResult;
 import com.wechat.manage.service.wechat.intf.StoreInfoService;
 import com.wechat.manage.utils.Common;
-
 import com.wechat.manage.utils.HttpUtils;
+import com.wechat.manage.vo.DataTableParams;
+import com.wechat.manage.vo.DataTableResult;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

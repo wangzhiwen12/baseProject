@@ -1,7 +1,7 @@
 package com.wechat.manage.service.wechat.intf;
 
 import com.wechat.manage.pojo.wechat.entity.CouponTemplate;
-import com.wechat.manage.pojo.wechat.entity.DataTableResult;
+import com.wechat.manage.vo.DataTableResult;
 
 import java.util.List;
 import java.util.Map;

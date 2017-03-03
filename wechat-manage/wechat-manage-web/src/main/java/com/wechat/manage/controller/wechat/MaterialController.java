@@ -1,12 +1,15 @@
 package com.wechat.manage.controller.wechat;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.wechat.manage.controller.index.BaseController;
+import com.wechat.manage.mapper.wechat.MediaLocalUrlMapper;
+import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
+import com.wechat.manage.pojo.wechat.entity.MediaLocalUrl;
+import com.wechat.manage.pojo.wechat.vo.*;
+import com.wechat.manage.service.wechat.intf.MaterialService;
+import com.wechat.manage.utils.Common;
+import com.wechat.manage.utils.JsonUtil;
+import com.wechat.manage.vo.DataTableParams;
+import com.wechat.manage.vo.DataTableResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,21 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.wechat.manage.controller.index.BaseController;
-import com.wechat.manage.pojo.wechat.vo.ArticleDto;
-import com.wechat.manage.pojo.wechat.vo.ArticleListDto;
-import com.wechat.manage.pojo.wechat.vo.ErrorDto;
-import com.wechat.manage.pojo.wechat.vo.MaterialDto;
-import com.wechat.manage.pojo.wechat.vo.MediaDto;
-import com.wechat.manage.pojo.wechat.vo.MediaListDto;
-import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
-import com.wechat.manage.pojo.wechat.entity.DataTableParams;
-import com.wechat.manage.pojo.wechat.entity.DataTableResult;
-import com.wechat.manage.pojo.wechat.entity.MediaLocalUrl;
-import com.wechat.manage.mapper.wechat.MediaLocalUrlMapper;
-import com.wechat.manage.service.wechat.intf.MaterialService;
-import com.wechat.manage.utils.Common;
-import com.wechat.manage.utils.JsonUtil;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/material")

@@ -1,5 +1,21 @@
 package com.wechat.manage.service.wechat.impl;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.wechat.manage.mapper.wechat.MaterialMapper;
+import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
+import com.wechat.manage.pojo.wechat.entity.Material;
+import com.wechat.manage.pojo.wechat.vo.*;
+import com.wechat.manage.service.util.PropertiesUtils;
+import com.wechat.manage.service.util.WechatUtil;
+import com.wechat.manage.service.wechat.intf.MaterialLocalService;
+import com.wechat.manage.utils.HttpUtils;
+import com.wechat.manage.utils.JsonUtil;
+import com.wechat.manage.vo.DataTableResult;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,27 +23,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.wechat.manage.pojo.wechat.vo.ArticleDto;
-import com.wechat.manage.pojo.wechat.vo.ArticleRe;
-import com.wechat.manage.pojo.wechat.vo.ContentDto;
-import com.wechat.manage.pojo.wechat.vo.MaterialListDto;
-import com.wechat.manage.pojo.wechat.vo.MediaDto;
-import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
-import com.wechat.manage.pojo.wechat.entity.DataTableResult;
-import com.wechat.manage.pojo.wechat.entity.Material;
-import com.wechat.manage.mapper.wechat.MaterialMapper;
-import com.wechat.manage.service.wechat.intf.MaterialLocalService;
-import com.wechat.manage.utils.HttpUtils;
-import com.wechat.manage.utils.JsonUtil;
-import com.wechat.manage.service.util.PropertiesUtils;
-import com.wechat.manage.service.util.WechatUtil;
 
 @Service
 public class MaterialLocalServiceImpl implements MaterialLocalService {

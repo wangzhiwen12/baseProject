@@ -2,14 +2,14 @@ package com.wechat.manage.controller.wechat.coupon;
 
 import com.wechat.manage.annotation.SystemLog;
 import com.wechat.manage.controller.index.BaseController;
-import com.wechat.manage.pojo.wechat.vo.CouponTemplateDto;
 import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
 import com.wechat.manage.pojo.wechat.entity.CouponTemplate;
-import com.wechat.manage.pojo.wechat.entity.DataTableResult;
 import com.wechat.manage.pojo.wechat.entity.GlobalDic;
+import com.wechat.manage.pojo.wechat.vo.CouponTemplateDto;
 import com.wechat.manage.service.wechat.intf.CouponTemplateService;
 import com.wechat.manage.service.wechat.intf.IGlobalDicService;
 import com.wechat.manage.utils.Common;
+import com.wechat.manage.vo.DataTableResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
