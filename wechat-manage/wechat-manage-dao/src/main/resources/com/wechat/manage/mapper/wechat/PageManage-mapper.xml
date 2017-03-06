@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wechat.PageManageMapper">
+    <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.wechat.entity.PageManage">
+        <id column="sid" property="sid" jdbcType="BIGINT"/>
+        <result column="store_code" property="storeCode" jdbcType="VARCHAR"/>
+        <result column="page_code" property="pageCode" jdbcType="VARCHAR"/>
+        <result column="page_name" property="pageName" jdbcType="VARCHAR"/>
+        <result column="page_title" property="pageTitle" jdbcType="VARCHAR"/>
+        <result column="page_url" property="pageUrl" jdbcType="VARCHAR"/>
+        <result column="page_type" property="pageType" jdbcType="INTEGER"/>
+        <result column="orderby" property="orderby" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="create_userId" property="createUserid" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    sid, store_code, page_code, page_name, page_title, page_url, page_type, orderby, 
+    status, create_time, create_userId
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from pageManage
+        where sid = #{sid,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from pageManage
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.wechat.manage.pojo.wechat.entity.PageManage">
+    insert into pageManage (sid, store_code, page_code, 
+      page_name, page_title, page_url, 
+      page_type, orderby, status, 
+      create_time, create_userId)
+    values (#{sid,jdbcType=BIGINT}, #{storeCode,jdbcType=VARCHAR}, #{pageCode,jdbcType=VARCHAR}, 
+      #{pageName,jdbcType=VARCHAR}, #{pageTitle,jdbcType=VARCHAR}, #{pageUrl,jdbcType=VARCHAR}, 
+      #{pageType,jdbcType=INTEGER}, #{orderby,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createUserid,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.wechat.manage.pojo.wechat.entity.PageManage">
+        insert into pageManage
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                sid,
+            </if>
+            <if test="storeCode != null">
+                store_code,
+            </if>
+            <if test="pageCode != null">
+                page_code,
+            </if>
+            <if test="pageName != null">
+                page_name,
+            </if>
+            <if test="pageTitle != null">
+                page_title,
+            </if>
+            <if test="pageUrl != null">
+                page_url,
+            </if>
+            <if test="pageType != null">
+                page_type,
+            </if>
+            <if test="orderby != null">
+                orderby,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="createUserid != null">
+                create_userId,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                #{sid,jdbcType=BIGINT},
+            </if>
+            <if test="storeCode != null">
+                #{storeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="pageCode != null">
+                #{pageCode,jdbcType=VARCHAR},
+            </if>
+            <if test="pageName != null">
+                #{pageName,jdbcType=VARCHAR},
+            </if>
+            <if test="pageTitle != null">
+                #{pageTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="pageUrl != null">
+                #{pageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="pageType != null">
+                #{pageType,jdbcType=INTEGER},
+            </if>
+            <if test="orderby != null">
+                #{orderby,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUserid != null">
+                #{createUserid,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.wechat.entity.PageManage">
+        update pageManage
+        <set>
+            <if test="storeCode != null">
+                store_code = #{storeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="pageCode != null">
+                page_code = #{pageCode,jdbcType=VARCHAR},
+            </if>
+            <if test="pageName != null">
+                page_name = #{pageName,jdbcType=VARCHAR},
+            </if>
+            <if test="pageTitle != null">
+                page_title = #{pageTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="pageUrl != null">
+                page_url = #{pageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="pageType != null">
+                page_type = #{pageType,jdbcType=INTEGER},
+            </if>
+            <if test="orderby != null">
+                orderby = #{orderby,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUserid != null">
+                create_userId = #{createUserid,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where sid = #{sid,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.wechat.entity.PageManage">
+    update pageManage
+    set store_code = #{storeCode,jdbcType=VARCHAR},
+      page_code = #{pageCode,jdbcType=VARCHAR},
+      page_name = #{pageName,jdbcType=VARCHAR},
+      page_title = #{pageTitle,jdbcType=VARCHAR},
+      page_url = #{pageUrl,jdbcType=VARCHAR},
+      page_type = #{pageType,jdbcType=INTEGER},
+      orderby = #{orderby,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_userId = #{createUserid,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+    <!--查询页面信息-->
+    <select id="selectPageInfoByParam" resultMap="BaseResultMap" parameterType="com.wechat.manage.pojo.wechat.entity.PageManage">
+        select
+        <include refid="Base_Column_List"/>
+        from pageManage
+        <where>
+            <if test="storeCode != null">
+                AND store_code = #{storeCode,jdbcType=VARCHAR}
+            </if>
+            <if test="pageCode != null">
+                AND page_code = #{pageCode,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                AND status = #{status,jdbcType=INTEGER}
+            </if>
+            <if test="status == null">
+                AND status =0
+            </if>
+        </where>
+    </select>
+</mapper>

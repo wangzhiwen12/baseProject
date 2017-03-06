@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wechat.TemplateMessageTypeMapper">
+	<resultMap id="templateMessageType" type="com.wechat.manage.pojo.wechat.entity.TemplateMessageType">
+		<id column="sid" property="sid" jdbcType="BIGINT" />
+		<result column="type_name" property="typeName" jdbcType="VARCHAR" />
+		<result column="sort" property="sort" jdbcType="BIGINT" />
+	</resultMap>
+
+	<select id="selectWechatTemplateType" resultMap="templateMessageType">
+		SELECT
+		*
+		FROM
+		template_message_type mt
+		ORDER BY
+		mt.sort ASC
+	</select>
+
+
+</mapper>

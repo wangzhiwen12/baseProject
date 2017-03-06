@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wechat.WechatTemplateMsgInfoMapper">
+	<resultMap type="com.wechat.manage.pojo.wechat.entity.WechatTemplateMsgInfo" id="wechatTemplateMsgInfo">
+		<result property="appid" column="appid"/>
+		<result property="appsecret" column="appsecret"/>
+		<result property="storeCode" column="storecode"/>
+		<result property="memberCode" column="member_code"/>
+		<result property="openid" column="openid"/>
+	</resultMap>
+	
+	<select id="selectTemplateMsgInfoBy" resultMap="wechatTemplateMsgInfo">
+		select * from 
+		appaccountinfo ai, memberinfo mi 
+		<where>
+			ai.storecode=mi.store_code 
+			and mi.member_code=#{memberCode, jdbcType=VARCHAR}
+		</where>
+	</select>
+</mapper>

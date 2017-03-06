@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper	namespace="com.wechat.manage.mapper.wechat.PrivilegeInfoMapper">
+	<resultMap type="com.wechat.manage.pojo.wechat.entity.PrivilegeInfo" id="privilegeInfo">
+		<id property="sid" column="sid"/>
+		<result property="headerStatus" column="header_status"/>
+		<result property="privilegeContent" column="privilege_content"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="storeCode" column="store_code"/>
+	</resultMap>
+	
+	<insert id="insertPrivilegeInfo" parameterType="com.wechat.manage.pojo.wechat.entity.PrivilegeInfo">
+		insert into privilege_info
+		(header_status, privilege_content, create_time, update_time, store_code)
+		values
+		(#{headerStatus,jdbcType=VARCHAR}, #{privilegeContent,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+		#{storeCode,jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="selectPrivilegeInfoByStoreCode" resultMap="privilegeInfo">
+		select * from privilege_info
+		<where>
+			store_code = #{storeCode,jdbcType=VARCHAR}
+		</where>
+	</select>
+	
+	<update id="updatePrivilegeInfo" parameterType="com.wechat.manage.pojo.wechat.entity.PrivilegeInfo">
+		update privilege_info
+		<set>
+			<if test="headerStatus != null">
+				header_status = #{headerStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="privilegeContent != null">
+				privilege_content = #{privilegeContent,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP}
+			</if>
+		</set>
+		<where>
+			store_code = #{storeCode,jdbcType=VARCHAR}
+		</where>
+	</update>
+</mapper>

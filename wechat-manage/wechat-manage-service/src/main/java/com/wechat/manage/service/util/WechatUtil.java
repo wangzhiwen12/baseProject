@@ -1,19 +1,5 @@
 package com.wechat.manage.service.util;
 
-import com.wechat.manage.pojo.system.vo.StoreInfoDto;
-import com.wechat.manage.pojo.system.entity.AppAccountInfo;
-import com.wechat.manage.pojo.wechat.vo.AccessTokenDto;
-import com.wechat.manage.pojo.wechat.vo.MemberInfo;
-import com.wechat.manage.pojo.wechat.vo.WechatMemberCard;
-import com.wechat.manage.service.wechat.impl.AppAccountInfoServiceImpl;
-import com.wechat.manage.service.wechat.intf.IAppAccountInfoService;
-import com.wechat.manage.utils.RedisUtil;
-import com.wechat.manage.utils.HttpUtil;
-import com.wechat.manage.utils.JsonUtil;
-import net.sf.json.JSONObject;
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -22,6 +8,22 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.wechat.manage.pojo.system.entity.AppAccountInfo;
+import com.wechat.manage.pojo.system.vo.StoreInfoDto;
+import com.wechat.manage.pojo.wechat.vo.AccessTokenDto;
+import com.wechat.manage.pojo.wechat.vo.MemberInfo;
+import com.wechat.manage.pojo.wechat.vo.WechatMemberCard;
+import com.wechat.manage.service.wechat.impl.AppAccountInfoServiceImpl;
+import com.wechat.manage.service.wechat.intf.IAppAccountInfoService;
+import com.wechat.manage.utils.HttpUtil;
+import com.wechat.manage.utils.JsonUtil;
+import com.wechat.manage.utils.RedisUtil;
+
+import net.sf.json.JSONObject;
 
 public class WechatUtil {
     private Logger logger = Logger.getLogger(WechatUtil.class);

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.usercenter.TUserCenterMapper">
+	<resultMap type="com.wechat.manage.pojo.usercenter.entity.TUserCenter" id="tUserCenter">
+		<id property="sid" column="sid"/>
+		<result property="data" column="data"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="storeCode" column="store_code"/>
+	</resultMap>
+
+	<select id="selectUserCenterByStoreCode" resultMap="tUserCenter">
+		select * from t_usercenter
+		<where>
+			store_code=#{storeCode}
+		</where>
+	</select>
+	
+	<insert id="insertUserCenter" parameterType="com.wechat.manage.pojo.usercenter.entity.TUserCenter">
+		insert into t_usercenter
+		(data, create_time, update_time, store_code)
+		values
+		(#{data,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP}, #{storeCode,jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="updateUserCenter" parameterType="com.wechat.manage.pojo.usercenter.entity.TUserCenter">
+		update t_usercenter
+		<set>
+			data=#{data,jdbcType=VARCHAR},
+			update_time=#{updateTime,jdbcType=TIMESTAMP}
+		</set>
+		<where>
+			store_code=#{storeCode}
+		</where>
+	</update>
+</mapper>

@@ -1,11 +1,22 @@
 package com.wechat.manage.service.util;
 
+import java.io.InputStream;
+import java.io.Writer;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.core.util.QuickWriter;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.XppDriver;
-
 import com.wechat.manage.pojo.message.resp.Article;
 import com.wechat.manage.pojo.message.resp.ImageMessage;
 import com.wechat.manage.pojo.message.resp.MusicMessage;
@@ -13,16 +24,6 @@ import com.wechat.manage.pojo.message.resp.NewsMessage;
 import com.wechat.manage.pojo.message.resp.TextMessage;
 import com.wechat.manage.pojo.message.resp.VideoMessage;
 import com.wechat.manage.pojo.message.resp.VoiceMessage;
-import org.dom4j.Document;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.InputStream;
-import java.io.Writer;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * 消息工具类

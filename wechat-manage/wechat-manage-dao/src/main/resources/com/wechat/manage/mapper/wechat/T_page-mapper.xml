@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wechat.WPageMapper">
+	<resultMap id="tPage" type="com.wechat.manage.pojo.usercenter.entity.TPage">
+		<id column="sid" property="sid" />
+		<result column="page_name" property="pageName" />
+		<result column="page_link" property="pageLink" />
+		<result column="page_code" property="pageCode" />
+		<result column="type" property="type" />
+		<result column="is_home" property="isHome" />
+		<result column="status" property="status" />
+		<result column="shop_id" property="shopId" />
+		<result column="create_user" property="createUser" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="seq_no" property="seqNo" />
+	</resultMap>
+
+	<select id="selectWPageInfo" resultMap="tPage">
+		SELECT
+		tp.*
+		FROM
+		t_page tp,
+		ly_user lu
+		WHERE
+		tp.create_user = lu.id
+		AND lu.id = #{userId} and tp.type=1 and tp.status=1
+		order by
+		tp.update_time desc
+		LIMIT #{page},#{pageSize}
+	</select>
+	
+	<select id="selectWPageInfo2" resultMap="tPage">
+		SELECT
+		tp.*
+		FROM
+		t_page tp,
+		ly_user lu
+		WHERE
+		tp.create_user = lu.id
+		AND lu.id = #{userId} and tp.status=0 and tp.type=1
+		order by
+		tp.update_time desc
+		LIMIT #{page},#{pageSize}
+	</select>
+
+	<select id="selectWPageInfoCount" resultType="int">
+		SELECT
+		count(tp.sid)
+		FROM
+		t_page tp,
+		ly_user lu
+		WHERE
+		tp.create_user = lu.id and tp.status=1 and tp.type=1
+		AND
+		lu.id = #{userId}
+	</select>
+	
+	<select id="selectWPageInfoCount2" resultType="int">
+		SELECT
+		count(tp.sid)
+		FROM
+		t_page tp,
+		ly_user lu
+		WHERE
+		tp.create_user = lu.id and tp.status=0
+		AND
+		lu.id = #{userId}
+	</select>
+
+	<delete id="delWPage">
+		DELETE
+		FROM
+		t_page
+		WHERE
+		sid = #{sid}
+		AND create_user =
+		#{createUser}
+	</delete>
+
+	<update id="updateWpage" parameterType="com.wechat.manage.pojo.usercenter.entity.TPage">
+	   update t_page
+	   <trim prefix="set" suffixOverrides=",">
+	      <if test="sid != null">
+	          sid = #{sid,jdbcType=INTEGER},
+	      </if>
+	      <if test="pageName != null">
+	          page_name = #{pageName,jdbcType=VARCHAR},
+	      </if>
+	      <if test="pageLink != null">
+	          page_link = #{pageLink,jdbcType=VARCHAR},
+	      </if>
+	      <if test="pageCode != null">
+	          page_code = #{pageCode,jdbcType=VARCHAR},
+	      </if>
+	      <if test="type != null">
+	          type = #{type,jdbcType=INTEGER},
+	      </if>
+	      <if test="isHome != null">
+	          is_home = #{isHome,jdbcType=INTEGER},
+	      </if>
+	      <if test="status != null">
+	          status = #{status,jdbcType=INTEGER},
+	      </if>
+	      <if test="shopId != null">
+	          shop_id = #{shopId,jdbcType=INTEGER},
+	      </if>
+	      <if test="createUser != null">
+	          create_user = #{createUser,jdbcType=INTEGER},
+	      </if>
+	      <if test="createTime != null">
+	          create_time = #{createTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="updateTime != null">
+	          update_time = #{updateTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="seqNo != null">
+	          seq_no = #{seqNo,jdbcType=INTEGER},
+	      </if>
+	   </trim>
+	   <where>
+	      sid=#{sid,jdbcType=INTEGER} and create_user= #{createUser,jdbcType=INTEGER}
+	   </where>
+
+	</update>
+	
+	<select id="selectHomePage" resultType="com.wechat.manage.pojo.usercenter.entity.TPage">
+	     SELECT * from t_page tp where tp.create_user=#{createUser,jdbcType=INTEGER} AND tp.is_home=1 and tp.status=1
+	</select>
+	
+
+
+
+	
+	<insert id="insertSelective" parameterType="com.wechat.manage.pojo.usercenter.entity.TPage">
+		insert into t_page
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="sid != null">
+				sid ,
+			</if>
+			<if test="pageName != null">
+				page_name,
+			</if>
+			<if test="pageLink != null">
+				page_link,
+			</if>
+			<if test="pageCode != null">
+				page_code,
+			</if>
+			<if test="type != null">
+				type,
+			</if>
+			<if test="isHome != null">
+				is_home,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="shopId != null">
+				shop_id ,
+			</if>
+			<if test="createUser != null">
+				create_user,
+			</if>
+			<if test="createTime != null">
+				create_time ,
+			</if>
+			<if test="updateTime != null">
+				update_time ,
+			</if>
+			<if test="seqNo != null">
+				seq_no ,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sid != null">
+				 #{sid,jdbcType=BIGINT},
+			</if>
+ 			<if test="pageName != null">
+                #{pageName,jdbcType=VARCHAR},
+            </if>
+            <if test="pageLink != null">
+                #{pageLink,jdbcType=VARCHAR},
+            </if>
+            <if test="pageCode != null">
+                #{pageCode,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="isHome != null">
+                #{isHome,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=INTEGER},
+            </if>
+            <if test="createUser != null">
+                #{createUser,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="seqNo != null">
+                #{seqNo,jdbcType=INTEGER},
+            </if>
+		</trim>
+	</insert>
+	
+	<select id="selectTPage" resultMap="tPage" parameterType="com.wechat.manage.pojo.usercenter.entity.TPage">
+		SELECT
+		* 
+		FROM
+		t_page tp
+		<where>	
+			<if test="sid != null">
+				AND tp.sid = #{sid,jdbcType=VARCHAR}
+			</if>
+			<if test="pageLink != null">
+				AND tp.page_link = #{pageLink,jdbcType=VARCHAR}
+			</if>
+			<if test="shopId !=null">
+				AND tp.shop_id=#{shopId,jdbcType=INTEGER}
+			</if>
+			<if test="type !=null">
+				AND tp.type=#{type,jdbcType=INTEGER}
+			</if>
+			<if test="status !=null">
+				AND tp.status=#{status,jdbcType=INTEGER}
+			</if>
+			<if test="createUser !=null">
+				AND tp.create_user=#{createUser,jdbcType=INTEGER}
+			</if>
+			<if test="isHome !=null">
+				AND tp.is_home=#{isHome,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+</mapper>

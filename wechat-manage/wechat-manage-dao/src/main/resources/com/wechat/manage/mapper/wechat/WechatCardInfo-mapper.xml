@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wechat.WechatCardInfoMapper">
+    <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.wechat.entity.WechatCardInfo">
+        <id column="sid" property="sid" jdbcType="BIGINT"/>
+        <result column="store_code" property="storeCode" jdbcType="VARCHAR"/>
+        <result column="card_id" property="cardId" jdbcType="VARCHAR"/>
+        <result column="card_brandName" property="cardBrandname" jdbcType="VARCHAR"/>
+        <result column="card_logo_pic" property="cardLogoPic" jdbcType="VARCHAR"/>
+        <result column="full_card_logo_pic" property="fullCardLogoPic" jdbcType="VARCHAR"/>
+        <result column="card_title" property="cardTitle" jdbcType="VARCHAR"/>
+        <result column="center_type" property="centerType" jdbcType="VARCHAR"/>
+        <result column="card_no_type" property="cardNoType" jdbcType="VARCHAR"/>
+        <result column="code_type" property="codeType" jdbcType="VARCHAR"/>
+        <result column="cover_type" property="coverType" jdbcType="VARCHAR"/>
+        <result column="cover_pic" property="coverPic" jdbcType="VARCHAR"/>
+        <result column="full_cover_pic" property="fullCoverPic" jdbcType="VARCHAR"/>
+        <result column="cover_wx_pic" property="coverWxPic" jdbcType="VARCHAR"/>
+        <result column="cover_color" property="coverColor" jdbcType="VARCHAR"/>
+        <result column="center_title" property="centerTitle" jdbcType="VARCHAR"/>
+        <result column="center_sub_title" property="centerSubTitle" jdbcType="VARCHAR"/>
+        <result column="center_url" property="centerUrl" jdbcType="VARCHAR"/>
+        <result column="supply_bonus" property="supplyBonus" jdbcType="BIT"/>
+        <result column="supply_coupon" property="supplyCoupon" jdbcType="BIT"/>
+        <result column="supply_grade" property="supplyGrade" jdbcType="BIT"/>
+        <result column="supply_balance" property="supplyBalance" jdbcType="BIT"/>
+        <result column="balance_url" property="balanceUrl" jdbcType="VARCHAR"/>
+        <result column="balance_name" property="balanceName" jdbcType="VARCHAR"/>
+        <result column="IsBonusDiscount" property="isbonusdiscount" jdbcType="BIT"/>
+        <result column="IsCouponDiscount" property="iscoupondiscount" jdbcType="BIT"/>
+        <result column="bonus_rule" property="bonusRule" jdbcType="VARCHAR"/>
+        <result column="discount" property="discount" jdbcType="INTEGER"/>
+        <result column="prerogative" property="prerogative" jdbcType="VARCHAR"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="notice" property="notice" jdbcType="VARCHAR"/>
+        <result column="quantity" property="quantity" jdbcType="INTEGER"/>
+        <result column="custom_url_name" property="customUrlName" jdbcType="VARCHAR"/>
+        <result column="custom_url" property="customUrl" jdbcType="VARCHAR"/>
+        <result column="custom_url_sub_title" property="customUrlSubTitle" jdbcType="VARCHAR"/>
+        <result column="promotion_url_name" property="promotionUrlName" jdbcType="VARCHAR"/>
+        <result column="promotion_url" property="promotionUrl" jdbcType="VARCHAR"/>
+        <result column="promotion_url_sub_title" property="promotionUrlSubTitle" jdbcType="VARCHAR"/>
+        <result column="WxCardUrl" property="wxcardurl" jdbcType="VARCHAR"/>
+        <result column="IsWxVipCard" property="iswxvipcard" jdbcType="BIT"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="create_userId" property="createUserid" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_userId" property="updateUserid" jdbcType="VARCHAR"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    sid, store_code, card_id, card_brandName, card_logo_pic, full_card_logo_pic, card_title, 
+    center_type, card_no_type, code_type, cover_type, cover_pic, full_cover_pic, cover_wx_pic, 
+    cover_color, center_title, center_sub_title, center_url, supply_bonus, supply_coupon, 
+    supply_grade, supply_balance, balance_url, balance_name, IsBonusDiscount, IsCouponDiscount, 
+    bonus_rule, discount, prerogative, description, notice, quantity, custom_url_name, 
+    custom_url, custom_url_sub_title, promotion_url_name, promotion_url, promotion_url_sub_title, 
+    WxCardUrl, IsWxVipCard, status, create_userId, create_time, update_userId, update_time
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from wechat_cardinfo
+        where sid = #{sid,jdbcType=BIGINT}
+    </select>
+    <select id="selectCardInfoByStoreCode" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from wechat_cardinfo
+        where store_code = #{storeCode,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from wechat_cardinfo
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.wechat.manage.pojo.wechat.entity.WechatCardInfo">
+    insert into wechat_cardinfo (sid, store_code, card_id, 
+      card_brandName, card_logo_pic, full_card_logo_pic, 
+      card_title, center_type, card_no_type, 
+      code_type, cover_type, cover_pic, 
+      full_cover_pic, cover_wx_pic, cover_color, 
+      center_title, center_sub_title, center_url, 
+      supply_bonus, supply_coupon, supply_grade, 
+      supply_balance, balance_url, balance_name, 
+      IsBonusDiscount, IsCouponDiscount, bonus_rule, 
+      discount, prerogative, description, 
+      notice, quantity, custom_url_name, 
+      custom_url, custom_url_sub_title, promotion_url_name, 
+      promotion_url, promotion_url_sub_title, WxCardUrl, 
+      IsWxVipCard, status, create_userId, 
+      create_time, update_userId, update_time
+      )
+    values (#{sid,jdbcType=BIGINT}, #{storeCode,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}, 
+      #{cardBrandname,jdbcType=VARCHAR}, #{cardLogoPic,jdbcType=VARCHAR}, #{fullCardLogoPic,jdbcType=VARCHAR}, 
+      #{cardTitle,jdbcType=VARCHAR}, #{centerType,jdbcType=VARCHAR}, #{cardNoType,jdbcType=VARCHAR}, 
+      #{codeType,jdbcType=VARCHAR}, #{coverType,jdbcType=VARCHAR}, #{coverPic,jdbcType=VARCHAR}, 
+      #{fullCoverPic,jdbcType=VARCHAR}, #{coverWxPic,jdbcType=VARCHAR}, #{coverColor,jdbcType=VARCHAR}, 
+      #{centerTitle,jdbcType=VARCHAR}, #{centerSubTitle,jdbcType=VARCHAR}, #{centerUrl,jdbcType=VARCHAR}, 
+      #{supplyBonus,jdbcType=BIT}, #{supplyCoupon,jdbcType=BIT}, #{supplyGrade,jdbcType=BIT}, 
+      #{supplyBalance,jdbcType=BIT}, #{balanceUrl,jdbcType=VARCHAR}, #{balanceName,jdbcType=VARCHAR}, 
+      #{isbonusdiscount,jdbcType=BIT}, #{iscoupondiscount,jdbcType=BIT}, #{bonusRule,jdbcType=VARCHAR}, 
+      #{discount,jdbcType=INTEGER}, #{prerogative,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{notice,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, #{customUrlName,jdbcType=VARCHAR}, 
+      #{customUrl,jdbcType=VARCHAR}, #{customUrlSubTitle,jdbcType=VARCHAR}, #{promotionUrlName,jdbcType=VARCHAR}, 
+      #{promotionUrl,jdbcType=VARCHAR}, #{promotionUrlSubTitle,jdbcType=VARCHAR}, #{wxcardurl,jdbcType=VARCHAR}, 
+      #{iswxvipcard,jdbcType=BIT}, #{status,jdbcType=INTEGER}, #{createUserid,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateUserid,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.wechat.manage.pojo.wechat.vo.WechatCardInfoDto">
+        insert into wechat_cardinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                sid,
+            </if>
+            <if test="storeCode != null">
+                store_code,
+            </if>
+            <if test="cardId != null">
+                card_id,
+            </if>
+            <if test="cardBrandname != null">
+                card_brandName,
+            </if>
+            <if test="cardLogoPic != null">
+                card_logo_pic,
+            </if>
+            <if test="fullCardLogoPic != null">
+                full_card_logo_pic,
+            </if>
+            <if test="cardTitle != null">
+                card_title,
+            </if>
+            <if test="centerType != null">
+                center_type,
+            </if>
+            <if test="cardNoType != null">
+                card_no_type,
+            </if>
+            <if test="codeType != null">
+                code_type,
+            </if>
+            <if test="coverType != null">
+                cover_type,
+            </if>
+            <if test="coverPic != null">
+                cover_pic,
+            </if>
+            <if test="fullCoverPic != null">
+                full_cover_pic,
+            </if>
+            <if test="coverWxPic != null">
+                cover_wx_pic,
+            </if>
+            <if test="coverColor != null">
+                cover_color,
+            </if>
+            <if test="centerTitle != null">
+                center_title,
+            </if>
+            <if test="centerSubTitle != null">
+                center_sub_title,
+            </if>
+            <if test="centerUrl != null">
+                center_url,
+            </if>
+            <if test="supplyBonus != null">
+                supply_bonus,
+            </if>
+            <if test="supplyCoupon != null">
+                supply_coupon,
+            </if>
+            <if test="supplyGrade != null">
+                supply_grade,
+            </if>
+            <if test="supplyBalance != null">
+                supply_balance,
+            </if>
+            <if test="balanceUrl != null">
+                balance_url,
+            </if>
+            <if test="balanceName != null">
+                balance_name,
+            </if>
+            <if test="isbonusdiscount != null">
+                IsBonusDiscount,
+            </if>
+            <if test="iscoupondiscount != null">
+                IsCouponDiscount,
+            </if>
+            <if test="bonusRule != null">
+                bonus_rule,
+            </if>
+            <if test="discount != null">
+                discount,
+            </if>
+            <if test="prerogative != null">
+                prerogative,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="notice != null">
+                notice,
+            </if>
+            <if test="quantity != null">
+                quantity,
+            </if>
+            <if test="customUrlName != null">
+                custom_url_name,
+            </if>
+            <if test="customUrl != null">
+                custom_url,
+            </if>
+            <if test="customUrlSubTitle != null">
+                custom_url_sub_title,
+            </if>
+            <if test="promotionUrlName != null">
+                promotion_url_name,
+            </if>
+            <if test="promotionUrl != null">
+                promotion_url,
+            </if>
+            <if test="promotionUrlSubTitle != null">
+                promotion_url_sub_title,
+            </if>
+            <if test="wxcardurl != null">
+                WxCardUrl,
+            </if>
+            <if test="iswxvipcard != null">
+                IsWxVipCard,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="createUserid != null">
+                create_userId,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateUserid != null">
+                update_userId,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                #{sid,jdbcType=BIGINT},
+            </if>
+            <if test="storeCode != null">
+                #{storeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cardId != null">
+                #{cardId,jdbcType=VARCHAR},
+            </if>
+            <if test="cardBrandname != null">
+                #{cardBrandname,jdbcType=VARCHAR},
+            </if>
+            <if test="cardLogoPic != null">
+                #{cardLogoPic,jdbcType=VARCHAR},
+            </if>
+            <if test="fullCardLogoPic != null">
+                #{fullCardLogoPic,jdbcType=VARCHAR},
+            </if>
+            <if test="cardTitle != null">
+                #{cardTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="centerType != null">
+                #{centerType,jdbcType=VARCHAR},
+            </if>
+            <if test="cardNoType != null">
+                #{cardNoType,jdbcType=VARCHAR},
+            </if>
+            <if test="codeType != null">
+                #{codeType,jdbcType=VARCHAR},
+            </if>
+            <if test="coverType != null">
+                #{coverType,jdbcType=VARCHAR},
+            </if>
+            <if test="coverPic != null">
+                #{coverPic,jdbcType=VARCHAR},
+            </if>
+            <if test="fullCoverPic != null">
+                #{fullCoverPic,jdbcType=VARCHAR},
+            </if>
+            <if test="coverWxPic != null">
+                #{coverWxPic,jdbcType=VARCHAR},
+            </if>
+            <if test="coverColor != null">
+                #{coverColor,jdbcType=VARCHAR},
+            </if>
+            <if test="centerTitle != null">
+                #{centerTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="centerSubTitle != null">
+                #{centerSubTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="centerUrl != null">
+                #{centerUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="supplyBonus != null">
+                #{supplyBonus,jdbcType=BIT},
+            </if>
+            <if test="supplyCoupon != null">
+                #{supplyCoupon,jdbcType=BIT},
+            </if>
+            <if test="supplyGrade != null">
+                #{supplyGrade,jdbcType=BIT},
+            </if>
+            <if test="supplyBalance != null">
+                #{supplyBalance,jdbcType=BIT},
+            </if>
+            <if test="balanceUrl != null">
+                #{balanceUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="balanceName != null">
+                #{balanceName,jdbcType=VARCHAR},
+            </if>
+            <if test="isbonusdiscount != null">
+                #{isbonusdiscount,jdbcType=BIT},
+            </if>
+            <if test="iscoupondiscount != null">
+                #{iscoupondiscount,jdbcType=BIT},
+            </if>
+            <if test="bonusRule != null">
+                #{bonusRule,jdbcType=VARCHAR},
+            </if>
+            <if test="discount != null">
+                #{discount,jdbcType=INTEGER},
+            </if>
+            <if test="prerogative != null">
+                #{prerogative,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="notice != null">
+                #{notice,jdbcType=VARCHAR},
+            </if>
+            <if test="quantity != null">
+                #{quantity,jdbcType=INTEGER},
+            </if>
+            <if test="customUrlName != null">
+                #{customUrlName,jdbcType=VARCHAR},
+            </if>
+            <if test="customUrl != null">
+                #{customUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="customUrlSubTitle != null">
+                #{customUrlSubTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="promotionUrlName != null">
+                #{promotionUrlName,jdbcType=VARCHAR},
+            </if>
+            <if test="promotionUrl != null">
+                #{promotionUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="promotionUrlSubTitle != null">
+                #{promotionUrlSubTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="wxcardurl != null">
+                #{wxcardurl,jdbcType=VARCHAR},
+            </if>
+            <if test="iswxvipcard != null">
+                #{iswxvipcard,jdbcType=BIT},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createUserid != null">
+                #{createUserid,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUserid != null">
+                #{updateUserid,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.wechat.vo.WechatCardInfoDto">
+        update wechat_cardinfo
+        <set>
+
+            <if test="cardId != null">
+                card_id = #{cardId,jdbcType=VARCHAR},
+            </if>
+            <if test="cardBrandname != null">
+                card_brandName = #{cardBrandname,jdbcType=VARCHAR},
+            </if>
+            <if test="cardLogoPic != null">
+                card_logo_pic = #{cardLogoPic,jdbcType=VARCHAR},
+            </if>
+            <if test="fullCardLogoPic != null">
+                full_card_logo_pic = #{fullCardLogoPic,jdbcType=VARCHAR},
+            </if>
+            <if test="cardTitle != null">
+                card_title = #{cardTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="centerType != null">
+                center_type = #{centerType,jdbcType=VARCHAR},
+            </if>
+            <if test="cardNoType != null">
+                card_no_type = #{cardNoType,jdbcType=VARCHAR},
+            </if>
+            <if test="codeType != null">
+                code_type = #{codeType,jdbcType=VARCHAR},
+            </if>
+            <if test="coverType != null">
+                cover_type = #{coverType,jdbcType=VARCHAR},
+            </if>
+            <if test="coverPic != null">
+                cover_pic = #{coverPic,jdbcType=VARCHAR},
+            </if>
+            <if test="fullCoverPic != null">
+                full_cover_pic = #{fullCoverPic,jdbcType=VARCHAR},
+            </if>
+            <if test="coverWxPic != null">
+                cover_wx_pic = #{coverWxPic,jdbcType=VARCHAR},
+            </if>
+            <if test="coverColor != null">
+                cover_color = #{coverColor,jdbcType=VARCHAR},
+            </if>
+            <if test="centerTitle != null">
+                center_title = #{centerTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="centerSubTitle != null">
+                center_sub_title = #{centerSubTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="centerUrl != null">
+                center_url = #{centerUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="supplyBonus != null">
+                supply_bonus = #{supplyBonus,jdbcType=BIT},
+            </if>
+            <if test="supplyCoupon != null">
+                supply_coupon = #{supplyCoupon,jdbcType=BIT},
+            </if>
+            <if test="supplyGrade != null">
+                supply_grade = #{supplyGrade,jdbcType=BIT},
+            </if>
+            <if test="supplyBalance != null">
+                supply_balance = #{supplyBalance,jdbcType=BIT},
+            </if>
+            <if test="balanceUrl != null">
+                balance_url = #{balanceUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="balanceName != null">
+                balance_name = #{balanceName,jdbcType=VARCHAR},
+            </if>
+            <if test="isbonusdiscount != null">
+                IsBonusDiscount = #{isbonusdiscount,jdbcType=BIT},
+            </if>
+            <if test="iscoupondiscount != null">
+                IsCouponDiscount = #{iscoupondiscount,jdbcType=BIT},
+            </if>
+            <if test="bonusRule != null">
+                bonus_rule = #{bonusRule,jdbcType=VARCHAR},
+            </if>
+            <if test="discount != null">
+                discount = #{discount,jdbcType=INTEGER},
+            </if>
+            <if test="prerogative != null">
+                prerogative = #{prerogative,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="notice != null">
+                notice = #{notice,jdbcType=VARCHAR},
+            </if>
+            <if test="quantity != null">
+                quantity = #{quantity,jdbcType=INTEGER},
+            </if>
+            <if test="customUrlName != null">
+                custom_url_name = #{customUrlName,jdbcType=VARCHAR},
+            </if>
+            <if test="customUrl != null">
+                custom_url = #{customUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="customUrlSubTitle != null">
+                custom_url_sub_title = #{customUrlSubTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="promotionUrlName != null">
+                promotion_url_name = #{promotionUrlName,jdbcType=VARCHAR},
+            </if>
+            <if test="promotionUrl != null">
+                promotion_url = #{promotionUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="promotionUrlSubTitle != null">
+                promotion_url_sub_title = #{promotionUrlSubTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="wxcardurl != null">
+                WxCardUrl = #{wxcardurl,jdbcType=VARCHAR},
+            </if>
+            <if test="iswxvipcard != null">
+                IsWxVipCard = #{iswxvipcard,jdbcType=BIT},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createUserid != null">
+                create_userId = #{createUserid,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUserid != null">
+                update_userId = #{updateUserid,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where store_code = #{storeCode,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.wechat.entity.WechatCardInfo">
+    update wechat_cardinfo
+    set store_code = #{storeCode,jdbcType=VARCHAR},
+      card_id = #{cardId,jdbcType=VARCHAR},
+      card_brandName = #{cardBrandname,jdbcType=VARCHAR},
+      card_logo_pic = #{cardLogoPic,jdbcType=VARCHAR},
+      full_card_logo_pic = #{fullCardLogoPic,jdbcType=VARCHAR},
+      card_title = #{cardTitle,jdbcType=VARCHAR},
+      center_type = #{centerType,jdbcType=VARCHAR},
+      card_no_type = #{cardNoType,jdbcType=VARCHAR},
+      code_type = #{codeType,jdbcType=VARCHAR},
+      cover_type = #{coverType,jdbcType=VARCHAR},
+      cover_pic = #{coverPic,jdbcType=VARCHAR},
+      full_cover_pic = #{fullCoverPic,jdbcType=VARCHAR},
+      cover_wx_pic = #{coverWxPic,jdbcType=VARCHAR},
+      cover_color = #{coverColor,jdbcType=VARCHAR},
+      center_title = #{centerTitle,jdbcType=VARCHAR},
+      center_sub_title = #{centerSubTitle,jdbcType=VARCHAR},
+      center_url = #{centerUrl,jdbcType=VARCHAR},
+      supply_bonus = #{supplyBonus,jdbcType=BIT},
+      supply_coupon = #{supplyCoupon,jdbcType=BIT},
+      supply_grade = #{supplyGrade,jdbcType=BIT},
+      supply_balance = #{supplyBalance,jdbcType=BIT},
+      balance_url = #{balanceUrl,jdbcType=VARCHAR},
+      balance_name = #{balanceName,jdbcType=VARCHAR},
+      IsBonusDiscount = #{isbonusdiscount,jdbcType=BIT},
+      IsCouponDiscount = #{iscoupondiscount,jdbcType=BIT},
+      bonus_rule = #{bonusRule,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=INTEGER},
+      prerogative = #{prerogative,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      notice = #{notice,jdbcType=VARCHAR},
+      quantity = #{quantity,jdbcType=INTEGER},
+      custom_url_name = #{customUrlName,jdbcType=VARCHAR},
+      custom_url = #{customUrl,jdbcType=VARCHAR},
+      custom_url_sub_title = #{customUrlSubTitle,jdbcType=VARCHAR},
+      promotion_url_name = #{promotionUrlName,jdbcType=VARCHAR},
+      promotion_url = #{promotionUrl,jdbcType=VARCHAR},
+      promotion_url_sub_title = #{promotionUrlSubTitle,jdbcType=VARCHAR},
+      WxCardUrl = #{wxcardurl,jdbcType=VARCHAR},
+      IsWxVipCard = #{iswxvipcard,jdbcType=BIT},
+      status = #{status,jdbcType=INTEGER},
+      create_userId = #{createUserid,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_userId = #{updateUserid,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,13 +1,13 @@
  package com.wechat.manage.service.util;
 
- import org.apache.ibatis.io.Resources;
-
  import java.io.FileOutputStream;
- import java.io.InputStream;
- import java.io.Reader;
- import java.util.Iterator;
- import java.util.Map.Entry;
- import java.util.Properties;
+import java.io.InputStream;
+import java.io.Reader;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Properties;
+
+import org.apache.ibatis.io.Resources;
 
  /**
   * 对属性文件操作的工具类

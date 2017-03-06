@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wechat.TemplateMessageLogMapper">
+	<resultMap type="com.wechat.manage.pojo.wechat.entity.TemplateMessageLog" id="templateMessageLog">
+		<id property="sid" column="sid"/>
+		<result property="messageContent" column="message_content"/>
+		<result property="touser" column="touser"/>
+		<result property="appid" column="appid"/>
+		<result property="storeSid" column="store_sid"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="wxResultCode" column="wx_result_code"/>
+		<result property="wxResultMsg" column="wx_result_msg"/>
+		<result property="wxMsgId" column="wx_msg_id"/>
+	</resultMap>
+	
+	<insert id="insertLog" parameterType="com.wechat.manage.pojo.wechat.entity.TemplateMessageLog">
+		insert into template_message_log
+		(message_content, touser, appid, store_sid, create_time, update_time,
+		wx_result_code, wx_result_msg, wx_msg_id)
+		values
+		(#{messageContent, jdbcType=VARCHAR}, #{touser, jdbcType=VARCHAR},
+		#{appid, jdbcType=VARCHAR}, #{storeSid}, #{createTime, jdbcType=TIMESTAMP},
+		#{updateTime, jdbcType=TIMESTAMP}, #{wxResultCode, jdbcType=VARCHAR},
+		#{wxResultMsg, jdbcType=VARCHAR}, #{wxMsgId, jdbcType=VARCHAR})
+	</insert>
+</mapper>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wechat.TemplateStoreRelMapper">
+	<resultMap type="com.wechat.manage.pojo.wechat.entity.TemplateStoreRel" id="templateStoreRel">
+		<id property="sid" column="sid"/>
+		<result property="storeSid" column="store_sid"/>
+		<result property="messageInfoSid" column="message_info_sid"/>
+		<result property="openStatus" column="open_status"/>
+		<result property="storeTemplateId" column="store_template_id"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="directUrl" column="direct_url"/>
+		<result property="messageTypeId" column="message_type_id" />
+		<result property="typeName" column="type_name" />
+		<result property="templateContent" column="template_content" />
+		<result property="templateCode" column="template_code" />
+		<result property="templateName" column="template_name" />
+		<result property="wxTemplateName" column="wx_template_name" />
+		<result property="wxTemplateNo" column="wx_template_no" />
+		<result property="infoSid" column="info_sid" />
+	</resultMap>
+
+	<select id="selectTemplateStoreRelByStoreId" resultMap="templateStoreRel">
+		select * from
+		template_store_rel ts,
+		template_message_info tm
+		<where>
+			ts.message_info_sid=tm.sid
+			and ts.store_sid=#{storeId,
+			jdbcType=VARCHAR}
+			and
+			tm.template_code=#{templateCode,
+			jdbcType=VARCHAR}
+		</where>
+	</select>
+
+	<!-- 查询模板信息内容 -->
+	<select id="selectWechatInfoType" resultMap="templateStoreRel">
+		SELECT
+		mt.type_name,
+		tm.sid info_sid,
+		tm.message_type_id,
+		tm.template_content,
+		tm.template_code,
+		tm.template_name,
+		tm.wx_template_name,
+		tm.wx_template_no
+		FROM
+		template_message_info tm
+		LEFT JOIN template_message_type mt ON mt.sid = tm.message_type_id
+		ORDER BY
+		mt.sort ASC
+	</select>
+
+	<!-- 修改模板状态 -->
+	<update id="updateTemplateState">
+		UPDATE template_store_rel ts
+		SET ts.open_status
+		=#{status,jdbcType=VARCHAR},ts.update_time=#{updateTime,
+		jdbcType=TIMESTAMP}
+		WHERE
+		ts.store_sid = #{store, jdbcType=VARCHAR} and
+		ts.message_info_sid = #{messageInfoSid, jdbcType=VARCHAR}
+	</update>
+
+	<!-- 修改模板编号 -->
+	<update id="updateStoreTemplateId">
+		UPDATE template_store_rel sr
+		SET sr.store_template_id
+		= #{storeTemplateId},
+		sr.update_time = NOW()
+		WHERE
+		sr.store_sid=#{store}
+		AND sr.message_info_sid=#{templateNo}
+	</update>
+
+	<!-- 查询模板类型（作废） -->
+	<select id="selectWechatTemplateType" resultMap="templateStoreRel">
+		SELECT
+		distinct
+		mt.type_name,
+		ts.store_sid,
+		ts.message_info_sid
+		FROM
+		template_store_rel
+		ts,
+		template_message_type mt
+		WHERE
+		mt.sid = ts.message_info_sid
+		AND
+		ts.store_sid =#{store, jdbcType=VARCHAR}
+		ORDER BY
+		mt.sort ASC
+	</select>
+
+	<!-- 查询门店表中是否有对应的门店信息 -->
+	<select id="selectStoreTemplate" resultType="com.wechat.manage.pojo.wechat.entity.TemplateStoreRel">
+		SELECT
+		*
+		FROM
+		template_store_rel sr
+		WHERE
+		sr.store_sid = #{store,jdbcType=VARCHAR}
+		AND
+		sr.message_info_sid = #{messageInfoSid, jdbcType=VARCHAR}
+	</select>
+
+	<!-- 在门店表中插入开通门店的数据 -->
+	<insert id="insertStoreTemplate" parameterType="com.wechat.manage.pojo.wechat.entity.TemplateStoreRel">
+		INSERT INTO
+		template_store_rel (
+		store_sid,
+		message_info_sid,
+		open_status,
+		store_template_id,
+		create_time,
+		update_time
+		)
+		VALUES
+		(
+		#{storeSid},
+		#{messageInfoSid},
+		#{openStatus},
+		#{storeTemplateId},
+		NOW(),
+		NOW()
+		)
+	</insert>
+
+	<select id="selectStoreRel" parameterType="string" resultMap="templateStoreRel">
+		select * from template_store_rel t where t.store_sid = #{store}
+	</select>
+	
+	<!-- 修改模板编号 -->
+	<update id="updateStoreTemplateIda">
+		UPDATE template_store_rel sr
+		SET sr.store_template_id
+		= "",
+		sr.open_status=0,
+		sr.update_time = NOW()
+		WHERE
+		sr.store_sid=#{store}
+		AND sr.message_info_sid=#{templateNo}
+	</update>
+
+</mapper>
