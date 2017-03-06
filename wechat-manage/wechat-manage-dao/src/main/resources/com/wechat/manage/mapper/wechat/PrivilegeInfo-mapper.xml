@@ -43,4 +43,5 @@
 			store_code = #{storeCode,jdbcType=VARCHAR}
 		</where>
 	</update>
+>>>>>>> branch 'master' of ssh://git@10.6.3.213/wechat_member/wxshop.git
 </mapper>

@@ -31,7 +31,7 @@
 		</where>
 	</select>
 	
-	<update id="updateWxVipCard" parameterType="com.wechat.manage.pojo.wechat.entity.WxVIPCard">
+	<update id="updateWxCipCard" parameterType="com.wechat.manage.pojo.wechat.entity.WxVIPCard">
 		update wx_vip_card
 		<set>
 			<if test="headName != null">

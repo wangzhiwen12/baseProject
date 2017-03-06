@@ -1,9 +1,9 @@
 package com.wechat.manage.mapper.wechat;
 
-import java.util.Map;
-
 import com.wechat.manage.pojo.wechat.entity.WechatCardInfo;
 import com.wechat.manage.pojo.wechat.vo.WechatCardInfoDto;
+
+import java.util.Map;
 
 public interface WechatCardInfoMapper {
     int deleteByPrimaryKey(Long sid);

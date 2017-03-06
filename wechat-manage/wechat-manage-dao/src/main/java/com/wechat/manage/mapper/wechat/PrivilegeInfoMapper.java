@@ -1,5 +1,6 @@
 package com.wechat.manage.mapper.wechat;
 
+
 import com.wechat.manage.pojo.wechat.entity.PrivilegeInfo;
 
 public interface PrivilegeInfoMapper {

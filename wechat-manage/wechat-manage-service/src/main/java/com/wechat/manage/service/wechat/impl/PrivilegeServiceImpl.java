@@ -1,16 +1,15 @@
 package com.wechat.manage.service.wechat.impl;
 
-import java.sql.Timestamp;
-import java.util.Map;
-
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.wechat.manage.mapper.wechat.PrivilegeInfoMapper;
 import com.wechat.manage.pojo.wechat.entity.PrivilegeInfo;
 import com.wechat.manage.service.wechat.intf.PrivilegeService;
 import com.wechat.manage.utils.ResultUtil;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
+import java.util.Map;
 
 /**
  * 特权service实现类

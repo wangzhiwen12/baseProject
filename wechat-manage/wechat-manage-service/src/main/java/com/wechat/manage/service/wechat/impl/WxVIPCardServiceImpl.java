@@ -1,17 +1,16 @@
 package com.wechat.manage.service.wechat.impl;
 
-import java.sql.Timestamp;
-import java.util.Map;
-
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.wechat.manage.mapper.wechat.WxVIPCardMapper;
 import com.wechat.manage.pojo.wechat.entity.WxVIPCard;
 import com.wechat.manage.pojo.wechat.vo.WxVIPCardDto;
 import com.wechat.manage.service.wechat.intf.WxVIPCardService;
 import com.wechat.manage.utils.ResultUtil;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
+import java.util.Map;
 
 @Service
 public class WxVIPCardServiceImpl implements WxVIPCardService {
@@ -36,7 +35,7 @@ public class WxVIPCardServiceImpl implements WxVIPCardService {
 			vipCard.setOnlineCodeStatus(vipCardDto.getOnlineCodeStatus());
 			vipCard.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 			try {
-				wxVIPCardMapper.updateWxVipCard(vipCard);
+				wxVIPCardMapper.updateWxCipCard(vipCard);
 				return ResultUtil.creComSucResult("发布成功");
 			} catch (Exception e) {
 				log.error(e.toString(), e);

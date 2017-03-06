@@ -1,9 +1,10 @@
 package com.wechat.manage.service.wechat.intf;
 
-import java.util.Map;
 
 import com.wechat.manage.pojo.wechat.entity.WxVIPCard;
 import com.wechat.manage.pojo.wechat.vo.WxVIPCardDto;
+
+import java.util.Map;
 
 public interface WxVIPCardService {
 

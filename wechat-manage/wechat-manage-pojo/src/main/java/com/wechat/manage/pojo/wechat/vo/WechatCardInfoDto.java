@@ -1,9 +1,9 @@
 package com.wechat.manage.pojo.wechat.vo;
 
+import com.wechat.manage.pojo.wechat.entity.WxPageHomeNav;
+
 import java.util.Date;
 import java.util.List;
-
-import com.wechat.manage.pojo.wechat.entity.WxPageHomeNav;
 
 /**
  * @author kongqf

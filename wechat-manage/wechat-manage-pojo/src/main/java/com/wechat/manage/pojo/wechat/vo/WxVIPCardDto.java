@@ -1,7 +1,6 @@
 package com.wechat.manage.pojo.wechat.vo;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 public class WxVIPCardDto implements Serializable {
 	private static final long serialVersionUID = -8011757621095881799L;

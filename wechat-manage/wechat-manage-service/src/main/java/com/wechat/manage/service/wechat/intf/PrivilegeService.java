@@ -1,8 +1,9 @@
 package com.wechat.manage.service.wechat.intf;
 
-import java.util.Map;
 
 import com.wechat.manage.pojo.wechat.entity.PrivilegeInfo;
+
+import java.util.Map;
 
 /**
  * 特权service

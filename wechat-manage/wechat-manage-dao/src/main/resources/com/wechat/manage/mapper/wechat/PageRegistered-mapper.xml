@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wechat.manage.mapper.wechat.PageRegisteredMapper">
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.wechat.entity.PageRegistered">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="back_image" jdbcType="VARCHAR" property="backImage" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="phone_no" jdbcType="VARCHAR" property="phoneNo" />
+    <result column="phone_no_is" jdbcType="INTEGER" property="phoneNoIs" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="page_description" jdbcType="VARCHAR" property="pageDescription" />
+    <result column="user_agreement" jdbcType="VARCHAR" property="userAgreement" />
+    <result column="shop_no" jdbcType="VARCHAR" property="shopNo" />
+    <result column="c1" jdbcType="VARCHAR" property="c1" />
+    <result column="c2" jdbcType="VARCHAR" property="c2" />
+    <result column="c3" jdbcType="VARCHAR" property="c3" />
+    <result column="c4" jdbcType="VARCHAR" property="c4" />
+    <result column="c5" jdbcType="VARCHAR" property="c5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, back_image, city, phone_no, phone_no_is, birthday, name, gender, page_description, 
+    user_agreement, shop_no, c1, c2, c3, c4, c5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from page_registered
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectPageRegisteredList" parameterType="com.wechat.manage.pojo.wechat.entity.PageRegistered" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from page_registered
+   	<where>
+	   	  <if test="id != null">
+	      and id = #{id,jdbcType=INTEGER}
+	      </if>
+	      <if test="shopNo != null">
+	       and shop_no = #{shopNo,jdbcType=VARCHAR}
+	      </if>
+   	</where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from page_registered
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByShopNoOrId" parameterType="com.wechat.manage.pojo.wechat.entity.PageRegistered">
+    delete from page_registered
+    <where>
+    	<if test="id != null">
+    		and id = #{id,jdbcType=INTEGER}
+    	</if>
+    	<if test="shopNo != null">
+    		and shop_no = #{shopNo,jdbcType=VARCHAR}
+    	</if>
+    </where>
+  </delete>
+  <insert id="insert" parameterType="com.wechat.manage.pojo.wechat.entity.PageRegistered">
+    insert into page_registered (id, title, back_image, 
+      city, phone_no, phone_no_is, 
+      birthday, name, gender, 
+      page_description, user_agreement, shop_no, 
+      c1, c2, c3, c4, 
+      c5)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{backImage,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{phoneNo,jdbcType=VARCHAR}, #{phoneNoIs,jdbcType=INTEGER}, 
+      #{birthday,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, 
+      #{pageDescription,jdbcType=VARCHAR}, #{userAgreement,jdbcType=VARCHAR}, #{shopNo,jdbcType=VARCHAR}, 
+      #{c1,jdbcType=VARCHAR}, #{c2,jdbcType=VARCHAR}, #{c3,jdbcType=VARCHAR}, #{c4,jdbcType=VARCHAR}, 
+      #{c5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wechat.manage.pojo.wechat.entity.PageRegistered">
+    insert into page_registered
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="backImage != null">
+        back_image,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="phoneNo != null">
+        phone_no,
+      </if>
+      <if test="phoneNoIs != null">
+        phone_no_is,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="pageDescription != null">
+        page_description,
+      </if>
+      <if test="userAgreement != null">
+        user_agreement,
+      </if>
+      <if test="shopNo != null">
+        shop_no,
+      </if>
+      <if test="c1 != null">
+        c1,
+      </if>
+      <if test="c2 != null">
+        c2,
+      </if>
+      <if test="c3 != null">
+        c3,
+      </if>
+      <if test="c4 != null">
+        c4,
+      </if>
+      <if test="c5 != null">
+        c5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="backImage != null">
+        #{backImage,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null">
+        #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNoIs != null">
+        #{phoneNoIs,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="pageDescription != null">
+        #{pageDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="userAgreement != null">
+        #{userAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="shopNo != null">
+        #{shopNo,jdbcType=VARCHAR},
+      </if>
+      <if test="c1 != null">
+        #{c1,jdbcType=VARCHAR},
+      </if>
+      <if test="c2 != null">
+        #{c2,jdbcType=VARCHAR},
+      </if>
+      <if test="c3 != null">
+        #{c3,jdbcType=VARCHAR},
+      </if>
+      <if test="c4 != null">
+        #{c4,jdbcType=VARCHAR},
+      </if>
+      <if test="c5 != null">
+        #{c5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByShopNoOrId" parameterType="com.wechat.manage.pojo.wechat.entity.PageRegistered">
+    update page_registered
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="backImage != null">
+        back_image = #{backImage,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null">
+        phone_no = #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNoIs != null">
+        phone_no_is = #{phoneNoIs,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="pageDescription != null">
+        page_description = #{pageDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="userAgreement != null">
+        user_agreement = #{userAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="c1 != null">
+        c1 = #{c1,jdbcType=VARCHAR},
+      </if>
+      <if test="c2 != null">
+        c2 = #{c2,jdbcType=VARCHAR},
+      </if>
+      <if test="c3 != null">
+        c3 = #{c3,jdbcType=VARCHAR},
+      </if>
+      <if test="c4 != null">
+        c4 = #{c4,jdbcType=VARCHAR},
+      </if>
+      <if test="c5 != null">
+        c5 = #{c5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+    	<if test="id != null">
+    		and id = #{id,jdbcType=INTEGER}
+    	</if>
+    	<if test="shopNo != null">
+    		and shop_no = #{shopNo,jdbcType=VARCHAR}
+    	</if>
+    </where>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.wechat.entity.PageRegistered">
+    update page_registered
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="backImage != null">
+        back_image = #{backImage,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null">
+        phone_no = #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNoIs != null">
+        phone_no_is = #{phoneNoIs,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="pageDescription != null">
+        page_description = #{pageDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="userAgreement != null">
+        user_agreement = #{userAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="shopNo != null">
+        shop_no = #{shopNo,jdbcType=VARCHAR},
+      </if>
+      <if test="c1 != null">
+        c1 = #{c1,jdbcType=VARCHAR},
+      </if>
+      <if test="c2 != null">
+        c2 = #{c2,jdbcType=VARCHAR},
+      </if>
+      <if test="c3 != null">
+        c3 = #{c3,jdbcType=VARCHAR},
+      </if>
+      <if test="c4 != null">
+        c4 = #{c4,jdbcType=VARCHAR},
+      </if>
+      <if test="c5 != null">
+        c5 = #{c5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.wechat.entity.PageRegistered">
+    update page_registered
+    set title = #{title,jdbcType=VARCHAR},
+      back_image = #{backImage,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      phone_no = #{phoneNo,jdbcType=VARCHAR},
+      phone_no_is = #{phoneNoIs,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      page_description = #{pageDescription,jdbcType=VARCHAR},
+      user_agreement = #{userAgreement,jdbcType=VARCHAR},
+      shop_no = #{shopNo,jdbcType=VARCHAR},
+      c1 = #{c1,jdbcType=VARCHAR},
+      c2 = #{c2,jdbcType=VARCHAR},
+      c3 = #{c3,jdbcType=VARCHAR},
+      c4 = #{c4,jdbcType=VARCHAR},
+      c5 = #{c5,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
