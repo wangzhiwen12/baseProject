@@ -122,7 +122,7 @@
         <servlet-name>default</servlet-name>
         <url-pattern>*.woff2</url-pattern>
     </servlet-mapping>
-    <filter>
+   <!--  <filter>
         <description>浏览器不支持put,delete等method,由该filter将/blog?_method=delete转换为标准的http delete方法</description>
         <filter-name>hiddenHttpMethodFilter</filter-name>
         <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
@@ -130,7 +130,7 @@
     <filter-mapping>
         <filter-name>hiddenHttpMethodFilter</filter-name>
         <servlet-name>spring-mvc</servlet-name>
-    </filter-mapping>
+    </filter-mapping> -->
 
      <!--Shiro配置-->
     <filter>
