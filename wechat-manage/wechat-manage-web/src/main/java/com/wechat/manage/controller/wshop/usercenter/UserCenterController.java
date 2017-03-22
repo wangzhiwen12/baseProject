@@ -88,7 +88,7 @@ public class UserCenterController extends BaseController{
             if (curUser != null && StringUtils.isNotEmpty(html)) {
             	TPage page = new TPage();
             	page.setShopId(shopId);
-            	page.setPageName(pageName);
+            	page.setWpageTitle(pageName);
             	page.setCreateUser(curUser.getUserId());
             	flag = userCenterService.saveUserCenterPage(page, html, data, curUser.getStoreCode());
             }

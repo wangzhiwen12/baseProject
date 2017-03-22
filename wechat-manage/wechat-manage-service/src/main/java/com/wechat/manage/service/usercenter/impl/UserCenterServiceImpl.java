@@ -85,7 +85,7 @@ public class UserCenterServiceImpl implements IUserCenterService {
 		} else {
 			TPage oTPage = list.get(0);
 			// 更新页面数据
-			oTPage.setPageName(page.getPageName());
+			oTPage.setWpageTitle(page.getWpageTitle());
 			pageService.updateWpage(oTPage);
 			// 2、将页面静态话并上传到ftp
 			InputStream input = new ByteArrayInputStream(html.getBytes());

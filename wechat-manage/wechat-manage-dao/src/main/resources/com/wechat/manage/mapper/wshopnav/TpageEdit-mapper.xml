@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.wshopnav.TPageEditMapper" >
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.wshopnav.entity.TPageEdit">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="param" property="param" jdbcType="VARCHAR"/>
+    </resultMap>
+  <sql id="Base_Column_List">
+		id, param
+	</sql>
+  <insert id="insertTpageEdit" parameterType="com.wechat.manage.pojo.wshopnav.entity.TPageEdit" >
+    insert into t_page_edit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="param != null" >
+        param,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="param != null" >
+        #{param,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="com.wechat.manage.pojo.wshopnav.entity.TPageEdit">
+        select
+        <include refid="Base_Column_List"/>
+        from t_page_edit
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <update id="update" parameterType="com.wechat.manage.pojo.wshopnav.entity.TPageEdit">
+     update t_page_edit
+	   <trim prefix="set" suffixOverrides=",">
+	      <if test="param != null">
+	          param = #{param,jdbcType=INTEGER},
+	      </if>
+	   </trim>
+	   <where>
+	      id=#{id,jdbcType=VARCHAR}
+	   </where>
+    </update>
+    <delete id="deleteWpage">
+		DELETE
+		FROM
+		t_page_edit
+		WHERE
+		id = #{id}
+	</delete>
+    
+</mapper>

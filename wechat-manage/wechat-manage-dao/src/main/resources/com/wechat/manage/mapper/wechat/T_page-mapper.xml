@@ -3,7 +3,7 @@
 <mapper namespace="com.wechat.manage.mapper.wechat.WPageMapper">
 	<resultMap id="tPage" type="com.wechat.manage.pojo.usercenter.entity.TPage">
 		<id column="sid" property="sid" />
-		<result column="page_name" property="pageName" />
+		<result column="page_name" property="wpageTitle" />
 		<result column="page_link" property="pageLink" />
 		<result column="page_code" property="pageCode" />
 		<result column="type" property="type" />
@@ -84,8 +84,8 @@
 	      <if test="sid != null">
 	          sid = #{sid,jdbcType=INTEGER},
 	      </if>
-	      <if test="pageName != null">
-	          page_name = #{pageName,jdbcType=VARCHAR},
+	      <if test="wpageTitle != null">
+	          page_name = #{wpageTitle,jdbcType=VARCHAR},
 	      </if>
 	      <if test="pageLink != null">
 	          page_link = #{pageLink,jdbcType=VARCHAR},
@@ -138,7 +138,7 @@
 			<if test="sid != null">
 				sid ,
 			</if>
-			<if test="pageName != null">
+			<if test="wpageTitle != null">
 				page_name,
 			</if>
 			<if test="pageLink != null">
@@ -176,8 +176,8 @@
 			<if test="sid != null">
 				 #{sid,jdbcType=BIGINT},
 			</if>
- 			<if test="pageName != null">
-                #{pageName,jdbcType=VARCHAR},
+ 			<if test="wpageTitle != null">
+                #{wpageTitle,jdbcType=VARCHAR},
             </if>
             <if test="pageLink != null">
                 #{pageLink,jdbcType=VARCHAR},

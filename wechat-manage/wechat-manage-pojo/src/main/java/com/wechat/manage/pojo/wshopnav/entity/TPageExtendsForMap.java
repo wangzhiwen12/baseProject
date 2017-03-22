@@ -1,21 +1,19 @@
-package com.wechat.manage.pojo.usercenter.entity;
+package com.wechat.manage.pojo.wshopnav.entity;
 
-import java.io.Serializable;
+
 import java.sql.Timestamp;
 
-public class TPage implements Serializable {
+import com.wechat.manage.utils.FormMap;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 351121558312147151L;
+
+public class TPageExtendsForMap extends FormMap<String,Object> {
 	
 	 private String sid;
 	 private String wpageTitle; //页面名称
 	 private String pageLink; //页面链接',
 	 private String pageCode; //页面二维码',
 	 private String type; //1 微页面   2 分类页',
-	 private String isHome; // '是否为主页。 1 是  0 否',
+	 private String isHome; // '是否为主页。 1 是  2 否',
 	 private String status; // '页面状态。 0 草稿  1 非草稿',
 	 private String shopId; //店铺表的外键（t_shop）',
 	 private String createUser; //用户表的外键',
@@ -95,10 +93,6 @@ public class TPage implements Serializable {
 	public void setSeqNo(Integer seqNo) {
 		this.seqNo = seqNo;
 	}
-	 
-	 
-	 
-	 
 	 
 
 }
