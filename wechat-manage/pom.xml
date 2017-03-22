@@ -19,6 +19,7 @@
         <module>wechat-manage-dao</module>
         <module>wechat-manage-service</module>
         <module>wechat-manage-web</module>
+        <module>wechat-manage-webroot</module>
     </modules>
 
     <dependencies>
