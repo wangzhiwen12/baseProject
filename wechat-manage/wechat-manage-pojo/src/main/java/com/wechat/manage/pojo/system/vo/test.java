@@ -5,3 +5,4 @@ package com.wechat.manage.pojo.system.vo;
  */
 public class test {
 }
+
