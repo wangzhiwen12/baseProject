@@ -23,7 +23,8 @@
     </modules>
 
     <dependencies>
-        <!--项目公共模块，因为父类依赖此模块，所以父类下的所有子类会有传递依赖-->
+
+        <!--项目公共模块，因为父类依赖此模块，所以父类下的所有子类会有传递依赖 -->
         <dependency>
             <groupId>com.wechat.common</groupId>
             <artifactId>wechat-common</artifactId>
