@@ -189,6 +189,7 @@ public class GroupController extends BaseController {
                 rd.setObj(lst);
             }
         } catch (Exception e) {
+        	System.out.println(e.getMessage());
             e.printStackTrace();
             rd.setCode("1");
             rd.setDesc(e.getMessage());

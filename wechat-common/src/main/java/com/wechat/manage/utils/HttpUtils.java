@@ -175,7 +175,7 @@ public class HttpUtils {
         gettMethod.setRequestHeader("Connection", "close");
         gettMethod.setRequestHeader("Content-type", "text/html;charset=utf-8");
         gettMethod.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, encoding);
-        httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(5000); // 连接5秒超时
+        httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(60000); // 连接5秒超时
         httpClient.getHttpConnectionManager().getParams().setSoTimeout(30000);// 读取30秒超时
             // 执行getMethod
             int statusCode = httpClient.executeMethod(gettMethod);

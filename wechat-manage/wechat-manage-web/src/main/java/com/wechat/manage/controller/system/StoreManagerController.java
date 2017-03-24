@@ -222,7 +222,6 @@ public class StoreManagerController extends BaseController {
 		}
 		return "success";
 	}
-
 	/**
 	 * 加载集团下拉框
 	 *
@@ -234,8 +233,7 @@ public class StoreManagerController extends BaseController {
 		String result;
 		GroupResult groupResult = new GroupResult();
 		try {
-//			result = HttpUtil.sendGet("http://localhost:8080/notebook/group/getGroupList.json", null);
-			result= HttpUtils.HttpGetByUtf("http://localhost:8080/notebook/group","getGroupList.json", null);
+			result= HttpUtils.HttpGetByUtf("http://localhost:8080/wechat-manage-web/group","getGroupList.json", null);
 			groupResult = com.alibaba.fastjson.JSON.parseObject(result, GroupResult.class);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
