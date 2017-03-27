@@ -134,7 +134,7 @@ public class MaterialLocalController extends BaseController {
 						return paramMap;
 					}
 				}
-				String realPath = System.getProperty("user.dir") + "/";
+				String realPath = System.getProperty("user.dir") + "\\";
 				// 自定义的文件名称
 				String trueFileName = String.valueOf(System.currentTimeMillis()) + fileName;
 				// 设置存放图片文件的路径

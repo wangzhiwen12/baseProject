@@ -19,6 +19,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,19 +41,20 @@ public class CouponInfoController extends BaseController {
 	@RequestMapping("/sendCoupon")
 	public String sendCoupon(String openIds, String infoSid, String storeCode) {
 		String[] split = openIds.split(";");
-		for (String string : split) {
-			CouponMember entity = new CouponMember();
-			entity.setMemberSid(string);
-			entity.setCouponSid(Long.parseLong(infoSid));
-			String addCouponMember = couponMbService.addCouponMember(entity);
-			if (!addCouponMember.equals("success")) {
-				return addCouponMember;
-			}
-		}
+//		for (String string : split) {
+//			CouponMember entity = new CouponMember();
+//			entity.setMemberSid(string);
+//			entity.setCouponSid(Long.parseLong(infoSid));
+//			String addCouponMember = couponMbService.addCouponMember(entity);
+//			if (!addCouponMember.equals("success")) {
+//				return addCouponMember;
+//			}
+//		}
 		Map<String, Object> wechatMap = new HashMap<String, Object>();
 		Map<String, Object> textMap = new HashMap<String, Object>();
 		wechatMap.put("touser", split);
-		textMap.put("content", "导购向您发送了一张券，请注意查收");
+		String url = "http://117.121.99.11/notebook/member/receiveCoupon.html?storeCode=" + storeCode +"&couponSid=" + infoSid;
+		textMap.put("content", "导购向您发送了一张券，请点击下方链接领取。<a href=\""+ url +"\">点击领取</a>");
 		wechatMap.put("text", textMap);
 		wechatMap.put("msgtype", "text");
 		Map<String, Object> paramMap = new HashMap<String, Object>();

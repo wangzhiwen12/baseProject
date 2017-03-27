@@ -2,11 +2,14 @@ package com.wechat.manage.controller.wechat.coupon;
 
 import com.wechat.manage.annotation.SystemLog;
 import com.wechat.manage.controller.index.BaseController;
+import com.wechat.manage.mapper.wechat.MemberInfoMapper;
 import com.wechat.manage.pojo.wechat.entity.CouponMember;
+import com.wechat.manage.pojo.wechat.entity.MemberInfo;
 import com.wechat.manage.pojo.wechat.vo.CouponInfoDto;
 import com.wechat.manage.pojo.wechat.vo.CouponStatisticsDto;
 import com.wechat.manage.pojo.wechat.vo.UserCouponInfoDto;
 import com.wechat.manage.service.wechat.intf.CouponMemberService;
+import com.wechat.manage.service.wechat.intf.MemberInfoService;
 import com.wechat.manage.utils.Common;
 import com.wechat.manage.utils.RedisUtil;
 import com.wechat.manage.utils.StringUtils;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -29,6 +33,8 @@ public class CouponMemberController extends BaseController {
 	CouponMemberService couponMbService;
 	@Autowired
 	RedisUtil redisUtil;
+	@Autowired
+	MemberInfoService memberInfoService;
 
 	@ResponseBody
 	@RequestMapping("/addCouponMember")
@@ -39,6 +45,21 @@ public class CouponMemberController extends BaseController {
 		entity.setCouponSid(Long.parseLong(couponId));
 		return couponMbService.addCouponMember(entity);
 	}
+
+	@ResponseBody
+	@RequestMapping("/receiveCoupon")
+	@SystemLog(module = "卡券", methods = "领取卡券")
+	public String receiveCoupon(String couponId, String mobile) {
+		MemberInfo member = new MemberInfo();
+		member.setMobile(mobile);
+		List<MemberInfo> memberList = memberInfoService.selectListByParam(member);
+		CouponMember entity = new CouponMember();
+		entity.setMemberSid(memberList.get(0).getOpenid());
+		entity.setCouponSid(Long.parseLong(couponId));
+		return couponMbService.addCouponMember(entity);
+	}
+
+
 
 	@ResponseBody
 	@RequestMapping("/findCouponMember")

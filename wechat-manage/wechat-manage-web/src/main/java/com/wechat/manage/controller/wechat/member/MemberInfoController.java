@@ -14,6 +14,7 @@ import com.wechat.manage.service.wechat.intf.MemberCardService;
 import com.wechat.manage.service.wechat.intf.MemberInfoService;
 import com.wechat.manage.service.wechat.intf.MemberPointInfoService;
 import com.wechat.manage.service.wechat.intf.MemberPointService;
+import com.wechat.manage.utils.RedisUtil;
 import com.wechat.manage.vo.DataTableParams;
 import com.wechat.manage.vo.DataTableResult;
 import com.wechat.manage.utils.StringUtils;
@@ -27,6 +28,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,6 +58,9 @@ public class MemberInfoController extends BaseController {
 	@Autowired
 	private MemberPointService memberPointService;
 
+	@Autowired
+	private RedisUtil redisUtil;
+
 	@ResponseBody
 	@RequestMapping(value = "/getMsgMember")
 	public DataTableResult<MemberInfo> getMsgMember(DataTableParams para, String massSid) {
@@ -79,7 +85,7 @@ public class MemberInfoController extends BaseController {
 		memberInfo.setOpenid(openId);
 		memberInfo.setMobile(mobile);
 		if(gender!=null){
-			memberInfo.setSex(Integer.valueOf(gender));	
+			memberInfo.setSex(Integer.valueOf(gender));
 		}
 		memberInfo.setNickname(name);
 		memberInfo.setCity(city);

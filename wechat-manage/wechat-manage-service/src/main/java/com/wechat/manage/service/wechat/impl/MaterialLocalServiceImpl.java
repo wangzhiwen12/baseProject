@@ -76,6 +76,7 @@ public class MaterialLocalServiceImpl implements MaterialLocalService {
 			while ((line = br.readLine()) != null) {
 				reString = line;
 			}
+			System.out.print(reString + "reString---------------");
 			MediaDto media = JsonUtil.getJacksonDTO(reString, MediaDto.class);
 			br.close();
 			return media;
