@@ -5,7 +5,7 @@
 <generatorConfiguration>
     <!-- 导入数据库相关的驱动包开始 -->
     <classPathEntry
-            location="/home/kongqf/works/repository/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar"/>
+            location="D:\Tools\Java\common_jar\mysql-jdbc\mysql-connector-java-5.1.30.jar"/>
     <!-- 导入数据库相关的驱动包结束 -->
     <context id="context1">
         <commentGenerator>
@@ -21,16 +21,16 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 自动生成的实体类的设置 -->
-        <javaModelGenerator targetPackage="com.wfj.entity"
+        <javaModelGenerator targetPackage="com.generator.pojo"
                             targetProject="src/main/java"/>
         <!-- 自动生成的mapper接口的设置 -->
-        <sqlMapGenerator targetPackage="mappings"
+        <sqlMapGenerator targetPackage="mapper"
                          targetProject="src/main/resources" />
         <!-- 自动生成的mapper.xml文件的设置 -->
-        <javaClientGenerator targetPackage="com.wfj.mapper"
+        <javaClientGenerator targetPackage="com.generator.mapper"
                              targetProject="src/main/java" type="XMLMAPPER"/>
         <!-- 数据库中对应表格的设置 -->
-        <table schema="wechat" domainObjectName="WechatCardInfo" tableName="wechat_cardinfo"
+        <table schema="wechat" domainObjectName="TCategoryPropsDict" tableName="t_category_props_dict"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
