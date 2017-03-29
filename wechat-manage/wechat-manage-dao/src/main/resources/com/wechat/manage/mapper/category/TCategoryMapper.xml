@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.category.TCategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.category.entity.TCategory" >
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="category_sid" property="categorySid" jdbcType="VARCHAR" />
+    <result column="parent_sid" property="parentSid" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="is_parent" property="isParent" jdbcType="INTEGER" />
+    <result column="is_self_built" property="isSelfBuilt" jdbcType="INTEGER" />
+    <result column="is_leaf" property="isLeaf" jdbcType="VARCHAR" />
+    <result column="is_display" property="isDisplay" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="root_sid" property="rootSid" jdbcType="BIGINT" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="sort_order" property="sortOrder" jdbcType="INTEGER" />
+    <result column="channel_sid" property="channelSid" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="search_path" property="searchPath" jdbcType="VARCHAR" />
+    <result column="category_type" property="categoryType" jdbcType="INTEGER" />
+    <result column="shop_sid" property="shopSid" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="erp_type" property="erpType" jdbcType="INTEGER" />
+    <result column="is_market" property="isMarket" jdbcType="VARCHAR" />
+    <result column="success_time" property="successTime" jdbcType="TIMESTAMP" />
+    <result column="group_sid" property="groupSid" jdbcType="BIGINT" />
+    <result column="category_code" property="categoryCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, category_sid, parent_sid, name, is_parent, is_self_built, is_leaf, is_display, 
+    status, root_sid, level, sort_order, channel_sid, create_time, search_path, category_type, 
+    shop_sid, description, erp_type, is_market, success_time, group_sid, category_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_category
+    where sid = #{sid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_category
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wechat.manage.pojo.category.entity.TCategory" >
+    insert into t_category (sid, category_sid, parent_sid, 
+      name, is_parent, is_self_built, 
+      is_leaf, is_display, status, 
+      root_sid, level, sort_order, 
+      channel_sid, create_time, search_path, 
+      category_type, shop_sid, description, 
+      erp_type, is_market, success_time, 
+      group_sid, category_code)
+    values (#{sid,jdbcType=BIGINT}, #{categorySid,jdbcType=VARCHAR}, #{parentSid,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{isParent,jdbcType=INTEGER}, #{isSelfBuilt,jdbcType=INTEGER}, 
+      #{isLeaf,jdbcType=VARCHAR}, #{isDisplay,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, 
+      #{rootSid,jdbcType=BIGINT}, #{level,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER}, 
+      #{channelSid,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{searchPath,jdbcType=VARCHAR}, 
+      #{categoryType,jdbcType=INTEGER}, #{shopSid,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{erpType,jdbcType=INTEGER}, #{isMarket,jdbcType=VARCHAR}, #{successTime,jdbcType=TIMESTAMP}, 
+      #{groupSid,jdbcType=BIGINT}, #{categoryCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wechat.manage.pojo.category.entity.TCategory" >
+    insert into t_category
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="categorySid != null" >
+        category_sid,
+      </if>
+      <if test="parentSid != null" >
+        parent_sid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="isParent != null" >
+        is_parent,
+      </if>
+      <if test="isSelfBuilt != null" >
+        is_self_built,
+      </if>
+      <if test="isLeaf != null" >
+        is_leaf,
+      </if>
+      <if test="isDisplay != null" >
+        is_display,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="rootSid != null" >
+        root_sid,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="sortOrder != null" >
+        sort_order,
+      </if>
+      <if test="channelSid != null" >
+        channel_sid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="searchPath != null" >
+        search_path,
+      </if>
+      <if test="categoryType != null" >
+        category_type,
+      </if>
+      <if test="shopSid != null" >
+        shop_sid,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="erpType != null" >
+        erp_type,
+      </if>
+      <if test="isMarket != null" >
+        is_market,
+      </if>
+      <if test="successTime != null" >
+        success_time,
+      </if>
+      <if test="groupSid != null" >
+        group_sid,
+      </if>
+      <if test="categoryCode != null" >
+        category_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="categorySid != null" >
+        #{categorySid,jdbcType=VARCHAR},
+      </if>
+      <if test="parentSid != null" >
+        #{parentSid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="isParent != null" >
+        #{isParent,jdbcType=INTEGER},
+      </if>
+      <if test="isSelfBuilt != null" >
+        #{isSelfBuilt,jdbcType=INTEGER},
+      </if>
+      <if test="isLeaf != null" >
+        #{isLeaf,jdbcType=VARCHAR},
+      </if>
+      <if test="isDisplay != null" >
+        #{isDisplay,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="rootSid != null" >
+        #{rootSid,jdbcType=BIGINT},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="sortOrder != null" >
+        #{sortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="channelSid != null" >
+        #{channelSid,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="searchPath != null" >
+        #{searchPath,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryType != null" >
+        #{categoryType,jdbcType=INTEGER},
+      </if>
+      <if test="shopSid != null" >
+        #{shopSid,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="erpType != null" >
+        #{erpType,jdbcType=INTEGER},
+      </if>
+      <if test="isMarket != null" >
+        #{isMarket,jdbcType=VARCHAR},
+      </if>
+      <if test="successTime != null" >
+        #{successTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="groupSid != null" >
+        #{groupSid,jdbcType=BIGINT},
+      </if>
+      <if test="categoryCode != null" >
+        #{categoryCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.category.entity.TCategory" >
+    update t_category
+    <set >
+      <if test="categorySid != null" >
+        category_sid = #{categorySid,jdbcType=VARCHAR},
+      </if>
+      <if test="parentSid != null" >
+        parent_sid = #{parentSid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="isParent != null" >
+        is_parent = #{isParent,jdbcType=INTEGER},
+      </if>
+      <if test="isSelfBuilt != null" >
+        is_self_built = #{isSelfBuilt,jdbcType=INTEGER},
+      </if>
+      <if test="isLeaf != null" >
+        is_leaf = #{isLeaf,jdbcType=VARCHAR},
+      </if>
+      <if test="isDisplay != null" >
+        is_display = #{isDisplay,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="rootSid != null" >
+        root_sid = #{rootSid,jdbcType=BIGINT},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="sortOrder != null" >
+        sort_order = #{sortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="channelSid != null" >
+        channel_sid = #{channelSid,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="searchPath != null" >
+        search_path = #{searchPath,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryType != null" >
+        category_type = #{categoryType,jdbcType=INTEGER},
+      </if>
+      <if test="shopSid != null" >
+        shop_sid = #{shopSid,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="erpType != null" >
+        erp_type = #{erpType,jdbcType=INTEGER},
+      </if>
+      <if test="isMarket != null" >
+        is_market = #{isMarket,jdbcType=VARCHAR},
+      </if>
+      <if test="successTime != null" >
+        success_time = #{successTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="groupSid != null" >
+        group_sid = #{groupSid,jdbcType=BIGINT},
+      </if>
+      <if test="categoryCode != null" >
+        category_code = #{categoryCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.category.entity.TCategory" >
+    update t_category
+    set category_sid = #{categorySid,jdbcType=VARCHAR},
+      parent_sid = #{parentSid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      is_parent = #{isParent,jdbcType=INTEGER},
+      is_self_built = #{isSelfBuilt,jdbcType=INTEGER},
+      is_leaf = #{isLeaf,jdbcType=VARCHAR},
+      is_display = #{isDisplay,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      root_sid = #{rootSid,jdbcType=BIGINT},
+      level = #{level,jdbcType=INTEGER},
+      sort_order = #{sortOrder,jdbcType=INTEGER},
+      channel_sid = #{channelSid,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      search_path = #{searchPath,jdbcType=VARCHAR},
+      category_type = #{categoryType,jdbcType=INTEGER},
+      shop_sid = #{shopSid,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      erp_type = #{erpType,jdbcType=INTEGER},
+      is_market = #{isMarket,jdbcType=VARCHAR},
+      success_time = #{successTime,jdbcType=TIMESTAMP},
+      group_sid = #{groupSid,jdbcType=BIGINT},
+      category_code = #{categoryCode,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+</mapper>

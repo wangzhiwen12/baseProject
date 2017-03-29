@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.category.TCategoryPropValuesMapper" >
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.category.entity.TCategoryPropValues" >
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="category_sid" property="categorySid" jdbcType="VARCHAR" />
+    <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    <result column="props_sid" property="propsSid" jdbcType="BIGINT" />
+    <result column="props_name" property="propsName" jdbcType="VARCHAR" />
+    <result column="values_sid" property="valuesSid" jdbcType="BIGINT" />
+    <result column="values_name" property="valuesName" jdbcType="VARCHAR" />
+    <result column="channel_sid" property="channelSid" jdbcType="BIGINT" />
+    <result column="opt_user" property="optUser" jdbcType="VARCHAR" />
+    <result column="opt_date" property="optDate" jdbcType="TIMESTAMP" />
+    <result column="not_null" property="notNull" jdbcType="INTEGER" />
+    <result column="is_erp_syn" property="isErpSyn" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, shop_id, category_sid, category_name, props_sid, props_name, values_sid, values_name, 
+    channel_sid, opt_user, opt_date, not_null, is_erp_syn, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_category_prop_values
+    where sid = #{sid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_category_prop_values
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wechat.manage.pojo.category.entity.TCategoryPropValues" >
+    insert into t_category_prop_values (sid, shop_id, category_sid, 
+      category_name, props_sid, props_name, 
+      values_sid, values_name, channel_sid, 
+      opt_user, opt_date, not_null, 
+      is_erp_syn, create_time)
+    values (#{sid,jdbcType=BIGINT}, #{shopId,jdbcType=BIGINT}, #{categorySid,jdbcType=VARCHAR}, 
+      #{categoryName,jdbcType=VARCHAR}, #{propsSid,jdbcType=BIGINT}, #{propsName,jdbcType=VARCHAR}, 
+      #{valuesSid,jdbcType=BIGINT}, #{valuesName,jdbcType=VARCHAR}, #{channelSid,jdbcType=BIGINT}, 
+      #{optUser,jdbcType=VARCHAR}, #{optDate,jdbcType=TIMESTAMP}, #{notNull,jdbcType=INTEGER}, 
+      #{isErpSyn,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wechat.manage.pojo.category.entity.TCategoryPropValues" >
+    insert into t_category_prop_values
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="categorySid != null" >
+        category_sid,
+      </if>
+      <if test="categoryName != null" >
+        category_name,
+      </if>
+      <if test="propsSid != null" >
+        props_sid,
+      </if>
+      <if test="propsName != null" >
+        props_name,
+      </if>
+      <if test="valuesSid != null" >
+        values_sid,
+      </if>
+      <if test="valuesName != null" >
+        values_name,
+      </if>
+      <if test="channelSid != null" >
+        channel_sid,
+      </if>
+      <if test="optUser != null" >
+        opt_user,
+      </if>
+      <if test="optDate != null" >
+        opt_date,
+      </if>
+      <if test="notNull != null" >
+        not_null,
+      </if>
+      <if test="isErpSyn != null" >
+        is_erp_syn,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="categorySid != null" >
+        #{categorySid,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null" >
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="propsSid != null" >
+        #{propsSid,jdbcType=BIGINT},
+      </if>
+      <if test="propsName != null" >
+        #{propsName,jdbcType=VARCHAR},
+      </if>
+      <if test="valuesSid != null" >
+        #{valuesSid,jdbcType=BIGINT},
+      </if>
+      <if test="valuesName != null" >
+        #{valuesName,jdbcType=VARCHAR},
+      </if>
+      <if test="channelSid != null" >
+        #{channelSid,jdbcType=BIGINT},
+      </if>
+      <if test="optUser != null" >
+        #{optUser,jdbcType=VARCHAR},
+      </if>
+      <if test="optDate != null" >
+        #{optDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="notNull != null" >
+        #{notNull,jdbcType=INTEGER},
+      </if>
+      <if test="isErpSyn != null" >
+        #{isErpSyn,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.category.entity.TCategoryPropValues" >
+    update t_category_prop_values
+    <set >
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="categorySid != null" >
+        category_sid = #{categorySid,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null" >
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="propsSid != null" >
+        props_sid = #{propsSid,jdbcType=BIGINT},
+      </if>
+      <if test="propsName != null" >
+        props_name = #{propsName,jdbcType=VARCHAR},
+      </if>
+      <if test="valuesSid != null" >
+        values_sid = #{valuesSid,jdbcType=BIGINT},
+      </if>
+      <if test="valuesName != null" >
+        values_name = #{valuesName,jdbcType=VARCHAR},
+      </if>
+      <if test="channelSid != null" >
+        channel_sid = #{channelSid,jdbcType=BIGINT},
+      </if>
+      <if test="optUser != null" >
+        opt_user = #{optUser,jdbcType=VARCHAR},
+      </if>
+      <if test="optDate != null" >
+        opt_date = #{optDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="notNull != null" >
+        not_null = #{notNull,jdbcType=INTEGER},
+      </if>
+      <if test="isErpSyn != null" >
+        is_erp_syn = #{isErpSyn,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.category.entity.TCategoryPropValues" >
+    update t_category_prop_values
+    set shop_id = #{shopId,jdbcType=BIGINT},
+      category_sid = #{categorySid,jdbcType=VARCHAR},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      props_sid = #{propsSid,jdbcType=BIGINT},
+      props_name = #{propsName,jdbcType=VARCHAR},
+      values_sid = #{valuesSid,jdbcType=BIGINT},
+      values_name = #{valuesName,jdbcType=VARCHAR},
+      channel_sid = #{channelSid,jdbcType=BIGINT},
+      opt_user = #{optUser,jdbcType=VARCHAR},
+      opt_date = #{optDate,jdbcType=TIMESTAMP},
+      not_null = #{notNull,jdbcType=INTEGER},
+      is_erp_syn = #{isErpSyn,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.category.TCategoryValuesDictMapper" >
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.category.entity.TCategoryValuesDict" >
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="values_sid" property="valuesSid" jdbcType="BIGINT" />
+    <result column="values_name" property="valuesName" jdbcType="VARCHAR" />
+    <result column="is_key_value" property="isKeyValue" jdbcType="BIGINT" />
+    <result column="values_desc" property="valuesDesc" jdbcType="VARCHAR" />
+    <result column="values_code" property="valuesCode" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="BIGINT" />
+    <result column="props_sid" property="propsSid" jdbcType="BIGINT" />
+    <result column="sort_order" property="sortOrder" jdbcType="BIGINT" />
+    <result column="channel_sid" property="channelSid" jdbcType="BIGINT" />
+    <result column="is_erp_value" property="isErpValue" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, values_sid, values_name, is_key_value, values_desc, values_code, status, props_sid, 
+    sort_order, channel_sid, is_erp_value
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_category_values_dict
+    where sid = #{sid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_category_values_dict
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wechat.manage.pojo.category.entity.TCategoryValuesDict" >
+    insert into t_category_values_dict (sid, values_sid, values_name, 
+      is_key_value, values_desc, values_code, 
+      status, props_sid, sort_order, 
+      channel_sid, is_erp_value)
+    values (#{sid,jdbcType=BIGINT}, #{valuesSid,jdbcType=BIGINT}, #{valuesName,jdbcType=VARCHAR}, 
+      #{isKeyValue,jdbcType=BIGINT}, #{valuesDesc,jdbcType=VARCHAR}, #{valuesCode,jdbcType=VARCHAR}, 
+      #{status,jdbcType=BIGINT}, #{propsSid,jdbcType=BIGINT}, #{sortOrder,jdbcType=BIGINT}, 
+      #{channelSid,jdbcType=BIGINT}, #{isErpValue,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wechat.manage.pojo.category.entity.TCategoryValuesDict" >
+    insert into t_category_values_dict
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="valuesSid != null" >
+        values_sid,
+      </if>
+      <if test="valuesName != null" >
+        values_name,
+      </if>
+      <if test="isKeyValue != null" >
+        is_key_value,
+      </if>
+      <if test="valuesDesc != null" >
+        values_desc,
+      </if>
+      <if test="valuesCode != null" >
+        values_code,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="propsSid != null" >
+        props_sid,
+      </if>
+      <if test="sortOrder != null" >
+        sort_order,
+      </if>
+      <if test="channelSid != null" >
+        channel_sid,
+      </if>
+      <if test="isErpValue != null" >
+        is_erp_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="valuesSid != null" >
+        #{valuesSid,jdbcType=BIGINT},
+      </if>
+      <if test="valuesName != null" >
+        #{valuesName,jdbcType=VARCHAR},
+      </if>
+      <if test="isKeyValue != null" >
+        #{isKeyValue,jdbcType=BIGINT},
+      </if>
+      <if test="valuesDesc != null" >
+        #{valuesDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="valuesCode != null" >
+        #{valuesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIGINT},
+      </if>
+      <if test="propsSid != null" >
+        #{propsSid,jdbcType=BIGINT},
+      </if>
+      <if test="sortOrder != null" >
+        #{sortOrder,jdbcType=BIGINT},
+      </if>
+      <if test="channelSid != null" >
+        #{channelSid,jdbcType=BIGINT},
+      </if>
+      <if test="isErpValue != null" >
+        #{isErpValue,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.category.entity.TCategoryValuesDict" >
+    update t_category_values_dict
+    <set >
+      <if test="valuesSid != null" >
+        values_sid = #{valuesSid,jdbcType=BIGINT},
+      </if>
+      <if test="valuesName != null" >
+        values_name = #{valuesName,jdbcType=VARCHAR},
+      </if>
+      <if test="isKeyValue != null" >
+        is_key_value = #{isKeyValue,jdbcType=BIGINT},
+      </if>
+      <if test="valuesDesc != null" >
+        values_desc = #{valuesDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="valuesCode != null" >
+        values_code = #{valuesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIGINT},
+      </if>
+      <if test="propsSid != null" >
+        props_sid = #{propsSid,jdbcType=BIGINT},
+      </if>
+      <if test="sortOrder != null" >
+        sort_order = #{sortOrder,jdbcType=BIGINT},
+      </if>
+      <if test="channelSid != null" >
+        channel_sid = #{channelSid,jdbcType=BIGINT},
+      </if>
+      <if test="isErpValue != null" >
+        is_erp_value = #{isErpValue,jdbcType=BIGINT},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.category.entity.TCategoryValuesDict" >
+    update t_category_values_dict
+    set values_sid = #{valuesSid,jdbcType=BIGINT},
+      values_name = #{valuesName,jdbcType=VARCHAR},
+      is_key_value = #{isKeyValue,jdbcType=BIGINT},
+      values_desc = #{valuesDesc,jdbcType=VARCHAR},
+      values_code = #{valuesCode,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIGINT},
+      props_sid = #{propsSid,jdbcType=BIGINT},
+      sort_order = #{sortOrder,jdbcType=BIGINT},
+      channel_sid = #{channelSid,jdbcType=BIGINT},
+      is_erp_value = #{isErpValue,jdbcType=BIGINT}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+</mapper>

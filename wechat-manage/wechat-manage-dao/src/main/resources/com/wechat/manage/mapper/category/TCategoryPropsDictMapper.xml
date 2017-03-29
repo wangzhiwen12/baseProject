@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.category.TCategoryPropsDictMapper" >
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.category.entity.TCategoryPropsDict" >
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="props_sid" property="propsSid" jdbcType="BIGINT" />
+    <result column="props_name" property="propsName" jdbcType="VARCHAR" />
+    <result column="is_key_prop" property="isKeyProp" jdbcType="INTEGER" />
+    <result column="is_enum_prop" property="isEnumProp" jdbcType="INTEGER" />
+    <result column="props_desc" property="propsDesc" jdbcType="VARCHAR" />
+    <result column="props_code" property="propsCode" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="BIGINT" />
+    <result column="sort_order" property="sortOrder" jdbcType="BIGINT" />
+    <result column="channel_sid" property="channelSid" jdbcType="BIGINT" />
+    <result column="is_erp_prop" property="isErpProp" jdbcType="INTEGER" />
+    <result column="erp_type" property="erpType" jdbcType="INTEGER" />
+    <result column="erp_prop_code" property="erpPropCode" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="opt_user_sid" property="optUserSid" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, shop_id, props_sid, props_name, is_key_prop, is_enum_prop, props_desc, props_code, 
+    status, sort_order, channel_sid, is_erp_prop, erp_type, erp_prop_code, create_time, 
+    opt_user_sid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_category_props_dict
+    where sid = #{sid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_category_props_dict
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wechat.manage.pojo.category.entity.TCategoryPropsDict" >
+    insert into t_category_props_dict (sid, shop_id, props_sid, 
+      props_name, is_key_prop, is_enum_prop, 
+      props_desc, props_code, status, 
+      sort_order, channel_sid, is_erp_prop, 
+      erp_type, erp_prop_code, create_time, 
+      opt_user_sid)
+    values (#{sid,jdbcType=BIGINT}, #{shopId,jdbcType=BIGINT}, #{propsSid,jdbcType=BIGINT}, 
+      #{propsName,jdbcType=VARCHAR}, #{isKeyProp,jdbcType=INTEGER}, #{isEnumProp,jdbcType=INTEGER}, 
+      #{propsDesc,jdbcType=VARCHAR}, #{propsCode,jdbcType=VARCHAR}, #{status,jdbcType=BIGINT}, 
+      #{sortOrder,jdbcType=BIGINT}, #{channelSid,jdbcType=BIGINT}, #{isErpProp,jdbcType=INTEGER}, 
+      #{erpType,jdbcType=INTEGER}, #{erpPropCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{optUserSid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wechat.manage.pojo.category.entity.TCategoryPropsDict" >
+    insert into t_category_props_dict
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="propsSid != null" >
+        props_sid,
+      </if>
+      <if test="propsName != null" >
+        props_name,
+      </if>
+      <if test="isKeyProp != null" >
+        is_key_prop,
+      </if>
+      <if test="isEnumProp != null" >
+        is_enum_prop,
+      </if>
+      <if test="propsDesc != null" >
+        props_desc,
+      </if>
+      <if test="propsCode != null" >
+        props_code,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="sortOrder != null" >
+        sort_order,
+      </if>
+      <if test="channelSid != null" >
+        channel_sid,
+      </if>
+      <if test="isErpProp != null" >
+        is_erp_prop,
+      </if>
+      <if test="erpType != null" >
+        erp_type,
+      </if>
+      <if test="erpPropCode != null" >
+        erp_prop_code,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="optUserSid != null" >
+        opt_user_sid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="propsSid != null" >
+        #{propsSid,jdbcType=BIGINT},
+      </if>
+      <if test="propsName != null" >
+        #{propsName,jdbcType=VARCHAR},
+      </if>
+      <if test="isKeyProp != null" >
+        #{isKeyProp,jdbcType=INTEGER},
+      </if>
+      <if test="isEnumProp != null" >
+        #{isEnumProp,jdbcType=INTEGER},
+      </if>
+      <if test="propsDesc != null" >
+        #{propsDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="propsCode != null" >
+        #{propsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIGINT},
+      </if>
+      <if test="sortOrder != null" >
+        #{sortOrder,jdbcType=BIGINT},
+      </if>
+      <if test="channelSid != null" >
+        #{channelSid,jdbcType=BIGINT},
+      </if>
+      <if test="isErpProp != null" >
+        #{isErpProp,jdbcType=INTEGER},
+      </if>
+      <if test="erpType != null" >
+        #{erpType,jdbcType=INTEGER},
+      </if>
+      <if test="erpPropCode != null" >
+        #{erpPropCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="optUserSid != null" >
+        #{optUserSid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.category.entity.TCategoryPropsDict" >
+    update t_category_props_dict
+    <set >
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="propsSid != null" >
+        props_sid = #{propsSid,jdbcType=BIGINT},
+      </if>
+      <if test="propsName != null" >
+        props_name = #{propsName,jdbcType=VARCHAR},
+      </if>
+      <if test="isKeyProp != null" >
+        is_key_prop = #{isKeyProp,jdbcType=INTEGER},
+      </if>
+      <if test="isEnumProp != null" >
+        is_enum_prop = #{isEnumProp,jdbcType=INTEGER},
+      </if>
+      <if test="propsDesc != null" >
+        props_desc = #{propsDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="propsCode != null" >
+        props_code = #{propsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIGINT},
+      </if>
+      <if test="sortOrder != null" >
+        sort_order = #{sortOrder,jdbcType=BIGINT},
+      </if>
+      <if test="channelSid != null" >
+        channel_sid = #{channelSid,jdbcType=BIGINT},
+      </if>
+      <if test="isErpProp != null" >
+        is_erp_prop = #{isErpProp,jdbcType=INTEGER},
+      </if>
+      <if test="erpType != null" >
+        erp_type = #{erpType,jdbcType=INTEGER},
+      </if>
+      <if test="erpPropCode != null" >
+        erp_prop_code = #{erpPropCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="optUserSid != null" >
+        opt_user_sid = #{optUserSid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.category.entity.TCategoryPropsDict" >
+    update t_category_props_dict
+    set shop_id = #{shopId,jdbcType=BIGINT},
+      props_sid = #{propsSid,jdbcType=BIGINT},
+      props_name = #{propsName,jdbcType=VARCHAR},
+      is_key_prop = #{isKeyProp,jdbcType=INTEGER},
+      is_enum_prop = #{isEnumProp,jdbcType=INTEGER},
+      props_desc = #{propsDesc,jdbcType=VARCHAR},
+      props_code = #{propsCode,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIGINT},
+      sort_order = #{sortOrder,jdbcType=BIGINT},
+      channel_sid = #{channelSid,jdbcType=BIGINT},
+      is_erp_prop = #{isErpProp,jdbcType=INTEGER},
+      erp_type = #{erpType,jdbcType=INTEGER},
+      erp_prop_code = #{erpPropCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      opt_user_sid = #{optUserSid,jdbcType=BIGINT}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+</mapper>

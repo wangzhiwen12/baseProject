@@ -118,7 +118,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <i class="icon-wallet"></i>
                         <c:choose>
                             <c:when test="${storeName!=null}"> <!--如果 -->
-                                <span> 门店：${userAuthorizatioStoreList[0].businessName}</span>
+                                <span> 门店：${storeName}</span>
                             </c:when>
                             <c:otherwise> <!--否则 -->
                                 <span> 门店：${userAuthorizatioStoreList[0].businessName}</span>

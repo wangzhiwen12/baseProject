@@ -680,4 +680,16 @@ public class Common {
             }
         }
     }
+
+    /**
+     * 获取系统路径 http://localhost:8080/systemname/
+     *
+     * @param request
+     * @return
+     */
+    public static String getSystemUrl(HttpServletRequest request) {
+        String path = request.getContextPath();
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+        return basePath;
+    }
 }

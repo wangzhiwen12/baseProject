@@ -30,7 +30,7 @@
         <javaClientGenerator targetPackage="com.generator.mapper"
                              targetProject="src/main/java" type="XMLMAPPER"/>
         <!-- 数据库中对应表格的设置 -->
-        <table schema="wechat" domainObjectName="TCategoryPropsDict" tableName="t_category_props_dict"
+        <table schema="wechat" domainObjectName="TCategoryValuesDict" tableName="t_category_values_dict"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

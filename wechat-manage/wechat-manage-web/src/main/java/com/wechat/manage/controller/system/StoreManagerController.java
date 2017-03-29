@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -229,11 +230,12 @@ public class StoreManagerController extends BaseController {
 	 */
 	@RequestMapping(value = { "/findGroupInfoList2" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public Map<String, Object> findStoreInfoList2() {
+	public Map<String, Object> findStoreInfoList2(HttpServletRequest request) {
+
 		String result;
 		GroupResult groupResult = new GroupResult();
 		try {
-			result= HttpUtils.HttpGetByUtf("http://localhost:8080/wechat-manage-web/group","getGroupList.json", null);
+			result= HttpUtils.HttpGetByUtf(Common.getSystemUrl(request) +"group","getGroupList.json", null);
 			groupResult = com.alibaba.fastjson.JSON.parseObject(result, GroupResult.class);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
