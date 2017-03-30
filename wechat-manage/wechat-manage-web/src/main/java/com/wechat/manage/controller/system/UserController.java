@@ -8,6 +8,7 @@ import com.wechat.manage.vo.DataTableResult;
 import com.wechat.manage.annotation.SystemLog;
 import com.wechat.manage.utils.JsonUtil;
 import com.wechat.manage.pojo.system.vo.ReturnDto;
+import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
 import com.wechat.manage.pojo.system.entity.*;
 import  com.wechat.exception.SystemException;
 import com.wechat.manage.mapper.system.RoleMapper;
@@ -86,6 +87,10 @@ public class UserController extends BaseController {
 	@RequestMapping("findByPage2")
 	public DataTableResult findByPage(DataTableParams dataTableParams) throws Exception {
 		UserFormMap userFormMap = getFormMap(UserFormMap.class);
+		UserBaseInfoDto curUserInfo = getCurUserInfo();
+		//当前用户子用户
+		userFormMap.put("parentId", curUserInfo.getUserId());
+		
 		String pageNow = ((dataTableParams.getiDisplayStart()+1)%dataTableParams.getiDisplayLength()>0?(dataTableParams.getiDisplayStart()+1)/dataTableParams.getiDisplayLength()+1:(dataTableParams.getiDisplayStart()+1)/dataTableParams.getiDisplayLength())+"";
 		userFormMap=toFormMap(userFormMap, pageNow, dataTableParams.getiDisplayLength()+"",userFormMap.getStr("orderby"));
 		pageView.setRecords(userMapper.findUserPage(userFormMap));//不调用默认分页,调用自已的mapper中findUserPage
