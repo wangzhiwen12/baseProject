@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.product.TProductMapper" >
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.product.entity.TProduct" >
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="product_sid" property="productSid" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="primary_attr" property="primaryAttr" jdbcType="VARCHAR" />
+    <result column="product_sku" property="productSku" jdbcType="VARCHAR" />
+    <result column="brand_sid" property="brandSid" jdbcType="VARCHAR" />
+    <result column="brand_root_sid" property="brandRootSid" jdbcType="VARCHAR" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+    <result column="pro_active_bit" property="proActiveBit" jdbcType="INTEGER" />
+    <result column="pro_selling" property="proSelling" jdbcType="INTEGER" />
+    <result column="activity_flg" property="activityFlg" jdbcType="INTEGER" />
+    <result column="pro_picture" property="proPicture" jdbcType="VARCHAR" />
+    <result column="category_sid" property="categorySid" jdbcType="BIGINT" />
+    <result column="sex_sid" property="sexSid" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="awesome" property="awesome" jdbcType="BIGINT" />
+    <result column="pro_desc_sid" property="proDescSid" jdbcType="BIGINT" />
+    <result column="product_name_alias" property="productNameAlias" jdbcType="VARCHAR" />
+    <result column="pro_selling_time" property="proSellingTime" jdbcType="TIMESTAMP" />
+    <result column="article_num" property="articleNum" jdbcType="VARCHAR" />
+    <result column="year_to_market" property="yearToMarket" jdbcType="VARCHAR" />
+    <result column="short_des" property="shortDes" jdbcType="VARCHAR" />
+    <result column="edit_flag" property="editFlag" jdbcType="INTEGER" />
+    <result column="special_des" property="specialDes" jdbcType="VARCHAR" />
+    <result column="season_code" property="seasonCode" jdbcType="VARCHAR" />
+    <result column="industry_condition" property="industryCondition" jdbcType="INTEGER" />
+    <result column="long_desc" property="longDesc" jdbcType="VARCHAR" />
+    <result column="sale_price" property="salePrice" jdbcType="DECIMAL" />
+    <result column="original_price" property="originalPrice" jdbcType="DECIMAL" />
+    <result column="orginal_price_scope" property="orginalPriceScope" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, shop_id, product_sid, product_name, primary_attr, product_sku, brand_sid, brand_root_sid, 
+    brand_name, pro_active_bit, pro_selling, activity_flg, pro_picture, category_sid, 
+    sex_sid, create_time, awesome, pro_desc_sid, product_name_alias, pro_selling_time, 
+    article_num, year_to_market, short_des, edit_flag, special_des, season_code, industry_condition, 
+    long_desc, sale_price, original_price, orginal_price_scope
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_product
+    where sid = #{sid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_product
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wechat.manage.pojo.product.entity.TProduct" >
+    insert into t_product (sid, shop_id, product_sid, 
+      product_name, primary_attr, product_sku, 
+      brand_sid, brand_root_sid, brand_name, 
+      pro_active_bit, pro_selling, activity_flg, 
+      pro_picture, category_sid, sex_sid, 
+      create_time, awesome, pro_desc_sid, 
+      product_name_alias, pro_selling_time, article_num, 
+      year_to_market, short_des, edit_flag, 
+      special_des, season_code, industry_condition, 
+      long_desc, sale_price, original_price, 
+      orginal_price_scope)
+    values (#{sid,jdbcType=BIGINT}, #{shopId,jdbcType=BIGINT}, #{productSid,jdbcType=VARCHAR}, 
+      #{productName,jdbcType=VARCHAR}, #{primaryAttr,jdbcType=VARCHAR}, #{productSku,jdbcType=VARCHAR}, 
+      #{brandSid,jdbcType=VARCHAR}, #{brandRootSid,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, 
+      #{proActiveBit,jdbcType=INTEGER}, #{proSelling,jdbcType=INTEGER}, #{activityFlg,jdbcType=INTEGER}, 
+      #{proPicture,jdbcType=VARCHAR}, #{categorySid,jdbcType=BIGINT}, #{sexSid,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{awesome,jdbcType=BIGINT}, #{proDescSid,jdbcType=BIGINT}, 
+      #{productNameAlias,jdbcType=VARCHAR}, #{proSellingTime,jdbcType=TIMESTAMP}, #{articleNum,jdbcType=VARCHAR}, 
+      #{yearToMarket,jdbcType=VARCHAR}, #{shortDes,jdbcType=VARCHAR}, #{editFlag,jdbcType=INTEGER}, 
+      #{specialDes,jdbcType=VARCHAR}, #{seasonCode,jdbcType=VARCHAR}, #{industryCondition,jdbcType=INTEGER}, 
+      #{longDesc,jdbcType=VARCHAR}, #{salePrice,jdbcType=DECIMAL}, #{originalPrice,jdbcType=DECIMAL}, 
+      #{orginalPriceScope,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wechat.manage.pojo.product.entity.TProduct" >
+    insert into t_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="productSid != null" >
+        product_sid,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="primaryAttr != null" >
+        primary_attr,
+      </if>
+      <if test="productSku != null" >
+        product_sku,
+      </if>
+      <if test="brandSid != null" >
+        brand_sid,
+      </if>
+      <if test="brandRootSid != null" >
+        brand_root_sid,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+      <if test="proActiveBit != null" >
+        pro_active_bit,
+      </if>
+      <if test="proSelling != null" >
+        pro_selling,
+      </if>
+      <if test="activityFlg != null" >
+        activity_flg,
+      </if>
+      <if test="proPicture != null" >
+        pro_picture,
+      </if>
+      <if test="categorySid != null" >
+        category_sid,
+      </if>
+      <if test="sexSid != null" >
+        sex_sid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="awesome != null" >
+        awesome,
+      </if>
+      <if test="proDescSid != null" >
+        pro_desc_sid,
+      </if>
+      <if test="productNameAlias != null" >
+        product_name_alias,
+      </if>
+      <if test="proSellingTime != null" >
+        pro_selling_time,
+      </if>
+      <if test="articleNum != null" >
+        article_num,
+      </if>
+      <if test="yearToMarket != null" >
+        year_to_market,
+      </if>
+      <if test="shortDes != null" >
+        short_des,
+      </if>
+      <if test="editFlag != null" >
+        edit_flag,
+      </if>
+      <if test="specialDes != null" >
+        special_des,
+      </if>
+      <if test="seasonCode != null" >
+        season_code,
+      </if>
+      <if test="industryCondition != null" >
+        industry_condition,
+      </if>
+      <if test="longDesc != null" >
+        long_desc,
+      </if>
+      <if test="salePrice != null" >
+        sale_price,
+      </if>
+      <if test="originalPrice != null" >
+        original_price,
+      </if>
+      <if test="orginalPriceScope != null" >
+        orginal_price_scope,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="productSid != null" >
+        #{productSid,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="primaryAttr != null" >
+        #{primaryAttr,jdbcType=VARCHAR},
+      </if>
+      <if test="productSku != null" >
+        #{productSku,jdbcType=VARCHAR},
+      </if>
+      <if test="brandSid != null" >
+        #{brandSid,jdbcType=VARCHAR},
+      </if>
+      <if test="brandRootSid != null" >
+        #{brandRootSid,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="proActiveBit != null" >
+        #{proActiveBit,jdbcType=INTEGER},
+      </if>
+      <if test="proSelling != null" >
+        #{proSelling,jdbcType=INTEGER},
+      </if>
+      <if test="activityFlg != null" >
+        #{activityFlg,jdbcType=INTEGER},
+      </if>
+      <if test="proPicture != null" >
+        #{proPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="categorySid != null" >
+        #{categorySid,jdbcType=BIGINT},
+      </if>
+      <if test="sexSid != null" >
+        #{sexSid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="awesome != null" >
+        #{awesome,jdbcType=BIGINT},
+      </if>
+      <if test="proDescSid != null" >
+        #{proDescSid,jdbcType=BIGINT},
+      </if>
+      <if test="productNameAlias != null" >
+        #{productNameAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="proSellingTime != null" >
+        #{proSellingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleNum != null" >
+        #{articleNum,jdbcType=VARCHAR},
+      </if>
+      <if test="yearToMarket != null" >
+        #{yearToMarket,jdbcType=VARCHAR},
+      </if>
+      <if test="shortDes != null" >
+        #{shortDes,jdbcType=VARCHAR},
+      </if>
+      <if test="editFlag != null" >
+        #{editFlag,jdbcType=INTEGER},
+      </if>
+      <if test="specialDes != null" >
+        #{specialDes,jdbcType=VARCHAR},
+      </if>
+      <if test="seasonCode != null" >
+        #{seasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="industryCondition != null" >
+        #{industryCondition,jdbcType=INTEGER},
+      </if>
+      <if test="longDesc != null" >
+        #{longDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="salePrice != null" >
+        #{salePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="originalPrice != null" >
+        #{originalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="orginalPriceScope != null" >
+        #{orginalPriceScope,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.product.entity.TProduct" >
+    update t_product
+    <set >
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="productSid != null" >
+        product_sid = #{productSid,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="primaryAttr != null" >
+        primary_attr = #{primaryAttr,jdbcType=VARCHAR},
+      </if>
+      <if test="productSku != null" >
+        product_sku = #{productSku,jdbcType=VARCHAR},
+      </if>
+      <if test="brandSid != null" >
+        brand_sid = #{brandSid,jdbcType=VARCHAR},
+      </if>
+      <if test="brandRootSid != null" >
+        brand_root_sid = #{brandRootSid,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="proActiveBit != null" >
+        pro_active_bit = #{proActiveBit,jdbcType=INTEGER},
+      </if>
+      <if test="proSelling != null" >
+        pro_selling = #{proSelling,jdbcType=INTEGER},
+      </if>
+      <if test="activityFlg != null" >
+        activity_flg = #{activityFlg,jdbcType=INTEGER},
+      </if>
+      <if test="proPicture != null" >
+        pro_picture = #{proPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="categorySid != null" >
+        category_sid = #{categorySid,jdbcType=BIGINT},
+      </if>
+      <if test="sexSid != null" >
+        sex_sid = #{sexSid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="awesome != null" >
+        awesome = #{awesome,jdbcType=BIGINT},
+      </if>
+      <if test="proDescSid != null" >
+        pro_desc_sid = #{proDescSid,jdbcType=BIGINT},
+      </if>
+      <if test="productNameAlias != null" >
+        product_name_alias = #{productNameAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="proSellingTime != null" >
+        pro_selling_time = #{proSellingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleNum != null" >
+        article_num = #{articleNum,jdbcType=VARCHAR},
+      </if>
+      <if test="yearToMarket != null" >
+        year_to_market = #{yearToMarket,jdbcType=VARCHAR},
+      </if>
+      <if test="shortDes != null" >
+        short_des = #{shortDes,jdbcType=VARCHAR},
+      </if>
+      <if test="editFlag != null" >
+        edit_flag = #{editFlag,jdbcType=INTEGER},
+      </if>
+      <if test="specialDes != null" >
+        special_des = #{specialDes,jdbcType=VARCHAR},
+      </if>
+      <if test="seasonCode != null" >
+        season_code = #{seasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="industryCondition != null" >
+        industry_condition = #{industryCondition,jdbcType=INTEGER},
+      </if>
+      <if test="longDesc != null" >
+        long_desc = #{longDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="salePrice != null" >
+        sale_price = #{salePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="originalPrice != null" >
+        original_price = #{originalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="orginalPriceScope != null" >
+        orginal_price_scope = #{orginalPriceScope,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.product.entity.TProduct" >
+    update t_product
+    set shop_id = #{shopId,jdbcType=BIGINT},
+      product_sid = #{productSid,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      primary_attr = #{primaryAttr,jdbcType=VARCHAR},
+      product_sku = #{productSku,jdbcType=VARCHAR},
+      brand_sid = #{brandSid,jdbcType=VARCHAR},
+      brand_root_sid = #{brandRootSid,jdbcType=VARCHAR},
+      brand_name = #{brandName,jdbcType=VARCHAR},
+      pro_active_bit = #{proActiveBit,jdbcType=INTEGER},
+      pro_selling = #{proSelling,jdbcType=INTEGER},
+      activity_flg = #{activityFlg,jdbcType=INTEGER},
+      pro_picture = #{proPicture,jdbcType=VARCHAR},
+      category_sid = #{categorySid,jdbcType=BIGINT},
+      sex_sid = #{sexSid,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      awesome = #{awesome,jdbcType=BIGINT},
+      pro_desc_sid = #{proDescSid,jdbcType=BIGINT},
+      product_name_alias = #{productNameAlias,jdbcType=VARCHAR},
+      pro_selling_time = #{proSellingTime,jdbcType=TIMESTAMP},
+      article_num = #{articleNum,jdbcType=VARCHAR},
+      year_to_market = #{yearToMarket,jdbcType=VARCHAR},
+      short_des = #{shortDes,jdbcType=VARCHAR},
+      edit_flag = #{editFlag,jdbcType=INTEGER},
+      special_des = #{specialDes,jdbcType=VARCHAR},
+      season_code = #{seasonCode,jdbcType=VARCHAR},
+      industry_condition = #{industryCondition,jdbcType=INTEGER},
+      long_desc = #{longDesc,jdbcType=VARCHAR},
+      sale_price = #{salePrice,jdbcType=DECIMAL},
+      original_price = #{originalPrice,jdbcType=DECIMAL},
+      orginal_price_scope = #{orginalPriceScope,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+</mapper>

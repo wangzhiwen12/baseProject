@@ -1,5 +1,6 @@
 package com.wechat.manage.utils;
 
+import com.alibaba.fastjson.JSONObject;
 import com.wechat.manage.annotation.TableSeg;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -691,5 +692,47 @@ public class Common {
         String path = request.getContextPath();
         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
         return basePath;
+    }
+
+
+    public static String getJsonValueS(JSONObject object, String Key) {
+        String value = "";
+        if (object.containsKey(Key)) {
+            value = object.getString(Key);
+        }
+        return value;
+    }
+
+    public static boolean getJsonValueB(JSONObject object, String Key) {
+        boolean value = false;
+        if (object.containsKey(Key)) {
+            value = object.getBoolean(Key);
+        }
+        return value;
+    }
+
+    public static Integer getJsonValueI(JSONObject object, String Key) {
+        Integer value = null;
+        if (object.containsKey(Key)) {
+            value = object.getInteger(Key);
+        }
+        return value;
+
+    }
+
+    public static Long getJsonValueL(JSONObject object, String Key) {
+        Long value = null;
+        if (object.containsKey(Key)) {
+            value = object.getLong(Key);
+        }
+        return value;
+    }
+
+    public static Date getJsonValueD(JSONObject object, String Key) {
+        Date value = null;
+        if (object.containsKey(Key)) {
+            value = object.getDate(Key);
+        }
+        return value;
     }
 }

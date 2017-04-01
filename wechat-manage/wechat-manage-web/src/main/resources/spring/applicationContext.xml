@@ -22,4 +22,16 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     <import resource="beans-redis.xml"/>
+
+    <bean id="taskExecutor"
+          class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <!-- 线程池活跃的线程数 -->
+        <property name="corePoolSize" value="10" />
+        <!-- 线程池最大活跃的线程数 -->
+        <property name="maxPoolSize" value="1000" />
+        <!-- 线程池维护线程所允许的空闲时间 -->
+        <property name ="keepAliveSeconds" value ="300" />
+        <!-- 队列的最大容量 -->
+        <property name="queueCapacity" value="500" />
+    </bean>
 </beans>

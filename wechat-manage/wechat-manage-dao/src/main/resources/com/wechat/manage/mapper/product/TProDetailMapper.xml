@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.manage.mapper.product.TProDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.wechat.manage.pojo.product.entity.TProDetail" >
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="product_detail_sid" property="productDetailSid" jdbcType="VARCHAR" />
+    <result column="pro_detail_name" property="proDetailName" jdbcType="VARCHAR" />
+    <result column="product_sid" property="productSid" jdbcType="BIGINT" />
+    <result column="pro_stan_sid" property="proStanSid" jdbcType="VARCHAR" />
+    <result column="pro_color_sid" property="proColorSid" jdbcType="INTEGER" />
+    <result column="pro_color_name" property="proColorName" jdbcType="VARCHAR" />
+    <result column="pro_color_alias" property="proColorAlias" jdbcType="VARCHAR" />
+    <result column="pro_stan_name" property="proStanName" jdbcType="VARCHAR" />
+    <result column="features" property="features" jdbcType="VARCHAR" />
+    <result column="article_num" property="articleNum" jdbcType="VARCHAR" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+    <result column="barcode" property="barcode" jdbcType="VARCHAR" />
+    <result column="pro_wri_time" property="proWriTime" jdbcType="TIMESTAMP" />
+    <result column="photo_sale_code_sid" property="photoSaleCodeSid" jdbcType="VARCHAR" />
+    <result column="photo_status" property="photoStatus" jdbcType="INTEGER" />
+    <result column="opt_user_sid" property="optUserSid" jdbcType="BIGINT" />
+    <result column="opt_real_name" property="optRealName" jdbcType="VARCHAR" />
+    <result column="opt_update_time" property="optUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="plan_maker" property="planMaker" jdbcType="VARCHAR" />
+    <result column="plan_time" property="planTime" jdbcType="TIMESTAMP" />
+    <result column="photo_plan_sid" property="photoPlanSid" jdbcType="VARCHAR" />
+    <result column="pro_active_bit" property="proActiveBit" jdbcType="INTEGER" />
+    <result column="pro_type" property="proType" jdbcType="INTEGER" />
+    <result column="selling_status" property="sellingStatus" jdbcType="INTEGER" />
+    <result column="search_key" property="searchKey" jdbcType="VARCHAR" />
+    <result column="key_word" property="keyWord" jdbcType="VARCHAR" />
+    <result column="size_picture_url" property="sizePictureUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, product_detail_sid, pro_detail_name, product_sid, pro_stan_sid, pro_color_sid, 
+    pro_color_name, pro_color_alias, pro_stan_name, features, article_num, memo, barcode, 
+    pro_wri_time, photo_sale_code_sid, photo_status, opt_user_sid, opt_real_name, opt_update_time, 
+    plan_maker, plan_time, photo_plan_sid, pro_active_bit, pro_type, selling_status, 
+    search_key, key_word, size_picture_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_pro_detail
+    where sid = #{sid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_pro_detail
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wechat.manage.pojo.product.entity.TProDetail" >
+    insert into t_pro_detail (sid, product_detail_sid, pro_detail_name, 
+      product_sid, pro_stan_sid, pro_color_sid, 
+      pro_color_name, pro_color_alias, pro_stan_name, 
+      features, article_num, memo, 
+      barcode, pro_wri_time, photo_sale_code_sid, 
+      photo_status, opt_user_sid, opt_real_name, 
+      opt_update_time, plan_maker, plan_time, 
+      photo_plan_sid, pro_active_bit, pro_type, 
+      selling_status, search_key, key_word, 
+      size_picture_url)
+    values (#{sid,jdbcType=BIGINT}, #{productDetailSid,jdbcType=VARCHAR}, #{proDetailName,jdbcType=VARCHAR}, 
+      #{productSid,jdbcType=BIGINT}, #{proStanSid,jdbcType=VARCHAR}, #{proColorSid,jdbcType=INTEGER}, 
+      #{proColorName,jdbcType=VARCHAR}, #{proColorAlias,jdbcType=VARCHAR}, #{proStanName,jdbcType=VARCHAR}, 
+      #{features,jdbcType=VARCHAR}, #{articleNum,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, 
+      #{barcode,jdbcType=VARCHAR}, #{proWriTime,jdbcType=TIMESTAMP}, #{photoSaleCodeSid,jdbcType=VARCHAR}, 
+      #{photoStatus,jdbcType=INTEGER}, #{optUserSid,jdbcType=BIGINT}, #{optRealName,jdbcType=VARCHAR}, 
+      #{optUpdateTime,jdbcType=TIMESTAMP}, #{planMaker,jdbcType=VARCHAR}, #{planTime,jdbcType=TIMESTAMP}, 
+      #{photoPlanSid,jdbcType=VARCHAR}, #{proActiveBit,jdbcType=INTEGER}, #{proType,jdbcType=INTEGER}, 
+      #{sellingStatus,jdbcType=INTEGER}, #{searchKey,jdbcType=VARCHAR}, #{keyWord,jdbcType=VARCHAR}, 
+      #{sizePictureUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wechat.manage.pojo.product.entity.TProDetail" >
+    insert into t_pro_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="productDetailSid != null" >
+        product_detail_sid,
+      </if>
+      <if test="proDetailName != null" >
+        pro_detail_name,
+      </if>
+      <if test="productSid != null" >
+        product_sid,
+      </if>
+      <if test="proStanSid != null" >
+        pro_stan_sid,
+      </if>
+      <if test="proColorSid != null" >
+        pro_color_sid,
+      </if>
+      <if test="proColorName != null" >
+        pro_color_name,
+      </if>
+      <if test="proColorAlias != null" >
+        pro_color_alias,
+      </if>
+      <if test="proStanName != null" >
+        pro_stan_name,
+      </if>
+      <if test="features != null" >
+        features,
+      </if>
+      <if test="articleNum != null" >
+        article_num,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="barcode != null" >
+        barcode,
+      </if>
+      <if test="proWriTime != null" >
+        pro_wri_time,
+      </if>
+      <if test="photoSaleCodeSid != null" >
+        photo_sale_code_sid,
+      </if>
+      <if test="photoStatus != null" >
+        photo_status,
+      </if>
+      <if test="optUserSid != null" >
+        opt_user_sid,
+      </if>
+      <if test="optRealName != null" >
+        opt_real_name,
+      </if>
+      <if test="optUpdateTime != null" >
+        opt_update_time,
+      </if>
+      <if test="planMaker != null" >
+        plan_maker,
+      </if>
+      <if test="planTime != null" >
+        plan_time,
+      </if>
+      <if test="photoPlanSid != null" >
+        photo_plan_sid,
+      </if>
+      <if test="proActiveBit != null" >
+        pro_active_bit,
+      </if>
+      <if test="proType != null" >
+        pro_type,
+      </if>
+      <if test="sellingStatus != null" >
+        selling_status,
+      </if>
+      <if test="searchKey != null" >
+        search_key,
+      </if>
+      <if test="keyWord != null" >
+        key_word,
+      </if>
+      <if test="sizePictureUrl != null" >
+        size_picture_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="productDetailSid != null" >
+        #{productDetailSid,jdbcType=VARCHAR},
+      </if>
+      <if test="proDetailName != null" >
+        #{proDetailName,jdbcType=VARCHAR},
+      </if>
+      <if test="productSid != null" >
+        #{productSid,jdbcType=BIGINT},
+      </if>
+      <if test="proStanSid != null" >
+        #{proStanSid,jdbcType=VARCHAR},
+      </if>
+      <if test="proColorSid != null" >
+        #{proColorSid,jdbcType=INTEGER},
+      </if>
+      <if test="proColorName != null" >
+        #{proColorName,jdbcType=VARCHAR},
+      </if>
+      <if test="proColorAlias != null" >
+        #{proColorAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="proStanName != null" >
+        #{proStanName,jdbcType=VARCHAR},
+      </if>
+      <if test="features != null" >
+        #{features,jdbcType=VARCHAR},
+      </if>
+      <if test="articleNum != null" >
+        #{articleNum,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="proWriTime != null" >
+        #{proWriTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photoSaleCodeSid != null" >
+        #{photoSaleCodeSid,jdbcType=VARCHAR},
+      </if>
+      <if test="photoStatus != null" >
+        #{photoStatus,jdbcType=INTEGER},
+      </if>
+      <if test="optUserSid != null" >
+        #{optUserSid,jdbcType=BIGINT},
+      </if>
+      <if test="optRealName != null" >
+        #{optRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="optUpdateTime != null" >
+        #{optUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planMaker != null" >
+        #{planMaker,jdbcType=VARCHAR},
+      </if>
+      <if test="planTime != null" >
+        #{planTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photoPlanSid != null" >
+        #{photoPlanSid,jdbcType=VARCHAR},
+      </if>
+      <if test="proActiveBit != null" >
+        #{proActiveBit,jdbcType=INTEGER},
+      </if>
+      <if test="proType != null" >
+        #{proType,jdbcType=INTEGER},
+      </if>
+      <if test="sellingStatus != null" >
+        #{sellingStatus,jdbcType=INTEGER},
+      </if>
+      <if test="searchKey != null" >
+        #{searchKey,jdbcType=VARCHAR},
+      </if>
+      <if test="keyWord != null" >
+        #{keyWord,jdbcType=VARCHAR},
+      </if>
+      <if test="sizePictureUrl != null" >
+        #{sizePictureUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.manage.pojo.product.entity.TProDetail" >
+    update t_pro_detail
+    <set >
+      <if test="productDetailSid != null" >
+        product_detail_sid = #{productDetailSid,jdbcType=VARCHAR},
+      </if>
+      <if test="proDetailName != null" >
+        pro_detail_name = #{proDetailName,jdbcType=VARCHAR},
+      </if>
+      <if test="productSid != null" >
+        product_sid = #{productSid,jdbcType=BIGINT},
+      </if>
+      <if test="proStanSid != null" >
+        pro_stan_sid = #{proStanSid,jdbcType=VARCHAR},
+      </if>
+      <if test="proColorSid != null" >
+        pro_color_sid = #{proColorSid,jdbcType=INTEGER},
+      </if>
+      <if test="proColorName != null" >
+        pro_color_name = #{proColorName,jdbcType=VARCHAR},
+      </if>
+      <if test="proColorAlias != null" >
+        pro_color_alias = #{proColorAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="proStanName != null" >
+        pro_stan_name = #{proStanName,jdbcType=VARCHAR},
+      </if>
+      <if test="features != null" >
+        features = #{features,jdbcType=VARCHAR},
+      </if>
+      <if test="articleNum != null" >
+        article_num = #{articleNum,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        barcode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="proWriTime != null" >
+        pro_wri_time = #{proWriTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photoSaleCodeSid != null" >
+        photo_sale_code_sid = #{photoSaleCodeSid,jdbcType=VARCHAR},
+      </if>
+      <if test="photoStatus != null" >
+        photo_status = #{photoStatus,jdbcType=INTEGER},
+      </if>
+      <if test="optUserSid != null" >
+        opt_user_sid = #{optUserSid,jdbcType=BIGINT},
+      </if>
+      <if test="optRealName != null" >
+        opt_real_name = #{optRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="optUpdateTime != null" >
+        opt_update_time = #{optUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planMaker != null" >
+        plan_maker = #{planMaker,jdbcType=VARCHAR},
+      </if>
+      <if test="planTime != null" >
+        plan_time = #{planTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photoPlanSid != null" >
+        photo_plan_sid = #{photoPlanSid,jdbcType=VARCHAR},
+      </if>
+      <if test="proActiveBit != null" >
+        pro_active_bit = #{proActiveBit,jdbcType=INTEGER},
+      </if>
+      <if test="proType != null" >
+        pro_type = #{proType,jdbcType=INTEGER},
+      </if>
+      <if test="sellingStatus != null" >
+        selling_status = #{sellingStatus,jdbcType=INTEGER},
+      </if>
+      <if test="searchKey != null" >
+        search_key = #{searchKey,jdbcType=VARCHAR},
+      </if>
+      <if test="keyWord != null" >
+        key_word = #{keyWord,jdbcType=VARCHAR},
+      </if>
+      <if test="sizePictureUrl != null" >
+        size_picture_url = #{sizePictureUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wechat.manage.pojo.product.entity.TProDetail" >
+    update t_pro_detail
+    set product_detail_sid = #{productDetailSid,jdbcType=VARCHAR},
+      pro_detail_name = #{proDetailName,jdbcType=VARCHAR},
+      product_sid = #{productSid,jdbcType=BIGINT},
+      pro_stan_sid = #{proStanSid,jdbcType=VARCHAR},
+      pro_color_sid = #{proColorSid,jdbcType=INTEGER},
+      pro_color_name = #{proColorName,jdbcType=VARCHAR},
+      pro_color_alias = #{proColorAlias,jdbcType=VARCHAR},
+      pro_stan_name = #{proStanName,jdbcType=VARCHAR},
+      features = #{features,jdbcType=VARCHAR},
+      article_num = #{articleNum,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      barcode = #{barcode,jdbcType=VARCHAR},
+      pro_wri_time = #{proWriTime,jdbcType=TIMESTAMP},
+      photo_sale_code_sid = #{photoSaleCodeSid,jdbcType=VARCHAR},
+      photo_status = #{photoStatus,jdbcType=INTEGER},
+      opt_user_sid = #{optUserSid,jdbcType=BIGINT},
+      opt_real_name = #{optRealName,jdbcType=VARCHAR},
+      opt_update_time = #{optUpdateTime,jdbcType=TIMESTAMP},
+      plan_maker = #{planMaker,jdbcType=VARCHAR},
+      plan_time = #{planTime,jdbcType=TIMESTAMP},
+      photo_plan_sid = #{photoPlanSid,jdbcType=VARCHAR},
+      pro_active_bit = #{proActiveBit,jdbcType=INTEGER},
+      pro_type = #{proType,jdbcType=INTEGER},
+      selling_status = #{sellingStatus,jdbcType=INTEGER},
+      search_key = #{searchKey,jdbcType=VARCHAR},
+      key_word = #{keyWord,jdbcType=VARCHAR},
+      size_picture_url = #{sizePictureUrl,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+</mapper>

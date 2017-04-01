@@ -8,9 +8,9 @@
 <div class="table-responsive">
     <div class="tabbable-line">
         <ul class="nav nav-tabs ">
-            <li class="active"><a href="#tab_15_1" data-toggle="tab"> 商品列表 </a></li>
+            <li><a href="#tab_15_1" data-toggle="tab" onclick="toProPage('1')"> 商品列表 </a></li>
             <li><a href="#tab_15_2" data-toggle="tab" onclick="toProPage('2')"> 商品分组</a></li>
-            <li><a href="#tab_15_4" data-toggle="tab" onclick="toProPage('3')"> 商品分类导入 </a></li>
+            <li class="active"><a href="#tab_15_4" data-toggle="tab"> 商品分类导入 </a></li>
             <li><a href="#tab_15_5" data-toggle="tab" onclick="toProPage('4')"> 商品导入</a></li>
         </ul>
         <div class="tab-content">
@@ -20,7 +20,7 @@
                         <div class="portlet box blue-hoki">
                             <div class="portlet-title">
                                 <div class="caption">
-                                    <i class="fa fa-weixin"></i>商品管理
+                                    <i class="fa fa-weixin"></i>分类管理
                                 </div>
                                 <div class="actions" id="btnAdd">
                                     <button type="button" id="exprotCategory" class="btn btn-primary marR10">导入分类</button>
