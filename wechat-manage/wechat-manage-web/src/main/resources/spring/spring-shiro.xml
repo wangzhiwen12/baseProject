@@ -96,7 +96,6 @@
                 /MP_verify_pa37oJj64hscSwZR.txt=anon
                 /couponInfo/** = anon
                 /group/** = anon
-                /category/** = anon
             </value>
         </property>
     </bean>
