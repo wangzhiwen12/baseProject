@@ -4,6 +4,7 @@
 <script type="text/javascript">
     var contextPath = "${pageContext.request.contextPath}";
 </script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/wfjUtil.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/wshop/product/productList.js"></script>
 <div class="table-responsive">
     <div class="tabbable-line">

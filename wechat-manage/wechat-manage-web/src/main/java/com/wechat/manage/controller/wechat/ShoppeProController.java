@@ -124,11 +124,14 @@ public class ShoppeProController {
                 JSONObject jsonPage = jsonObject.getJSONObject("page");
                 Integer total = jsonPage.getInt("total");
                 JSONArray jsonList = jsonPage.getJSONArray("list");
-                List<PcmProSearchDto> list = JSONArray.toList(jsonList,new PcmProSearchDto(),new JsonConfig());
 
-                //String listStr = jsonList.toString();
-                //Gson gson = new Gson();
-                //List<PcmProSearchDto> list = gson.fromJson(listStr, new TypeToken<List<PcmProSearchDto>>(){}.getType());
+                //List<PcmProSearchDto> list = new ArrayList();
+
+                //List<PcmProSearchDto> list = JSONArray.toList(jsonList,new PcmProSearchDto(),new JsonConfig());
+                String listStr = jsonList.toString();
+                Gson gson = new Gson();
+                List<PcmProSearchDto> list = gson.fromJson(listStr, new TypeToken<List<PcmProSearchDto>>(){}.getType());
+                System.out.print(list);
                 page.setAaData(list);
                 total = (total / shoppeProduct.getiDisplayLength()) > 1000 ? 1000 : total;
                 page.setiTotalRecords(total);
