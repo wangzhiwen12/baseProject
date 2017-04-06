@@ -54,7 +54,26 @@
         </property>
         <property name="parameterName" value="format"/>
     </bean>
-
+    <bean id="placeholderConfig"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath*:config.properties</value>
+            </list>
+        </property>
+        <property name="fileEncoding" value="UTF-8" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+    </bean>
+    <bean id="zkClientFactory" class="com.wfj.search.utils.zookeeper.CuratorClientFactory">
+        <constructor-arg name="connectString" value="${monitor.zkAddresses}" />
+    </bean>
+    <bean id="zkClient" factory-bean="zkClientFactory" factory-method="createClient"
+          destroy-method="close" />
+    <bean id="serviceAddressProvider"
+          class="com.wfj.search.utils.zookeeper.discovery.SpringWebMvcServiceProvider">
+        <constructor-arg name="zkClient" ref="zkClient" />
+        <constructor-arg name="basePath" value="${discovery.basePath}" />
+    </bean>
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="contentNegotiationManager" ref="contentNegotiationManager"/>

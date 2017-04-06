@@ -4,7 +4,7 @@
 <script type="text/javascript">
     var contextPath = "${pageContext.request.contextPath}";
 </script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/wfjUtil.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/wshop/product/productList.js"></script>
 <div class="table-responsive">
     <div class="tabbable-line">
         <ul class="nav nav-tabs ">
@@ -26,20 +26,21 @@
                                     <button type="button" id="exprotCategory" class="btn btn-primary marR10">导入分类</button>
                                 </div>
                             </div>
-                            <div class="portlet-body">
+                            <div id="productTable" class="portlet-body">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer"
-                                       id="userList">
+                                       id="productList">
                                     <thead>
-                                    <tr role="row">
-                                        <th></th>
-                                        <th>模板ID</th>
-                                        <th>券类型</th>
-                                        <th>券面值</th>
-                                        <th>品牌券模板</th>
-                                        <th>使用门槛</th>
-                                        <th>创建人</th>
-                                        <th>创建时间</th>
-                                    </tr>
+                                        <tr role="row">
+                                            <th>专柜商品编码</th>
+                                            <th>商品名称</th>
+                                            <th>SKU编码</th>
+                                            <th>门店</th>
+                                            <th>专柜</th>
+                                            <th>供应商</th>
+                                            <th>门店品牌</th>
+                                            <th>管理分类</th>
+                                            <th>状态</th>
+                                        </tr>
                                     </thead>
                                 </table>
                             </div>

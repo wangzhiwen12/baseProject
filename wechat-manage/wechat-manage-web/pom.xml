@@ -47,6 +47,17 @@
             <artifactId>junit</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.wfj.search-utils</groupId>
+            <artifactId>curator-spring-mvc-simple-discovery</artifactId>
+            <version>1.0.36.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wfj.search-utils</groupId>
+            <artifactId>curator-client-factory</artifactId>
+            <version>1.0.36.RELEASE</version>
+        </dependency>
+
         <!-- shiro -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
