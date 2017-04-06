@@ -3,16 +3,20 @@ package com.wechat.manage.service.category.impl;
 import com.wechat.manage.exception.BleException;
 import com.wechat.manage.mapper.category.TCategoryPropsDictMapper;
 import com.wechat.manage.mapper.category.TCategoryValuesDictMapper;
+import com.wechat.manage.mapper.category.TProGroupMapper;
 import com.wechat.manage.pojo.category.entity.TCategoryPropsDict;
 import com.wechat.manage.pojo.category.entity.TCategoryValuesDict;
+import com.wechat.manage.pojo.category.entity.TProGroup;
 import com.wechat.manage.service.category.intf.ICategoryService;
 import com.wechat.manage.utils.ComErrorCodeConstants;
+import com.wechat.manage.vo.DataTableResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by kongqf on 2017/3/31.
@@ -26,6 +30,9 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Autowired
     private TCategoryValuesDictMapper valuesMapper;
+
+    @Autowired
+    private TProGroupMapper groupMapper;
 
 
     @Override
@@ -64,5 +71,42 @@ public class CategoryServiceImpl implements ICategoryService {
         }
 
         return flag;
+    }
+
+    /**
+     * 添加商品分组
+     *
+     * @param dto
+     * @return
+     */
+    @Override
+    public boolean saveGroupInfo(TProGroup dto) {
+        boolean flag = false;
+        int count = 0;
+        TProGroup searchGroup = null;
+        if (dto.getId() != null) {
+            searchGroup = groupMapper.selectByPrimaryKey(dto.getId());
+        }
+        if (searchGroup != null) {
+            count = groupMapper.updateByPrimaryKeySelective(dto);
+        } else {
+            count = groupMapper.insertSelective(dto);
+        }
+        if (count == 1) {
+            flag = true;
+        }
+        return flag;
+    }
+
+    @Override
+    public DataTableResult<TProGroup> findGroupInfoByPage(Map<String, Object> paramMap) {
+        DataTableResult<TProGroup> page = new DataTableResult<TProGroup>();
+        List<TProGroup> infoList = groupMapper.selectGroupList(paramMap);
+        page.setAaData(infoList);
+        paramMap.put("start", null);
+        paramMap.put("limit", null);
+        Integer count = groupMapper.selectGroupCount(paramMap);
+        page.setiTotalRecords(count);
+        return page;
     }
 }

@@ -4,9 +4,12 @@
 <html>
 <head>
     <%@include file="/common/common.jspf" %>
-    <link href="${ctx}/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
-    <script type="text/javascript" src="${ctx}/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-    <script type="text/javascript" src="${ctx}/assets/global/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link href="${ctx}/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css"
+          rel="stylesheet"/>
+    <script type="text/javascript"
+            src="${ctx}/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript"
+            src="${ctx}/assets/global/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
     <script type="text/javascript" src="${ctx}/js/coupon/grp/add.js"></script>
 </head>
 <body>
@@ -47,7 +50,7 @@
                 </div>
                 <div class="col-xs-3"></div>
             </div>
-                        <div class="line line-dashed line-lg pull-in"></div>
+            <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
                 <label class="col-xs-3 control-label text-right">卡券总数</label>
 
@@ -57,7 +60,7 @@
                 </div>
                 <div class="col-xs-3"></div>
             </div>
-                        <div class="line line-dashed line-lg pull-in"></div>
+            <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
                 <label class="col-xs-3 control-label text-right">每人次可领数量</label>
 
@@ -98,16 +101,16 @@
 
                 <div class="col-xs-6">
                       <textarea class="form-control" rows="3" cols="10" name="txtUseDesc"
-                         id="txtUseDesc" placeholder="用于向买家展示，如该优惠券不得与其他活动同时使用；节假日不得使用等，回车即可划分段落"></textarea>
+                                id="txtUseDesc" placeholder="用于向买家展示，如该优惠券不得与其他活动同时使用；节假日不得使用等，回车即可划分段落"></textarea>
                 </div>
                 <div class="col-xs-3"></div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
                 <label class="col-xs-3 control-label text-right">选择封面</label>
-				<button id="material_get" type="button" class="btn btn-primary">从图片库选择</button>
-				<div id="yl_img" style="text-align: center;">
-				</div>	                
+                <button id="material_get" type="button" class="btn btn-primary">从图片库选择</button>
+                <div id="yl_img" style="text-align: center;">
+                </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
@@ -116,10 +119,10 @@
 
                 <div class="col-xs-6">
                     <div class="input-group">
-                    <input type="hidden" name="txtApprovalUserName" id="txtApprovalUserName">
-                    <input type="text" class="form-control"
-                           name="txtApprovalUserName2" id="txtApprovalUserName2" readonly>
-                    <span class="input-group-addon"><a class="btn-link" id="btnUser"><i class="fa fa-user"></i></a></span>
+                        <input type="hidden" name="txtApprovalUserName" id="txtApprovalUserName">
+                        <input type="text" class="form-control"
+                               name="txtApprovalUserName2" id="txtApprovalUserName2" readonly>
+                        <span class="input-group-addon"><a class="btn-link" id="btnUser"><i class="fa fa-user"></i></a></span>
                     </div>
                 </div>
 
@@ -127,7 +130,9 @@
             </div>
         </div>
         <footer class="panel-footer text-center bg-light lter">
-            <button type="button" onclick="javascript:parent.layer.close(parent.pageii);" class="btn btn-default btn-s-xs">取消</button>
+            <button type="button" onclick="javascript:parent.layer.close(parent.pageii);"
+                    class="btn btn-default btn-s-xs">取消
+            </button>
             <button type="submit" class="btn btn-success btn-s-xs">提交</button>
         </footer>
     </section>
@@ -136,23 +141,23 @@
 </form>
 </body>
 <script type="text/javascript">
-$('#material_get').click(function() {
-	pageii = layer.open({
-				title : "图片素材",
-				type : 2,
-				area : [ "100%", "100%" ],
-				content : '${pageContext.request.contextPath}/materialLocal/imageList.shtml'
-			});
-});
-function imageSwitch(media){
-	$('#yl_img *').remove();
-	$("#mediaId").attr("value",media.mediaId);
-	var img = '<img style="margin-top:10px; width: 188px;height: 120px;margin-left: 8px;" src="'+ media.localUrl　+'" />';
-	var imgUrl = '<input id="imageUrl" type="hidden" value="'+ media.imageName +'" />';
-	var localUrl = '<input id="localUrl" name="localUrl" type="hidden" value="'+ media.localUrl +'" />';
-	$('#yl_img').append(img);
-	$('#yl_img').append(imgUrl);
-	$('#yl_img').append(localUrl);
-}
+    $('#material_get').click(function () {
+        pageii = layer.open({
+            title: "图片素材",
+            type: 2,
+            area: ["100%", "100%"],
+            content: '${pageContext.request.contextPath}/materialLocal/imageList.shtml'
+        });
+    });
+    function imageSwitch(media) {
+        $('#yl_img *').remove();
+        $("#mediaId").attr("value", media.mediaId);
+        var img = '<img style="margin-top:10px; width: 188px;height: 120px;margin-left: 8px;" src="' + media.localUrl + '" />';
+        var imgUrl = '<input id="imageUrl" type="hidden" value="' + media.imageName + '" />';
+        var localUrl = '<input id="localUrl" name="localUrl" type="hidden" value="' + media.localUrl + '" />';
+        $('#yl_img').append(img);
+        $('#yl_img').append(imgUrl);
+        $('#yl_img').append(localUrl);
+    }
 </script>
 </html>

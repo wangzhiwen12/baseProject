@@ -32,10 +32,10 @@ public class ProductController extends BaseController {
 
         switch (pageIndex) {
             case "1":
-                destUrl = "";
+                destUrl = Common.BACKGROUND_PATH + "/wshop/product/list";
                 break;
             case "2":
-                destUrl = Common.BACKGROUND_PATH + "/page/memberPrivilege/privilege";
+                destUrl = Common.BACKGROUND_PATH + "/wshop/category/progrouplist";
                 break;
             case "3":
                 destUrl = Common.BACKGROUND_PATH + "/wshop/category/list";
