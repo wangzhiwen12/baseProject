@@ -296,12 +296,12 @@
     <select id="selectGroupList" resultMap="BaseResultMap" parameterType="HashMap">
         select
         <include refid="Base_Column_List"/>
-        from t_pro_group
+        from t_pro_group where state=1
         limit #{start}, #{limit}
     </select>
     <select id="selectGroupCount" resultType="java.lang.Integer" parameterType="HashMap">
     select
     count(1)
-    from t_pro_group
+    from t_pro_group where state=1
   </select>
 </mapper>

@@ -109,4 +109,24 @@ public class CategoryServiceImpl implements ICategoryService {
         page.setiTotalRecords(count);
         return page;
     }
+
+    /**
+     * 删除商品分组
+     *
+     * @param sid
+     * @return
+     */
+    public boolean deleteProGroupByPrimaryKey(Long sid) {
+        boolean flag = false;
+        TProGroup proGroup = new TProGroup();
+        proGroup.setId(sid);
+        TProGroup searchGroup = groupMapper.selectByPrimaryKey(sid);
+        if (searchGroup != null) {
+            proGroup.setState(0);
+            int count = groupMapper.updateByPrimaryKeySelective(proGroup);
+            if (count == 1)
+                flag = true;
+        }
+        return flag;
+    }
 }

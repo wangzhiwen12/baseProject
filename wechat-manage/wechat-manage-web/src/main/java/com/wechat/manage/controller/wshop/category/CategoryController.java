@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -185,5 +186,18 @@ public class CategoryController extends BaseController {
         page.setiTotalDisplayRecords(page.getiTotalRecords());
         page.setsEcho(para.getsEcho());
         return page;
+    }
+
+    @ResponseBody
+    @RequestMapping("/deleteProGroup")
+    @SystemLog(module = "商品分组", methods = "商品分组-删除")
+    public String deleteProGroup(Model model) {
+        String sid = getPara("sid");
+        boolean flag = categoryService.deleteProGroupByPrimaryKey(Long.parseLong(sid));
+        if (flag) {
+            return "success";
+        } else {
+            return "faile";
+        }
     }
 }

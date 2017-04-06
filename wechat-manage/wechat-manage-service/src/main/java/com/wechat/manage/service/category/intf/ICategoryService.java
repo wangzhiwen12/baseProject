@@ -13,11 +13,11 @@ import java.util.Map;
  */
 public interface ICategoryService {
 
-    public boolean saveCategoryPropInfo(List<TCategoryPropsDict> propList, List<TCategoryValuesDict> valueList);
+    boolean saveCategoryPropInfo(List<TCategoryPropsDict> propList, List<TCategoryValuesDict> valueList);
 
     boolean saveGroupInfo(TProGroup dto);
 
     DataTableResult<TProGroup> findGroupInfoByPage(Map<String, Object> paramMap);
 
-
+    boolean deleteProGroupByPrimaryKey(Long sid);
 }

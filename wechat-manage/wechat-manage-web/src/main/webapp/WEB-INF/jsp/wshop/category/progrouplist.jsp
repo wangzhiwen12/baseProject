@@ -24,8 +24,9 @@
                                     <i class="fa fa-weixin"></i>商品分组
                                 </div>
                                 <div class="actions" id="btnAdd">
-                                    <button type="button" id="addFun" class="btn btn-primary marR10">新增分组
-                                    </button>
+                                    <button type="button" id="addFun" class="btn btn-primary marR10">新增</button>
+                                    <button type="button" id="editFun" class="btn btn-info marR10">编辑</button>
+                                    <button type="button" id="delFun" class="btn btn-danger marR10">删除</button>
                                 </div>
                             </div>
                             <div class="portlet-body">

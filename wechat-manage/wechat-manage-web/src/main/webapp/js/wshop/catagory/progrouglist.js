@@ -6,6 +6,9 @@ $(function () {
     $("#addFun").click("click", function () {
         addFun();
     });
+    $("#delFun").click("click", function () {
+        delFun();
+    });
 });
 
 function addFun() {
@@ -17,6 +20,31 @@ function addFun() {
     });
 }
 
+function delFun() {
+    var ids = [];
+    $("input.checkboxes[name='sid']:checkbox").each(function () {
+        if ($(this).attr("checked")) {
+            ids.push($(this).val());
+        }
+    });
+    if (ids.length > 1 || ids == "") {
+        layer.msg("只能选中一个");
+        return;
+    }
+    layer.confirm('是否删除？', function (index) {
+        var url = rootPath + '/category/deleteProGroup.shtml';
+        var s = CommnUtil.ajax(url, {
+            "sid": ids[0]
+        }, "json");
+        if (s == "success") {
+
+            layer.msg('删除成功');
+            groupList();
+        } else {
+            layer.msg('删除失败');
+        }
+    });
+}
 
 function groupList() {
     var userTable = $('#userList');
@@ -55,7 +83,7 @@ function groupList() {
                 "sWidth": "3%",
                 "bSortable": false,
                 "mRender": function (data, type, full) {
-                    var sid = full["Id"];
+                    var sid = full["id"];
                     return '<div class="checker"><span><input name="sid" onclick="checkThis(this);" type="checkbox" class="checkboxes" value="' + sid + '"></span></div>';
                 }
             },
