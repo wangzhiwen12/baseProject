@@ -297,7 +297,9 @@
         select
         <include refid="Base_Column_List"/>
         from t_pro_group where state=1
-        limit #{start}, #{limit}
+        <if test="start != null and start!='' ">
+            limit #{start}, #{limit}
+        </if>
     </select>
     <select id="selectGroupCount" resultType="java.lang.Integer" parameterType="HashMap">
     select
