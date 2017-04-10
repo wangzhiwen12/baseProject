@@ -20,4 +20,6 @@ public interface ICategoryService {
     DataTableResult<TProGroup> findGroupInfoByPage(Map<String, Object> paramMap);
 
     boolean deleteProGroupByPrimaryKey(Long sid);
+
+    boolean saveProGroupRelation(String proSids, String gropSids);
 }

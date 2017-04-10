@@ -216,7 +216,7 @@ public class HttpUtils {
         // 设置Http Post数据       
         try {
             method.setRequestBody(json); 
-            method.setRequestHeader("Connection", "close");
+//            method.setRequestHeader("Connection", "close");
             method.setRequestHeader("Content-type", "application/json");
             HttpClient httpClientNew=new HttpClient();
 			httpClientNew.getHttpConnectionManager().getParams().setConnectionTimeout(50000); // 连接5秒超时

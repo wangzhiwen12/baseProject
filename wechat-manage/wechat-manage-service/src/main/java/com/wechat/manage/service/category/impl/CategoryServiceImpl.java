@@ -4,9 +4,11 @@ import com.wechat.manage.exception.BleException;
 import com.wechat.manage.mapper.category.TCategoryPropsDictMapper;
 import com.wechat.manage.mapper.category.TCategoryValuesDictMapper;
 import com.wechat.manage.mapper.category.TProGroupMapper;
+import com.wechat.manage.mapper.category.TProGroupRelationMapper;
 import com.wechat.manage.pojo.category.entity.TCategoryPropsDict;
 import com.wechat.manage.pojo.category.entity.TCategoryValuesDict;
 import com.wechat.manage.pojo.category.entity.TProGroup;
+import com.wechat.manage.pojo.category.entity.TProGroupRelation;
 import com.wechat.manage.service.category.intf.ICategoryService;
 import com.wechat.manage.utils.ComErrorCodeConstants;
 import com.wechat.manage.vo.DataTableResult;
@@ -14,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -34,6 +37,8 @@ public class CategoryServiceImpl implements ICategoryService {
     @Autowired
     private TProGroupMapper groupMapper;
 
+    @Autowired
+    private TProGroupRelationMapper groupRelationMapper;
 
     @Override
     public boolean saveCategoryPropInfo(List<TCategoryPropsDict> propList, List<TCategoryValuesDict> valueList) {
@@ -108,6 +113,34 @@ public class CategoryServiceImpl implements ICategoryService {
         Integer count = groupMapper.selectGroupCount(paramMap);
         page.setiTotalRecords(count);
         return page;
+    }
+
+    @Override
+    @Transactional
+    public boolean saveProGroupRelation(String proSids, String gropSids) {
+        String[] proArr = proSids.split(",");
+        String[] groupArr = gropSids.split(",");
+
+        if (groupArr != null && groupArr.length > 0) {
+            for (String groupSid : groupArr) {
+                for (String proSid : proArr) {
+                    TProGroupRelation dto = getProGroupRelation(groupSid, proSid);
+                    int count = groupRelationMapper.insertSelective(dto);
+                    if (count != 1) {
+                        throw new BleException(ComErrorCodeConstants.ErrorCode.PROGROUP_ADD_FAILED_ERROR.getErrorCode(),
+                                ComErrorCodeConstants.ErrorCode.PROGROUP_ADD_FAILED_ERROR.getMemo());
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    public TProGroupRelation getProGroupRelation(String groupSid, String proSid) {
+        TProGroupRelation groupRelation = new TProGroupRelation();
+        groupRelation.setGroupSid(new Long(groupSid));
+        groupRelation.setShoppeProSid(proSid);
+        return groupRelation;
     }
 
     /**

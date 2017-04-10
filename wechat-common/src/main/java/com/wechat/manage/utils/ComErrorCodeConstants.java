@@ -11,7 +11,7 @@ public class ComErrorCodeConstants {
         PAGE_ADD_FAILED_ERROR("001001001", "页面保存失败！"),PAGE_DATA_ISNULL("001001002","数据不存在请联系管理员!"),
         USERCENTER_ADD_FAILED_ERROR("001001003", "会员页面保存失败！"),
 
-        CATEGORY_ADD_FAILED_ERROR("001002001","分类属性保存失败")
+        CATEGORY_ADD_FAILED_ERROR("001002001","分类属性保存失败"),PROGROUP_ADD_FAILED_ERROR("001002002","商品分组失败")
         ;
         private String errorCode;
         private String memo;

@@ -11,10 +11,7 @@ import com.wechat.manage.pojo.category.vo.TProGroupPageDto;
 import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
 import com.wechat.manage.service.category.impl.CategoryServiceImpl;
 import com.wechat.manage.service.exception.BleException;
-import com.wechat.manage.utils.Common;
-import com.wechat.manage.utils.JsonUtil;
-import com.wechat.manage.utils.MqUtil;
-import com.wechat.manage.utils.StringUtils;
+import com.wechat.manage.utils.*;
 import com.wechat.manage.vo.DataTableResult;
 import com.wechat.manage.vo.MqRequestDataPara;
 import org.slf4j.Logger;
@@ -51,6 +48,11 @@ public class CategoryController extends BaseController {
     @RequestMapping("/addUI")
     public String addUI() {
         return Common.BACKGROUND_PATH + "/wshop/category/progroupadd";
+    }
+
+    @RequestMapping("/progrouppoplist")
+    public String progrouppoplist() {
+        return Common.BACKGROUND_PATH + "/wshop/category/progrouppoplist";
     }
 
     @RequestMapping(value = "/importCategoryPropInfo", method = RequestMethod.POST)
@@ -199,5 +201,19 @@ public class CategoryController extends BaseController {
         } else {
             return "faile";
         }
+    }
+
+    @ResponseBody
+    @RequestMapping("/proGroupRelation")
+    @SystemLog(module = "商品列表", methods = "商品列表-商品分组")
+    public String proGroupRelation(String proSids, String groupSids) {
+
+      String str=  HttpUtils.doPost("http://10.6.2.48:8043/pcm-admin-sdc/shoppe/findShoppeList.htm",
+                "{\"shopSid\":12}");
+//        if (categoryService.saveProGroupRelation(proSids, groupSids))
+//            return "success";
+//        else
+//            return "faile";
+        return  null;
     }
 }

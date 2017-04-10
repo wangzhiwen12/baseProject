@@ -3,118 +3,45 @@
  */
 $(function () {
     groupList();
-    $("#addFun").click("click", function () {
-        addFun();
-    });
-    $("#delFun").click("click", function () {
-        delFun();
-    });
-    $("#btngroup").click("click", function (e) {
-        popFun();
-         // groupFun($(this));
-        // alert($(document));
-        // stopPropagation(e);
-        // $(document).not(".btn-group").click(function(e){
-        //     alert("22222222222222");
-        //     // if($("#popTip").css('display')=='block'){
-        //     //     $("#popTip").hide();
-        //     // }
-        // });
 
-    });
-    $("#btnAdd").find("li").click("click",function () {
-        alert("11111111111111111");
-        $(this).find("i").toggleClass("fa fa-check-square ezp-c-green");
-        $(this).find("i").toggleClass("fa fa-square-o ezp-c-green");
-    });
+    $("#btnSubmit").click("click", function () {
+        var proSids = []
+        proSids = window.parent.getSelectPro();
+        alert(proSids);
 
+        var ids = [];
+        $("input.checkboxes[name='sid']:checkbox").each(function () {
+            if ($(this).attr("checked")) {
+                ids.push($(this).val());
+            }
+        });
 
+        alert(ids);
+
+        var url = rootPath + '/category/proGroupRelation.shtml';
+        var data = CommnUtil.ajax(url, {"proSids": proSids.toString(), "groupSids": ids.toString()}, "json");
+        console.log(data);
+        if (data != null) {
+            if (data == "success") {
+                layer.msg("添加成功!");
+                parent.layer.close(parent.pageii);
+            } else {
+                layer.msg("添加失败请联系管理员!");
+                return;
+            }
+        }
+        /* var ruleTpl = $("input[type='radio']:checked").val();
+         if (!!ruleTpl) {
+         window.parent.loadCouponName(ruleTpl);
+         parent.layer.close(parent.pageii);
+         return false;
+         }
+         else {
+         layer.msg("请选择一种券模板!");
+         return;
+         }*/
+    });
 });
-function stopPropagation(e) {
-    if (e.stopPropagation)
-        e.stopPropagation();
-    else
-        e.cancelBubble = true;
-}
-function addFun() {
-    pageii = layer.open({
-        title: "添加分组",
-        type: 2,
-        area: ["700px", "90%"],
-        content: rootPath + '/category/addUI.shtml'
-    });
-}
-function popFun() {
-    var ids = [];
-    $("input.checkboxes[name='sid']:checkbox").each(function () {
-        if ($(this).attr("checked")) {
-            ids.push($(this).val());
-        }
-    });
-    if (ids.length ==0 || ids == "") {
-        layer.msg("请选择商品");
-        return;
-    }
-    pageii = layer.open({
-        title: "商品分组",
-        type: 2,
-        area: ["700px", "90%"],
-        content: rootPath + '/category/progrouppoplist.shtml'
-    });
-}
-
-function getSelectPro() {
-    var ids = [];
-    $("input.checkboxes[name='sid']:checkbox").each(function () {
-        if ($(this).attr("checked")) {
-            ids.push($(this).val());
-        }
-    });
-    return ids;
-}
-
-
-function delFun() {
-    var ids = [];
-    $("input.checkboxes[name='sid']:checkbox").each(function () {
-        if ($(this).attr("checked")) {
-            ids.push($(this).val());
-        }
-    });
-    if (ids.length > 1 || ids == "") {
-        layer.msg("只能选中一个");
-        return;
-    }
-    layer.confirm('是否删除？', function (index) {
-        var url = rootPath + '/category/deleteProGroup.shtml';
-        var s = CommnUtil.ajax(url, {
-            "sid": ids[0]
-        }, "json");
-        if (s == "success") {
-
-            layer.msg('删除成功');
-            groupList();
-        } else {
-            layer.msg('删除失败');
-        }
-    });
-}
-
-function groupFun(obj) {
-    var ids = [];
-    $("input.checkboxes[name='sid']:checkbox").each(function () {
-        if ($(this).attr("checked")) {
-            ids.push($(this).val());
-        }
-    });
-    if (ids.length ==0 || ids == "") {
-        layer.msg("请选择商品");
-        return;
-    }
-
-    // $(obj).attr("data-toggle","dropdown");
-     $("#popTip").css("display", "block");
-}
 
 function groupList() {
     var userTable = $('#userList');
@@ -163,30 +90,6 @@ function groupList() {
                 "sWidth": '10%'
             },
             {
-                "sTitle": "分组图片",
-                "sWidth": '10%',
-                "mRender": function (data, type, full) {
-                    var picUrl = full["picUrl"];
-                    if (picUrl != null && picUrl != '') {
-                        return '<img width="64px" height="64px" src="' + picUrl + '">';
-                    } else {
-                        return '<img width="64px" height="64px">';
-                    }
-                }
-            },
-            {
-                "sTitle": "状态",
-                "sWidth": '10%',
-                "mRender": function (data, type, full) {
-                    var state = full["state"];
-                    if (state != null && state != '' && state == "1") {
-                        return '可用';
-                    } else {
-                        return '禁用';
-                    }
-                }
-            },
-            {
                 "sTitle": "分组类型",
                 "sWidth": '10%',
                 "mRender": function (data, type, full) {
@@ -201,18 +104,6 @@ function groupList() {
                         } else if (type == "4") {
                             return '按商品属性分组';
                         }
-                    }
-                }
-            }, {
-                "mDataProp": 'updateDate',
-                "sTitle": "最后编辑时间",
-                "sWidth": '15%',
-                "mRender": function (data, type, full) {
-                    var time = data;
-                    if (time) {
-                        return new Date(time).format("yyyy-MM-dd hh:mm:ss");
-                    } else {
-                        return "";
                     }
                 }
             }
