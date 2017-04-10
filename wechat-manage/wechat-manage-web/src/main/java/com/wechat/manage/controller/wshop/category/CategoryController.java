@@ -207,13 +207,9 @@ public class CategoryController extends BaseController {
     @RequestMapping("/proGroupRelation")
     @SystemLog(module = "商品列表", methods = "商品列表-商品分组")
     public String proGroupRelation(String proSids, String groupSids) {
-
-      String str=  HttpUtils.doPost("http://10.6.2.48:8043/pcm-admin-sdc/shoppe/findShoppeList.htm",
-                "{\"shopSid\":12}");
-//        if (categoryService.saveProGroupRelation(proSids, groupSids))
-//            return "success";
-//        else
-//            return "faile";
-        return  null;
+        if (categoryService.saveProGroupRelation(proSids, groupSids))
+            return "success";
+        else
+            return "faile";
     }
 }
