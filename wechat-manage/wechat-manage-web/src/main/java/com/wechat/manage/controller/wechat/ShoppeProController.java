@@ -145,7 +145,7 @@ public class ShoppeProController extends BaseController {
     @RequestMapping(value = "/selectStoreSid", method = {RequestMethod.GET,RequestMethod.POST}, produces = "application/json;charset=utf-8")
     @ResponseBody
     public String selectStoreSid(){
-        String url = "http://10.6.2.48:8042/pcm-inner-sdc/organization/selectListByParam.htm";
+        String url = "http://10.6.4.22:8042/pcm-inner-sdc/organization/selectListByParam.htm";
         UserBaseInfoDto curUserInfo = getCurUserInfo();
         String shopNo = curUserInfo.getStoreCode();
         Map<String,Object> paramMap = new HashMap();
@@ -188,7 +188,7 @@ public class ShoppeProController extends BaseController {
         }
 
         try {
-            String url = "http://10.6.2.124:8063/pcm-admin-sdc/shoppe/findShoppeList.htm";
+            String url = "http://10.6.4.22:8043/pcm-admin-sdc/shoppe/findShoppeList.htm";
             String json = HttpUtils.doPost(url, JsonUtil.getJSONString(para));
             para.clear();
             if (StringUtils.isNotEmpty(json)) {
@@ -262,7 +262,7 @@ public class ShoppeProController extends BaseController {
         }
 
         try {
-            String url = "http://10.6.2.48:8043/pcm-admin-sdc/pcmAdminSupplyInfo/findListSupplier.htm";
+            String url = "http://10.6.4.22:8043/pcm-admin-sdc/pcmAdminSupplyInfo/findListSupplier.htm";
             String json = HttpUtils.doPost(url, JsonUtil.getJSONString(map));
             JSONObject jsonObject = JSONObject.fromObject(json);
             List<?> list = (List<?>) jsonObject.get("data");

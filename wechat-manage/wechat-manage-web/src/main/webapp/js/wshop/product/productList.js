@@ -1,14 +1,57 @@
 $(function () {
     selectStoreSid();
-    selectSupplierByShop();
     productList();
 
+    $('#supplier_select').click(function(){
+        selectSupplierByShop();
+    });
 
     $('#supplier_select').change(function(){
         selectShoppeByShopAndSupplier();
     });
+
+    $("#btngroup").click("click", function (e) {
+        popFun();
+        // groupFun($(this));
+        // alert($(document));
+        // stopPropagation(e);
+        // $(document).not(".btn-group").click(function(e){
+        //     alert("22222222222222");
+        //     // if($("#popTip").css('display')=='block'){
+        //     //     $("#popTip").hide();
+        //     // }
+        // });
+
+    });
 });
 
+function popFun() {
+    var ids = [];
+    $("input.checkboxes[name='sid']:checkbox").each(function () {
+        if ($(this).attr("checked")) {
+            ids.push($(this).val());
+        }
+    });
+    if (ids.length ==0 || ids == "") {
+        layer.msg("请选择商品");
+        return;
+    }
+    pageii = layer.open({
+        title: "商品分组",
+        type: 2,
+        area: ["700px", "90%"],
+        content: rootPath + '/category/progrouppoplist.shtml'
+    });
+}
+function getSelectPro() {
+    var ids = [];
+    $("input.checkboxes[name='sid']:checkbox").each(function () {
+        if ($(this).attr("checked")) {
+            ids.push($(this).val());
+        }
+    });
+    return ids;
+}
 
 function reset(){
     $("#shoppeProName_input").val("");
@@ -45,7 +88,7 @@ function selectStoreSid(){
 
 //根据门店和供应商查询专柜
 function selectShoppeByShopAndSupplier(){
-    $('#shoppe_select').removeAttr("disabled");//
+
 
     $('#shoppe_select').html("<option value=''>全部</option>");
     $.ajax({
@@ -59,7 +102,6 @@ function selectShoppeByShopAndSupplier(){
             "supplySid" : $('#supplier_select').val()
         },
         success : function(response) {
-            alert(response);
             response = JSON.parse(response);
             var result = response.list;
             if(typeof(result) != "undefined"){
@@ -82,6 +124,7 @@ function selectShoppeByShopAndSupplier(){
             }
         }
     });
+    $('#shoppe_select').removeAttr("disabled");//
 }
 
 //根据门店查询供应商
@@ -94,7 +137,7 @@ function selectSupplierByShop(){
         url : rootPath + "/shoppePro/findListSupplier.shtml",
         dataType : "json",
         async : false,
-        data : "shopCode=" + organizationCode,
+        data : "shopSid=" + organizationCode,
         success : function(response) {
             response = JSON.parse(response);
             var result = response.list;
@@ -162,7 +205,7 @@ function productList() {
                 "sTitle": "选择",
                 "mRender" : function (data, type, full) {
                     return '' +
-                    '<input type="checkbox" id="'+data.productCode+'" value="'+data.productCode+'" >';
+                    '<input type="checkbox" name="sid" class="checkboxes" value="'+data.productCode+'" >';
                 }
             },{
                 "mDataProp": 'productCode',
@@ -193,7 +236,14 @@ function productList() {
                 "sTitle": "管理分类"
             },{
                 "mDataProp": 'isSale',
-                "sTitle": "状态"
+                "sTitle": "状态",
+                "mRender" : function (data, type, full) {
+                    if(data == '0'){
+                        return "可用";
+                    }else {
+                        return "不可用";
+                    }
+                }
             }
         ],
         "fnServerData": function (sSource, aoData, fnCallback) {
