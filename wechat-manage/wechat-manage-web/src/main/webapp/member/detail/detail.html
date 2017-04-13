@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商品详情页</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+    <style type="text/css">
+        .padding-bottom-0 {
+            padding-bottom: 0;
+        }
+
+        .padding-0 {
+            padding: 0 !important;
+        }
+
+        .margin-top-0 {
+            margin-top: 0 !important;
+        }
+
+        .margin-0 {
+            margin: 0 !important;
+        }
+    </style>
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current">
+        <nav class="bar bar-tab">
+            <div class="row no-gutter">
+                <a class="col-20 tab-item" href="#">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">主页</span>
+                </a>
+                <a class="col-20 tab-item" href="#">
+                    <span class="icon icon-star"></span>
+                    <span class="tab-label">收藏</span>
+                </a>
+                <a href="#" class="tab-item" style="background-color: #f60;font-size: 12px; color: #FFFFFF;">加入购物车 </a>
+                <a href="#" class="tab-item"
+                   style="background-color: #f6383a;font-size: 12px; color: #FFFFFF;">立即购买 </a>
+            </div>
+        </nav>
+        <div class="content pull-to-refresh-contents">
+            <!-- Slider -->
+            <div class="swiper-container padding-bottom-0" data-space-between='10'>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img
+                            src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"
+                            alt=""></div>
+                    <div class="swiper-slide"><img
+                            src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"
+                            alt=""></div>
+                    <div class="swiper-slide"><img
+                            src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"
+                            alt=""></div>
+                    <div class="swiper-slide"><img
+                            src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"
+                            alt=""></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <input type="text" id='picker'/>
+            <div class="content-block">
+                <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+                <p><a href="#" class="create-popup">Create Popup</a></p>
+            </div>
+
+            <div class="list-block margin-0">
+                <ul>
+                    <li>
+                        <div class="item-inner">
+                            <div class="item-title" style="line-height: 18px;">
+                                <span style="font-size: 14px;">商品名称</span><br/>
+                                <span style="font-size: 12px; color: #6e727b">货号：100001</span><br/>
+                                <span style="font-size: 14px;color: #ef1d26;font-weight:bold ;">￥100.00</span>
+                                <span style="font-size: 12px; color: #6e727b;text-decoration: line-through;">199.00</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block" style="margin: 3px 0 3px 0;">
+                <ul>
+                    <li>
+                        <a class="item-link item-content" href="/demos/list/view-list">
+                            <div class="item-inner" style="font-size: 14px;">请选择商品规格</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="buttons-tab">
+                <a href="#tab1" class="tab-link active button">商品详情</a>
+                <a href="#tab2" class="tab-link button">商品参数</a>
+                <a href="#tab3" class="tab-link button">商品评价</a>
+            </div>
+            <div class="content-block">
+                <div class="tabs">
+                    <div id="tab1" class="tab active">
+                        <div class="content-block">
+                            <p>商品详情</p>
+                        </div>
+                    </div>
+                    <div id="tab2" class="tab">
+                        <div class="content-block">
+                            <p>商品参数</p>
+                        </div>
+                    </div>
+                    <div id="tab3" class="tab">
+                        <div class="content-block">
+                            <p>商品评价</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript'>
+    $(function () {
+        $.init();
+        $("#picker").picker({
+            toolbarTemplate: '<div class="content-padded">\
+            <p>我的左右两边有留白,我的左右两边有留白,我的左右两边有留白</p>\
+                </div>',
+            cols: [
+            ]
+        });
+        $(document).on('click','.create-popup', function () {
+            var popupHTML = '<div class="popup" style="height: 300px;">'+
+                    '<div class="content-block">'+
+                    '<p>Popup created dynamically.</p>'+
+                    '<p><a href="#" class="close-popup">Close me</a></p>'+
+                    '</div>'+
+                    '</div>'
+            $.popup(popupHTML);
+        });
+    });
+
+</script>
+</body>
+</html>
