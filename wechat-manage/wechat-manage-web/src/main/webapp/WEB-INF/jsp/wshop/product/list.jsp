@@ -135,6 +135,13 @@
                                 <div class="caption">
                                     <i class="fa fa-weixin"></i>商品列表
                                 </div>
+
+                                <div class="btn-group" style="float:right;">
+                                    <a id="btngroup" class="btn btn-danger marR10" href="javascript:;">
+                                        手工分组
+                                    </a>
+                                </div>
+
                             </div>
                             <div id="productTable" class="portlet-body">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer"
