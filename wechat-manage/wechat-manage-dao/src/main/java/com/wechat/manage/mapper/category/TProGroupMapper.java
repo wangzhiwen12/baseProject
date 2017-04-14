@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface TProGroupMapper {
+    List<String> getProListByGroupId(Map<String, Object> paramMap);
+
     int deleteByPrimaryKey(Long id);
 
     int insert(TProGroup record);

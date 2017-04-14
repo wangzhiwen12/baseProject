@@ -5,8 +5,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.wechat.manage.controller.index.BaseController;
 import com.wechat.manage.pojo.product.vo.PcmProSearchDto;
+import com.wechat.manage.pojo.product.vo.PcmProYeInfoDto;
 import com.wechat.manage.pojo.product.vo.PcmShoppeProductVo;
 import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
+import com.wechat.manage.service.wshopnav.intf.ITProGroupService;
 import com.wechat.manage.utils.HttpUtils;
 import com.wechat.manage.utils.JsonUtil;
 import com.wechat.manage.utils.StringUtils;
@@ -16,6 +18,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,6 +36,9 @@ public class ShoppeProController extends BaseController {
 
     @Autowired
     private SpringWebMvcServiceProvider provider;
+
+    @Autowired
+    private ITProGroupService iTProGroupService;
 
     @RequestMapping(value = "/selectShoppeProductPageByParaFromSearch", method = {RequestMethod.GET,RequestMethod.POST}, produces = "application/json;charset=utf-8")
     @ResponseBody
@@ -279,5 +285,42 @@ public class ShoppeProController extends BaseController {
 
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
         return gson.toJson(map);
+    }
+
+    @RequestMapping(value = "/getProListByGroupId", method = {RequestMethod.GET,RequestMethod.POST}, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String getProListByGroupId(String groupId){
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("id",4);
+        List<String> proList =  iTProGroupService.getProListByGroupId(paramMap);
+        System.out.print(proList);
+        if (proList != null && proList.size() > 0){
+            paramMap.clear();
+            paramMap.put("proList",proList);
+            String url = "http://10.6.4.22:8042/pcm-inner-sdc/product/getSkuListByProList.htm";
+            String json = HttpUtils.doPost(url, JsonUtil.getJSONString(paramMap));
+            return json;
+        }
+        return "";
+    }
+
+    /**
+     * 商品单品页查询
+     *
+     * @Methods Name getProYeInfoBySpuCode
+     * @Create In 2017年4月14日 By yedong
+     * @param skuCode
+     * @return PcmProYeInfoDto pro
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getProYeInfoBySpuCode", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    public PcmProYeInfoDto getProYeInfoBySpuCode(String skuCode) {
+        Map<String, Object> paramMap = new HashMap();
+        paramMap.put("spuCode",skuCode);
+        String url = "http://10.6.4.22:8046/pcm-outer-sdc/product/getProYeInfoBySpuCode.htm";
+        String json = HttpUtils.doPost(url, JsonUtil.getJSONString(paramMap));
+
+        PcmProYeInfoDto pro = JsonUtil.getDTO(json, PcmProYeInfoDto.class);
+        return pro;
     }
 }
