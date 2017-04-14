@@ -36,7 +36,7 @@
         .close {
             /* still bad on picking color */
             background: #ffffff;
-            color: red;
+            /*color: red;*/
             /* make a round button */
             border-radius: 12px;
             /* center text */
@@ -60,6 +60,70 @@
             right: 5px;
             position: absolute;
         }
+
+        .addcart {
+            background-color: #f60;
+            font-size: 12px;
+            color: #FFFFFF !important;
+        }
+
+        .buynow {
+            background-color: #f6383a;
+            font-size: 12px;
+            color: #FFFFFF !important;
+        }
+        .popup{ background:#fff; font-size:12px; color:#555; font-family:Tahoma, Geneva, sans-serif; padding:100px 100px;}
+        .popup *{ margin:0; padding:0;-webkit-text-size-adjust:none;}
+        .popup li{ list-style:none;}
+        .popup a{ color:#555; text-decoration:none;}
+        .popup a:hover{ color:#c00; text-decoration:underline;}
+        .popup img{ border:none;}
+
+        .popup  .clearfix:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+        .popup  * html .clearfix             { zoom: 1; } /* IE6 */
+        .popup  *:first-child+html .clearfix { zoom: 1; } /* IE7 */
+        .popup  .tab{ line-height:56px; font-size:14px;}
+        .popup  .tab a{ color:#07c;}
+        .popup  .tab a:hover{ color:#c00;}
+        .popup  .tab a.cur{ font-weight:bold;}
+
+
+
+        /*商品详细页*/
+        /*iteminfo*/
+        .iteminfo{}
+        .iteminfo_tit{ color:#333; font-size:22px; font-family:"微软雅黑",Arial, Helvetica, sans-serif; border-bottom:1px solid #e3e3e3; font-weight:normal; padding-bottom:12px; line-height:32px;}
+        .iteminfo_parameter{ padding:8px 0; padding-left:70px;}
+        .iteminfo_parameter_default{ color:#888;}
+        .iteminfo_parameter dt{ margin-left:-70px; float:left; display:inline; width:60px; white-space:nowrap; text-align:right; color:#888;}
+
+        .iteminfo_mktprice{ font-size:12px; font-family:Arial, Helvetica, sans-serif; text-decoration:line-through;}
+        .lh32{ line-height:32px;}
+        .iteminfo_price{ color:#c00; font-size:14px; font-family:Arial, Helvetica, sans-serif; vertical-align:middle;}
+        .sys_item_price{ color:#c00; font-size:22px; vertical-align:middle;}
+        .iteminfo_buying{ background:#f7f7f7; padding:12px 0;}
+
+        /*规格*/
+        .sys_item_spec dl.iteminfo_parameter{ padding-top:5px; padding-bottom:5px;}
+        .sys_item_spec dl.iteminfo_parameter dt{ line-height:32px;}
+
+        /*一下正对图片*/
+        .sys_spec_img{}
+        .sys_spec_img li{ float:left; height:54px; position:relative; margin:2px 6px 2px 0;}
+        .sys_spec_img li a{height:50px; width:50px; padding:1px; border:1px solid #ccc; float:left; background:#fff; display:inline-block; outline:none;}
+        .sys_spec_img li a img{ width:50px; height:50px; display:block;}
+        .sys_spec_img li a:hover{ border:2px solid #e4393c; padding:0; text-decoration:none;}
+        .sys_spec_img li i{ position:absolute; width:10px; height:10px; font-size:0; line-height:0; right:2px; bottom:2px; background:url(img/sys_item_selected.gif) no-repeat right bottom; z-index:99; display:none;}
+        .sys_spec_img li.selected a{ border:2px solid #e4393c; padding:0;}
+        .sys_spec_img li.selected i{ display:block;}
+
+        .sys_spec_text{}
+        .sys_spec_text li{ float:left; height:28px; position:relative; margin:2px 6px 2px 0; outline:none;}
+        .sys_spec_text li a{ height:24px; padding:1px 6px; border:1px solid #ccc; background:#fff; display:inline-block; line-height:24px;}
+        .sys_spec_text li a:hover{ border:2px solid #e4393c; padding:0 5px; text-decoration:none;}
+        .sys_spec_text li i{ position:absolute; width:10px; height:10px; font-size:0; line-height:0; right:2px; bottom:2px; background:url(img/sys_item_selected.gif) no-repeat right bottom; z-index:99; display:none;}
+        .sys_spec_text li.selected a{ border:2px solid #e4393c; padding:0 5px;}
+        .sys_spec_text li.selected i{ display:block;}
     </style>
 </head>
 <body>
@@ -75,9 +139,8 @@
                     <span class="icon icon-star"></span>
                     <span class="tab-label">收藏</span>
                 </a>
-                <a href="#" class="tab-item" style="background-color: #f60;font-size: 12px; color: #FFFFFF;">加入购物车 </a>
-                <a href="#" class="tab-item"
-                   style="background-color: #f6383a;font-size: 12px; color: #FFFFFF;">立即购买 </a>
+                <a href="#" class="tab-item addcart">加入购物车 </a>
+                <a href="#" class="tab-item buynow">立即购买 </a>
             </div>
         </nav>
         <div class="content">
@@ -117,7 +180,7 @@
                 <ul>
                     <li>
                         <a class="item-link item-content create-popup" href="#">
-                            <div class="item-inner" style="font-size: 14px;">请选择商品规格</div>
+                            <div class="item-inner" style="font-size: 14px;color: #6e727b;">请选择商品规格</div>
                         </a>
                     </li>
                 </ul>
@@ -152,17 +215,50 @@
 <!-- About Popup -->
 <div class="popup" style="height: 300px;bottom: 0px;top: auto">
     <div class="content-block">
-
         <nav class="bar bar-tab">
             <div class="row no-gutter">
-                <a href="#" class="tab-item" style="background-color: #f60;font-size: 12px; color: #FFFFFF;">加入购物车 </a>
-                <a href="#" class="tab-item"
-                   style="background-color: #f6383a;font-size: 12px; color: #FFFFFF;">立即购买 </a>
+                <a href="#" class="tab-item addcart">加入购物车 </a>
+                <a href="#" class="tab-item buynow">立即购买 </a>
             </div>
         </nav>
         <div class="content">
             <span class="close close-popup"></span>
-
+            <!--规格属性-->
+            <div class="sys_item_spec">
+                <dl class="clearfix iteminfo_parameter iteminfo_parameter_default lh32">
+                    <dt>市场价</dt>
+                    <dd><span class="iteminfo_mktprice">$<b class="sys_item_mktprice">13.00</b></span></dd>
+                </dl>
+                <dl class="clearfix iteminfo_parameter lh32">
+                    <dt>本网价</dt>
+                    <dd><span class="iteminfo_price">$ <b class="sys_item_price">6.80</b></span></dd>
+                </dl>
+                <dl class="clearfix iteminfo_parameter sys_item_specpara" data-sid="1">
+                    <dt>颜色</dt>
+                    <dd>
+                        <ul class="sys_spec_img">
+                            <li data-aid="3"><a href="javascript:;" title="白色"><img src="img/1.png" alt="白色" /></a><i></i></li>
+                            <li data-aid="4"><a href="javascript:;" title="粉色"><img src="img/2.png" alt="粉色" /></a><i></i></li>
+                            <li data-aid="8"><a href="javascript:;" title="蓝色"><img src="img/3.png" alt="蓝色" /></a><i></i></li>
+                            <li data-aid="9"><a href="javascript:;" title="绿色"><img src="img/4.png" alt="绿色" /></a><i></i></li>
+                            <li data-aid="10"><a href="javascript:;" title="黄色"><img src="img/5.png" alt="黄色" /></a><i></i></li>
+                            <li data-aid="12"><a href="javascript:;" title="灰色"><img src="img/6.png" alt="灰色" /></a><i></i></li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="clearfix iteminfo_parameter sys_item_specpara" data-sid="2">
+                    <dt>尺码</dt>
+                    <dd>
+                        <ul class="sys_spec_text">
+                            <li data-aid="13"><a href="javascript:;" title="S">S</a><i></i></li>
+                            <li data-aid="14"><a href="javascript:;" title="M">M</a><i></i></li>
+                            <li data-aid="16"><a href="javascript:;" title="L">L</a><i></i></li>
+                            <li data-aid="17"><a href="javascript:;" title="XL">XL</a><i></i></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <!--规格属性-->
         </div>
     </div>
 </div>
@@ -173,20 +269,75 @@
     $(function () {
         $.init();
         /*$(document).on('click', '.create-popup', function () {
-            var popupHTML = '<div class="popup" style="height: 300px;bottom: 0px;top: auto">' +
-                    '<div class="content-block">' +
-                    '  <span class="close close-popup"></span>' +
-                    '<p>Popup created dynamically.</p>' +
-                    '<p><a href="#" class="close-popup">Close me</a></p>' +
-                    '</div>' +
-                    '</div>'
-            $.popup(popupHTML);
-        });*/
-         $(document).on('click', '.create-popup', function () {
+         var popupHTML = '<div class="popup" style="height: 300px;bottom: 0px;top: auto">' +
+         '<div class="content-block">' +
+         '  <span class="close close-popup"></span>' +
+         '<p>Popup created dynamically.</p>' +
+         '<p><a href="#" class="close-popup">Close me</a></p>' +
+         '</div>' +
+         '</div>'
+         $.popup(popupHTML);
+         });*/
+        $(document).on('click', '.create-popup', function () {
             $.popup('.popup');
-         });
+        });
     });
 
+    //价格json
+    var sys_item={
+        "mktprice":"13.00",
+        "price":"6.80",
+        "sys_attrprice":{"3_13":{"price":"6.80","mktprice":"13.00"},"3_14":{"price":"7.80","mktprice":"14.00"},"3_16":{"price":"8.80","mktprice":"15.00"},"3_17":{"price":"9.80","mktprice":"16.00"},"4_13":{"price":"6.80","mktprice":"13.00"},"4_14":{"price":"7.80","mktprice":"14.00"},"4_16":{"price":"8.80","mktprice":"15.00"},"4_17":{"price":"9.80","mktprice":"16.00"},"8_13":{"price":"6.80","mktprice":"13.00"},"8_14":{"price":"7.80","mktprice":"1400"},"8_16":{"price":"8.80","mktprice":"15.00"},"8_17":{"price":"9.80","mktprice":"16.00"},"9_13":{"price":"6.80","mktprice":"13.00"},"9_14":{"price":"7.80","mktprice":"14.00"},"9_16":{"price":"8.80","mktprice":"15.00"},"9_17":{"price":"9.80","mktprice":"16.00"},"10_13":{"price":"6.80","mktprice":"13.00"},"10_14":{"price":"7.80","mktprice":"14.00"},"10_16":{"price":"8.80","mktprice":"15.00"},"10_17":{"price":"9.80","mktprice":"16.00"},"12_13":{"price":"6.80","mktprice":"13.00"},"12_14":{"price":"7.80","mktprice":"14.00"},"12_16":{"price":"8.80","mktprice":"15.00"},"12_17":{"price":"9.80","mktprice":"16.00"}}};
+
+
+    //商品规格选择
+    $(function(){
+        $(".sys_item_spec .sys_item_specpara").each(function(){
+            var i=$(this);
+            var p=i.find("ul>li");
+            p.click(function(){
+                if(!!$(this).hasClass("selected")){
+                    $(this).removeClass("selected");
+                    i.removeAttr("data-attrval");
+                }else{
+                    $(this).addClass("selected").siblings("li").removeClass("selected");
+                    i.attr("data-attrval",$(this).attr("data-aid"))
+                }
+                getattrprice() //输出价格
+            })
+        })
+
+        //获取对应属性的价格
+        function getattrprice(){
+            var defaultstats=true;
+            var _val='';
+            var _resp={
+                mktprice:".sys_item_mktprice",
+                price:".sys_item_price"
+            }  //输出对应的class
+            $(".sys_item_spec .sys_item_specpara").each(function(){
+                var i=$(this);
+                var v=i.attr("data-attrval");
+                if(!v){
+                    defaultstats=false;
+                }else{
+                    _val+=_val!=""?"_":"";
+                    _val+=v;
+                }
+            })
+            if(!!defaultstats){
+                _mktprice=sys_item['sys_attrprice'][_val]['mktprice'];
+                _price=sys_item['sys_attrprice'][_val]['price'];
+            }else{
+                _mktprice=sys_item['mktprice'];
+                _price=sys_item['price'];
+            }
+            //输出价格
+            $(_resp.mktprice).text(_mktprice);  ///其中的math.round为截取小数点位数
+            $(_resp.price).text(_price);
+        }
+    })
 </script>
+
 </body>
 </html>
