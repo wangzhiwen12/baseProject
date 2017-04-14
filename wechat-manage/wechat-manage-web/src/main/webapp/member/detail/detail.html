@@ -27,6 +27,39 @@
         .margin-0 {
             margin: 0 !important;
         }
+
+        .popup {
+            bottom: 0px;
+        }
+
+        /* basic style */
+        .close {
+            /* still bad on picking color */
+            background: #ffffff;
+            color: red;
+            /* make a round button */
+            border-radius: 12px;
+            /* center text */
+            line-height: 20px;
+            text-align: center;
+            height: 20px;
+            width: 20px;
+            font-size: 18px;
+            padding: 1px;
+            cursor: pointer;
+        }
+
+        /* use cross as close button */
+        .close::before {
+            content: "\2716";
+        }
+
+        /* place the button on top-right */
+        .close {
+            top: 5px;
+            right: 5px;
+            position: absolute;
+        }
     </style>
 </head>
 <body>
@@ -47,7 +80,7 @@
                    style="background-color: #f6383a;font-size: 12px; color: #FFFFFF;">立即购买 </a>
             </div>
         </nav>
-        <div class="content pull-to-refresh-contents">
+        <div class="content">
             <!-- Slider -->
             <div class="swiper-container padding-bottom-0" data-space-between='10'>
                 <div class="swiper-wrapper">
@@ -66,12 +99,6 @@
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
-            <input type="text" id='picker'/>
-            <div class="content-block">
-                <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
-                <p><a href="#" class="create-popup">Create Popup</a></p>
-            </div>
-
             <div class="list-block margin-0">
                 <ul>
                     <li>
@@ -89,7 +116,7 @@
             <div class="list-block" style="margin: 3px 0 3px 0;">
                 <ul>
                     <li>
-                        <a class="item-link item-content" href="/demos/list/view-list">
+                        <a class="item-link item-content create-popup" href="#">
                             <div class="item-inner" style="font-size: 14px;">请选择商品规格</div>
                         </a>
                     </li>
@@ -122,28 +149,42 @@
         </div>
     </div>
 </div>
+<!-- About Popup -->
+<div class="popup" style="height: 300px;bottom: 0px;top: auto">
+    <div class="content-block">
+
+        <nav class="bar bar-tab">
+            <div class="row no-gutter">
+                <a href="#" class="tab-item" style="background-color: #f60;font-size: 12px; color: #FFFFFF;">加入购物车 </a>
+                <a href="#" class="tab-item"
+                   style="background-color: #f6383a;font-size: 12px; color: #FFFFFF;">立即购买 </a>
+            </div>
+        </nav>
+        <div class="content">
+            <span class="close close-popup"></span>
+
+        </div>
+    </div>
+</div>
 <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
 <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
 <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
 <script type='text/javascript'>
     $(function () {
         $.init();
-        $("#picker").picker({
-            toolbarTemplate: '<div class="content-padded">\
-            <p>我的左右两边有留白,我的左右两边有留白,我的左右两边有留白</p>\
-                </div>',
-            cols: [
-            ]
-        });
-        $(document).on('click','.create-popup', function () {
-            var popupHTML = '<div class="popup" style="height: 300px;">'+
-                    '<div class="content-block">'+
-                    '<p>Popup created dynamically.</p>'+
-                    '<p><a href="#" class="close-popup">Close me</a></p>'+
-                    '</div>'+
+        /*$(document).on('click', '.create-popup', function () {
+            var popupHTML = '<div class="popup" style="height: 300px;bottom: 0px;top: auto">' +
+                    '<div class="content-block">' +
+                    '  <span class="close close-popup"></span>' +
+                    '<p>Popup created dynamically.</p>' +
+                    '<p><a href="#" class="close-popup">Close me</a></p>' +
+                    '</div>' +
                     '</div>'
             $.popup(popupHTML);
-        });
+        });*/
+         $(document).on('click', '.create-popup', function () {
+            $.popup('.popup');
+         });
     });
 
 </script>
