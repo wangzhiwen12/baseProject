@@ -50,6 +50,8 @@ public class ProductController extends BaseController {
         return destUrl;
     }
 
+
+
  /*   @ResponseBody
     @RequestMapping(value = "/saveProduct", method = RequestMethod.POST)
     public String saveProduct(@RequestBody MqRequestDataListPara<ProductInfoDto> para2) {

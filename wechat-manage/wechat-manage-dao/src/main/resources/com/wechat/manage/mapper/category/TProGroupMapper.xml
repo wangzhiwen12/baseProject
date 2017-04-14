@@ -305,5 +305,15 @@
     select
     count(1)
     from t_pro_group where state=1
-  </select>
+    </select>
+    <select id="getProListByGroupId" resultType="java.lang.String" parameterType="HashMap">
+        SELECT
+            proGR.shoppe_pro_sid
+        FROM
+            t_pro_group_relation AS proGR
+        JOIN
+            t_pro_group AS proG ON proG.Id = proGR.group_sid
+        WHERE
+            proG.Id = #{id,jdbcType=BIGINT}
+    </select>
 </mapper>
