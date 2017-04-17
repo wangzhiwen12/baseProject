@@ -314,13 +314,12 @@ public class ShoppeProController extends BaseController {
      */
     @ResponseBody
     @RequestMapping(value = "/getProYeInfoBySpuCode", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-    public PcmProYeInfoDto getProYeInfoBySpuCode(String skuCode) {
+    public String getProYeInfoBySpuCode(String skuCode) {
         Map<String, Object> paramMap = new HashMap();
         paramMap.put("spuCode",skuCode);
         String url = "http://10.6.4.22:8046/pcm-outer-sdc/product/getProYeInfoBySpuCode.htm";
         String json = HttpUtils.doPost(url, JsonUtil.getJSONString(paramMap));
-
-        PcmProYeInfoDto pro = JsonUtil.getDTO(json, PcmProYeInfoDto.class);
-        return pro;
+        System.out.print("------------"+json);
+        return json;
     }
 }
