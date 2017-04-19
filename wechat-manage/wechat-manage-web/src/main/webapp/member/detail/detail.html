@@ -218,24 +218,24 @@
             <span class="close close-popup"></span>
             <!--规格属性-->
             <div class="sys_item_spec">
-                <dl class="clearfix iteminfo_parameter iteminfo_parameter_default lh32">
-                    <dt>市场价</dt>
-                    <dd><span class="iteminfo_mktprice">$<b class="sys_item_mktprice">13.00</b></span></dd>
-                </dl>
+                <!--<dl class="clearfix iteminfo_parameter iteminfo_parameter_default lh32">-->
+                    <!--<dt>市场价</dt>-->
+                    <!--<dd><span class="iteminfo_mktprice">$<b class="sys_item_mktprice">13.00</b></span></dd>-->
+                <!--</dl>-->
                 <dl class="clearfix iteminfo_parameter lh32">
-                    <dt>本网价</dt>
+                    <dt>价格</dt>
                     <dd><span class="iteminfo_price">$ <b class="sys_item_price">6.80</b></span></dd>
                 </dl>
                 <dl class="clearfix iteminfo_parameter sys_item_specpara" data-sid="1">
                     <dt>颜色</dt>
                     <dd>
                         <ul class="sys_spec_img">
-                            <li data-aid="3"><a href="javascript:;" title="白色"><img src="img/1.png" alt="白色" /></a><i></i></li>
-                            <li data-aid="4"><a href="javascript:;" title="粉色"><img src="img/2.png" alt="粉色" /></a><i></i></li>
-                            <li data-aid="8"><a href="javascript:;" title="蓝色"><img src="img/3.png" alt="蓝色" /></a><i></i></li>
-                            <li data-aid="9"><a href="javascript:;" title="绿色"><img src="img/4.png" alt="绿色" /></a><i></i></li>
-                            <li data-aid="10"><a href="javascript:;" title="黄色"><img src="img/5.png" alt="黄色" /></a><i></i></li>
-                            <li data-aid="12"><a href="javascript:;" title="灰色"><img src="img/6.png" alt="灰色" /></a><i></i></li>
+                            <!--<li data-aid="3"><a href="javascript:;" title="白色"><img src="img/1.png" alt="白色" /></a><i></i></li>-->
+                            <!--<li data-aid="4"><a href="javascript:;" title="粉色"><img src="img/2.png" alt="粉色" /></a><i></i></li>-->
+                            <!--<li data-aid="8"><a href="javascript:;" title="蓝色"><img src="img/3.png" alt="蓝色" /></a><i></i></li>-->
+                            <!--<li data-aid="9"><a href="javascript:;" title="绿色"><img src="img/4.png" alt="绿色" /></a><i></i></li>-->
+                            <!--<li data-aid="10"><a href="javascript:;" title="黄色"><img src="img/5.png" alt="黄色" /></a><i></i></li>-->
+                            <!--<li data-aid="12"><a href="javascript:;" title="灰色"><img src="img/6.png" alt="灰色" /></a><i></i></li>-->
                         </ul>
                     </dd>
                 </dl>
@@ -243,10 +243,10 @@
                     <dt>尺码</dt>
                     <dd>
                         <ul class="sys_spec_text">
-                            <li data-aid="13"><a href="javascript:;" title="S">S</a><i></i></li>
-                            <li data-aid="14"><a href="javascript:;" title="M">M</a><i></i></li>
-                            <li data-aid="16"><a href="javascript:;" title="L">L</a><i></i></li>
-                            <li data-aid="17"><a href="javascript:;" title="XL">XL</a><i></i></li>
+                            <!--<li data-aid="13"><a href="javascript:;" title="S">S</a><i></i></li>-->
+                            <!--<li data-aid="14"><a href="javascript:;" title="M">M</a><i></i></li>-->
+                            <!--<li data-aid="16"><a href="javascript:;" title="L">L</a><i></i></li>-->
+                            <!--<li data-aid="17"><a href="javascript:;" title="XL">XL</a><i></i></li>-->
                         </ul>
                     </dd>
                 </dl>
@@ -278,13 +278,6 @@
             $.popup('.popup');
         });
     });
-
-    //价格json
-    var sys_item={
-        "mktprice":"13.00",
-        "price":"6.80",
-        "sys_attrprice":{"3_13":{"price":"6.80","mktprice":"13.00"},"3_14":{"price":"7.80","mktprice":"14.00"},"3_16":{"price":"8.80","mktprice":"15.00"},"3_17":{"price":"9.80","mktprice":"16.00"},"4_13":{"price":"6.80","mktprice":"13.00"},"4_14":{"price":"7.80","mktprice":"14.00"},"4_16":{"price":"8.80","mktprice":"15.00"},"4_17":{"price":"9.80","mktprice":"16.00"},"8_13":{"price":"6.80","mktprice":"13.00"},"8_14":{"price":"7.80","mktprice":"1400"},"8_16":{"price":"8.80","mktprice":"15.00"},"8_17":{"price":"9.80","mktprice":"16.00"},"9_13":{"price":"6.80","mktprice":"13.00"},"9_14":{"price":"7.80","mktprice":"14.00"},"9_16":{"price":"8.80","mktprice":"15.00"},"9_17":{"price":"9.80","mktprice":"16.00"},"10_13":{"price":"6.80","mktprice":"13.00"},"10_14":{"price":"7.80","mktprice":"14.00"},"10_16":{"price":"8.80","mktprice":"15.00"},"10_17":{"price":"9.80","mktprice":"16.00"},"12_13":{"price":"6.80","mktprice":"13.00"},"12_14":{"price":"7.80","mktprice":"14.00"},"12_16":{"price":"8.80","mktprice":"15.00"},"12_17":{"price":"9.80","mktprice":"16.00"}}};
-
 
     //商品规格选择
     $(function(){
@@ -322,11 +315,32 @@
                 }
             })
             if(!!defaultstats){
-                _mktprice=sys_item['sys_attrprice'][_val]['mktprice'];
-                _price=sys_item['sys_attrprice'][_val]['price'];
+                $.ajax({
+                    type : "post",
+                    contentType : "application/x-www-form-urlencoded;charset=utf-8",
+                    url : rootPath + "/shoppePro/selectStockAndPriceByProDetail.shtml",
+                    dataType : "json",
+                    async : false,
+                    data : {
+                        "skuCode" : sku_code[_val]
+                    },
+                    success : function(pro) {
+                        var proYe = JSON.parse(pro);
+                        var proData = proYe.data;
+                        $('#pro-price').html(proData.price);
+                        _mktprice=proData.price;
+                        _price=proData.price;
+                        var color_stan = _val.split("_");
+                        $('#pro-stan-color').html(color_stan[0] + "  ,  " + color_stan[1] + "  ,  1件");
+
+                    },
+                    error : function(XMLHttpRequest, textStatus) {
+
+                    }
+                });
             }else{
-                _mktprice=sys_item['mktprice'];
-                _price=sys_item['price'];
+                _mktprice = $('.sys_item_price').text();
+                _price = $('.sys_item_price').text();
             }
             //输出价格
             $(_resp.mktprice).text(_mktprice);  ///其中的math.round为截取小数点位数
