@@ -40,14 +40,14 @@ public class ShoppeProController extends BaseController {
     @Autowired
     private ITProGroupService iTProGroupService;
 
-    @RequestMapping(value = "/selectShoppeProductPageByParaFromSearch", method = {RequestMethod.GET,RequestMethod.POST}, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/selectShoppeProductPageByParaFromSearch", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public DataTableResult<PcmProSearchDto> selectShoppeProductPageByParaFromSearch(PcmShoppeProductVo shoppeProduct){
+    public DataTableResult<PcmProSearchDto> selectShoppeProductPageByParaFromSearch(PcmShoppeProductVo shoppeProduct) {
         Map<String, Object> proMap = new HashMap<String, Object>();
         DataTableResult<PcmProSearchDto> page = new DataTableResult();
         try {
 
-            int currentPage = (shoppeProduct.getiDisplayStart()+shoppeProduct.getiDisplayLength())/shoppeProduct.getiDisplayLength();
+            int currentPage = (shoppeProduct.getiDisplayStart() + shoppeProduct.getiDisplayLength()) / shoppeProduct.getiDisplayLength();
 
             proMap.put("pageSize", shoppeProduct.getiDisplayLength());// 每页显示数量
             proMap.put("currentPage", currentPage);// 当前第几页
@@ -134,7 +134,8 @@ public class ShoppeProController extends BaseController {
                 //List<PcmProSearchDto> list = JSONArray.toList(jsonList,new PcmProSearchDto(),new JsonConfig());
                 String listStr = jsonList.toString();
                 Gson gson = new Gson();
-                List<PcmProSearchDto> list = gson.fromJson(listStr, new TypeToken<List<PcmProSearchDto>>(){}.getType());
+                List<PcmProSearchDto> list = gson.fromJson(listStr, new TypeToken<List<PcmProSearchDto>>() {
+                }.getType());
                 System.out.print(list);
                 page.setAaData(list);
                 total = (total / shoppeProduct.getiDisplayLength()) > 1000 ? 1000 : total;
@@ -148,14 +149,15 @@ public class ShoppeProController extends BaseController {
         }
         return page;
     }
-    @RequestMapping(value = "/selectStoreSid", method = {RequestMethod.GET,RequestMethod.POST}, produces = "application/json;charset=utf-8")
+
+    @RequestMapping(value = "/selectStoreSid", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public String selectStoreSid(){
+    public String selectStoreSid() {
         String url = "http://10.6.4.22:8042/pcm-inner-sdc/organization/selectListByParam.htm";
         UserBaseInfoDto curUserInfo = getCurUserInfo();
         String shopNo = curUserInfo.getStoreCode();
-        Map<String,Object> paramMap = new HashMap();
-        paramMap.put("organizationCode",shopNo);
+        Map<String, Object> paramMap = new HashMap();
+        paramMap.put("organizationCode", shopNo);
         String json = HttpUtils.doPost(url, JsonUtil.getJSONString(paramMap));
         String sid = "";
         if (StringUtils.isNotEmpty(json)) {
@@ -175,7 +177,7 @@ public class ShoppeProController extends BaseController {
      * @param shoppeType
      * @return
      */
-    @RequestMapping(value = "/findShoppeList", method = {RequestMethod.GET,RequestMethod.POST}, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/findShoppeList", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json;charset=utf-8")
     @ResponseBody
     public String findShoppeList(String groupSid, String shopSid, String supplySid, String shoppeType) {
 
@@ -234,7 +236,7 @@ public class ShoppeProController extends BaseController {
      * @Methods Name findListSupplier
      * @Create In 2015-12-8 By chengsj
      */
-    @RequestMapping(value = "/findListSupplier", method = {RequestMethod.GET,RequestMethod.POST}, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/findListSupplier", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json;charset=utf-8")
     @ResponseBody
     public String findListSupplier(String sid, String shopSid, String supplyName, String shopCode,
                                    String supplyCode, String supplyType, String status, String apartOrder) {
@@ -287,16 +289,16 @@ public class ShoppeProController extends BaseController {
         return gson.toJson(map);
     }
 
-    @RequestMapping(value = "/getProListByGroupId", method = {RequestMethod.GET,RequestMethod.POST}, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/getProListByGroupId", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public String getProListByGroupId(String groupId){
+    public String getProListByGroupId(String groupId) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
-        paramMap.put("id",4);
-        List<String> proList =  iTProGroupService.getProListByGroupId(paramMap);
+        paramMap.put("id", 4);
+        List<String> proList = iTProGroupService.getProListByGroupId(paramMap);
         System.out.print(proList);
-        if (proList != null && proList.size() > 0){
+        if (proList != null && proList.size() > 0) {
             paramMap.clear();
-            paramMap.put("proList",proList);
+            paramMap.put("proList", proList);
             String url = "http://10.6.4.22:8042/pcm-inner-sdc/product/getSkuListByProList.htm";
             String json = HttpUtils.doPost(url, JsonUtil.getJSONString(paramMap));
             return json;
@@ -307,19 +309,31 @@ public class ShoppeProController extends BaseController {
     /**
      * 商品单品页查询
      *
-     * @Methods Name getProYeInfoBySpuCode
-     * @Create In 2017年4月14日 By yedong
      * @param skuCode
      * @return PcmProYeInfoDto pro
+     * @Methods Name getProYeInfoBySpuCode
+     * @Create In 2017年4月14日 By yedong
      */
     @ResponseBody
     @RequestMapping(value = "/getProYeInfoBySpuCode", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     public String getProYeInfoBySpuCode(String skuCode) {
         Map<String, Object> paramMap = new HashMap();
-        paramMap.put("spuCode",skuCode);
+        paramMap.put("spuCode", skuCode);
         String url = "http://10.6.4.22:8046/pcm-outer-sdc/product/getProYeInfoBySpuCode.htm";
         String json = HttpUtils.doPost(url, JsonUtil.getJSONString(paramMap));
-        System.out.print("------------"+json);
+        System.out.print("------------" + json);
+        return json;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/selectStockAndPriceByProDetail", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    public String selectStockAndPriceByProDetail(String skuCode) {
+        Map<String, Object> paramMap = new HashMap();
+        paramMap.put("skuCode", skuCode);
+        String url = "http://10.6.4.22:8046/pcm-outer-sdc/proDetail/selectStockAndPriceByProDetail.htm";
+        String json = HttpUtils.doPost(url, JsonUtil.getJSONString(paramMap));
+        System.out.print("------------" + json);
         return json;
     }
 }
+

@@ -146,31 +146,22 @@
         <div class="content">
             <!-- Slider -->
             <div class="swiper-container padding-bottom-0" data-space-between='10'>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img
-                            src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"
-                            alt=""></div>
-                    <div class="swiper-slide"><img
-                            src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"
-                            alt=""></div>
-                    <div class="swiper-slide"><img
-                            src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"
-                            alt=""></div>
-                    <div class="swiper-slide"><img
-                            src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"
-                            alt=""></div>
+                <div class="swiper-wrapper" id="pic-list-div">
+
                 </div>
-                <div class="swiper-pagination"></div>
+                <div class="swiper-pagination">
+
+                </div>
             </div>
             <div class="list-block margin-0">
                 <ul>
                     <li>
                         <div class="item-inner">
                             <div class="item-title" style="line-height: 18px;">
-                                <span style="font-size: 14px;">商品名称</span><br/>
-                                <span style="font-size: 12px; color: #6e727b">货号：100001</span><br/>
-                                <span style="font-size: 14px;color: #ef1d26;font-weight:bold ;">￥100.00</span>
-                                <span style="font-size: 12px; color: #6e727b;text-decoration: line-through;">199.00</span>
+                                <span style="font-size: 14px;" id="pro-name">商品名称</span><br/>
+                                <span style="font-size: 12px; color: #6e727b" id="pro-short-desc">货号：100001</span><br/>
+                                <span style="font-size: 14px;color: #ef1d26;font-weight:bold ;" id="pro-price" >￥100.00</span>
+                                <span style="font-size: 12px; color: #6e727b;text-decoration: line-through;" id="pro-original-price">199.00</span>
                             </div>
                         </div>
                     </li>
@@ -180,7 +171,9 @@
                 <ul>
                     <li>
                         <a class="item-link item-content create-popup" href="#">
-                            <div class="item-inner" style="font-size: 14px;color: #6e727b;">请选择商品规格</div>
+                            <div class="item-inner" style="font-size: 14px;color: #6e727b;">
+                                已选：<span style="font-size: 12px; color: #6e727b" id="pro-stan-color"></span><br/>
+                            </div>
                         </a>
                     </li>
                 </ul>
@@ -262,16 +255,17 @@
         </div>
     </div>
 </div>
+</body>
 <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
 <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
 <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
 <script src="../js/public.js"></script>
 <script src="../js/detail.js"></script>
 <script src="../js/jquery-1.9.1.min.js"></script>
-
+<script src="../js/angular.min.js"></script>
 <script type='text/javascript'>
     $(function () {
-        $.init();
+        //$.init();
         /*$(document).on('click', '.create-popup', function () {
          var popupHTML = '<div class="popup" style="height: 300px;bottom: 0px;top: auto">' +
          '<div class="content-block">' +
@@ -342,6 +336,4 @@
         }
     })
 </script>
-
-</body>
 </html>
