@@ -72,58 +72,311 @@
             font-size: 12px;
             color: #FFFFFF !important;
         }
-        .popup{ background:#fff; font-size:12px; color:#555; font-family:Tahoma, Geneva, sans-serif; padding:100px 100px;}
-        .popup *{ margin:0; padding:0;-webkit-text-size-adjust:none;}
-        .popup li{ list-style:none;}
-        .popup a{ color:#555; text-decoration:none;}
-        .popup a:hover{ color:#c00; text-decoration:underline;}
-        .popup img{ border:none;}
 
-        .popup  .clearfix:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
-        .popup  * html .clearfix             { zoom: 1; } /* IE6 */
-        .popup  *:first-child+html .clearfix { zoom: 1; } /* IE7 */
-        .popup  .tab{ line-height:56px; font-size:14px;}
-        .popup  .tab a{ color:#07c;}
-        .popup  .tab a:hover{ color:#c00;}
-        .popup  .tab a.cur{ font-weight:bold;}
+        .popup {
+            background: #fff;
+            font-size: 12px;
+            color: #555;
+            font-family: Tahoma, Geneva, sans-serif;
+            padding: 100px 100px;
+        }
 
+        .popup * {
+            margin: 0;
+            padding: 0;
+            -webkit-text-size-adjust: none;
+        }
 
+        .popup li {
+            list-style: none;
+        }
+
+        .popup a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .popup a:hover {
+            color: #c00;
+            text-decoration: underline;
+        }
+
+        .popup img {
+            border: none;
+        }
+
+        .popup .clearfix:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
+
+        .popup * html .clearfix {
+            zoom: 1;
+        }
+
+        /* IE6 */
+        .popup *:first-child + html .clearfix {
+            zoom: 1;
+        }
+
+        /* IE7 */
+        .popup .tab {
+            line-height: 56px;
+            font-size: 14px;
+        }
+
+        .popup .tab a {
+            color: #07c;
+        }
+
+        .popup .tab a:hover {
+            color: #c00;
+        }
+
+        .popup .tab a.cur {
+            font-weight: bold;
+        }
 
         /*商品详细页*/
         /*iteminfo*/
-        .iteminfo{}
-        .iteminfo_tit{ color:#333; font-size:22px; font-family:"微软雅黑",Arial, Helvetica, sans-serif; border-bottom:1px solid #e3e3e3; font-weight:normal; padding-bottom:12px; line-height:32px;}
-        .iteminfo_parameter{ padding:8px 0; padding-left:70px;}
-        .iteminfo_parameter_default{ color:#888;}
-        .iteminfo_parameter dt{ margin-left:-70px; float:left; display:inline; width:60px; white-space:nowrap; text-align:right; color:#888;}
+        .iteminfo {
+        }
 
-        .iteminfo_mktprice{ font-size:12px; font-family:Arial, Helvetica, sans-serif; text-decoration:line-through;}
-        .lh32{ line-height:32px;}
-        .iteminfo_price{ color:#c00; font-size:14px; font-family:Arial, Helvetica, sans-serif; vertical-align:middle;}
-        .sys_item_price{ color:#c00; font-size:22px; vertical-align:middle;}
-        .iteminfo_buying{ background:#f7f7f7; padding:12px 0;}
+        .iteminfo_tit {
+            color: #333;
+            font-size: 22px;
+            font-family: "微软雅黑", Arial, Helvetica, sans-serif;
+            border-bottom: 1px solid #e3e3e3;
+            font-weight: normal;
+            padding-bottom: 12px;
+            line-height: 32px;
+        }
+
+        .iteminfo_parameter {
+            padding: 8px 0;
+            padding-left: 70px;
+        }
+
+        .iteminfo_parameter_default {
+            color: #888;
+        }
+
+        .iteminfo_parameter dt {
+            margin-left: -70px;
+            float: left;
+            display: inline;
+            width: 60px;
+            white-space: nowrap;
+            text-align: right;
+            color: #888;
+        }
+
+        .iteminfo_mktprice {
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-decoration: line-through;
+        }
+
+        .lh32 {
+            line-height: 32px;
+        }
+
+        .iteminfo_price {
+            color: #c00;
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+            vertical-align: middle;
+        }
+
+        .sys_item_price {
+            color: #c00;
+            font-size: 22px;
+            vertical-align: middle;
+        }
+
+        .iteminfo_buying {
+            background: #f7f7f7;
+            padding: 12px 0;
+        }
 
         /*规格*/
-        .sys_item_spec dl.iteminfo_parameter{ padding-top:5px; padding-bottom:5px;}
-        .sys_item_spec dl.iteminfo_parameter dt{ line-height:32px;}
+        .sys_item_spec dl.iteminfo_parameter {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .sys_item_spec dl.iteminfo_parameter dt {
+            line-height: 32px;
+        }
 
         /*一下正对图片*/
-        .sys_spec_img{}
-        .sys_spec_img li{ float:left; height:54px; position:relative; margin:2px 6px 2px 0;}
-        .sys_spec_img li a{height:50px; width:50px; padding:1px; border:1px solid #ccc; float:left; background:#fff; display:inline-block; outline:none;}
-        .sys_spec_img li a img{ width:50px; height:50px; display:block;}
-        .sys_spec_img li a:hover{ border:2px solid #e4393c; padding:0; text-decoration:none;}
-        .sys_spec_img li i{ position:absolute; width:10px; height:10px; font-size:0; line-height:0; right:2px; bottom:2px; background:url(img/sys_item_selected.gif) no-repeat right bottom; z-index:99; display:none;}
-        .sys_spec_img li.selected a{ border:2px solid #e4393c; padding:0;}
-        .sys_spec_img li.selected i{ display:block;}
+        .sys_spec_img {
+        }
 
-        .sys_spec_text{}
-        .sys_spec_text li{ float:left; height:28px; position:relative; margin:2px 6px 2px 0; outline:none;}
-        .sys_spec_text li a{ height:24px; padding:1px 6px; border:1px solid #ccc; background:#fff; display:inline-block; line-height:24px;}
-        .sys_spec_text li a:hover{ border:2px solid #e4393c; padding:0 5px; text-decoration:none;}
-        .sys_spec_text li i{ position:absolute; width:10px; height:10px; font-size:0; line-height:0; right:2px; bottom:2px; background:url(img/sys_item_selected.gif) no-repeat right bottom; z-index:99; display:none;}
-        .sys_spec_text li.selected a{ border:2px solid #e4393c; padding:0 5px;}
-        .sys_spec_text li.selected i{ display:block;}
+        .sys_spec_img li {
+            float: left;
+            height: 54px;
+            position: relative;
+            margin: 2px 6px 2px 0;
+        }
+
+        .sys_spec_img li a {
+            height: 50px;
+            width: 50px;
+            padding: 1px;
+            border: 1px solid #ccc;
+            float: left;
+            background: #fff;
+            display: inline-block;
+            outline: none;
+        }
+
+        .sys_spec_img li a img {
+            width: 50px;
+            height: 50px;
+            display: block;
+        }
+
+        .sys_spec_img li a:hover {
+            border: 2px solid #e4393c;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        .sys_spec_img li i {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            font-size: 0;
+            line-height: 0;
+            right: 2px;
+            bottom: 2px;
+            background: url(img/sys_item_selected.gif) no-repeat right bottom;
+            z-index: 99;
+            display: none;
+        }
+
+        .sys_spec_img li.selected a {
+            border: 2px solid #e4393c;
+            padding: 0;
+        }
+
+        .sys_spec_img li.selected i {
+            display: block;
+        }
+
+        .sys_spec_text {
+        }
+
+        .sys_spec_text li {
+            float: left;
+            height: 28px;
+            position: relative;
+            margin: 2px 6px 2px 0;
+            outline: none;
+        }
+
+        .sys_spec_text li a {
+            height: 24px;
+            padding: 1px 6px;
+            border: 1px solid #ccc;
+            background: #fff;
+            display: inline-block;
+            line-height: 24px;
+        }
+
+        .sys_spec_text li a:hover {
+            border: 2px solid #e4393c;
+            padding: 0 5px;
+            text-decoration: none;
+        }
+
+        .sys_spec_text li i {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            font-size: 0;
+            line-height: 0;
+            right: 2px;
+            bottom: 2px;
+            background: url(img/sys_item_selected.gif) no-repeat right bottom;
+            z-index: 99;
+            display: none;
+        }
+
+        .sys_spec_text li.selected a {
+            border: 2px solid #e4393c;
+            padding: 0 5px;
+        }
+
+        .sys_spec_text li.selected i {
+            display: block;
+        }
+
+        .sys_spec_text li.disabled a {
+            border: 1px dashed #ccc;
+            color: #999;
+        }
+
+        a.disabled {
+            pointer-events: none;
+            filter: alpha(opacity=50); /*IE滤镜，透明度50%*/
+            -moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+            opacity: 0.5; /*其他，透明度50%*/
+            border: dashed 1px #ccc !important;
+        }
+    </style>
+    <style>
+        /* * {
+             box-sizing: border-box;
+         }*/
+
+        .input-number {
+            width: 60px;
+            padding: 0 12px;
+            vertical-align: top;
+            text-align: center;
+            outline: none;
+        }
+
+        .input-number,
+        .input-number-decrement,
+        .input-number-increment {
+            border: 1px solid #cccccc;
+            height: 30px;
+            user-select: none;
+        }
+
+        .input-number-decrement,
+        .input-number-increment {
+            display: inline-block;
+            width: 25px;
+            line-height: 28px;
+            background: #f1f1f1;
+            color: #444444;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .input-number-decrement:active,
+        .input-number-increment:active {
+            background: #dddddd;
+        }
+
+        .input-number-decrement {
+            border-right: none;
+            border-radius: 0px 0 0 0px;
+        }
+
+        .input-number-increment {
+            border-left: none;
+            border-radius: 0 0px 0px 0;
+        }
     </style>
 </head>
 <body>
@@ -160,8 +413,10 @@
                             <div class="item-title" style="line-height: 18px;">
                                 <span style="font-size: 14px;" id="pro-name">商品名称</span><br/>
                                 <span style="font-size: 12px; color: #6e727b" id="pro-short-desc">货号：100001</span><br/>
-                                <span style="font-size: 14px;color: #ef1d26;font-weight:bold ;" id="pro-price" >￥100.00</span>
-                                <span style="font-size: 12px; color: #6e727b;text-decoration: line-through;" id="pro-original-price">199.00</span>
+                                <span style="font-size: 14px;color: #ef1d26;font-weight:bold ;"
+                                      id="pro-price">￥100.00</span>
+                                <span style="font-size: 12px; color: #6e727b;text-decoration: line-through;"
+                                      id="pro-original-price">199.00</span>
                             </div>
                         </div>
                     </li>
@@ -219,8 +474,8 @@
             <!--规格属性-->
             <div class="sys_item_spec">
                 <!--<dl class="clearfix iteminfo_parameter iteminfo_parameter_default lh32">-->
-                    <!--<dt>市场价</dt>-->
-                    <!--<dd><span class="iteminfo_mktprice">$<b class="sys_item_mktprice">13.00</b></span></dd>-->
+                <!--<dt>市场价</dt>-->
+                <!--<dd><span class="iteminfo_mktprice">$<b class="sys_item_mktprice">13.00</b></span></dd>-->
                 <!--</dl>-->
                 <dl class="clearfix iteminfo_parameter lh32">
                     <dt>价格</dt>
@@ -250,6 +505,15 @@
                         </ul>
                     </dd>
                 </dl>
+                <dl class="clearfix iteminfo_parameter" data-sid="2">
+                    <dt>购买数量</dt>
+                    <dd>
+                        <span class="input-number-decrement">–</span><input class="input-number" type="text" value="1"
+                                                                            min="0" max="5"><span
+                            class="input-number-increment">+</span>
+                    </dd>
+                </dl>
+                <input type="hidden" id="skuData">
             </div>
             <!--规格属性-->
         </div>
@@ -264,88 +528,80 @@
 <script type='text/javascript'>
     $(function () {
         $.init();
-        /*$(document).on('click', '.create-popup', function () {
-         var popupHTML = '<div class="popup" style="height: 300px;bottom: 0px;top: auto">' +
-         '<div class="content-block">' +
-         '  <span class="close close-popup"></span>' +
-         '<p>Popup created dynamically.</p>' +
-         '<p><a href="#" class="close-popup">Close me</a></p>' +
-         '</div>' +
-         '</div>'
-         $.popup(popupHTML);
-         });*/
         $(document).on('click', '.create-popup', function () {
             $.popup('.popup');
         });
-    });
 
-    //商品规格选择
-    $(function(){
-        $(".sys_item_spec .sys_item_specpara").each(function(){
-            var i=$(this);
-            var p=i.find("ul>li");
-            p.click(function(){
-                if(!!$(this).hasClass("selected")){
+        inputNumber($('.input-number'));
+
+        //商品规格选择
+        $(".sys_item_spec .sys_item_specpara").each(function () {
+            var i = $(this);
+            var p = i.find("ul>li");
+            p.click(function () {
+                if (!!$(this).hasClass("selected")) {
                     $(this).removeClass("selected");
                     i.removeAttr("data-attrval");
-                }else{
+                } else {
                     $(this).addClass("selected").siblings("li").removeClass("selected");
-                    i.attr("data-attrval",$(this).attr("data-aid"))
+                    i.attr("data-attrval", $(this).attr("data-aid"))
                 }
                 getattrprice() //输出价格
+
             })
         })
 
-        //获取对应属性的价格
-        function getattrprice(){
-            var defaultstats=true;
-            var _val='';
-            var _resp={
-                mktprice:".sys_item_mktprice",
-                price:".sys_item_price"
-            }  //输出对应的class
-            $(".sys_item_spec .sys_item_specpara").each(function(){
-                var i=$(this);
-                var v=i.attr("data-attrval");
-                if(!v){
-                    defaultstats=false;
-                }else{
-                    _val+=_val!=""?"_":"";
-                    _val+=v;
-                }
-            })
-            if(!!defaultstats){
-                $.ajax({
-                    type : "post",
-                    contentType : "application/x-www-form-urlencoded;charset=utf-8",
-                    url : rootPath + "/shoppePro/selectStockAndPriceByProDetail.shtml",
-                    dataType : "json",
-                    async : false,
-                    data : {
-                        "skuCode" : sku_code[_val]
-                    },
-                    success : function(pro) {
-                        var proYe = JSON.parse(pro);
-                        var proData = proYe.data;
-                        $('#pro-price').html(proData.price);
-                        _mktprice=proData.price;
-                        _price=proData.price;
-                        var color_stan = _val.split("_");
-                        $('#pro-stan-color').html(color_stan[0] + "  ,  " + color_stan[1] + "  ,  1件");
 
-                    },
-                    error : function(XMLHttpRequest, textStatus) {
-
-                    }
-                });
-            }else{
-                _mktprice = $('.sys_item_price').text();
-                _price = $('.sys_item_price').text();
+    });
+    //获取对应属性的价格
+    function getattrprice() {
+        var defaultstats = true;
+        var _val = '';
+        var _resp = {
+            mktprice: ".sys_item_mktprice",
+            price: ".sys_item_price"
+        }  //输出对应的class
+        $(".sys_item_spec .sys_item_specpara").each(function () {
+            var i = $(this);
+            var v = i.attr("data-attrval");
+            if (!v) {
+                defaultstats = false;
+            } else {
+                _val += _val != "" ? "_" : "";
+                _val += v;
             }
-            //输出价格
-            $(_resp.mktprice).text(_mktprice);  ///其中的math.round为截取小数点位数
-            $(_resp.price).text(_price);
+        })
+        if (!!defaultstats) {
+            $.ajax({
+                type: "post",
+                contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                url: rootPath + "/shoppePro/selectStockAndPriceByProDetail.shtml",
+                dataType: "json",
+                async: false,
+                data: {
+                    "skuCode": sku_code[_val]
+                },
+                success: function (pro) {
+                    var proYe = JSON.parse(pro);
+                    var proData = proYe.data;
+                    $('#pro-price').html(proData.price);
+                    _mktprice = proData.price;
+                    _price = proData.price;
+                    var color_stan = _val.split("_");
+                    $('#pro-stan-color').html(color_stan[0] + "  ,  " + color_stan[1] + "  ,  1件");
+
+                },
+                error: function (XMLHttpRequest, textStatus) {
+
+                }
+            });
+        } else {
+            _mktprice = $('.sys_item_price').text();
+            _price = $('.sys_item_price').text();
         }
-    })
+        //输出价格
+        $(_resp.mktprice).text(_mktprice);  ///其中的math.round为截取小数点位数
+        $(_resp.price).text(_price);
+    }
 </script>
 </html>
