@@ -1,81 +1,6 @@
 var rootPath = getContextPath();
 var sku_code;
 $(function () {
-    $.init();
-    $(document).on('click', '.create-popup', function () {
-        $.popup('.popup');
-    });
-
-    inputNumber($('.input-number'));
-
-    //商品规格选择
-    $(".sys_item_spec .sys_item_specpara").each(function () {
-        var i = $(this);
-        var p = i.find("ul>li");
-        p.click(function () {
-            if (!!$(this).hasClass("selected")) {
-                $(this).removeClass("selected");
-                i.removeAttr("data-attrval");
-            } else {
-                $(this).addClass("selected").siblings("li").removeClass("selected");
-                i.attr("data-attrval", $(this).attr("data-aid"))
-            }
-            getattrprice() //输出价格
-
-        })
-    })
-
-    //获取对应属性的价格
-    function getattrprice() {
-        var defaultstats = true;
-        var _val = '';
-        var _resp = {
-            mktprice: ".sys_item_mktprice",
-            price: ".sys_item_price"
-        }  //输出对应的class
-        $(".sys_item_spec .sys_item_specpara").each(function () {
-            var i = $(this);
-            var v = i.attr("data-attrval");
-            if (!v) {
-                defaultstats = false;
-            } else {
-                _val += _val != "" ? "_" : "";
-                _val += v;
-            }
-        })
-        if (!!defaultstats) {
-            $.ajax({
-                type: "post",
-                contentType: "application/x-www-form-urlencoded;charset=utf-8",
-                url: rootPath + "/shoppePro/selectStockAndPriceByProDetail.shtml",
-                dataType: "json",
-                async: false,
-                data: {
-                    "skuCode": sku_code[_val]
-                },
-                success: function (pro) {
-                    var proYe = JSON.parse(pro);
-                    var proData = proYe.data;
-                    $('#pro-price').html(proData.price);
-                    _mktprice = proData.price;
-                    _price = proData.price;
-                    var color_stan = _val.split("_");
-                    $('#pro-stan-color').html(color_stan[0] + "  ,  " + color_stan[1] + "  ,  1件");
-
-                },
-                error: function (XMLHttpRequest, textStatus) {
-
-                }
-            });
-        } else {
-            _mktprice = $('.sys_item_price').text();
-            _price = $('.sys_item_price').text();
-        }
-        //输出价格
-        $(_resp.mktprice).text(_mktprice);  ///其中的math.round为截取小数点位数
-        $(_resp.price).text(_price);
-    }
-
     getProYeInfoBySpuCode();
     selectStockAndPriceByProDetail();
 
@@ -156,8 +81,10 @@ function getProYeInfoBySpuCode() {
                                 }
                                 else {
                                     if (listan.find("a").hasClass("disabled")) {
+
                                         listan.find("a").removeClass("disabled");
                                         listan.click(function () {
+
                                             if (!!$(this).hasClass("selected")) {
                                                 $(this).removeClass("selected");
                                                 i.removeAttr("data-attrval");
@@ -202,6 +129,7 @@ function getProYeInfoBySpuCode() {
                                     if (licolor.find("a").hasClass("disabled")) {
                                         licolor.find("a").removeClass("disabled");
                                         licolor.click(function () {
+                                            console.log("click","22222222222");
                                             if (!!$(this).hasClass("selected")) {
                                                 $(this).removeClass("selected");
                                                 i.removeAttr("data-attrval");
