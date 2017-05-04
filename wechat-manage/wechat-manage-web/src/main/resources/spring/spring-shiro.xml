@@ -97,6 +97,8 @@
                 /couponInfo/** = anon
                 /group/** = anon
                 /shoppePro/** = anon
+                /cart/** = anon
+
             </value>
         </property>
     </bean>

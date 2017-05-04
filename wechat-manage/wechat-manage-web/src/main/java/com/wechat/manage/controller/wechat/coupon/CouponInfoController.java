@@ -53,8 +53,8 @@ public class CouponInfoController extends BaseController {
 		Map<String, Object> wechatMap = new HashMap<String, Object>();
 		Map<String, Object> textMap = new HashMap<String, Object>();
 		wechatMap.put("touser", split);
-		String url = "http://117.121.99.11/notebook/member/receiveCoupon.html?storeCode=" + storeCode +"&couponSid=" + infoSid;
-		textMap.put("content", "导购向您发送了一张券，请点击下方链接领取。<a href=\""+ url +"\">点击领取</a>");
+		String url = "http://117.121.99.11/notebook/member/receiveCoupon.html?storeCode=" + storeCode +"&infoSid=" + infoSid;
+		textMap.put("content", "导购向您发送了一张券，请点击下方链接领取。<a href='"+ url +"'>点击领取</a>");
 		wechatMap.put("text", textMap);
 		wechatMap.put("msgtype", "text");
 		Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -64,7 +64,9 @@ public class CouponInfoController extends BaseController {
 				list.get(0).getAppsecret());
 		String sendUrl = "https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token="
 				+ access_token;
-		String reString = HttpUtils.doPost(sendUrl, JsonUtil.getJSONString(wechatMap));
+		Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+		String json = gson.toJson(wechatMap);
+		String reString = HttpUtils.doPost(sendUrl, json);
 		MsgMassReDto media = JsonUtil.getJacksonDTO(reString, MsgMassReDto.class);
 		if (!media.getErrcode().equals("0")) {
 			return media.getErrmsg();

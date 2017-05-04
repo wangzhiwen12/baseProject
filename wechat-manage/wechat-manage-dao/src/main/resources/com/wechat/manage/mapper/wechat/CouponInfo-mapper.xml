@@ -206,6 +206,7 @@
 				mem.sid
 		) mem1 ON mem1.memSid = mem2.sid
 		LEFT JOIN coupon_info info2 ON info2.sid = #{couponSid,jdbcType=BIGINT}
+		AND info2.store_code = mem2.store_code
 		WHERE
 			info2.get_limit > IFNULL(mem1.count, 0)
 		AND mem2.member_code IS NOT NULL
