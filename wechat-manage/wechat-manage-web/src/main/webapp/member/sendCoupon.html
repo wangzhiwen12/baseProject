@@ -17,9 +17,18 @@
 			
 		</ul>
 		<button type="button" id="btn5" >发送</button>
-		<ul id="member_view" style="text-align: center;list-style-type:none;">
+		<input hidden type="text" id="couponSid" >
+		<div class="panel panel-primary">
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-12" >
+						<form class="form-horizontal" role="form" >
 
-		</ul>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 <script src="js/jquery-1.9.1.min.js"></script>
@@ -29,9 +38,9 @@
 <script type="text/javascript">
 	var rootPath = getContextPath();
 	var storeCode = getUrlDataByKey("storeCode");
-	var infoSid = getUrlDataByKey("infoSid");
 
 	function getMemberInfo(couponSid){
+		$('#couponSid').attr("value",couponSid);
 		$.ajax({
 			type: "post",
 			contentType: "application/x-www-form-urlencoded;charset=utf-8",
@@ -45,19 +54,19 @@
 				list = JSON.parse(list);
 				$('#member_view *').remove();
 				for(var i =0;i<list.length;i++){
-					var li =
-							'<li style="margin-top: 10px;">' +
-							'<div style="width: 90%;margin-left: 5%;">' +
-							'<div style="height: 100%;float: left;width: 95%;">' +
-							'<img src="'+list[i].headImgUrl+'" style="width: 20%;height: 20%;float: left;" class="img-circle">' +
-							'<span style="margin-top: 10%;float: left;" class="glyphicon glyphicon-user"><font size="2%">'+list[i].nickName+'</font></span>|' +
-							'<span style="margin-top: 10%;" class="glyphicon glyphicon-earphone"><font size="2%">'+list[i].mobile+'</font></span>' +
-							'</div>' +
-							'<div style="width: 100%;"><span style="float: right;"><font size="2%">已领数量：'+list[i].count+'</font></span></div>' +
-							'<div style="width: 100%;"><input type="checkbox" name="checkbox" value="'+list[i].openId+'" /></div>' +
-							'</div>' +
-							'</li>';
-					$('#member_view').append(li);
+					var memberInfo =
+							'<div class="form-group">' +
+								'<img class="col-md-4 img-circle" src="'+list[i].headImgUrl+'" style="width: 25%;height: 25%;" />' +
+								'<label class="col-md-5 control-label">'+
+									'<span class="glyphicon glyphicon-user"></span>'+
+									list[i].nickName +
+								'</label>' +
+								'<label class="col-md-2 control-label"> 已领数量:' +
+									list[i].count+
+								'</label>' +
+								'<input type="checkbox" name="checkbox" value="'+list[i].openId+'" class="col-md-1" />' +
+							'</div>';
+					$('.form-horizontal').append(memberInfo);
 				}
 			}
 		});
@@ -108,7 +117,7 @@
             dataType: "json",
             data: {
                 "openIds": str,
-                "infoSid": infoSid,
+                "infoSid": $('#couponSid').val(),
                 "storeCode": storeCode
             },
             success: function (json) {
