@@ -466,7 +466,7 @@
         <nav class="bar bar-tab">
             <div class="row no-gutter">
                 <a href="#" class="tab-item addcart">加入购物车 </a>
-                <a href="#" class="tab-item buynow">立即购买 </a>
+                <a id="buy-now" href="#" class="tab-item buynow">立即购买 </a>
             </div>
         </nav>
         <div class="content">
@@ -586,10 +586,17 @@
                     var proData = proYe.data;
                     $('#pro-price').html(proData.price);
                     _mktprice = proData.price;
-                    _price = proData.price;
+                    _price = proData.price;  //价格
                     var color_stan = _val.split("_");
                     $('#pro-stan-color').html(color_stan[0] + "  ,  " + color_stan[1] + "  ,  1件");
 
+                     //商品码    sku_code[_val];
+                     //购买数量  input-number
+                     //商品名称  id pro-name
+                     //商品在·图片 sys_spec_img  selected
+                     // 价格     _price
+                     //尺码   sys_spec_text
+                    order(sku_code[_val],_price);
                 },
                 error: function (XMLHttpRequest, textStatus) {
 
@@ -603,5 +610,31 @@
         $(_resp.mktprice).text(_mktprice);  ///其中的math.round为截取小数点位数
         $(_resp.price).text(_price);
     }
+    function order(productCode,price){
+        //商品码    sku_code[_val];
+        //购买数量  input-number
+        //商品名称  id pro-name
+        //商品在·图片 sys_spec_img  selected
+        // 价格     _price
+        //尺码   sys_spec_text
+        var _productCode=productCode;
+        var _productPrice=price;
+        var _productNum=$(".input-number").val();
+        var _productName=document.getElementById('pro-name').innerText;
+        var _productName=encodeURI(document.getElementById('pro-name').innerText);// window.location.assign();
+        var _productUrl=$(".sys_item_spec .sys_item_specpara .sys_spec_img .selected img").attr("src");
+        var _productSize=$(".sys_item_spec .sys_item_specpara .sys_spec_text .selected a").html();
+        console.log("商品码 :"+_productCode);
+        console.log("价格 :"+_productPrice);
+        console.log("购买数量 :"+_productNum);
+        console.log("商品名称 :"+_productName);
+        console.log("图片 :"+_productUrl);
+        console.log("尺码 :"+_productSize);
+                var ahref=rootPath+"/member/order/order.html?+productCode="+_productCode+"&productPrice="+_productPrice+"&productNum="+_productNum+"&productName="+_productName+"&productUrl="+_productUrl+"&productSize="+_productSize;
+        document.getElementById("buy-now").href=ahref;
+//        document.getElementById("buy-now").arrt("href",ahref);
+
+    }
+
 </script>
 </html>
