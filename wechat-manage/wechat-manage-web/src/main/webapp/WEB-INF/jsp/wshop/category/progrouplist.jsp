@@ -41,8 +41,8 @@
         <ul class="nav nav-tabs ">
             <li><a href="#tab_15_1" data-toggle="tab" onclick="toProPage('1')"> 商品列表 </a></li>
             <li class="active"><a href="#tab_15_2" data-toggle="tab"> 商品分组</a></li>
-            <li><a href="#tab_15_4" data-toggle="tab" onclick="toProPage('3')"> 商品分类导入 </a></li>
-            <li><a href="#tab_15_5" data-toggle="tab" onclick="toProPage('4')"> 商品导入</a></li>
+          <%--  <li><a href="#tab_15_4" data-toggle="tab" onclick="toProPage('3')"> 商品分类导入 </a></li>
+            <li><a href="#tab_15_5" data-toggle="tab" onclick="toProPage('4')"> 商品导入</a></li>--%>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab_15_4">
