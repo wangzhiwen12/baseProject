@@ -57,9 +57,9 @@
 
                                 <div class="actions" id="btnAdd">
                                     <div class="btn-group">
-                                        <a id="btngroup" class="btn btn-danger marR10" href="javascript:;">
+                                       <%-- <a id="btngroup" class="btn btn-danger marR10" href="javascript:;">
                                             手工分组
-                                        </a>
+                                        </a>--%>
                                         <ul id="popTip" class="dropdown-menu" role="menu">
                                             <li>
                                                 <a href="javascript:;">

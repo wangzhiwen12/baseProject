@@ -7,7 +7,7 @@ $(function () {
     $("#btnSubmit").click("click", function () {
         var proSids = []
         proSids = window.parent.getSelectPro();
-        alert(proSids);
+        // alert(proSids);
 
         var ids = [];
         $("input.checkboxes[name='sid']:checkbox").each(function () {
@@ -16,7 +16,7 @@ $(function () {
             }
         });
 
-        alert(ids);
+        // alert(ids);
 
         var url = rootPath + '/category/proGroupRelation.shtml';
         var data = CommnUtil.ajax(url, {"proSids": proSids.toString(), "groupSids": ids.toString()}, "json");
