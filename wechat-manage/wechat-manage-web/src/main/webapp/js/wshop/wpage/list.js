@@ -9,17 +9,15 @@ $(function () {
         couponAprovalList();
     });
     $("#add_wpage").click("click", function () {
-	    pageii = layer.open({
-	        title: "新建微页面",
-	        type: 2,
-	        area: ["95%", "95%"],
-	        content: rootPath + '/wechatShopPage/add_wpageUI.shtml',
-	        end: function () {
-	        	couponTPLList();
-	        	couponAprovalList();
-            }
-	    });
+    	 var tb = $("#loadhtml");
+    	    tb.html(CommnUtil.loadingImg());
+    	    tb.load(rootPath + '/wechatShopPage/add_wpageUI.shtml');
     });
+    $("#back").click("click", function () {
+   	 var tb = $("#loadhtml");
+   	    tb.html(CommnUtil.loadingImg());
+   	    tb.load(rootPath + '/wechatShopPage/list.shtml');
+   });
 });
 
 function wPageEdit(id){

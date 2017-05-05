@@ -1,61 +1,149 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="renderer" content="webkit">
-    <meta name="referrer" content="always">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script type="text/javascript">
+	var contextPath = "${pageContext.request.contextPath}";
+</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/template.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/scope.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/_disposeOldData.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/Sortable.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/customPage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/customPageUtil.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/webuploader.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/cuspicture.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/PageManageWxHome.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/wshop/wpage/list.js"></script>
+<link href="${pageContext.request.contextPath}/css/ezr.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/css/center_conf.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/css/base.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/css/ezp-global.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/css/wxhome.css"   rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/wx-pc.css"   rel="stylesheet"/>
+<div class="table-responsive">
+	<div class="tabbable-line">
+		<div class="">
+			<div class="tab-pane active" id="tab_15_1">
+				<div class="col-md-12 content-wrapper">
+					<div class="content">
+						<div class="main-content" id="div_main">
+							<div id="div_main2">
+								<div>
+							 <input id="back" class="btn btn-info marR10"  value="返回上一级"  type="button">
+								</div>
+								 
+								<br>
+								<div class="ui-bottom-fixedbtn ui-shadow-top">
+									<form action="edit.php" method="post">
+										<input name="ret0" id="Ret0" type="hidden"> <input
+											name="edit" id="edit" type="hidden"><br>
+										<!--<input type="submit" class="medit" value="编辑">-->
+									</form>
+								<input id="back" class="btn btn-info marR10" value="上架"  type="button">
+								<input id="back" class="btn btn-info marR10" value="保存草稿"  type="button">
+								</div>
 
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport"
-          content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 
-
-    <title id="js-meta-title">
-        微页面 - 王府井测试用店铺</title>
-
-    <link rel="icon" href="https://b.yzcdn.cn/v2/image/yz_fc.ico"/>
-
-    <meta name="keywords" content="有赞,微信商城,粉丝营销,微信商城运营"/>
-    <meta name="description" content="有赞是帮助商家在微信上搭建微信商城的平台，提供店铺、商品、订单、物流、消息和客户的管理模块，同时还提供丰富的营销应用和活动插件。"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/wpage/css/chosen.jquery.20150826.min.css"
-          onerror="_cdnFallback(this)" media="screen">
-    <!-- ▼ Common CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/wpage/css/jquery.ui.20151022.min.css" onerror="_cdnFallback(this)"
-          media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/wpage/css/bootstrap_140705.min.css"
-          onerror="_cdnFallback(this)" media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/wpage/css/pc_b2c9bdf473.css"
-          onerror="_cdnFallback(this)" media="screen">
-    <!-- ▲ Common CSS -->
-
-
-    <!-- ▼ App CSS -->
-    <link rel="stylesheet"
-          href="https://b.yzcdn.cn/v2/build_css/stylesheets/www/pages/pc/showcase/feature_49b2879fa4.css"
-          onerror="_cdnFallback(this)" media="screen">
-    <!-- ▲ App CSS -->
-    
-</head>
-<body>
-<div class="app">
-    <div class="app-inner clearfix">
-        <div class="app-init-container">
-            <div class="app__content js-app-main">
-            <input class="notice" value="${notice}"  type="hidden"/>
-			<input class="pageId" value="${pageId}"  type="hidden"/>
-			<input class="wpageTitle" value="${wpageTitle}"  type="hidden"/>
-            </div>
-        </div>
+								<!--20160905-->
+								<div class="ceremony">
+									<div class="grid-nav-bar">
+										<div style="width: 361px; padding-right: 30px;"
+											class="grid-nav-bar-item">
+											<div class="appphone_details_left">
+												<div class="appphone_header"></div>
+												<div class="appphone_container">
+													<div class="appphone_btn"></div>
+													<div class="appphone_main">
+														<div class="appphone_top">
+															<span class="apptop_tittle"></span>
+														</div>
+														<div class="appphone_content">
+															<!--内容区域-->
+															<form role="form" id="p-data" class="form-horizontal"
+																way-data="formData" way-persistent=""
+																style="float: none;">
+																<div id="container" class="container">
+																	<div id="my">
+																		<div id="P" way-data="All">
+																			<!-- 模板填充内容 -->
+																		</div>
+																	</div>
+																</div>
+															</form>
+															<!-- 模板组件开始 -->
+															     <!--底部btn-->
+                            <div style="background: #545454;color:#fff;">
+                                <div class="grid-nav-bar" style="height: 80px;">
+		
+        <div class="grid-nav-bar-item add-common btn-text-navigation" data-insert="true" data-type="addRichText" style="width: 80px;">
+            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img07.png" alt=""><br>富文本</div>
+        <div class="grid-nav-bar-item add-common btn-text-navigation" data-insert="true" data-type="addGoods" style="width: 80px;">
+            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img08.png" alt=""><br>商品</div>
+        <div class="grid-nav-bar-item add-common btn-text-navigation" data-insert="true" data-type="addGoodsList" style="width: 80px;">
+            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img19.png" alt=""><br>商品列表</div>
+        <div class="grid-nav-bar-item add-common btn-text-navigation" data-insert="true" data-type="addAdvertising" style="width: 80px;">
+            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img09.png" alt=""><br>图片广告</div>
     </div>
+    <div class="grid-nav-bar" style="height: 80px;">
+   		<div class="grid-nav-bar-item add-common btn-text-navigation" data-insert="true" data-type="addNavText" style="width: 80px;">
+            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img10.png" alt=""><br>图文导航</div>
+        <div class="grid-nav-bar-item add-common btn-img-navigation" data-insert="true" data-type="imgnavigation" style="width: 80px;">
+            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img12.png"><br>图片导航</div>
+        <div class="grid-nav-bar-item add-common btn-img-navigation" data-insert="true" data-type="addSearch" style="width: 80px;">
+            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img13.png"><br>商品搜索</div>
+        <div class="grid-nav-bar-item add-common btn-img-navigation" data-insert="true" data-type="addSubline" style="width: 80px;">
+            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img16.png"><br>辅助线</div>
+    </div>
+    <div class="grid-nav-bar" style="height: 80px;">
+    	<div class="grid-nav-bar-item add-common btn-uxiliary-blank" data-insert="true" data-type="uxiliaryblank">
+            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img17.png"><br>辅助空白</div>
+        <div class="grid-nav-bar-item add-common btn-title-navigation" data-insert="true" data-type="titlenavigation" style="width: 80px;">
+            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img10.png"><br>标题</div>
+		<div class="grid-nav-bar-item add-common btn-title-navigation" data-insert="true" data-type="addNotice" style="width: 80px;">
+            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img15.png"><br>公告</div>
+		<div class="grid-nav-bar-item add-common btn-title-navigation" data-insert="true" data-type="addCoupons" style="width: 80px;">
+            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img20.png"><br>添加优惠券</div>
+    </div>
+                            </div>
+															<!-- 模板组件结束-->
+														</div>
+													</div>
+												</div>
+												<div class="appphone_bottom"></div>
+											</div>
+										</div>
+										<div style="padding-top: 85px;"
+											class="grid-nav-bar-item text-left text-top"></div>
+									</div>
+								</div>
+								
+								<div class="insertCommon wdn">
+								</div>
+								
+								<div class="toJson">
+									<div class="alert bg-warning">
+										<div class="btn btn-sm btn-default pull-right"
+											style="position: relative; top: -5px;" way-clear=""
+											way-persistent="">Clear</div>
+									</div>
+									<pre way-data="__all__" way-json="true" way-default="{}"></pre>
+								</div>
+
+								<!-- 引入模板文件-->
+								<jsp:include page="template.jsp" flush="true" />
+								<script>
+									//初始
+									$(".nodeItem").removeClass("cur");
+									$("#viewsTgt").children("div:first")
+											.addClass("cur");
+									$("#controllerTgt").children("div:first")
+											.addClass("cur");
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<input clss="notice" value="${notice}"  type="hidden"/>
-<input clss="pageId" value="${pageId}"  type="hidden"/>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery/jquery-1.8.3.js"></script>
-<script type="text/javascript" src="${pageContext.servletContext.contextPath }/js/layer-v1.9.2/layer/layer.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/wshop/wpage/wpageOperation.js" ></script>
-<script src="${pageContext.request.contextPath}/wpage/js/require.js" data-main="${pageContext.request.contextPath}/wpage/js/editMain"></script>
-</body>
-</html>
