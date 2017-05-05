@@ -42,6 +42,17 @@
     position: relative;
     width: 361px;
 }
+.phoneShow{
+    display: table;
+    width: 100%;
+}
+
+.phoneViews{
+    width:325px;
+    /*background: #ccc;*/
+    display: table-cell;
+    vertical-align: top;
+}
 .appphone_btn {
     background-image: url("../images/app_btn.png");
     height: 186px;
@@ -90,7 +101,7 @@
     width: 64px;
 }
 .ui-input-color::after {
-    content: "øÆ";
+    content: "ï¿½ï¿½";
     cursor: pointer;
     display: inline-block;
     font-family: "Glyphicons Halflings";
@@ -140,7 +151,7 @@
     z-index: 2;
 }
 .ui-shop-selector::after {
-    content: "øÆ";
+    content: "ï¿½ï¿½";
     display: inline-block;
     font-family: "Glyphicons Halflings";
     position: absolute;
