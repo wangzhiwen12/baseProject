@@ -98,6 +98,7 @@
                 /group/** = anon
                 /shoppePro/** = anon
                 /cart/** = anon
+                /order/** = anon
 
             </value>
         </property>

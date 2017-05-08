@@ -85,9 +85,15 @@
             <!--}else{//如果是非webkit内核直接使用jquery-->
                 <!--document.write('<script src="//st.360buyimg.com/order/js/jquery-1.6.2.min.js?v=20170413"><\/script>');-->
             <!--}-->
-        </script><script src="js/ZPcommon.min.js"></script><script type="text/javascript">window.jQuery=window.Zepto;</script>
-        <script type="text/javascript" src="js/com.spin.min.js"></script><style></style>
-        <script type="text/javascript" src="js/fastclick.js"></script>
+
+
+
+
+
+        <!--<script src="js/ZPcommon.min.js"></script>-->
+    <!--<script type="text/javascript">window.jQuery=window.Zepto;</script>-->
+        <!--<script type="text/javascript" src="js/com.spin.min.js"></script><style></style>-->
+        <!--<script type="text/javascript" src="js/fastclick.js"></script>-->
          <link rel="stylesheet" type="text/css" href="css/header.css" charset="gbk">
     <script src="js/m_common_header_bottom2.1.js" type="text/javascript"></script>
     </head>
@@ -182,6 +188,7 @@
 
             <div class="middle-box border-1px-top">
 
+
              <div class="step3 s-list commodity-list bg_sign">
                             <!-- onclick="pingClick('true','MNeworder_ShieldProduct','','','')"-->
                                 <div class="s-item new-s-item border-1px-bottom-middle">
@@ -195,7 +202,7 @@
                                         <div class="sitem-m" style="position: relative">
 
                                          <div class="oneline-tit">影驰（Galaxy）GTX 1060 GAMER 1556(1771)MHz/8GHz 3G/192Bit D5 PCI-E显卡</div>
-
+                                            <input type="hidden"  id="productno">
                                             <div class="sitem-weight">
                                                 1.365kg×1
                                             </div>
@@ -389,13 +396,9 @@
 
                         </span>
                 </div>
-                <a href="javascript:;" onclick="checkAndSubmitOrder('true', '','','checkPayBtn')">
+                <!--<a href="javascript:;" onclick="checkAndSubmitOrder('true', '','','checkPayBtn')">-->
                     <div class="pay-leak-btn-red">提交订单</div></a>
                             </div>
-            <input type="hidden" id="sid" value="77aebe2af3e4a8112ad031d6e5d88321">
-            <input type="hidden" id="pageSnapshotId" name="pageSnapshotId" value="1493691475058">
-            <input type="hidden" id="isExposedPay" name="isExposedPay" value="true">
-            <input type="hidden" id="isShowAdditionalWeight" name="isShowAdditionalWeight" value="true">
 
 
         <!-- 弹层 -->
@@ -481,7 +484,7 @@
                     </div>
                     <div class="confirm-btn">
                         <a href="javascript:;" onclick="closeInputPwdWindow()" class="btn2 ctn01">取消</a>
-                        <a href="javascript:;" onclick="checkAndSubmitOrder(&#39;true&#39;)" class="btn2 ctn02 pass-no pp-btn">确定使用</a>
+                        <a href="javascript:;" onclick="checkAndSubmitOrder('true')" class="btn2 ctn02 pass-no pp-btn">确定使用</a>
                     </div>
                 </div>
             </div>
@@ -575,17 +578,17 @@
 
 </div>
 
-<input type="hidden" id="isSameGlobalAndOrderAddress" value="">
-<input type="hidden" id="isPriceChange" value="">
-<input type="hidden" id="cartUse" value="true">
-<input type="hidden" id="staticUrl" value="//st.360buyimg.com/order">
-<input type="hidden" id="staticVersion" value="20170413">
-<input type="hidden" id="imageDomain" value="//img10.360buyimg.com/n4/">
-<input type="hidden" id="enterType" value="C">
-<input type="hidden" id="isFreeRegister" value="">
-<input type="hidden" id="addressDefault" value="true">
-<input type="hidden" id="backToastSwitch" value="true">
-<input type="hidden" id="backToastABTest" value="true">
+<!--<input type="hidden" id="isSameGlobalAndOrderAddress" value="">-->
+<!--<input type="hidden" id="isPriceChange" value="">-->
+<!--<input type="hidden" id="cartUse" value="true">-->
+<!--<input type="hidden" id="staticUrl" value="//st.360buyimg.com/order">-->
+<!--<input type="hidden" id="staticVersion" value="20170413">-->
+<!--<input type="hidden" id="imageDomain" value="//img10.360buyimg.com/n4/">-->
+<!--<input type="hidden" id="enterType" value="C">-->
+<!--<input type="hidden" id="isFreeRegister" value="">-->
+<!--<input type="hidden" id="addressDefault" value="true">-->
+<!--<input type="hidden" id="backToastSwitch" value="true">-->
+<!--<input type="hidden" id="backToastABTest" value="true">-->
 
 <div id="money-tip-pop" class="shipping-pop-floor">
     <div class="cover-floor"></div>
@@ -625,136 +628,22 @@
 
 
 
-<script type="text/javascript">
 
-
-
-    /**
-     * 如果商品清单页中用户点击了删除按钮，
-     * 则返回结算页要重新刷新页面，保持是最
-     * 新数据。
-     */
-    if(localStorage.getItem("deleteCommodityFlag")=="true"){
-        localStorage.removeItem("deleteCommodityFlag");
-        if(navigator.userAgent.indexOf("Chrome")>-1){ //兼容谷歌浏览器
-            window.location.reload();
-        }
-
-    }
-
-    /**
-     *   防止手机的enter键自动提交。
-     * @returns {boolean}
-     */
-    document.onkeypress =function(){
-        if(event.keyCode == 13){
-            return false;
-        }
-    };
-
-    /**
-     * 移除无货商品。
-     * 将“无货”字符串串到后台做比较，由于出现乱码，故用此办法。
-     */
-    $("#removeStock").click(function(){
-        $("#orderForm").attr("action",'/norder/removeCommodityFromOrder.action?sid=77aebe2af3e4a8112ad031d6e5d88321');
-        $("#orderForm").submit();
-    });
-    //仅有一件主商品的时候屏蔽商品详情页的按钮
-        
-    var flowType = '';
-    function backListener(hash,next){
-        if(flowType){
-            // $("#m_common_header_goback").attr("href","javascript:history.go(-1)");
-        }else{
-            if(next!=null){
-                //  $("#m_common_header_goback").attr("href","javascript:backListener('"+next+"')");
-            }
-            if(hash!=null){
-                var backUrl = window.location.href;
-                backUrl = backUrl.replace(window.location.hash,"");
-                window.location.href=backUrl+"#"+hash;
-            }
-            if(hash==null || hash.indexOf('parent')!=-1){
-                if($("#wareId").val()!=null&&$("#wareId").val()!=""){
-                    $("#m_common_header_goback").bind('click',function(){
-                        window.location.href = '//item.m.jd.com/product/'+$("#wareId").val()+".html";
-                    });
-
-                }else{
-                    $("#m_common_header_goback").bind('click',function(){
-                        window.location.href = '/cart/cart.action?sid=77aebe2af3e4a8112ad031d6e5d88321';
-                    });
-                }
-            }
-        }
-    }
-
-    $(document).ready(function(){
-        backListener();
-
-        if($('.s1-name span').length>0&&$('.s1-name span').text().length>6){
-            $('.s1-name span').text($('.s1-name span').text().substring(0,6)+'...');
-        }
-
-
-        var paymentMassage=$("#paymentMassageID").text().trim().replace(/\s+/g,"");
-        if(paymentMassage.length>18){
-            $("#paymentMassageID").text(paymentMassage.substring(0,15)+"...");
-        }
-
-
-        var reInfo02 = document.getElementById('reInfo02');
-        var reInfo02Str = reInfo02.innerHTML.trim().replace(/\s+/g,"");
-        if (reInfo02Str.length>15) {
-            reInfo02.innerHTML = reInfo02Str.substring(0,12)+'...';
-        }else{
-            reInfo02.innerHTML=reInfo02Str;
-        };
-
-            });
-
-
-    function sorry(){
-        alert("\u5bf9\u4e0d\u8d77\uff0c\u7cfb\u7edf\u7e41\u5fd9\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01");
-        return false;
-    }
-
-
-    function clickGoCart(){
-        if(true){
-            pingClick("true", "MNeworderOutOfStock_BackToCart","","","");
-        }
-    }
-
-
-    function clickRemoveStock(){
-        if(true){
-            pingClick("true", "MNeworderOutOfStock_DeleteProduct","","","");
-        }
-    }
-
-
-    function clickGoEditAddress(){
-        if(true){
-            pingClick("true", "MNeworderOutOfStock_EditAddress","","","");
-        }
-    }
-    
-</script>
 <script type="text/javascript" src="css/icon.css" charset="GBK"></script>
-<input type="hidden" value="nySm0uKFRJ5tu__9__T____AxW__a09DO_n_rN__N4p___D22GWNmuAkVtcY#_qMs_M_Q7Q_9__vN603U_t0pH_U_cSt8FNR_OrSBTMkusJFB_xP_FuvCyTtcZb3mw_nM_M9Qz9_nGF#y_S_F_v_0_uV_u4_Jj_Jn_9V_3w_GK_y4_R9_r5_Tw_Vx_BO_jP_OA_M7_sM_Bx_TQ_zw_yR_cV_AE_qn_tJ_VL_vt_NC_5V_H2_Cr_2W_25_Qm_Qu_8NH_onJ_6v6_OAt_4sV_WS1_8Jk_InM_OJ8_oGF_w0P_Awu_sS1_Wx_8Kn_InP_SM_pr_OC_2U_Cv_6v_uX_w6_Om_IlL_OJ5_qL_E3_RW_vq_0V_eV_6D_pk_mS_RN_tr_G73_OOA_o6s_yV_u8_Nj_Ns_8OQ_uo_G74_VS_zt_sQv_Sz_8Io_Kl_GS_3s_KO_0y_O91_Ar_v_Su7_Ml_H_K9N_2qq_N8_4_RE_o3y_uXW_68_kgK_LD_KA_pK_6y2_O9y_Bs_uc_v4_Ir_Io_DO_2_oH_6v1_UE_u9_V1_SuA_Lk_IoP_R_6v_LH_wxQ_Ato_sRv" name="submitOrderStr1" id="submitOrderStr1">
-<input type="hidden" value="9#kQHYOtB:7sZK0wwfET0en6vRhD9uq7Il_GnMCPH6bnDFtuzPVA2tr" name="submitOrderStr1" id="submitOrderStr1">
-<input type="hidden" value="7%23%3Ap%3A2p5%3Bs4sww56pw4988r4s9587wv%3As5!9%5D%3B%5D66%5D69%5D68%5D64%5D97%5D96%5D92%5D9%3A%5D9%3B%5D93%5D65%5D%3A%5D2%5D6%3B%5D6%5D86%5D3%5D8%5D98%5D62%5D95%5D87%5D67%5D6%3A%5D5%5D63%5D94%5D99%5D4%5D7__%3F%3Ej%3A778%3D8%3A%3F%3B9k%3F9__77aebe2af3e4a8112ad031d6e5d88321" name="submitOrderStr" id="submitOrderStr">
-<input type="hidden" value="" name="submitOrderStr1" id="submitOrderStr1">
 
-    <script type="text/javascript" src="js/unify.min.js"></script>
+
+
+    <!--<script type="text/javascript" src="js/unify.min.js"></script>-->
     
-    <script type="text/javascript" src="js/unify.min.js"></script>
+    <!--<script type="text/javascript" src="js/unify.min.js"></script>-->
 
-    <script src="js/reportTime.min.js" type="text/javascript"></script>
+    <!--<script src="js/reportTime.min.js" type="text/javascript"></script>-->
+
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/public.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
+//        alert("rootPath"+getContextPath());
     var sid="";
     var productCode="";
     var productname="";
@@ -767,14 +656,16 @@
     len=urlinfo.length;//获取url的长度
     offset=urlinfo.indexOf("?");
     newsidinfo=urlinfo.substr(offset+1,len)
-   // alert(newsidinfo);
+ //  alert(newsidinfo);
     newsids=newsidinfo.split("&");//对获得的参数字符串按照“=”进行分割 newsid=newsids[1];//得到参数值
 
    for(var i=0;i<newsids.length;i++){
-        sp=  newsids[i].split("=");
+      var  sp=  newsids[i].split("=");
        if("productCode"==sp[0]){
+
            productCode=sp[1];
-           console.log(productCode);
+           $("#productno").val(productCode);
+           console.log("productCode:"+productCode);
        }else if("productName"==sp[0]){
            productName=sp[1];
            var ss=decodeURI(productName);
@@ -809,20 +700,22 @@
     }
 
 
-    $("#unsupport").hide();
-    if(!testLocalStorage()){ //not support html5
-        if(0!=0 && !$clearCart && !$teamId){
-            $("#html5_cart_num").text(0>0>0);
-        }
-    }else{
-        updateToolBar('');
-    }
+//    $("#unsupport").hide();
+//    if(!testLocalStorage()){ //not support html5
+//        if(0!=0 && !$clearCart && !$teamId){
+//            $("#html5_cart_num").text(0>0>0);
+//        }
+//    }else{
+//        updateToolBar('');
+//    }
 
         inputNumber($('.quantity'));
 
-//        $(".quantity-decrease").click(function(){
-//            checkLimitToast();
-//        });
+        $(".pay-leak-btn-red").click(function(){
+            createOrder();
+        });
+
+
 });
 
 //    数量增加事件
@@ -885,6 +778,61 @@
         }
     })();
     
+    
+    function createOrder() {
+
+
+        var paymentAmount=$(".price-items-all span i").html();;
+        var accountNo="2000001";
+//        var supplyProductNo="000000010019827004";
+        var supplyProductNo=$("#productno").val();
+        var saleSum= $("#numNow").val();
+        var receptProvName="北京";
+        var receptCityName="北京市";
+        var receptAddress="王府井大街253";
+        var receptPhone="18600007777";
+        var receptName="张三啊啊啊";
+        console.log("paymentAmount:"+paymentAmount+
+        " accountNo："+accountNo+
+                        " supplyProductNo:"+supplyProductNo+
+                        " saleSum:"+saleSum+
+                        " receptProvName:"+receptProvName+
+               " receptCityName:"+receptCityName+
+                    " receptCityName："+receptCityName+
+                " receptAddress ："+receptAddress+
+                " receptPhone:"+receptPhone+
+                    " receptName:"+receptName
+        );
+       var json={
+            "paymentAmount": paymentAmount,
+                "accountNo": accountNo,
+                "supplyProductNo": supplyProductNo,
+                "saleSum": saleSum,
+                "receptPhone": receptPhone,
+                "receptName": receptName,
+                "receptCityName": receptCityName,
+                "receptProvName": receptProvName,
+                "receptAddress": receptAddress
+        }
+    //   alert(JSON.stringify(json));
+
+        $.ajax({
+                    type: "post",
+                    contentType: "application/json",
+                    url: getContextPath() + "/order/createOrder.json",
+                    dataType: "json",
+                    async: false,
+                    data:  JSON.stringify(json) ,
+            success: function (pro) {
+//                var proYe = JSON.parse(pro);
+                if(pro.success=="true"){
+                    alert("提交订单成功，订单号为："+pro.orderNo);
+                }else {
+                    alert("提交订单失败！");
+                }
+            }
+        });
+    }
     
 
  //banner 关闭点击

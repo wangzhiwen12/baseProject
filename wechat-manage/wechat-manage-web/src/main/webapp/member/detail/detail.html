@@ -417,6 +417,7 @@
                                       id="pro-price">￥100.00</span>
                                 <span style="font-size: 12px; color: #6e727b;text-decoration: line-through;"
                                       id="pro-original-price">199.00</span>
+                                <input id="spsid" hidden>
                             </div>
                         </div>
                     </li>
@@ -589,14 +590,14 @@
                     _price = proData.price;  //价格
                     var color_stan = _val.split("_");
                     $('#pro-stan-color').html(color_stan[0] + "  ,  " + color_stan[1] + "  ,  1件");
-
+                    $('#spsid').attr('value',proData.spsid);
                      //商品码    sku_code[_val];
                      //购买数量  input-number
                      //商品名称  id pro-name
                      //商品在·图片 sys_spec_img  selected
                      // 价格     _price
                      //尺码   sys_spec_text
-                    order(sku_code[_val],_price);
+                    order(sku_code[_val],_price,proData.spsid);
                 },
                 error: function (XMLHttpRequest, textStatus) {
 
@@ -610,7 +611,7 @@
         $(_resp.mktprice).text(_mktprice);  ///其中的math.round为截取小数点位数
         $(_resp.price).text(_price);
     }
-    function order(productCode,price){
+    function order(productCode,price,productCode){
         //商品码    sku_code[_val];
         //购买数量  input-number
         //商品名称  id pro-name
@@ -630,7 +631,7 @@
         console.log("商品名称 :"+_productName);
         console.log("图片 :"+_productUrl);
         console.log("尺码 :"+_productSize);
-                var ahref=rootPath+"/member/order/order.html?+productCode="+_productCode+"&productPrice="+_productPrice+"&productNum="+_productNum+"&productName="+_productName+"&productUrl="+_productUrl+"&productSize="+_productSize;
+                var ahref=rootPath+"/member/order/order.html?productCode="+_productCode+"&productPrice="+_productPrice+"&productNum="+_productNum+"&productName="+_productName+"&productUrl="+_productUrl+"&productSize="+_productSize;
         document.getElementById("buy-now").href=ahref;
 //        document.getElementById("buy-now").arrt("href",ahref);
 
