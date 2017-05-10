@@ -137,7 +137,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                            varStatus="status">
                                     <li>
                                         <a href="javascript:;"
-                                           onclick="onuser(${userAuthorization.storeCode},${userAuthorization.userId})">
+                                           onclick="onuser('${userAuthorization.storeCode}',${userAuthorization.userId})">
                                                 <%--  <span class="time">just now</span>--%>
 									<span class="details">
 									<span class="label label-sm label-icon label-success">
