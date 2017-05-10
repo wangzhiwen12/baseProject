@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -291,13 +292,23 @@ public class ShoppeProController extends BaseController {
 
     @RequestMapping(value = "/getProListByGroupId", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public String getProListByGroupId(String groupId) {
-        Map<String, Object> paramMap = new HashMap<String, Object>();
-        paramMap.put("id", 4);
-        List<String> proList = iTProGroupService.getProListByGroupId(paramMap);
+    public String getProListByGroupId(String groupId,String proCodes) {
+        List<String> proList = new ArrayList<String>();
+        if(groupId != null && groupId != ""){
+            Map<String, Object> paramMap_1 = new HashMap<String, Object>();
+            paramMap_1.put("id", groupId);
+            proList = iTProGroupService.getProListByGroupId(paramMap_1);
+        }
+        if(proCodes != null && proCodes != ""){
+            String[] str = proCodes.split(";");
+            for (int i = 0; i < str.length; i++){
+                proList.add(str[i]);
+            }
+        }
+        //List<String> proList = iTProGroupService.getProListByGroupId(paramMap);
         System.out.print(proList);
         if (proList != null && proList.size() > 0) {
-            paramMap.clear();
+            Map<String, Object> paramMap = new HashMap<String, Object>();
             paramMap.put("proList", proList);
             String url = "http://10.6.4.22:8042/pcm-inner-sdc/product/getSkuListByProList.htm";
             String json = HttpUtils.doPost(url, JsonUtil.getJSONString(paramMap));

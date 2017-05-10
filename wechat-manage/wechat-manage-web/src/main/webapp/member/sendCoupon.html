@@ -10,24 +10,68 @@
     <link rel="stylesheet" href="js/bootstrap-3.3.5-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="js/font/font-awesome-4.3.0/css/font-awesome.min.css">
 	<title>卡券发送</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		html {
+			height: 100%;
+		}
+		body {
+			min-height: 100%;
+			font-family: arial;
+			position: relative;
+		}
+		aside {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: -200px;
+			width: 200px;
+			background: #f1103a;
+			transition: 0.2s ease-out;
+			-webkit-transition: 0.2s ease-out;
+		}
+
+		h2 {
+			color: #FFF;
+			text-align: center;
+			font-weight: normal;
+			padding: 10px;
+		}
+	</style>
 </head>
 <body><!-- １．获取该门店没有领券的用户，２．筛选，３．领券后群发信息通知 -->
 	<div>
+		<aside>
+			<h2>筛选条件</h2>
+		</aside>
 		<ul id="ul_btn" style="text-align: center;list-style-type:none;">
 			
 		</ul>
-		<button type="button" id="btn5" >发送</button>
+
 		<input hidden type="text" id="couponSid" >
-		<div class="panel panel-primary">
+		<div class="panel panel-primary" hidden>
 			<div class="panel-body">
+				<div class="btn-group" style="margin:0 auto;">
+					<button type="button" class="btn btn-default" >用户名</button>
+					<button type="button" class="btn btn-default" >领券数量</button>
+					<button type="button" class="btn btn-default" >不知道写啥</button>
+					<button type="button" class="btn btn-default" id="screen" >筛选</button>
+				</div>
+				<hr />
 				<div class="row">
-					<div class="col-md-12" >
+					<div class="col-md-12">
 						<form class="form-horizontal" role="form" >
 
 						</form>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div hidden id="btn_div">
+			<button class="btn btn-success btn-sm" style="width: 100%;height:10%;position:fixed;bottom:0;font-size: 200%;" type="button" id="btn5" >发&nbsp;&nbsp;送</button>
 		</div>
 	</div>
 </body>
@@ -52,22 +96,24 @@
 			},
 			success: function (list) {
 				list = JSON.parse(list);
-				$('#member_view *').remove();
+				$('.form-horizontal *').remove();
 				for(var i =0;i<list.length;i++){
 					var memberInfo =
 							'<div class="form-group">' +
 								'<img class="col-md-4 img-circle" src="'+list[i].headImgUrl+'" style="width: 25%;height: 25%;" />' +
-								'<label class="col-md-5 control-label">'+
+								'<label class="col-md-5 control-label" >'+
 									'<span class="glyphicon glyphicon-user"></span>'+
 									list[i].nickName +
 								'</label>' +
-								'<label class="col-md-2 control-label"> 已领数量:' +
+								'<label class="col-sm-offset-9 col-md-2 control-label"> 已领数量:' +
 									list[i].count+
 								'</label>' +
-								'<input type="checkbox" name="checkbox" value="'+list[i].openId+'" class="col-md-1" />' +
+								'<input type="checkbox" name="checkbox" value="'+list[i].openId+'" class="col-sm-offset-11 col-md-1" />' +
 							'</div>';
 					$('.form-horizontal').append(memberInfo);
 				}
+				$('#btn_div').removeAttr('hidden');
+				$('.panel').removeAttr('hidden');
 			}
 		});
 	}
@@ -132,6 +178,10 @@
 				str+=$(this).val()+";";
 			})
 			sendCoupon(str);
+		});
+
+		$('#screen').click(function(){
+			$('aside').attr("left","0");
 		});
 		
 		$.ajax({
