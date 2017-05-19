@@ -4,22 +4,20 @@
 <script type="text/javascript">
 	var contextPath = "${pageContext.request.contextPath}";
 </script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/template.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/scope.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/_disposeOldData.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/Sortable.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/customPage.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/customPageUtil.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/webuploader.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/cuspicture.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/front/PageManageWxHome.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/wshop/wpage/list.js"></script>
-<link href="${pageContext.request.contextPath}/css/ezr.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/css/center_conf.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/css/base.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/css/ezp-global.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/css/wxhome.css"   rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/wx-pc.css"   rel="stylesheet"/>
+
+<link href="${pageContext.request.contextPath}/css/ezr.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/center_conf.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/base.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/ezp-global.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/wxhome.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/wx-pc.css"
+	rel="stylesheet" />
+
 <div class="table-responsive">
 	<div class="tabbable-line">
 		<div class="">
@@ -29,9 +27,10 @@
 						<div class="main-content" id="div_main">
 							<div id="div_main2">
 								<div>
-							 <input id="back" class="btn btn-info marR10"  value="返回上一级"  type="button">
+									<input id="back" class="btn btn-info marR10" value="返回上一级"
+										type="button">
 								</div>
-								 
+
 								<br>
 								<div class="ui-bottom-fixedbtn ui-shadow-top">
 									<form action="edit.php" method="post">
@@ -39,8 +38,10 @@
 											name="edit" id="edit" type="hidden"><br>
 										<!--<input type="submit" class="medit" value="编辑">-->
 									</form>
-								<input id="back" class="btn btn-info marR10" value="上架"  type="button">
-								<input id="back" class="btn btn-info marR10" value="保存草稿"  type="button">
+									<input id="save" class="btn btn-info marR10" value="上架"
+										type="button"> <input id="saveDraft"
+										class="btn btn-info marR10" value="保存为草稿" type="button">
+									<input class="wPageId" value="${wPageId }" 	type="hidden" /> 
 								</div>
 
 
@@ -65,46 +66,109 @@
 																<div id="container" class="container">
 																	<div id="my">
 																		<div id="P" way-data="All">
-																			<!-- 模板填充内容 -->
+																		
 																		</div>
 																	</div>
 																</div>
 															</form>
 															<!-- 模板组件开始 -->
-															     <!--底部btn-->
-                            <div style="background: #545454;color:#fff;">
-                                <div class="grid-nav-bar" style="height: 80px;">
-		
-        <div class="grid-nav-bar-item add-common btn-text-navigation" data-insert="true" data-type="addRichText" style="width: 80px;">
-            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img07.png" alt=""><br>富文本</div>
-        <div class="grid-nav-bar-item add-common btn-text-navigation" data-insert="true" data-type="addGoods" style="width: 80px;">
-            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img08.png" alt=""><br>商品</div>
-        <div class="grid-nav-bar-item add-common btn-text-navigation" data-insert="true" data-type="addGoodsList" style="width: 80px;">
-            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img19.png" alt=""><br>商品列表</div>
-        <div class="grid-nav-bar-item add-common btn-text-navigation" data-insert="true" data-type="addAdvertising" style="width: 80px;">
-            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img09.png" alt=""><br>图片广告</div>
-    </div>
-    <div class="grid-nav-bar" style="height: 80px;">
-   		<div class="grid-nav-bar-item add-common btn-text-navigation" data-insert="true" data-type="addNavText" style="width: 80px;">
-            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img10.png" alt=""><br>图文导航</div>
-        <div class="grid-nav-bar-item add-common btn-img-navigation" data-insert="true" data-type="imgnavigation" style="width: 80px;">
-            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img12.png"><br>图片导航</div>
-        <div class="grid-nav-bar-item add-common btn-img-navigation" data-insert="true" data-type="addSearch" style="width: 80px;">
-            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img13.png"><br>商品搜索</div>
-        <div class="grid-nav-bar-item add-common btn-img-navigation" data-insert="true" data-type="addSubline" style="width: 80px;">
-            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img16.png"><br>辅助线</div>
-    </div>
-    <div class="grid-nav-bar" style="height: 80px;">
-    	<div class="grid-nav-bar-item add-common btn-uxiliary-blank" data-insert="true" data-type="uxiliaryblank">
-            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img17.png"><br>辅助空白</div>
-        <div class="grid-nav-bar-item add-common btn-title-navigation" data-insert="true" data-type="titlenavigation" style="width: 80px;">
-            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img10.png"><br>标题</div>
-		<div class="grid-nav-bar-item add-common btn-title-navigation" data-insert="true" data-type="addNotice" style="width: 80px;">
-            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img15.png"><br>公告</div>
-		<div class="grid-nav-bar-item add-common btn-title-navigation" data-insert="true" data-type="addCoupons" style="width: 80px;">
-            <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img20.png"><br>添加优惠券</div>
-    </div>
-                            </div>
+															<!--底部btn-->
+															<div style="background: #545454; color: #fff;">
+																<div class="grid-nav-bar" style="height: 80px;">
+																	
+																	<div
+																		class="grid-nav-bar-item add-common btn-add-richText"
+																		data-insert="true" data-type="addrichText"
+																		style="width: 80px;">
+																		<img
+																			src="${pageContext.request.contextPath}/images/page/icon/channelpage_img07.png"
+																			alt=""><br>富文本
+																	</div>
+																	<div class="grid-nav-bar-item add-common btn-add-goods"
+																		data-insert="true" data-type="addgoods"
+																		style="width: 80px;">
+																		<img
+																			src="${pageContext.request.contextPath}/images/page/icon/channelpage_img08.png"
+																			alt=""><br>商品
+																	</div>
+																	<div
+																		class="grid-nav-bar-item add-common btn-add-goodsList"
+																		data-insert="true" data-type="addgoodsList"
+																		style="width: 80px;">
+																		<img
+																			src="${pageContext.request.contextPath}/images/page/icon/channelpage_img19.png"
+																			alt=""><br>商品列表
+																	</div>
+																	<div
+																		class="grid-nav-bar-item add-common btn-picture-navigation"
+																		data-insert="true" data-type="picturenavigation"
+																		style="width: 80px;">
+																		<img
+																			src="${pageContext.request.contextPath}/images/page/icon/channelpage_img09.png"
+																			alt=""><br>图片广告
+																	</div>
+																</div>
+																<div class="grid-nav-bar" style="height: 80px;">
+																	<div
+																		class="grid-nav-bar-item add-common btn-text-navigation"
+																		data-insert="true" data-type="textnavigation"
+																		style="width: 80px;">
+																		<img
+																			src="${pageContext.request.contextPath}/images/page/icon/channelpage_img10.png"
+																			alt=""><br>图文导航
+																	</div>
+																	<div
+																		class="grid-nav-bar-item add-common btn-img-navigation"
+																		data-insert="true" data-type="imgnavigation"
+																		style="width: 80px;">
+																		<img
+																			src="${pageContext.request.contextPath}/images/page/icon/channelpage_img12.png"><br>图片导航
+																	</div>
+																	<div
+																		class="grid-nav-bar-item add-common btn-add-search"
+																		data-insert="true" data-type="addsearch"
+																		style="width: 80px;">
+																		<img
+																			src="${pageContext.request.contextPath}/images/page/icon/channelpage_img13.png"><br>商品搜索
+																	</div>
+																	<div
+																		class="grid-nav-bar-item add-common btn-add-subline"
+																		data-insert="true" data-type="addsubline"
+																		style="width: 80px;">
+																		<img
+																			src="${pageContext.request.contextPath}/images/page/icon/channelpage_img16.png"><br>辅助线
+																	</div>
+																</div>
+																<div class="grid-nav-bar" style="height: 80px;">
+																	<div
+																		class="grid-nav-bar-item add-common btn-uxiliary-blank"
+																		data-insert="true" data-type="uxiliaryblank">
+																		<img
+																			src="${pageContext.request.contextPath}/images/page/icon/channelpage_img17.png"><br>辅助空白
+																	</div>
+																	<div
+																		class="grid-nav-bar-item add-common btn-title-navigation"
+																		data-insert="true" data-type="titlenavigation"
+																		style="width: 80px;">
+																		<img
+																			src="${pageContext.request.contextPath}/images/page/icon/channelpage_img10.png"><br>标题
+																	</div>
+																	<div
+																		class="grid-nav-bar-item add-common btn-add-notice"
+																		data-insert="true" data-type="addnotice"
+																		style="width: 80px;">
+																		<img
+																			src="${pageContext.request.contextPath}/images/page/icon/channelpage_img15.png"><br>公告
+																	</div>
+																	<div
+																		class="grid-nav-bar-item add-common btn-add-coupons"
+																		data-insert="true" data-type="addcoupons"
+																		style="width: 80px;">
+																		<img
+																			src="${pageContext.request.contextPath}/images/page/icon/channelpage_img20.png"><br>添加优惠券
+																	</div>
+																</div>
+															</div>
 															<!-- 模板组件结束-->
 														</div>
 													</div>
@@ -116,10 +180,9 @@
 											class="grid-nav-bar-item text-left text-top"></div>
 									</div>
 								</div>
-								
-								<div class="insertCommon wdn">
-								</div>
-								
+
+								<div class="insertCommon wdn"></div>
+
 								<div class="toJson">
 									<div class="alert bg-warning">
 										<div class="btn btn-sm btn-default pull-right"
@@ -131,14 +194,6 @@
 
 								<!-- 引入模板文件-->
 								<jsp:include page="template.jsp" flush="true" />
-								<script>
-									//初始
-									$(".nodeItem").removeClass("cur");
-									$("#viewsTgt").children("div:first")
-											.addClass("cur");
-									$("#controllerTgt").children("div:first")
-											.addClass("cur");
-								</script>
 							</div>
 						</div>
 					</div>
@@ -147,3 +202,24 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/wshop/wpage/template.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/wshop/wpage/scope.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/wshop/wpage/_disposeOldData.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/wshop/wpage/Sortable.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/wshop/wpage/customPage.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/wshop/wpage/customPageUtil.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/wshop/wpage/webuploader.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/wshop/wpage/cuspicture.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/wshop/wpage/PageManageWxHome.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/wshop/wpage/list.js"></script>
+

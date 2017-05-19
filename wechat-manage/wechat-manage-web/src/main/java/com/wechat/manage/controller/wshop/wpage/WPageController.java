@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,25 +31,7 @@ import com.wechat.manage.pojo.system.entity.UserFormMap;
 import com.wechat.manage.pojo.usercenter.entity.TPage;
 import com.wechat.manage.pojo.wshopnav.entity.TPageEdit;
 import com.wechat.manage.pojo.wshopnav.entity.TPageExtendsForMap;
-import com.wechat.manage.pojo.wshopnav.vo.TPageDto;
 import com.wechat.manage.service.usercenter.intf.TPageService;
-//import com.wfj.dto.TPageDto;
-//import com.wfj.entity.DataTableParams;
-//import com.wfj.entity.DataTableResult;
-//import com.wfj.entity.TPage;
-//import com.wfj.entity.TPageEdit;
-//import com.wfj.entity.TPageExtendsForMap;
-//import com.wfj.entity.UserFormMap;
-//import com.wfj.entity.fans.Result;
-//import com.wfj.service.intf.TPageService;
-//import com.wfj.service.intf.TWPageService;
-//import com.wfj.util.Common;
-//import com.wfj.util.FTPUtils;
-//import com.wfj.util.HttpUtil;
-//import com.wfj.util.PropertiesUtils;
-//import com.wfj.util.ResultUtil;
-//import com.wfj.util.StringUtils;
-//import com.wfj.util.UUIDUtils;
 import com.wechat.manage.service.usercenter.intf.TWPageService;
 import com.wechat.manage.service.util.FTPUtils;
 import com.wechat.manage.service.util.PropertiesUtils;
@@ -164,6 +144,7 @@ public class WPageController extends BaseController {
 		dataTableResult.setsEcho(longs.toString());
 		return dataTableResult;
 	}
+
 	/**
 	 * 删除微页面
 	 * 
@@ -175,8 +156,8 @@ public class WPageController extends BaseController {
 		try {
 			String sid = request.getParameter("sid");
 			String createUser = request.getParameter("createUser");
-			String pageid=request.getParameter("pageLink");
-			if(StringUtils.isNotEmpty(pageid)){
+			String pageid = request.getParameter("pageLink");
+			if (StringUtils.isNotEmpty(pageid)) {
 				tpPageService.deleteWPage(pageid);
 			}
 			String pageLink = pageid + ".html";
@@ -184,7 +165,7 @@ public class WPageController extends BaseController {
 			tWPageService.deleteWPage(sid, createUser);// 删除数据库
 			// String[] split = pageLink.split("/");
 			// String fileName = split[split.length-1];
-			
+
 			boolean deleteFile = deleteFile(pageLink);
 			logger.info("删除成功" + deleteFile);
 		} catch (Exception e) {
@@ -247,54 +228,44 @@ public class WPageController extends BaseController {
 	public String addWpage(Model model, Integer id) throws Exception {
 		return Common.BACKGROUND_PATH + "/wshop/wpage/wpageAdd";
 	}
+
 	@RequestMapping("/edit_wpageUI")
-	public String editWpage(Model model, String id) throws Exception {
-		TPage tPage =new TPage();
-		tPage.setSid(id);
-		List<TPage> tps =tWPageService.selectTPage(tPage);
-		String link=tps.get(0).getPageLink();
-		String tpeditId=link.substring(link.indexOf("e/")+2,link.length()-5);
-		List<TPageEdit> tpedits =tpPageService.selectById(tpeditId);
-		TPageDto tPageEdit=new TPageDto();
-		if(tpedits.size()>0){
-		 tPageEdit = com.alibaba.fastjson.JSON.parseObject(tpedits.get(0).getParam(),TPageDto.class);
-		}
-		
-		model.addAttribute("notice", tPageEdit.getNotice());
-		model.addAttribute("pageId",tpeditId);
-		model.addAttribute("wpageTitle",tPageEdit.getWpageTitle());
-		return Common.BACKGROUND_PATH + "/wshop/wpage/wpageEdit";
+	public String editWpage(Model model, String id, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		model.addAttribute("wPageId", id);
+		return Common.BACKGROUND_PATH + "/wshop/wpage/wpageAdd";
 	}
-	@RequestMapping(value = {"/previewTPage"}, method = {RequestMethod.POST})
-    @ResponseBody
-    public Map<String, Object> saveUserCenterPage(HttpServletRequest request, HttpServletResponse response) {
+
+	@RequestMapping(value = { "/previewTPage" }, method = { RequestMethod.POST })
+	@ResponseBody
+	public Map<String, Object> saveUserCenterPage(HttpServletRequest request, HttpServletResponse response) {
 		String html = "";
-		String id=null;
-		boolean flag=false;
+		String id = null;
+		boolean flag = false;
 		List<String> propertiesKeys = new ArrayList<String>();
 		propertiesKeys.add("ftp.addr");
 		propertiesKeys.add("ftp.port");
 		propertiesKeys.add("ftp.username");
 		propertiesKeys.add("ftp.password");
 		Map<String, String> valueMap = analyProperties(propertiesKeys);
-        try {
-            JSONObject jsonData = HttpUtil.HttpGetRequest(request);
-            html =jsonData.getString("html"); 
-            id=jsonData.getString("id");
-        } catch (IOException ex) {
-        	logger.error(ex.toString(),ex);
-        }
-		
-		
+		try {
+			JSONObject jsonData = HttpUtil.HttpGetRequest(request);
+			html = jsonData.getString("html");
+			id = jsonData.getString("id");
+		} catch (IOException ex) {
+			logger.error(ex.toString(), ex);
+		}
+
 		InputStream input = new ByteArrayInputStream(html.getBytes());
 		FTPUtils util = FTPUtils.getInstance();
-		flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")), 
-				valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page",
-				id + ".html", input);
+		flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
+				valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page", id + ".html", input);
 		return ResultUtil.creComSucResult("");
 	}
+
 	/**
 	 * 获得properties里对应值
+	 * 
 	 * @param list
 	 * @return
 	 */
@@ -306,21 +277,23 @@ public class WPageController extends BaseController {
 		}
 		return map;
 	}
+
 	@RequestMapping("/preview")
-	public String toPreview(Model model,String id) {
-		String html="";
+	public String toPreview(Model model, String id) {
+		String html = "";
 		String link = null;
-		if(id!=null&&!"".equals(id)){
-			link="http://10.6.100.100/page/"+id+".html";
+		if (id != null && !"".equals(id)) {
+			link = "http://10.6.100.100/page/" + id + ".html";
 		}
 		try {
 			html = HttpUtil.sendGet(link, null);
 		} catch (Exception e) {
-			logger.error(e.toString(),e);
+			logger.error(e.toString(), e);
 		}
 		model.addAttribute("html", html);
-		return Common.BACKGROUND_PATH + "/wshop/wpage/wpagePreview";
+		return Common.BACKGROUND_PATH + "/wshop/wpage/wpagePreviewNew";
 	}
+
 	/**
 	 * 上传文件
 	 * 
@@ -406,112 +379,84 @@ public class WPageController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/saveDraft", method = RequestMethod.POST)
-	public String saveDraft(Model model, HttpServletRequest request) throws Exception {
+	@RequestMapping(value = "/updateDraft", method = RequestMethod.POST)
+	public String updateDraft(Model model, HttpServletRequest request) throws Exception {
 		String param = null;
 		String uuid = UUIDUtils.generateUUID();
-		boolean upresult=false;
-		String userId=null;
+		boolean flag = false,flagS = false;
+		String userId = null;
+		String html,htmlS = "";
+
 		param = getData(request);
-		String data = param.replace("\\", "");
-		data = data.replace("\"{", "{");
-		data = data.replace("}\"", "}");
-		TPageEdit tPageEdit = com.alibaba.fastjson.JSON.parseObject(data, TPageEdit.class);
-		TPage tPage = com.alibaba.fastjson.JSON.parseObject(tPageEdit.getParam(), TPage.class);
-		
+		JSONObject json = JSONObject.parseObject(param);
+		html = (String) json.get("html");
+		htmlS = (String) json.get("htmlS");
+		InputStream input = new ByteArrayInputStream(html.getBytes());
+		InputStream inputS = new ByteArrayInputStream(htmlS.getBytes());
+
+		List<String> propertiesKeys = new ArrayList<String>();
+		propertiesKeys.add("ftp.addr");
+		propertiesKeys.add("ftp.port");
+		propertiesKeys.add("ftp.username");
+		propertiesKeys.add("ftp.password");
+		Map<String, String> valueMap = analyProperties(propertiesKeys);
+		json.remove("html");
+		String data = json.getString("param").toString().replace("\\", "");
+		TPage tPage = com.alibaba.fastjson.JSON.parseObject(data, TPage.class);
+
 		UserFormMap userFormMap = (UserFormMap) Common.findUserSession(request);
 		userId = String.valueOf(userFormMap.get("id"));
 		tPage.setCreateUser(userId);
-		
-		if(tPageEdit.getId()==null){
+		tPage.setSid(json.getString("id"));
+		FTPUtils util = FTPUtils.getInstance();
+		if (tWPageService.selectTPage(tPage).size() == 0) {
 			tPage.setPageLink("http://10.6.100.100/wshop/page/" + uuid + ".html");
-			tPageEdit.setId(uuid);
-			tpPageService.insertSelective(tPageEdit);
-			upresult = upLoadFile(param, uuid + ".html");// 解析json的param
-			if (upresult == true) {
+			flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
+					valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page", uuid + ".html", input);
+			flagS = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
+					valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page", uuid+"S" + ".html", inputS);
+			
+			if (flag == true&&flagS==true) {
 				logger.info("保存文件：" + uuid + ".html  ===到远程服务器成功");
+			}
+			if (StringUtils.isNotEmpty(tPage.getWpageTitle())) {
+			} else {
+				tPage.setWpageTitle("xx");
 			}
 			tPage.setPageCode("xx");
 			tPage.setType("1");
+			tPage.setSid(uuid);
 			tPage.setIsHome("0");
-			tPage.setStatus("1");// 解析传过来的json的status
+			tPage.setStatus("0");// 解析传过来的json的status
 			tPage.setShopId("1");// 根据用户id找到微店id
 			tPage.setCreateTime(new Timestamp(System.currentTimeMillis()));
 			tPage.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 			tPage.setSeqNo(1);
 			tWPageService.insertSelective(tPage);
-		}else{
-			tPage.setPageLink("http://10.6.100.100/wshop/page/" + tPageEdit.getId() + ".html");
-			upresult = upLoadFile(param, tPageEdit.getId() + ".html");
-			tPage.setStatus("1");
-			tPage.setSid(tWPageService.selectTPage(tPage).get(0).getSid());
+		} else {
+			tPage.setPageLink("http://10.6.100.100/wshop/page/" + tPage.getSid() + ".html");
+			flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
+					valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page",
+					tPage.getSid() + ".html", input);
+			flagS = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
+					valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page",
+					tPage.getSid()+"S" + ".html", inputS);
+			
+			tPage.setStatus("0");
 			tWPageService.updateWpage(tPage);
-			tpPageService.update(tPageEdit);
 		}
-		if (upresult == true) {
+		if (flag == true&&flagS==true) {
 			return "success";
 		} else {
 			return "false";
 		}
 	}
-	@ResponseBody
-	@RequestMapping(value = "/updateDraft", method = RequestMethod.POST)
-	public String updateDraft(Model model, HttpServletRequest request) throws Exception {
-		String param = null;
-		String uuid=UUIDUtils.generateUUID();
-		String userId =null;
-		
-		param = getData(request);
-		String data = param.replace("\\", "");
-		data = data.replace("\"{", "{");
-		data = data.replace("}\"", "}");
-		TPageEdit tPageEdit = com.alibaba.fastjson.JSON.parseObject(data, TPageEdit.class);
-		
-		if(tpPageService.selectById(tPageEdit.getId()).size()==0){
-			tPageEdit.setId(uuid);
-			tpPageService.insertSelective(tPageEdit);
-		}else{
-			tpPageService.update(tPageEdit);
-		}
-		
-		TPage tp = com.alibaba.fastjson.JSON.parseObject(tPageEdit.getParam(), TPage.class);
-		tp.setPageLink("http://10.6.100.100/wshop/page/"+tPageEdit.getId()+".html");
-		List<TPage> tps=tWPageService.selectTPage(tp);
-		UserFormMap userFormMap = (UserFormMap) Common.findUserSession(request);
-		userId = String.valueOf(userFormMap.get("id"));
-		if(tps.size()==0){
-			tp.setCreateUser(userId);
-			tp.setPageLink("http://10.6.100.100/wshop/page/" + uuid + ".html");
-			tp.setPageCode("xx");
-			tp.setType("1");
-			tp.setIsHome("0");
-			tp.setStatus("0");
-			tp.setShopId("1");// 根据用户id找到微店id
-			tp.setCreateTime(new Timestamp(System.currentTimeMillis()));
-			tp.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-			tp.setSeqNo(1);
-			tWPageService.insertSelective(tp);
-		}else{
-			tp.setStatus("0");
-			tp.setSid(tps.get(0).getSid());
-			tp.setCreateUser(userId);
-			tWPageService.updateWpage(tp);
-		}
-		//删除远程服务器静态页
-		boolean deresult = deleteFile( tPageEdit.getId() + ".html"); 
-		if (deresult == true) {
-			logger.info("删除文件：" + tPageEdit.getId() + ".html");
-			boolean upresult = upLoadFile(param, tPageEdit.getId() + ".html"); 
-			if(upresult==true){
-				logger.info("保存文件：" + tPageEdit.getId() + ".html  ===到远程服务器成功");
-				return "success";
-			}else{
-				return "error";
-			}
-		}else{
-			return "error";
-		}
+
+	@RequestMapping("proList") // 显示图片素材列表
+	public String imageList(Model model) throws Exception {
+		return Common.BACKGROUND_PATH + "/wshop/wpage/prolist";
 	}
+
 	/**
 	 * 获取流数据
 	 *
@@ -543,6 +488,99 @@ public class WPageController extends BaseController {
 			}
 		}
 		return "";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/saveWPage", method = RequestMethod.POST)
+	public String saveWPage(Model model, HttpServletRequest request) throws Exception {
+		String param = null;
+		String uuid = UUIDUtils.generateUUID();
+		boolean flag = false,flagS = false;
+		String userId = null;
+		String html,htmlS = "";
+
+		param = getData(request);
+		JSONObject json = JSONObject.parseObject(param);
+		html = (String) json.get("html");
+		htmlS = (String) json.get("htmlS");
+		InputStream input = new ByteArrayInputStream(html.getBytes());
+		InputStream inputS = new ByteArrayInputStream(htmlS.getBytes());
+
+		List<String> propertiesKeys = new ArrayList<String>();
+		propertiesKeys.add("ftp.addr");
+		propertiesKeys.add("ftp.port");
+		propertiesKeys.add("ftp.username");
+		propertiesKeys.add("ftp.password");
+		Map<String, String> valueMap = analyProperties(propertiesKeys);
+		json.remove("html");
+		String data = json.getString("param").toString().replace("\\", "");
+		TPage tPage = com.alibaba.fastjson.JSON.parseObject(data, TPage.class);
+
+		UserFormMap userFormMap = (UserFormMap) Common.findUserSession(request);
+		userId = String.valueOf(userFormMap.get("id"));
+		tPage.setCreateUser(userId);
+		tPage.setSid(json.getString("id"));
+		FTPUtils util = FTPUtils.getInstance();
+		if (tWPageService.selectTPage(tPage).size() == 0) {
+			tPage.setPageLink("http://10.6.100.100/wshop/page/" + uuid + ".html");
+			flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
+					valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page", uuid + ".html", input);
+			flagS = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
+					valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page", uuid+"S" + ".html", inputS);
+			
+			if (flag == true&&flagS==true) {
+				logger.info("保存文件：" + uuid + ".html  ===到远程服务器成功");
+			}
+			if (StringUtils.isNotEmpty(tPage.getWpageTitle())) {
+			} else {
+				tPage.setWpageTitle("xx");
+			}
+			tPage.setPageCode("xx");
+			tPage.setType("1");
+			tPage.setSid(uuid);
+			tPage.setIsHome("0");
+			tPage.setStatus("1");// 解析传过来的json的status
+			tPage.setShopId("1");// 根据用户id找到微店id
+			tPage.setCreateTime(new Timestamp(System.currentTimeMillis()));
+			tPage.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+			tPage.setSeqNo(1);
+			tWPageService.insertSelective(tPage);
+		} else {
+			tPage.setPageLink("http://10.6.100.100/wshop/page/" + tPage.getSid() + ".html");
+			flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
+					valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page",
+					tPage.getSid() + ".html", input);
+			flagS = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
+					valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page",
+					tPage.getSid()+"S" + ".html", inputS);
+			
+			tPage.setStatus("1");
+			tWPageService.updateWpage(tPage);
+		}
+		if (flag == true&&flagS==true) {
+			return "success";
+		} else {
+			return "false";
+		}
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/getWPageInfo", method = RequestMethod.POST)
+	public String saveWgetWPageInfoPage(Model model, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		String pageId = getData(request);
+		String html = "";
+		String link = null;
+		if (pageId != null && !"".equals(pageId)) {
+			link = "http://10.6.100.100/page/" + pageId+"S.html";
+		}
+		try {
+			html = HttpUtil.sendGet(link, null);
+		} catch (Exception e) {
+			logger.error(e.toString(), e);
+		}
+		
+		return html;
 	}
 
 }

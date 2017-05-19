@@ -7,37 +7,37 @@ function cfgModel() {
 	data.id="";
 		
 };
-function preview(){
-	    	//把模块右下角的编辑动作去掉
-	    	$(".actions").html("");
-	    	//去掉所有组件编辑状态
-			$(".app-field").removeClass("editing");
-			var id =null ;
-			var input=document.getElementsByTagName("input");
-			for( i=0;i<input.length;i++){
-    			if(!!input[i].attributes.class&&input[i].attributes.value){
-    				if(input[i].attributes.class.value=="pageId"&&!!input[i].attributes.value.value){
-    					id=input[i].attributes.value.value;
-    				}
-    			}
-    		}
-	    	var html = $(".app-preview>.app-entry>.app-fields").html();
-	    	console.log(html);
-	    	var cfg = new cfgModel();
-	    	cfg.html = html;
-	    	cfg.id=id;
-	    	$.post("previewTPage.shtml", JSON.stringify(cfg), function(data) {
-	    		require(['tpl','text!templates/actionsS.html'],function (T,html) {
-	    			$(".actions").append(html);
-	    		});
-	    		var data = data;
-	    		if (data.success == "true") {
-	    			window.open("preview.shtml?id="+id);
-	    		} else {
-	    			alert("预览失败!");
-	    		}
-	    	}, "json");
-}
+//function preview(){
+//	    	//把模块右下角的编辑动作去掉
+//	    	$(".actions").html("");
+//	    	//去掉所有组件编辑状态
+//			$(".app-field").removeClass("editing");
+//			var id =null ;
+//			var input=document.getElementsByTagName("input");
+//			for( i=0;i<input.length;i++){
+//    			if(!!input[i].attributes.class&&input[i].attributes.value){
+//    				if(input[i].attributes.class.value=="pageId"&&!!input[i].attributes.value.value){
+//    					id=input[i].attributes.value.value;
+//    				}
+//    			}
+//    		}
+//	    	var html = $(".app-preview>.app-entry>.app-fields").html();
+//	    	console.log(html);
+//	    	var cfg = new cfgModel();
+//	    	cfg.html = html;
+//	    	cfg.id=id;
+//	    	$.post("previewTPage.shtml", JSON.stringify(cfg), function(data) {
+//	    		require(['tpl','text!templates/actionsS.html'],function (T,html) {
+//	    			$(".actions").append(html);
+//	    		});
+//	    		var data = data;
+//	    		if (data.success == "true") {
+//	    			window.open("preview.shtml?id="+id);
+//	    		} else {
+//	    			alert("预览失败!");
+//	    		}
+//	    	}, "json");
+//}
 
 function OnInput(event) {
 	if(event.target.attributes.class.value=="notice"){
