@@ -293,7 +293,23 @@ public class WPageController extends BaseController {
 		model.addAttribute("html", html);
 		return Common.BACKGROUND_PATH + "/wshop/wpage/wpagePreviewNew";
 	}
-
+	
+	@RequestMapping("/wpageInfo")
+	public String wpageInfo(Model model, String id) {
+		String html = "";
+		String link = null;
+		if (id != null && !"".equals(id)) {
+			link = "http://10.6.100.100/page/" + id + ".html";
+		}
+		try {
+			html = HttpUtil.sendGet(link, null);
+			html=html.replace("handle", "");
+		} catch (Exception e) {
+			logger.error(e.toString(), e);
+		}
+		model.addAttribute("html", html);
+		return Common.BACKGROUND_PATH + "/wshop/wpage/wpagePreviewNew";
+	}
 	/**
 	 * 上传文件
 	 * 
@@ -386,7 +402,8 @@ public class WPageController extends BaseController {
 		boolean flag = false,flagS = false;
 		String userId = null;
 		String html,htmlS = "";
-
+		String url=request.getRequestURI();
+		String rootPath=url.substring(0,url.indexOf("wechatShopPage/"));
 		param = getData(request);
 		JSONObject json = JSONObject.parseObject(param);
 		html = (String) json.get("html");
@@ -410,7 +427,8 @@ public class WPageController extends BaseController {
 		tPage.setSid(json.getString("id"));
 		FTPUtils util = FTPUtils.getInstance();
 		if (tWPageService.selectTPage(tPage).size() == 0) {
-			tPage.setPageLink("http://10.6.100.100/wshop/page/" + uuid + ".html");
+			
+			tPage.setPageLink(rootPath + "/wechatShopPage/wpageInfo.shtml?id="+uuid);
 			flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
 					valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page", uuid + ".html", input);
 			flagS = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
@@ -434,7 +452,7 @@ public class WPageController extends BaseController {
 			tPage.setSeqNo(1);
 			tWPageService.insertSelective(tPage);
 		} else {
-			tPage.setPageLink("http://10.6.100.100/wshop/page/" + tPage.getSid() + ".html");
+			tPage.setPageLink(rootPath + "/wechatShopPage/wpageInfo.shtml?id="+ tPage.getSid());
 			flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
 					valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page",
 					tPage.getSid() + ".html", input);
@@ -498,7 +516,8 @@ public class WPageController extends BaseController {
 		boolean flag = false,flagS = false;
 		String userId = null;
 		String html,htmlS = "";
-
+		String url=request.getRequestURL().toString();
+		String rootPath=url.substring(0,url.indexOf("wechatShopPage/"));
 		param = getData(request);
 		JSONObject json = JSONObject.parseObject(param);
 		html = (String) json.get("html");
@@ -522,7 +541,8 @@ public class WPageController extends BaseController {
 		tPage.setSid(json.getString("id"));
 		FTPUtils util = FTPUtils.getInstance();
 		if (tWPageService.selectTPage(tPage).size() == 0) {
-			tPage.setPageLink("http://10.6.100.100/wshop/page/" + uuid + ".html");
+			
+			tPage.setPageLink(rootPath + "wechatShopPage/wpageInfo.shtml?id="+uuid);
 			flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
 					valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page", uuid + ".html", input);
 			flagS = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
@@ -546,7 +566,7 @@ public class WPageController extends BaseController {
 			tPage.setSeqNo(1);
 			tWPageService.insertSelective(tPage);
 		} else {
-			tPage.setPageLink("http://10.6.100.100/wshop/page/" + tPage.getSid() + ".html");
+			tPage.setPageLink(rootPath + "wechatShopPage/wpageInfo.shtml?id="+tPage.getSid());
 			flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
 					valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page",
 					tPage.getSid() + ".html", input);
@@ -568,6 +588,7 @@ public class WPageController extends BaseController {
 	@RequestMapping(value = "/getWPageInfo", method = RequestMethod.POST)
 	public String saveWgetWPageInfoPage(Model model, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
+		
 		String pageId = getData(request);
 		String html = "";
 		String link = null;
