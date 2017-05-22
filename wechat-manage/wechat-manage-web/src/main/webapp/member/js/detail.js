@@ -1,5 +1,5 @@
 var rootPath = getContextPath();
-var proCode = getUrlDataByKey("proCode");
+var skuCode = getUrlDataByKey("skuCode");
 var sku_code;
 $(function () {
     getProYeInfoBySpuCode();
@@ -14,7 +14,7 @@ function getProYeInfoBySpuCode() {
         dataType: "json",
         async: false,
         data: {
-            "skuCode": proCode
+            "skuCode": skuCode
         },
         success: function (pro) {
             var proYe = JSON.parse(pro);
@@ -162,7 +162,7 @@ function selectStockAndPriceByProDetail() {
         dataType: "json",
         async: false,
         data: {
-            "skuCode": proCode
+            "skuCode": skuCode
         },
         success: function (pro) {
             var proYe = JSON.parse(pro);
