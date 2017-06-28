@@ -357,6 +357,7 @@ a {
     padding: 15px 0 0;
     -webkit-tap-highlight-color: transparent;
 }
+
 .w-imgNav_icon{
     width: 21px;
     height: 21px;
@@ -384,6 +385,7 @@ a {
     width: 100%;
     height: auto;
 }
+
 .logo-side{
     width: 100%;
     position: absolute;

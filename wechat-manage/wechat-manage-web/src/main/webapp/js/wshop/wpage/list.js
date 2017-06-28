@@ -21,17 +21,13 @@ $(function () {
 });
 
 function wPageEdit(id){
-	  pageii = layer.open({
-	        title: "编辑微页面",
-	        type: 2,
-	        area: ["95%", "95%"],
-	        content: rootPath + '/wechatShopPage/edit_wpageUI.shtml?id='+id,
-	        end: function () {
-	        	couponTPLList();
-	        	couponAprovalList();
-            }
-	    });
+	 var tb = $("#loadhtml");
+	    tb.html(CommnUtil.loadingImg());
+	    tb.load(rootPath + '/wechatShopPage/edit_wpageUI.shtml?id='+id);
+	    couponTPLList();
+    	couponAprovalList();
 }
+
 function couponTPLList() {
     var userTable = $('#userList');
     userTable.dataTable().fnClearTable(false);
@@ -68,9 +64,10 @@ function couponTPLList() {
                 "sTitle": "标题",
                 "sWidth": '20%',
                 "mRender": function (data, type, full) {
-                    var time = data;
-                    if (time) {
-                        return '<a class="" href="javascript:void(0);">'+time+'</a>';
+                    var title = data;
+                    var sid = full["sid"]
+                    if (title) {
+                        return '<a class="" onclick="previewN(\''+sid+'\');" href="javascript:void(0);">'+title+'</a>';
                     } else {
                         return "";
                     }
@@ -106,7 +103,7 @@ function couponTPLList() {
                 "mRender": function (data, type, full) {
                 	var sid = full["sid"];//主键
                 	var createUser = full["createUser"];//用户名
-                	return '<span id="a'+sid+'">'+data+'</span>&nbsp;<a class="" href="javascript:void(0);" onclick="js_update('+sid+','+createUser+');">修改</a>';
+                	return '<span id="a'+sid+'">'+data+'</span>&nbsp;<a class="" href="javascript:void(0);" onclick="js_update(\''+sid+'\','+createUser+');">修改</a>';
                 }
             }, {
                // "mDataProp": 'sid',
@@ -124,24 +121,24 @@ function couponTPLList() {
                 	var createUser = full["createUser"];//用户名
                 	var status = full["status"];//草稿
                 	if(isHome == 0){ //非主页
-                		var srt = '<a class="" href="javascript:void(0);" onclick="js_copyFile('+sid+','+createUser+',\''+arr+'\','+status+');">复制</a>'; 
-                			srt += '<span class="">-</span>';
-                		    srt += '<a class="" data-order-state="0" data-app-id="0" onclick="wPageEdit('+sid+')" href="javascript:void(0);">编辑</a>';
-                			srt += '<span>-</span>';
-                			srt += '<a class="" href="javascript:void(0);" onclick="js_del('+sid+','+createUser+',\''+arr+'\','+status+');">删除</a>';
-                			srt += '<span>-</span>';
-                		    srt += '<a href="javascript:void(0)" id="'+pageLink+'" onclick="js_method(this.id);">  链接 </a>';
-                		    srt += '<span>-</span>';
-                			srt += '<a class="" href="javascript:void(0);" onclick="js_updateHomePage('+sid+','+createUser+','+status+');" data-order-state="0" data-app-id="0">设为主页</a>';
+                		var srt = '<a class="" href="javascript:void(0);" onclick="js_copyFile(\''+sid+'\','+createUser+',\''+arr+'\','+status+');">复制</a>'; 
+                		srt += '<span class="">-</span>';
+                		srt += '<a class="" data-order-state="0" data-app-id="0" onclick="wPageEdit(\''+sid+'\')" href="javascript:void(0);">编辑</a>';
+                		srt += '<span>-</span>';
+                		srt += '<a class="" href="javascript:void(0);" onclick="js_del(\''+sid+'\','+createUser+',\''+arr+'\','+status+');">删除</a>';
+                		srt += '<span>-</span>';
+                		srt += '<a href="javascript:void(0)" id="'+pageLink+'" onclick="js_method(this.id);">  链接 </a>';
+                		srt += '<span>-</span>';
+                		srt += '<a class="" href="javascript:void(0);" onclick="js_updateHomePage(\''+sid+'\','+createUser+','+status+');" data-order-state="0" data-app-id="0">设为主页</a>';
                 		return srt;
                 	}else{
-                		var srt = '<a class="" href="javascript:void(0);" onclick="js_copyFile('+sid+','+createUser+',\''+arr+'\','+status+');">复制</a>'; 
-            			srt += '<span class="">-</span>';
-            		    srt += '<a class="" data-order-state="0" data-app-id="0" onclick="wPageEdit('+sid+')" href="javascript:void(0);">编辑</a>';
-            			srt += '<span>-</span>';
-            		    srt += '<a href="javascript:void(0)" id="'+pageLink+'" onclick="js_method(this.id);">  链接 </a>';
-            		    srt += '<span>-</span>';
-            		    srt += '<span style="color:#BABABA">店铺主页</span>';
+                		var srt = '<a class="" href="javascript:void(0);" onclick="js_copyFile(\''+sid+'\','+createUser+',\''+arr+'\','+status+');">复制</a>'; 
+                		srt += '<span class="">-</span>';
+                		srt += '<a class="" data-order-state="0" data-app-id="0" onclick="wPageEdit(\''+sid+'\')" href="javascript:void(0);">编辑</a>';
+                		srt += '<span>-</span>';
+                		srt += '<a href="javascript:void(0)" id="'+pageLink+'" onclick="js_method(this.id);">  链接 </a>';
+                		srt += '<span>-</span>';
+                		srt += '<span style="color:#BABABA">店铺主页</span>';
             			
             		return srt;
                 	}
@@ -225,9 +222,10 @@ function couponAprovalList() {
                 "sTitle": "标题",
                 "sWidth": '20%',
                 "mRender": function (data, type, full) {
-                    var time = data;
-                    if (time) {
-                        return '<a class="" href="javascript:void(0);">'+time+'</a>';
+                    var title = data;
+                    var sid = full["sid"]
+                    if (title) {
+                        return '<a class=""  onclick="previewN(\''+sid+'\');" href="javascript:void(0);">'+title+'</a>';
                     } else {
                         return "";
                     }
@@ -263,7 +261,7 @@ function couponAprovalList() {
                 "mRender": function (data, type, full) {
                 	var sid = full["sid"];//主键
                 	var createUser = full["createUser"];//用户名
-                	return '<span id="a'+sid+'">'+data+'</span>&nbsp;<a class="" href="javascript:void(0);" onclick="js_update('+sid+','+createUser+');">修改</a>';
+                	return '<span id="a'+sid+'">'+data+'</span>&nbsp;<a class="" href="javascript:void(0);" onclick="js_update(\''+sid+'\','+createUser+');">修改</a>';
                 }
             }, {
                // "mDataProp": 'sid',
@@ -280,15 +278,15 @@ function couponAprovalList() {
                      var arr = strs2[0];
                 	var createUser = full["createUser"];//用户名
                 	var status = full["status"];//草稿
-                		var srt = '<a class="" href="javascript:void(0);" onclick="js_copyFile('+sid+','+createUser+',\''+arr+'\','+status+');">复制</a>'; 
+                		var srt = '<a class="" href="javascript:void(0);" onclick="js_copyFile(\''+sid+'\','+createUser+',\''+arr+'\','+status+');">复制</a>'; 
                 			srt += '<span class="">-</span>';
-                		    srt += '<a class="" data-order-state="0" data-app-id="0" onclick="wPageEdit('+sid+')" href="javascript:void(0);">编辑</a>';
+                		    srt += '<a class="" data-order-state="0" data-app-id="0" onclick="wPageEdit(\''+sid+'\')" href="javascript:void(0);">编辑</a>';
                 			srt += '<span>-</span>';
-                			srt += '<a class="" href="javascript:void(0);" onclick="js_del('+sid+','+createUser+',\''+arr+'\','+status+');">删除</a>';
+                			srt += '<a class="" href="javascript:void(0);" onclick="js_del(\''+sid+'\','+createUser+',\''+arr+'\','+status+');">删除</a>';
                 			srt += '<span>-</span>';
                 		    srt += '<a href="javascript:void(0)" id="'+pageLink+'" onclick="js_method(this.id);">  链接 </a>';
                 		    srt += '<span>-</span>';
-                			srt += '<a class="" href="javascript:void(0);" onclick="js_updateHomePage('+sid+','+createUser+','+status+');" data-order-state="0" data-app-id="0">设为主页</a>';
+                			srt += '<a class="" href="javascript:void(0);" onclick="js_updateHomePage(\''+sid+'\','+createUser+','+status+');" data-order-state="0" data-app-id="0">设为主页</a>';
                 		return srt;
                 }
                 
@@ -381,7 +379,9 @@ function js_del(sid,user,pageLink,status){
 		 // });
 		});
 }
-
+function previewN(id){
+	window.open(rootPath+"/wechatShopPage/preview.shtml?id="+id);
+}
 //更改序号
 function js_update(sid,user){
 	var bsid = $("#a"+sid).html();

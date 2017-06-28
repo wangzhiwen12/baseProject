@@ -215,20 +215,20 @@
 </script>
 
 <!-- 标题 -->
-<script type="text/html" id="title-navigation">
-    <div class="common title-navigation common-drag" way-scope="title-navigation_{{temp}}" id="title-navigation_{{temp}}">
+<script type="text/html" id="title_navigation">
+    <div class="common title_navigation common-drag" way-scope="title_navigation_{{temp}}" id="title_navigation_{{temp}}">
         <div class="handle">
             <div class="handle-editer text-right">
                 <!--<span class="edit">编辑</span>-->
                 <!--<span class="insert-common">加内容</span>-->
-                <!--<span class="_del" data-scope="title-navigation_{{temp}}">删除</span>-->
+                <!--<span class="_del" data-scope="title_navigation_{{temp}}">删除</span>-->
                 <a href="javascript:;" class="editNode jsHandle jsHandle-1465287830321 edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="编辑">
                     <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img01.png">
                 </a>
                 <a href="javascript:;" class="editNode jsHandle jsHandle-1465287830321 insert-common _insert-common" data-toggle="tooltip" data-placement="top" title="" data-original-title="加内容">
                     <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img01.png">
                 </a>
-                <a href="javascript:;" class="deleteNode jsHandle jsHandle-1465287830321 _del" data-scope="title-navigation_{{temp}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除">
+                <a href="javascript:;" class="deleteNode jsHandle jsHandle-1465287830321 _del" data-scope="title_navigation_{{temp}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除">
                     <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img03.png">
                 </a>
             </div>
@@ -236,14 +236,14 @@
         <div class="views">
             <div class="w-tit">
                 <div class="list">
-                    <div class="w-tit-item repeat" data-scope="title-navigation_{{temp}}.list.title" data-tgt="cot">标题标题</div>
+                    <div class="w-tit-item repeat" data-scope="title_navigation_{{temp}}.list.title" data-tgt="cot">标题标题</div>
                 </div>
             </div>
         </div>
         <div class="ctl ui-shadow">
             <!-- <p class="text-right" way-action-remove="text-navigation_{{temp}}">删除</p> -->
             <form role="form" class="form-horizontal clone">
-                <div class="grid-nav-bar list" way-repeat="title-navigation_{{temp}}.list" style="margin-bottom: 20px;">
+                <div class="grid-nav-bar list" way-repeat="title_navigation_{{temp}}.list" style="margin-bottom: 20px;">
                     <div class="grid-nav-bar-item repeat" style="">
                         <div>
                             <div class="ui-form-horizontal">
@@ -252,7 +252,7 @@
                                         <span class="ui-form-field-label-span">标题：</span>
                                     </div>
                                     <div class="ui-form-field-cot grid-nav-bar-item">
-                                        <input  size="12" class="ui-form-control width-100 operate" data-tgt="vl" type="text" data-scope="title-navigation_{{temp}}.list.title">
+                                        <input  size="12" id="title" class="ui-form-control width-100 operate" data-tgt="vl" type="text" data-scope="title_navigation_{{temp}}.list.title">
                                     </div>
                                 </div>
                             </div>
@@ -361,30 +361,13 @@
 
                 <div id="wxHeadSpanHasBind">
                    
-                    <div class="my-top _hide show-style-2">
-                        <div class="my-top-ac1" style="background:url(imgs/stores.png) no-repeat; background-size:100% auto;"  data-scope="comheader_{{temp}}.img" data-tgt="bg">
-                            <div class="my-top-bg">
+                    <div class="my-top  _hide show-style-2">
+                        <div class="my-top-ac1" style="  no-repeat; background-size:100% auto;"  data-scope="comheader_{{temp}}.img" data-tgt="bg">
                                 <div class="my-top-logo">
                                     <span>
                                         <img class="BrandLogo" alt="">
                                     </span>
-                                    <div class="logo-side">
-                                        <a href="membership_card.html" class="logo-lt">
-                                            <img src="${pageContext.request.contextPath}/images/page/wx/w_lt.png" alt="">
-                                        </a>
-                                        <a href="personal_infor.html" class="logo-rt">
-                                            <img src="${pageContext.request.contextPath}/images/page/wx/w_rt.png" alt="">
-                                        </a>
-                                    </div>
                                 </div>
-                                <div class="my-top-mid">粉丝</div>
-                                <div class="my-top-bt">
-                                    <span style="padding-left: 10px;"><span class="fz-32">{会员等级}</span> <span data-scope="comheader_{{temp}}.cardno" data-tgt="cot">8888 8888 8888</span></span>
-                                    <a href="javascript:;" class="fr showvipar">
-                                        <img src="${pageContext.request.contextPath}/images/page/wx/w_right.png" width="12">
-                                    </a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -402,7 +385,7 @@
                                         <span class="ui-form-field-label-span">页面名称：</span>
                                     </div>
                                     <div class="ui-form-field-cot grid-nav-bar-item">
-                                        <input size="12" class="ui-form-control width-60 operate" type="text" data-scope="comheader_{{temp}}.title" data-tgt="vl">
+                                        <input size="12"  id ="wpageTitle" class="ui-form-control width-60 operate" type="text" data-scope="comheader_{{temp}}.title" data-tgt="vl">
                                     </div>
                                 </div>
                             </div>
@@ -412,14 +395,10 @@
                                         <span class="ui-form-field-label-span">页面描述：</span>
                                     </div>
                                     <div class="ui-form-field-cot grid-nav-bar-item">
-                                        <input size="12" class="ui-form-control height-50px width-100 operate" type="text" data-scope="" data-tgt="vl">
+                                        <input size="12" id ="translation" class="ui-form-control height-50px width-100 operate" type="text" data-scope="" data-tgt="vl">
                                     </div>
                                 </div>
                             </div>
-							
-
-
-
                             <div class="ui-form-horizontal">
                                 <div class="ui-form-fields grid-nav-bar">
                                     <div class="ui-form-field-label grid-nav-bar-item">
@@ -535,11 +514,69 @@
                         </div>
                     </div>
                     <!-- <div class="grid-nav-bar-item">
-                                    <span way-action-insert="title-navigation_{{temp}}.list.$$key">添加</span>
-                                    <span way-action-remove="title-navigation_{{temp}}.list.$$key" way-persistent>删除</span>
+                                    <span way-action-insert="title_navigation_{{temp}}.list.$$key">添加</span>
+                                    <span way-action-remove="title_navigation_{{temp}}.list.$$key" way-persistent>删除</span>
                                 </div> -->
                 </div>
-                <!-- <button type="button" class="ui-btn ui-btn-default" style="width: 100%" way-action-push="title-navigation_{{temp}}.list"> 添加 </button> -->
+                <!-- <button type="button" class="ui-btn ui-btn-default" style="width: 100%" way-action-push="title_navigation_{{temp}}.list"> 添加 </button> -->
+            </form>
+        </div>
+    </div>
+</script>
+<!-- 商品 -->
+<script type="text/html" id="add_goods">
+    <div class="common add_goods common-drag" id="add_goods_{{temp}}">
+        <div class="handle">
+            <div class="handle-editer text-right">
+                <a href="javascript:;" class="editNode jsHandle jsHandle-1465287830321 edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="编辑">
+                    <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img01.png">
+                </a>
+                <a href="javascript:;" class="editNode jsHandle jsHandle-1465287830321 insert-common _insert-common" data-toggle="tooltip" data-placement="top" title="" data-original-title="加内容">
+                    <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img01.png">
+                </a>
+                <a href="javascript:;" class="deleteNode jsHandle jsHandle-1465287830321 _del" data-scope="img-navigation_{{temp}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除">
+                    <img src="${pageContext.request.contextPath}/images/page/icon/channelpage_img03.png">
+                </a>
+
+
+            </div>
+        </div>
+        <div class="views">
+
+            <div class="w-goods-nav">
+                <div class="list">
+					<span data-repeat="add_goods_{{temp}}.list" class="repeat-wrapper" id="add_goods-wrapper">
+
+			    		<a href="javascript:;" class="w-goods-nav-item" data-tgt="href" data-scope="add_goods_{{temp}}.list.link" way-data="link">
+				            <div class="w-goodsNav_icon">
+				                <img src="${pageContext.request.contextPath}/images/page/icon/pro.jpg" alt="" class="ezp-cell-icon"  data-scope="add_goods_{{temp}}.list.picture" data-tgt="src">
+				            </div>
+							  <input type="hidden" id="de" value ="default"/>
+							  <p class="w-goodsNav_label" data-scope="add_goods_{{temp}}.list.title"  data-tgt="cot">商品名称</p>
+							  <br>
+							  <p class="w-goodsNav_label" data-scope="add_goods_{{temp}}.list.title" data-tgt="cot">888.99</p>
+				          
+				        </a>
+
+					</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="ctl ui-shadow">
+            <form role="form" class="form-horizontal clone"  >
+·                    <div class="grid-nav-bar list repeat" style="margin-bottom: 20px;">
+
+                        <div class="grid-nav-bar-item selectPicWrap"  id="add_goodsS"  style="width: 72px; ">
+                            <input type="text" class="form-control link-name operate wdn" placeholder="商品名称" autocomplete="off" data-scope="img-navigation_{{temp}}.list.linkname" data-tgt = "vl" >
+
+                            <input type="text" class="form-control link-img plug-in operate picIpt wdn" placeholder="图片链接" autocomplete="off" data-scope="add_goods_{{temp}}.list.picture" data-tgt = "vl" data-plug = "SelectPic" >
+                        </div>
+                        <div class="grid-nav-bar-item" style="">
+                            
+                        </div>
+                       
+                    </div>
             </form>
         </div>
     </div>

@@ -179,7 +179,305 @@ public class Order  implements Serializable{
 	 * 订单唯一标识
 	 */
 	private String calcBillId;
-	
 
-	
+
+	public String getIntegral() {
+		return integral;
+	}
+
+	public void setIntegral(String integral) {
+		this.integral = integral;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public String getRequiredDeliveryDate() {
+		return requiredDeliveryDate;
+	}
+
+	public void setRequiredDeliveryDate(String requiredDeliveryDate) {
+		this.requiredDeliveryDate = requiredDeliveryDate;
+	}
+
+	public String getAccountNo() {
+		return accountNo;
+	}
+
+	public void setAccountNo(String accountNo) {
+		this.accountNo = accountNo;
+	}
+
+	public String getOrderSource() {
+		return orderSource;
+	}
+
+	public void setOrderSource(String orderSource) {
+		this.orderSource = orderSource;
+	}
+
+	public String getOrderType() {
+		return orderType;
+	}
+
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
+	}
+
+	public String getDeliveryMode() {
+		return deliveryMode;
+	}
+
+	public void setDeliveryMode(String deliveryMode) {
+		this.deliveryMode = deliveryMode;
+	}
+
+	public BigDecimal getSalesAmount() {
+		return salesAmount;
+	}
+
+	public void setSalesAmount(BigDecimal salesAmount) {
+		this.salesAmount = salesAmount;
+	}
+
+	public BigDecimal getPaymentAmount() {
+		return paymentAmount;
+	}
+
+	public void setPaymentAmount(BigDecimal paymentAmount) {
+		this.paymentAmount = paymentAmount;
+	}
+
+	public BigDecimal getCashAmount() {
+		return cashAmount;
+	}
+
+	public void setCashAmount(BigDecimal cashAmount) {
+		this.cashAmount = cashAmount;
+	}
+
+	public BigDecimal getCouponAmount() {
+		return couponAmount;
+	}
+
+	public void setCouponAmount(BigDecimal couponAmount) {
+		this.couponAmount = couponAmount;
+	}
+
+	public Integer getIsCod() {
+		return isCod;
+	}
+
+	public void setIsCod(Integer isCod) {
+		this.isCod = isCod;
+	}
+
+	public BigDecimal getPromotionAmount() {
+		return promotionAmount;
+	}
+
+	public void setPromotionAmount(BigDecimal promotionAmount) {
+		this.promotionAmount = promotionAmount;
+	}
+
+	public BigDecimal getAccountBalanceAmount() {
+		return accountBalanceAmount;
+	}
+
+	public void setAccountBalanceAmount(BigDecimal accountBalanceAmount) {
+		this.accountBalanceAmount = accountBalanceAmount;
+	}
+
+	public BigDecimal getSendCost() {
+		return sendCost;
+	}
+
+	public void setSendCost(BigDecimal sendCost) {
+		this.sendCost = sendCost;
+	}
+
+	public BigDecimal getNeedSendCost() {
+		return needSendCost;
+	}
+
+	public void setNeedSendCost(BigDecimal needSendCost) {
+		this.needSendCost = needSendCost;
+	}
+
+	public BigDecimal getCashIncome() {
+		return cashIncome;
+	}
+
+	public void setCashIncome(BigDecimal cashIncome) {
+		this.cashIncome = cashIncome;
+	}
+
+	public String getCustomerComments() {
+		return customerComments;
+	}
+
+	public void setCustomerComments(String customerComments) {
+		this.customerComments = customerComments;
+	}
+
+	public String getNeedInvoice() {
+		return needInvoice;
+	}
+
+	public void setNeedInvoice(String needInvoice) {
+		this.needInvoice = needInvoice;
+	}
+
+	public String getInvoiceTitle() {
+		return invoiceTitle;
+	}
+
+	public void setInvoiceTitle(String invoiceTitle) {
+		this.invoiceTitle = invoiceTitle;
+	}
+
+	public String getInvoiceDetail() {
+		return invoiceDetail;
+	}
+
+	public void setInvoiceDetail(String invoiceDetail) {
+		this.invoiceDetail = invoiceDetail;
+	}
+
+	public String getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(String memberNo) {
+		this.memberNo = memberNo;
+	}
+
+	public String getPaymentClass() {
+		return paymentClass;
+	}
+
+	public void setPaymentClass(String paymentClass) {
+		this.paymentClass = paymentClass;
+	}
+
+	public List<OrderItem> getOrderItemList() {
+		return orderItemList;
+	}
+
+	public void setOrderItemList(List<OrderItem> orderItemList) {
+		this.orderItemList = orderItemList;
+	}
+
+	public List<OrderPayment> getPaymentItems() {
+		return paymentItems;
+	}
+
+	public void setPaymentItems(List<OrderPayment> paymentItems) {
+		this.paymentItems = paymentItems;
+	}
+
+	public String getReceptName() {
+		return receptName;
+	}
+
+	public void setReceptName(String receptName) {
+		this.receptName = receptName;
+	}
+
+	public String getReceptProvNo() {
+		return receptProvNo;
+	}
+
+	public void setReceptProvNo(String receptProvNo) {
+		this.receptProvNo = receptProvNo;
+	}
+
+	public String getReceptProvName() {
+		return receptProvName;
+	}
+
+	public void setReceptProvName(String receptProvName) {
+		this.receptProvName = receptProvName;
+	}
+
+	public String getReceptCityNo() {
+		return receptCityNo;
+	}
+
+	public void setReceptCityNo(String receptCityNo) {
+		this.receptCityNo = receptCityNo;
+	}
+
+	public String getReceptCityName() {
+		return receptCityName;
+	}
+
+	public void setReceptCityName(String receptCityName) {
+		this.receptCityName = receptCityName;
+	}
+
+	public String getReceptDistrictNo() {
+		return receptDistrictNo;
+	}
+
+	public void setReceptDistrictNo(String receptDistrictNo) {
+		this.receptDistrictNo = receptDistrictNo;
+	}
+
+	public String getReceptDistrictName() {
+		return receptDistrictName;
+	}
+
+	public void setReceptDistrictName(String receptDistrictName) {
+		this.receptDistrictName = receptDistrictName;
+	}
+
+	public String getReceptAddress() {
+		return receptAddress;
+	}
+
+	public void setReceptAddress(String receptAddress) {
+		this.receptAddress = receptAddress;
+	}
+
+	public String getReceptCityCode() {
+		return receptCityCode;
+	}
+
+	public void setReceptCityCode(String receptCityCode) {
+		this.receptCityCode = receptCityCode;
+	}
+
+	public String getReceptPhone() {
+		return receptPhone;
+	}
+
+	public void setReceptPhone(String receptPhone) {
+		this.receptPhone = receptPhone;
+	}
+
+	public String getFromSystem() {
+		return fromSystem;
+	}
+
+	public void setFromSystem(String fromSystem) {
+		this.fromSystem = fromSystem;
+	}
+
+	public String getCalcBillId() {
+		return calcBillId;
+	}
+
+	public void setCalcBillId(String calcBillId) {
+		this.calcBillId = calcBillId;
+	}
 }

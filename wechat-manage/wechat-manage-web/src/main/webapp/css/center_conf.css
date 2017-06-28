@@ -164,9 +164,14 @@ a {
 .my-top > div {
     height: 100%;
 }
-.my-top-ac1 .my-top-bg {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+
+.my-top-l {
+    height: 120px;
+    position: relative;
+    text-align: center;
+    width: 100%;
 }
+
 .my-top-ac1 .my-top-mid, .my-top-ac .my-top-bt {
     display: none;
 }
@@ -320,6 +325,7 @@ a {
     padding: 15px 0 0;
     width: 25%;
 }
+
 .w-imgNav_icon {
     height: 21px;
     margin: 0 auto;
@@ -347,6 +353,50 @@ a {
     height: auto;
     width: 100%;
 }
+.w-goods-nav {
+    padding-bottom: 10px;
+    position: relative;
+}
+.w-goods-nav .list {
+    background: #fff none repeat scroll 0 0;
+    display: flex;
+    position: relative;
+}
+.w-goods-nav-item {
+    display: block;
+    padding: 15px 0 0;
+    width: 50%;
+}
+
+.w-goodsNav_icon {
+    height: 150px;
+    margin: 0 auto;
+    width: 150px;
+}
+.w-goodsNav_icon img {
+    height: 100%;
+    width: 100%;
+}
+.w-goodsNav_label {
+    color: #333531;
+    font-size: 12px;
+    margin: 8px 0;
+    text-align: center;
+}
+.w-goods-desc {
+    position: relative;
+}
+.w-goods-desc > div {
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+}
+.w-goods-desc img {
+    height: auto;
+    width: 100%;
+}
+
+
 .logo-side {
     bottom: 12px;
     height: 36px;
@@ -373,7 +423,7 @@ a {
 }
 .ezp-cell-icon {
     display: block;
-    height: 19px;
+    height: 150px;
     margin-right: 10px;
-    width: 19px;
+    width: 150px;
 }

@@ -1,0 +1,845 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>选择支付配送方式 - 京东触屏版</title>
+<meta name="author" content="m.jd.com">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Expires" CONTENT="-1">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Pragma" CONTENT="no-cache">
+
+
+<!--测速埋点-->
+<script type="text/javascript">
+        var rTimeArr = [];
+        rTimeArr[0] = {time : new Date()};
+        document.addEventListener("DOMContentLoaded",function(){
+            rTimeArr[1] = {time : new Date() , sTime : "0"};
+        });
+        <!--测速埋点计算页头的css-->
+    </script>
+
+<link rel="apple-touch-icon-precomposed"
+	href="//st.360buyimg.com/order/images/apple-touch-icon.png?v=20170413" />
+<script type="text/javascript">
+        rTimeArr[2] = {time : new Date() , sTime : "0"};
+    </script>
+<script type="text/javascript">
+        rTimeArr[3] = {sTime : new Date()};
+    </script>
+
+<script type="text/javascript">
+            window.addEventListener('load', function() {
+                            FastClick.attach(document.body);
+                        }, false);
+            var _winLocation=window.location.href;//获得当前页面的路径，根据路径规则进行逐页替换
+            var _isWebKit = '__proto__' in {};//是否是webkit内核
+            if(_isWebKit){//如果是webkit内核，则分模块使用zepto
+                //要使用zeptojs的路径列表，可以做为分模块替换的开关
+                document.write('<script src="//st.360buyimg.com/order/js/lib/ZPcommon.min.js?v=20170413"><\/script>');
+                document.write('<script type="text/javascript">window.jQuery=window.Zepto;<\/script>');
+            }else{//如果是非webkit内核直接使用jquery
+                document.write('<script src="//st.360buyimg.com/order/js/jquery-1.6.2.min.js?v=20170413"><\/script>');
+            }
+        </script>
+<script type="text/javascript"
+	src="//st.360buyimg.com/order/js/html5/com.spin.min.js?v=20170413"></script>
+<script type="text/javascript"
+	src="//st.360buyimg.com/order/html/jigsaw/js/libs/fastclick.js?v=20170413"></script>
+
+<script type="text/javascript">
+        rTimeArr[3].time = new Date();
+        rTimeArr[4] = {sTime : new Date()};
+    </script>
+
+<link rel="stylesheet" type="text/css"
+	href="//st.360buyimg.com/common/commonH_B/css/header.css?v=2.1"
+	charset="gbk" />
+
+
+<script type="text/javascript">
+        rTimeArr[4].time = new Date();
+    </script>
+
+<style type="text/css" rel="stylesheet">
+.jd-index-header {
+	position: relative;
+	background: #efefef url("/misc/skin/i/header-bg.png?v=2") repeat-x 0 0;
+	background-size: 100% 44px;
+	min-height: 44px;
+	border-bottom: 1px solid #bfbfbf;
+	border-width: 0 0 1px 0
+}
+
+.jd-index-header-icon-back {
+	position: absolute;
+	width: 40px;
+	height: 44px
+}
+
+.jd-index-header-icon-back span {
+	width: 20px;
+	height: 20px;
+	background-position: -20px 0;
+	margin: 12px 0 0 10px;
+	text-indent: -100px;
+	overflow: hidden;
+	display: block;
+	background: url("/misc/skin/i/jd-sprites.png?v=2") no-repeat -20px top;
+	background-size: 200px 200px
+}
+
+.jd-index-header-title {
+	margin: 0 50px;
+	text-align: center;
+	height: 44px;
+	line-height: 44px;
+	font-size: 16px;
+	color: #252525
+}
+
+.jd-index-header-option {
+	position: absolute;
+	right: 10px;
+	top: 0;
+	width: 40px;
+	height: 44px;
+	line-height: 44px;
+	overflow: hidden
+}
+
+.jd-index-header-option span {
+	height: 20px;
+	cursor: pointer;
+	font-size: 14px;
+	color: #848689
+}
+</style>
+</head>
+<body id="body">
+	<a name="top"></a>
+	<header>
+		<div class="jd-index-header">
+			<div class="jd-index-header-icon-back" id="reset_btn_back">
+				<span></span>
+			</div>
+			<div class="jd-index-header-title">选择支付配送方式</div>
+		</div>
+	</header>
+
+
+	<link rel="stylesheet"
+		href="//st.360buyimg.com/order/misc/skin/2015/p-scroll.css?v=20170413" />
+
+	<link rel="stylesheet"
+		href="//st.360buyimg.com/order/css/neworder/payShipment.min.css?v=20170413" />
+
+
+
+
+	<script
+		src="//st.360buyimg.com/order/js/order/common/iscroll.js?v=20170413"></script>
+
+
+	<div
+		style="height: 100%; width: 100%; z-index: 1001; position: fixed; overflow: hidden; background: rgba(0, 0, 0, .7); display: none; top: 0;"
+		id="timerbackground" onclick=""></div>
+
+	<form
+		action='/norder/savePaymentShipment.action?&sid=877c07937c3c66d87eb214afc4d224bc'
+		method="post" id="payTypeForm">
+
+		<div class="common-wrapper">
+			<div class="p-way-wrap">
+				<input type="hidden" id="paymentTypeId" name="order.paymentId"
+					value="4" />
+
+
+				<div class="p-way s-way border-1px">
+					<div class="p-way-txt">
+						<div class="p-t-pic w15">
+							<img
+								src="//st.360buyimg.com/order/images/order/payShipment/sent_icon.png" />
+						</div>
+						<h2>配送方式</h2>
+					</div>
+
+					<div class="m bdb-1px">
+
+
+
+
+						<div class="mb sw-btn">
+
+							<a href="javascript:; " class="btn3 btn3-ch btn3-ch01"
+								onclick="javascript:chooseJdShipmentType('65', this, 'btn3-ch');">京东快递</a>
+							<input type="hidden" id="shipmentId" name="order.shipmentId"
+								value="65" /> 
+							<a href="javascript:; " class="btn3 btn3-ch02"
+								onclick="javascript:chooseJdShipmentType('66', this, 'btn3-ch');">顺丰速递</a>
+							<a href="javascript:; " class="btn3 btn3-ch02"
+								onclick="javascript:chooseJdShipmentType('64', this, 'btn3-ch');">上门自提</a>
+							<a href="javascript:; " class="btn3 btn3-ch02"
+								onclick="javascript:chooseJdShipmentType('63', this, 'btn3-ch');">圆通速递</a>
+
+						</div>
+
+					</div>
+
+
+
+					<div class="sw-time sw-time01 jdShipment-container">
+						<input type="hidden" id="order.promiseType"
+							name="order.promiseType" value='1' /> <input type="hidden"
+							id="order.promiseSendPay" name="order.promiseSendPay"
+							value='{"1":1,"35":1,"30":1}' /> <input type="hidden"
+							id="order.promiseDate" name="order.promiseDate" value='2017-5-5' />
+						<input type="hidden" id="order.promiseTimeRange"
+							name="order.promiseTimeRange" value='09:00-15:00' /> <input
+							type="hidden" id="order.batchId" name="order.midSmallBatchId"
+							value='1' /> <input type="hidden" id="mid_promiseType" value='1' />
+						<input type="hidden" id="mid_promiseSendPay"
+							value='{"1":1,"35":1,"30":1}' /> <input type="hidden"
+							id="mid_promiseDate" value='2017-5-5' /> <input type="hidden"
+							id="mid_promiseTimeRange" value='09:00-15:00' /> <input
+							type="hidden" id="mid_promiseBatchId" value='1' />
+
+
+						<div class="sw-time-in bdb-1px">
+							<div class="swt-l swt-pic">
+								<dl id="midPayShipmentText">
+									<dt>
+										中小件送货时间<span class="peisong-type-icon">支持京准达</span>
+									</dt>
+									<dd>
+										<span id="midShowSendType"></span><span style=""
+											id="midShowSendText">5月5日 [周五] 09:00-15:00</span>
+									</dd>
+								</dl>
+							</div>
+						</div>
+
+
+
+					</div>
+
+
+
+
+					<div class="sw-time sw-time02" style="display: none;">
+						<div class="sw-time-in bdb-1px" style="position: relative;">
+							<div class="swt-l self-l  self-index-pic"
+								style="position: relative;">
+								<a href="javascript:changepicksite();">
+									<dl>
+										<dt class="self-in-info-color">自提地点</dt>
+
+										<dd class="self-index-info-a self-in-info-midh"
+											id="pickSiteName">北京合立方站</dd>
+										<input type="hidden" id="pickSiteId" name="order.pickSiteId"
+											value="281135" />
+									</dl>
+								</a>
+							</div>
+
+						</div>
+
+						<div class="sw-time-in bdb-1px" id="pickTimeDiv">
+
+							<div class="swt-l swt-pic" style="position: relative;">
+								<dl>
+									<dt>
+
+
+										<em class="ver-time">自提时间</em>
+										<div id="pickDate" class="self-index-info-dl self-in-info-mid">5月5日[周五]</div>
+										<input type="hidden" id="pickDateId" name="order.pickDateId"
+											value="2017-05-05" />
+
+									</dt>
+
+
+
+								</dl>
+							</div>
+						</div>
+
+
+					</div>
+
+
+
+
+
+
+
+
+
+				</div>
+			</div>
+
+			<div class="pay-btn">
+				<a href="javascript:void(0)" onclick="submitForm()"
+					class="btn1 tip-btn">确定</a>
+			</div>
+
+		</div>
+		<input type="hidden" name="cartUse" id="cartUseId" value="true">
+		<input type="hidden" name="enterType" id="enterType" value="">
+	</form>
+
+
+	<div class="payShipment-popContainer" style="display: none;"
+		id="midpayShipmentPannel">
+		<div class="new-ct" style="height: 100%;">
+			<div class="payShipment-pop-tab">
+				<ul class="pop-payShipType">
+					<li class="tab-selected" tab-name='标准达' promiseType="1"
+						pType="bzd-pannel">标准达</li>
+					<li tab-name='京准达' promiseType="3" pType="jzd-pannel">京准达</li>
+				</ul>
+			</div>
+			<div class="payShipment-pop-content">
+				<ul>
+					<li class="datas-item bzd-pannel" style="display: block;">
+						<div class="pop-content-dates">
+							<ul class="pop-dates">
+								<li class="dates-selected" date-index="0" date-num="2017-5-5">5月5日
+									[周五]</li>
+								<li date-index="1" date-num="2017-5-6">5月6日 [周六]</li>
+								<li date-index="2" date-num="2017-5-7">5月7日 [周日]</li>
+								<li date-index="3" date-num="2017-5-8">5月8日 [周一]</li>
+								<li date-index="4" date-num="2017-5-9">5月9日 [周二]</li>
+								<li date-index="5" date-num="2017-5-10">5月10日 [周三]</li>
+								<li date-index="6" date-num="2017-5-11">5月11日 [周四]</li>
+							</ul>
+						</div>
+						<dl class="times-pannel">
+							<dd class="times-selected">
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-15:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}' class="times-selected">
+											<span>09:00-15:00</span>
+
+										</li>
+										<li promise-time-range="15:00-19:00" batchId="2"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>15:00-19:00</span>
+
+										</li>
+									</ul>
+								</div>
+							</dd>
+							<dd>
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-15:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>09:00-15:00</span>
+
+										</li>
+										<li promise-time-range="15:00-19:00" batchId="2"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>15:00-19:00</span>
+
+										</li>
+									</ul>
+								</div>
+							</dd>
+							<dd>
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-15:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>09:00-15:00</span>
+
+										</li>
+										<li promise-time-range="15:00-19:00" batchId="2"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>15:00-19:00</span>
+
+										</li>
+									</ul>
+								</div>
+							</dd>
+							<dd>
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-15:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>09:00-15:00</span>
+
+										</li>
+										<li promise-time-range="15:00-19:00" batchId="2"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>15:00-19:00</span>
+
+										</li>
+									</ul>
+								</div>
+							</dd>
+							<dd>
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-15:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>09:00-15:00</span>
+
+										</li>
+										<li promise-time-range="15:00-19:00" batchId="2"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>15:00-19:00</span>
+
+										</li>
+									</ul>
+								</div>
+							</dd>
+							<dd>
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-15:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>09:00-15:00</span>
+
+										</li>
+										<li promise-time-range="15:00-19:00" batchId="2"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>15:00-19:00</span>
+
+										</li>
+									</ul>
+								</div>
+							</dd>
+							<dd>
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-15:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>09:00-15:00</span>
+
+										</li>
+										<li promise-time-range="15:00-19:00" batchId="2"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>15:00-19:00</span>
+
+										</li>
+									</ul>
+								</div>
+							</dd>
+						</dl>
+					</li>
+					<li class="datas-item jzd-pannel">
+						<div class="pop-content-dates">
+							<ul class="pop-dates">
+								<li class="dates-selected" date-index="0" date-num="2017-5-5">5月5日
+									[周五]</li>
+								<li date-index="1" date-num="2017-5-6">5月6日 [周六]</li>
+								<li date-index="2" date-num="2017-5-7">5月7日 [周日]</li>
+								<li date-index="3" date-num="2017-5-8">5月8日 [周一]</li>
+								<li date-index="4" date-num="2017-5-9">5月9日 [周二]</li>
+								<li date-index="5" date-num="2017-5-10">5月10日 [周三]</li>
+								<li date-index="6" date-num="2017-5-11">5月11日 [周四]</li>
+							</ul>
+						</div>
+						<dl class="times-pannel">
+							<dd class="times-selected">
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-11:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>09:00-11:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="11:00-13:00" batchId="2"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>11:00-13:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="13:00-15:00" batchId="3"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>13:00-15:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="16:00-18:00" batchId="4"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>16:00-18:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="18:00-20:00" batchId="5"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>18:00-20:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+									</ul>
+								</div>
+							</dd>
+							<dd>
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-11:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>09:00-11:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="11:00-13:00" batchId="2"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>11:00-13:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="13:00-15:00" batchId="3"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>13:00-15:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="16:00-18:00" batchId="4"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>16:00-18:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="18:00-20:00" batchId="5"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>18:00-20:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+									</ul>
+								</div>
+							</dd>
+							<dd>
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-11:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>09:00-11:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="11:00-13:00" batchId="2"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>11:00-13:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="13:00-15:00" batchId="3"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>13:00-15:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="16:00-18:00" batchId="4"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>16:00-18:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="18:00-20:00" batchId="5"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>18:00-20:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+									</ul>
+								</div>
+							</dd>
+							<dd>
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-11:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>09:00-11:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="11:00-13:00" batchId="2"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>11:00-13:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="13:00-15:00" batchId="3"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>13:00-15:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="16:00-18:00" batchId="4"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>16:00-18:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="18:00-20:00" batchId="5"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>18:00-20:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+									</ul>
+								</div>
+							</dd>
+							<dd>
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-11:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>09:00-11:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="11:00-13:00" batchId="2"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>11:00-13:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="13:00-15:00" batchId="3"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>13:00-15:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="16:00-18:00" batchId="4"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>16:00-18:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="18:00-20:00" batchId="5"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>18:00-20:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+									</ul>
+								</div>
+							</dd>
+							<dd>
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-11:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>09:00-11:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="11:00-13:00" batchId="2"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>11:00-13:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="13:00-15:00" batchId="3"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>13:00-15:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="16:00-18:00" batchId="4"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>16:00-18:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="18:00-20:00" batchId="5"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>18:00-20:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+									</ul>
+								</div>
+							</dd>
+							<dd>
+								<div class="pop-content-times">
+									<ul class="pop-times">
+										<li promise-time-range="09:00-11:00" batchId="1"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>09:00-11:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="11:00-13:00" batchId="2"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>11:00-13:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="13:00-15:00" batchId="3"
+											promiseSendPay='{"1":1,"35":1,"30":1}'><span>13:00-15:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="16:00-18:00" batchId="4"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>16:00-18:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+										<li promise-time-range="18:00-20:00" batchId="5"
+											promiseSendPay='{"1":1,"35":2,"30":1}'><span>18:00-20:00</span><span
+											class="pop-times-tag">(加收运费3元)</span></li>
+									</ul>
+								</div>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+			<!--[D] 默认时加  new-abtn-default 把a标签换成span-->
+			<div class="payShipment-pop-btnPannel">
+				<ul>
+					<li><span class="payShipment-pop-btnCancel">取消</span></li>
+					<li><span class="payShipment-pop-btnOk">确认</span></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="payShipment-popContainer" style="display: none;"
+		id="selfpayShimentPannel">
+		<div class="new-ct" style="height: 100%;">
+			<div class="payShipment-pop-tab">
+				<ul class="pop-payShipType">
+					<li class="tab-single" promiseType="0" tab-name='自提'
+						pType="zt-pannel">自提时间</li>
+				</ul>
+			</div>
+			<div class="payShipment-pop-content">
+				<ul>
+					<li class="datas-item zt-pannel" style="display: block;">
+						<div class="pop-content-dates">
+							<ul class="pop-dates">
+								<li class="dates-selected" date-index="0" date-num="2017-05-05">5月5日[周五]</li>
+								<li date-index="1" date-num="2017-05-06">5月6日[周六]</li>
+								<li date-index="2" date-num="2017-05-07">5月7日[周日]</li>
+								<li date-index="3" date-num="2017-05-08">5月8日[周一]</li>
+								<li date-index="4" date-num="2017-05-09">5月9日[周二]</li>
+							</ul>
+						</div>
+						<dl class="times-pannel"></dl>
+					</li>
+				</ul>
+			</div>
+			<!--[D] 默认时加  new-abtn-default 把a标签换成span-->
+			<div class="payShipment-pop-btnPannel">
+				<ul>
+					<li><span class="payShipment-pop-btnCancel">取消</span></li>
+					<li><span class="payShipment-pop-btnOk">确认</span></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+
+	<script type="text/javascript"
+		src="//st.360buyimg.com/order/js/order/common/pingClick.js?v=20170413"></script>
+	<script type="text/javascript"
+		src="//st.360buyimg.com/order/js/order/payShipment/payShipment5.8.min.js?v=20170413"
+		charset="GBK"></script>
+
+
+
+	<script>
+
+    $(function(){
+        JDLAB.script({src:'js/jd.toast.js?v=20170413',charset:'GBK'});
+        var args={};
+        var midpayShipmemtData = null;
+        var bigShipmentInstallData = null;
+                args["payShipmentPop"]={
+            bigInstallDatas:bigShipmentInstallData
+        };
+        M.setRunMod(['payShipmentPop']);
+        M.runner(args);
+    });
+        function bigItemInstInit(shipDateIndex){
+
+        var  shipDatesList =new Array();
+        var  installDateList =new Array();
+        var index=0;
+
+        
+        
+        j=shipDateIndex;
+        //先清空select的所有option然后在放入新的option
+        $("#bigItemInstallDateSelect").empty();
+
+        if(installDateList && j < installDateList.length){
+
+            for(var k= 0;k < installDateList[j].length; k++){
+                if(installDateList[j][k].selected){
+                    $("#bigItemInstallDateSelect").append("<option selected='selected' value='"+installDateList[j][k].value+"'>" + installDateList[j][k].name + "</option>");
+                    $("#showBigItemInstallDate").text(installDateList[j][k].name);//显示的安装时间
+                    $("#bigItemInstallDateId").val(installDateList[j][k].value);//提交的安装时间
+                }else{
+                    $("#bigItemInstallDateSelect").append("<option value='"+installDateList[j][k].value+"'>"+installDateList[j][k].name + "</option>")
+                }
+            }
+        }
+
+        //删除最后一个多余的元素。因为此元素不符合要求。
+        $("#bigItemInstallDateSelect option:last").remove();
+    };
+    
+    /*大商品配送时间选中事件------------start-----------------------------*/
+    $("#bigItemShipDateSelect").change(function(){
+
+        var showShipDate = $(this).children("option:selected").text();
+        var hiddenShipDate = $(this).children("option:selected").val();
+        var hiddenShipDateIndex = $(this).children("option:selected").attr('bigItemIndex');
+        $("#bigItemShipDate").text(showShipDate);//显示的送货时间
+        $("#bigItemShipDateValueId").val(hiddenShipDate);//提交的送货时间
+
+        //大家电配送时间发生变化时，大家电安装时间联动变化
+        bigItemInstInit(hiddenShipDateIndex);
+    });
+    /*大商品配送时间选中事件------------end-----------------------------*/
+
+
+    /*大商品安装时间选中事件--------------start------------------------------*/
+    $("#bigItemInstallDateSelect").change(function(){
+        $("#showBigItemInstallDate").text($("#bigItemInstallDateSelect").find("option:selected").text());//显示的安装时间
+        $("#bigItemInstallDateId").val($("#bigItemInstallDateSelect").find("option:selected").val());//提交的安装时间
+    });
+    /*大商品安装时间选中事件--------------end------------------------------*/
+
+
+    function changepicksite() {
+                    pingClick('true', 'MNeworderBySelf_PlaceOfCollection','','',''); //结算主页-支付配送-自提地点埋点
+
+                            window.location.href="/norder/pickSiteList.action?pickSiteId=3926&sid=877c07937c3c66d87eb214afc4d224bc";
+                        }
+
+    $(document).ready(function () {
+        var enterType = "";
+                    if(enterType =="A"||enterType =="B") {
+                setTimeout(function(){
+                    pingClick("true", "MNeworder_PayType", enterType, "", "");
+                },0);
+            } else if(enterType =="C") {
+                setTimeout(function(){
+                                            pingClick("true", "MNeworder_CChooseDistribution", "A", "", "");
+                    
+                },0);
+            } else {
+                setTimeout(function(){
+                    pingClick("true", "MNeworder_PayType", "A", "", "");
+                },0);
+            }
+                        if(enterType =="C" || enterType =="D") {
+            $(".jd-index-header-title").html("选择配送方式");
+            $(".s-way").css("margin-top","0px");
+        }
+
+            $(".jd-index-header-icon-back").click(function(){
+            window.location.href = "/norder/order.action?sid=877c07937c3c66d87eb214afc4d224bc";
+        });
+    });
+</script>
+
+	<script type="text/javascript" src="//wl.jd.com/unify.min.js"></script>
+	<script type="text/javascript">
+                var jap = {
+            jav: 'html5',
+            pin: 'X8m7ZW7CaZq6CYSaGE/6jA==',
+            utmac: 'MO-J2011-1'
+        };
+        
+    rTimeArr[8] = {sTime : new Date()};
+</script>
+
+	<script type="text/javascript" src="//wl.jd.com/unify.min.js"></script>
+	<script type="text/javascript">
+        try{
+            var pv= new MPing.inputs.PV();   //构造pv 请求
+            var mping = new MPing();        //构造上报实例
+            mping.send(pv);                //上报pv
+        } catch (e){}
+    </script>
+
+	<script type="text/javascript">
+    rTimeArr[8].time = new Date();
+</script>
+
+	<script src="//h5.m.jd.com/active/reporttime/reportTime.min.js"
+		type="text/javascript"></script>
+	<script type="text/javascript">
+    $("#unsupport").hide();
+    if(!testLocalStorage()){ //not support html5
+        if(0!=0 && !$clearCart && !$teamId){
+            $("#html5_cart_num").text(0>0>0);
+        }
+    }else{
+        updateToolBar('');
+    }
+
+    $("#html5_cart").click(function(){
+//	syncCart('877c07937c3c66d87eb214afc4d224bc',true);
+	location.href='/cart/cart.action';
+});
+
+ //banner 关闭点击
+    $('.div_banner_close').click(function(){
+        $('#div_banner_header').unbind('click');
+        jQuery.post('/index/addClientCookieVal.json',function(d){
+            $('#div_banner_header').slideUp(500);
+        });
+    });
+    //banner 下载点击
+    $('.div_banner_download').click(function(){
+         var downloadUrl = $(this).attr('url');
+         jQuery.post('/index/addClientCookieVal.json',function(d){
+               window.location.href=downloadUrl;
+        });
+    });
+    window._clientVersion_ = '';
+    
+	$(document).ready(function(){
+		var _loadScript = function(url, options,cb){
+			var script = document.createElement("script");
+			var def = {
+				type: "text/javascript",
+				charset:"utf-8"
+			}
+			options= options|| {
+			}
+			for(var i in options){
+				def[i] = options[i];
+			}
+			script.src = url;
+			
+			for(var i in def){
+				script.setAttribute(i,def[i]);
+			}
+			script.addEventListener("load",function(){
+				cb && cb();
+			},false)
+			document.getElementsByTagName("head")[0].appendChild(script);
+		}
+				if($(".download-con").length || $("#clientArea").length){
+			_loadScript("//st.360buyimg.com/order/js/2013/installapp.js?v=20170413",{},function(){
+				 $("#clientArea").length && downcheck($("#clientArea"),false);
+			});
+		}
+				
+	})
+
+</script>
+	<script>
+    if(location.host.match(/m\.jd\.com/g)){
+        document.domain='m.jd.com';
+    };
+</script>
+
+	<!-- 通用头 显示 -->
+</body>
+</html>
