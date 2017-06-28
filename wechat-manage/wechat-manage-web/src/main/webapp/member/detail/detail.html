@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商品详情页</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+    <style type="text/css">
+        .padding-bottom-0 {
+            padding-bottom: 0;
+        }
+
+        .padding-0 {
+            padding: 0 !important;
+        }
+
+        .margin-top-0 {
+            margin-top: 0 !important;
+        }
+
+        .margin-0 {
+            margin: 0 !important;
+        }
+
+        .popup {
+            bottom: 0px;
+        }
+
+        /* basic style */
+        .close {
+            /* still bad on picking color */
+            background: #ffffff;
+            /*color: red;*/
+            /* make a round button */
+            border-radius: 12px;
+            /* center text */
+            line-height: 20px;
+            text-align: center;
+            height: 20px;
+            width: 20px;
+            font-size: 18px;
+            padding: 1px;
+            cursor: pointer;
+        }
+
+        /* use cross as close button */
+        .close::before {
+            content: "\2716";
+        }
+
+        /* place the button on top-right */
+        .close {
+            top: 5px;
+            right: 5px;
+            position: absolute;
+        }
+
+        .addcart {
+            background-color: #f60;
+            font-size: 12px;
+            color: #FFFFFF !important;
+        }
+
+        .buynow {
+            background-color: #f6383a;
+            font-size: 12px;
+            color: #FFFFFF !important;
+        }
+
+        .popup {
+            background: #fff;
+            font-size: 12px;
+            color: #555;
+            font-family: Tahoma, Geneva, sans-serif;
+            padding: 100px 100px;
+        }
+
+        .popup * {
+            margin: 0;
+            padding: 0;
+            -webkit-text-size-adjust: none;
+        }
+
+        .popup li {
+            list-style: none;
+        }
+
+        .popup a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .popup a:hover {
+            color: #c00;
+            text-decoration: underline;
+        }
+
+        .popup img {
+            border: none;
+        }
+
+        .popup .clearfix:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
+
+        .popup * html .clearfix {
+            zoom: 1;
+        }
+
+        /* IE6 */
+        .popup *:first-child + html .clearfix {
+            zoom: 1;
+        }
+
+        /* IE7 */
+        .popup .tab {
+            line-height: 56px;
+            font-size: 14px;
+        }
+
+        .popup .tab a {
+            color: #07c;
+        }
+
+        .popup .tab a:hover {
+            color: #c00;
+        }
+
+        .popup .tab a.cur {
+            font-weight: bold;
+        }
+
+        /*商品详细页*/
+        /*iteminfo*/
+        .iteminfo {
+        }
+
+        .iteminfo_tit {
+            color: #333;
+            font-size: 22px;
+            font-family: "微软雅黑", Arial, Helvetica, sans-serif;
+            border-bottom: 1px solid #e3e3e3;
+            font-weight: normal;
+            padding-bottom: 12px;
+            line-height: 32px;
+        }
+
+        .iteminfo_parameter {
+            padding: 8px 0;
+            padding-left: 70px;
+        }
+
+        .iteminfo_parameter_default {
+            color: #888;
+        }
+
+        .iteminfo_parameter dt {
+            margin-left: -70px;
+            float: left;
+            display: inline;
+            width: 60px;
+            white-space: nowrap;
+            text-align: right;
+            color: #888;
+        }
+
+        .iteminfo_mktprice {
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-decoration: line-through;
+        }
+
+        .lh32 {
+            line-height: 32px;
+        }
+
+        .iteminfo_price {
+            color: #c00;
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+            vertical-align: middle;
+        }
+
+        .sys_item_price {
+            color: #c00;
+            font-size: 22px;
+            vertical-align: middle;
+        }
+
+        .iteminfo_buying {
+            background: #f7f7f7;
+            padding: 12px 0;
+        }
+
+        /*规格*/
+        .sys_item_spec dl.iteminfo_parameter {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .sys_item_spec dl.iteminfo_parameter dt {
+            line-height: 32px;
+        }
+
+        /*一下正对图片*/
+        .sys_spec_img {
+        }
+
+        .sys_spec_img li {
+            float: left;
+            height: 54px;
+            position: relative;
+            margin: 2px 6px 2px 0;
+        }
+
+        .sys_spec_img li a {
+            height: 50px;
+            width: 50px;
+            padding: 1px;
+            border: 1px solid #ccc;
+            float: left;
+            background: #fff;
+            display: inline-block;
+            outline: none;
+        }
+
+        .sys_spec_img li a img {
+            width: 50px;
+            height: 50px;
+            display: block;
+        }
+
+        .sys_spec_img li a:hover {
+            border: 2px solid #e4393c;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        .sys_spec_img li i {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            font-size: 0;
+            line-height: 0;
+            right: 2px;
+            bottom: 2px;
+            background: url(img/sys_item_selected.gif) no-repeat right bottom;
+            z-index: 99;
+            display: none;
+        }
+
+        .sys_spec_img li.selected a {
+            border: 2px solid #e4393c;
+            padding: 0;
+        }
+
+        .sys_spec_img li.selected i {
+            display: block;
+        }
+
+        .sys_spec_text {
+        }
+
+        .sys_spec_text li {
+            float: left;
+            height: 28px;
+            position: relative;
+            margin: 2px 6px 2px 0;
+            outline: none;
+        }
+
+        .sys_spec_text li a {
+            height: 24px;
+            padding: 1px 6px;
+            border: 1px solid #ccc;
+            background: #fff;
+            display: inline-block;
+            line-height: 24px;
+        }
+
+        .sys_spec_text li a:hover {
+            border: 2px solid #e4393c;
+            padding: 0 5px;
+            text-decoration: none;
+        }
+
+        .sys_spec_text li i {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            font-size: 0;
+            line-height: 0;
+            right: 2px;
+            bottom: 2px;
+            background: url(img/sys_item_selected.gif) no-repeat right bottom;
+            z-index: 99;
+            display: none;
+        }
+
+        .sys_spec_text li.selected a {
+            border: 2px solid #e4393c;
+            padding: 0 5px;
+        }
+
+        .sys_spec_text li.selected i {
+            display: block;
+        }
+
+        .sys_spec_text li.disabled a {
+            border: 1px dashed #ccc;
+            color: #999;
+        }
+
+        a.disabled {
+            pointer-events: none;
+            filter: alpha(opacity=50); /*IE滤镜，透明度50%*/
+            -moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+            opacity: 0.5; /*其他，透明度50%*/
+            border: dashed 1px #ccc !important;
+        }
+    </style>
+    <style>
+        /* * {
+             box-sizing: border-box;
+         }*/
+
+        .input-number {
+            width: 60px;
+            padding: 0 12px;
+            vertical-align: top;
+            text-align: center;
+            outline: none;
+        }
+
+        .input-number,
+        .input-number-decrement,
+        .input-number-increment {
+            border: 1px solid #cccccc;
+            height: 30px;
+            user-select: none;
+        }
+
+        .input-number-decrement,
+        .input-number-increment {
+            display: inline-block;
+            width: 25px;
+            line-height: 28px;
+            background: #f1f1f1;
+            color: #444444;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .input-number-decrement:active,
+        .input-number-increment:active {
+            background: #dddddd;
+        }
+
+        .input-number-decrement {
+            border-right: none;
+            border-radius: 0px 0 0 0px;
+        }
+
+        .input-number-increment {
+            border-left: none;
+            border-radius: 0 0px 0px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current">
+        <nav class="bar bar-tab">
+            <div class="row no-gutter">
+                <a class="col-20 tab-item" href="#">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">主页</span>
+                </a>
+                <a class="col-20 tab-item" href="#">
+                    <span class="icon icon-star"></span>
+                    <span class="tab-label">收藏</span>
+                </a>
+                <a href="#" class="tab-item addcart">加入购物车 </a>
+                <a href="#" class="tab-item buynow">立即购买 </a>
+            </div>
+        </nav>
+        <div class="content">
+            <!-- Slider -->
+            <div class="swiper-container padding-bottom-0" data-space-between='10'>
+                <div class="swiper-wrapper" id="pic-list-div">
+
+                </div>
+                <div class="swiper-pagination">
+
+                </div>
+            </div>
+            <div class="list-block margin-0">
+                <ul>
+                    <li>
+                        <div class="item-inner">
+                            <div class="item-title" style="line-height: 18px;">
+                                <span style="font-size: 14px;" id="pro-name">商品名称</span><br/>
+                                <span style="font-size: 12px; color: #6e727b" id="pro-short-desc">货号：100001</span><br/>
+                                <span style="font-size: 14px;color: #ef1d26;font-weight:bold ;"
+                                      id="pro-price">￥100.00</span>
+                                <span style="font-size: 12px; color: #6e727b;text-decoration: line-through;"
+                                      id="pro-original-price">199.00</span>
+                                <input id="spsid" hidden>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block" style="margin: 3px 0 3px 0;">
+                <ul>
+                    <li>
+                        <a class="item-link item-content create-popup" href="#">
+                            <div class="item-inner" style="font-size: 14px;color: #6e727b;">
+                                已选：<span style="font-size: 12px; color: #6e727b" id="pro-stan-color"></span><br/>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="buttons-tab">
+                <a href="#tab1" class="tab-link active button">商品详情</a>
+                <a href="#tab2" class="tab-link button">商品参数</a>
+                <a href="#tab3" class="tab-link button">商品评价</a>
+            </div>
+            <div class="content-block">
+                <div class="tabs">
+                    <div id="tab1" class="tab active">
+                        <div class="content-block">
+                            <p>商品详情</p>
+                        </div>
+                    </div>
+                    <div id="tab2" class="tab">
+                        <div class="content-block">
+                            <p>商品参数</p>
+                        </div>
+                    </div>
+                    <div id="tab3" class="tab">
+                        <div class="content-block">
+                            <p>商品评价</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About Popup -->
+<div class="popup" style="height: 300px;bottom: 0px;top: auto">
+    <div class="content-block">
+        <nav class="bar bar-tab">
+            <div class="row no-gutter">
+                <a href="#" class="tab-item addcart">加入购物车 </a>
+                <a id="buy-now" href="#" class="tab-item buynow">立即购买 </a>
+            </div>
+        </nav>
+        <div class="content">
+            <span class="close close-popup"></span>
+            <!--规格属性-->
+            <div class="sys_item_spec">
+                <!--<dl class="clearfix iteminfo_parameter iteminfo_parameter_default lh32">-->
+                <!--<dt>市场价</dt>-->
+                <!--<dd><span class="iteminfo_mktprice">$<b class="sys_item_mktprice">13.00</b></span></dd>-->
+                <!--</dl>-->
+                <dl class="clearfix iteminfo_parameter lh32">
+                    <dt>价格</dt>
+                    <dd><span class="iteminfo_price">$ <b class="sys_item_price">6.80</b></span></dd>
+                </dl>
+                <dl class="clearfix iteminfo_parameter sys_item_specpara" data-sid="1">
+                    <dt>颜色</dt>
+                    <dd>
+                        <ul class="sys_spec_img">
+                            <!--<li data-aid="3"><a href="javascript:;" title="白色"><img src="img/1.png" alt="白色" /></a><i></i></li>-->
+                            <!--<li data-aid="4"><a href="javascript:;" title="粉色"><img src="img/2.png" alt="粉色" /></a><i></i></li>-->
+                            <!--<li data-aid="8"><a href="javascript:;" title="蓝色"><img src="img/3.png" alt="蓝色" /></a><i></i></li>-->
+                            <!--<li data-aid="9"><a href="javascript:;" title="绿色"><img src="img/4.png" alt="绿色" /></a><i></i></li>-->
+                            <!--<li data-aid="10"><a href="javascript:;" title="黄色"><img src="img/5.png" alt="黄色" /></a><i></i></li>-->
+                            <!--<li data-aid="12"><a href="javascript:;" title="灰色"><img src="img/6.png" alt="灰色" /></a><i></i></li>-->
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="clearfix iteminfo_parameter sys_item_specpara" data-sid="2">
+                    <dt>尺码</dt>
+                    <dd>
+                        <ul class="sys_spec_text">
+                            <!--<li data-aid="13"><a href="javascript:;" title="S">S</a><i></i></li>-->
+                            <!--<li data-aid="14"><a href="javascript:;" title="M">M</a><i></i></li>-->
+                            <!--<li data-aid="16"><a href="javascript:;" title="L">L</a><i></i></li>-->
+                            <!--<li data-aid="17"><a href="javascript:;" title="XL">XL</a><i></i></li>-->
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="clearfix iteminfo_parameter" data-sid="2">
+                    <dt>购买数量</dt>
+                    <dd>
+                        <span class="input-number-decrement">–</span><input class="input-number" type="text" value="1"
+                                                                            min="0" max="5"><span
+                            class="input-number-increment">+</span>
+                    </dd>
+                </dl>
+                <input type="hidden" id="skuData">
+            </div>
+            <!--规格属性-->
+        </div>
+    </div>
+</div>
+</body>
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="../js/public.js"></script>
+<script src="../js/detail.js"></script>
+<script type='text/javascript'>
+    $(function () {
+        $.init();
+        $(document).on('click', '.create-popup', function () {
+            $.popup('.popup');
+        });
+
+        inputNumber($('.input-number'));
+
+        //商品规格选择
+        $(".sys_item_spec .sys_item_specpara").each(function () {
+            var i = $(this);
+            var p = i.find("ul>li");
+            p.click(function () {
+                if (!!$(this).hasClass("selected")) {
+                    $(this).removeClass("selected");
+                    i.removeAttr("data-attrval");
+                } else {
+                    $(this).addClass("selected").siblings("li").removeClass("selected");
+                    i.attr("data-attrval", $(this).attr("data-aid"))
+                }
+                getattrprice() //输出价格
+
+            })
+        })
+
+
+    });
+    //获取对应属性的价格
+    function getattrprice() {
+        var defaultstats = true;
+        var _val = '';
+        var _resp = {
+            mktprice: ".sys_item_mktprice",
+            price: ".sys_item_price"
+        }  //输出对应的class
+        $(".sys_item_spec .sys_item_specpara").each(function () {
+            var i = $(this);
+            var v = i.attr("data-attrval");
+            if (!v) {
+                defaultstats = false;
+            } else {
+                _val += _val != "" ? "_" : "";
+                _val += v;
+            }
+        })
+        if (!!defaultstats) {
+            $.ajax({
+                type: "post",
+                contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                url: rootPath + "/shoppePro/selectStockAndPriceByProDetail.shtml",
+                dataType: "json",
+                async: false,
+                data: {
+                    "skuCode": sku_code[_val]
+                },
+                success: function (pro) {
+                    var proYe = JSON.parse(pro);
+                    var proData = proYe.data;
+                    $('#pro-price').html(proData.price);
+                    _mktprice = proData.price;
+                    _price = proData.price;  //价格
+                    var color_stan = _val.split("_");
+                    $('#pro-stan-color').html(color_stan[0] + "  ,  " + color_stan[1] + "  ,  1件");
+                    $('#spsid').attr('value',proData.spsid);
+                     //商品码    sku_code[_val];
+                     //购买数量  input-number
+                     //商品名称  id pro-name
+                     //商品在·图片 sys_spec_img  selected
+                     // 价格     _price
+                     //尺码   sys_spec_text
+                    order(sku_code[_val],_price,proData.spsid);
+                },
+                error: function (XMLHttpRequest, textStatus) {
+
+                }
+            });
+        } else {
+            _mktprice = $('.sys_item_price').text();
+            _price = $('.sys_item_price').text();
+        }
+        //输出价格
+        $(_resp.mktprice).text(_mktprice);  ///其中的math.round为截取小数点位数
+        $(_resp.price).text(_price);
+    }
+    function order(productCode,price,productCode){
+        //商品码    sku_code[_val];
+        //购买数量  input-number
+        //商品名称  id pro-name
+        //商品在·图片 sys_spec_img  selected
+        // 价格     _price
+        //尺码   sys_spec_text
+        var _productCode=productCode;
+        var _productPrice=price;
+        var _productNum=$(".input-number").val();
+        var _productName=document.getElementById('pro-name').innerText;
+        var _productName=encodeURI(document.getElementById('pro-name').innerText);// window.location.assign();
+        var _productUrl=$(".sys_item_spec .sys_item_specpara .sys_spec_img .selected img").attr("src");
+        var _productSize=$(".sys_item_spec .sys_item_specpara .sys_spec_text .selected a").html();
+        console.log("商品码 :"+_productCode);
+        console.log("价格 :"+_productPrice);
+        console.log("购买数量 :"+_productNum);
+        console.log("商品名称 :"+_productName);
+        console.log("图片 :"+_productUrl);
+        console.log("尺码 :"+_productSize);
+                var ahref=rootPath+"/member/order/order.html?productCode="+_productCode+"&productPrice="+_productPrice+"&productNum="+_productNum+"&productName="+_productName+"&productUrl="+_productUrl+"&productSize="+_productSize;
+        document.getElementById("buy-now").href=ahref;
+//        document.getElementById("buy-now").arrt("href",ahref);
+
+    }
+
+</script>
+</html>
