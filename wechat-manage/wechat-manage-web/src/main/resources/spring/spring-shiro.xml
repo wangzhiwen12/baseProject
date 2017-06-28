@@ -95,6 +95,11 @@
                 /couponMember/** = anon
                 /MP_verify_pa37oJj64hscSwZR.txt=anon
                 /couponInfo/** = anon
+                /group/** = anon
+                /shoppePro/** = anon
+                /cart/** = anon
+                /order/** = anon
+                /wechatpage/** = anon
             </value>
         </property>
     </bean>
