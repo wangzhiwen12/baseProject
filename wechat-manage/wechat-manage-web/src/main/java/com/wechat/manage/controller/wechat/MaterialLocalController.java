@@ -84,7 +84,7 @@ public class MaterialLocalController extends BaseController {
 								+ ftpPwd);
 						connect(ftpPath, ftpAddr, Integer.parseInt(ftpPort), ftpUserName, ftpPwd);
 						File file1 = new File(path);
-						upload(file1);
+						upload(file1,fileName);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -142,10 +142,10 @@ public class MaterialLocalController extends BaseController {
 				// 转存文件到指定的路径
 				file.transferTo(new File(path));
 				System.out.print("文件成功上传到指定目录下");
-				//MediaDto material = materialService.imageMaterialInsert(path, fileType,
-				//		curUserInfo);// 上传到微信
-				//System.out.print("material-----------" + material);
-				//if (material != null && !material.equals("")) {
+				MediaDto material = materialService.imageMaterialInsert(path, fileType,
+						curUserInfo);// 上传到微信
+				System.out.print("material-----------" + material);
+				if (material != null && !material.equals("")) {
 					// 上传到ftp服务器
 					try {
 						String ftpPath = PropertiesUtils.findPropertiesKey("ftp.path");
@@ -157,7 +157,7 @@ public class MaterialLocalController extends BaseController {
 								+ ftpPwd);
 						connect(ftpPath, ftpAddr, Integer.parseInt(ftpPort), ftpUserName, ftpPwd);
 						File file1 = new File(path);
-						upload(file1);
+						upload(file1,fileName);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -177,7 +177,7 @@ public class MaterialLocalController extends BaseController {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-				//}
+				}
 				return paramMap;
 			} else {
 				System.out.print("文件类型为空");
@@ -361,7 +361,7 @@ public class MaterialLocalController extends BaseController {
 	 *            上传的文件或文件夹
 	 * @throws Exception
 	 */
-	private void upload(File file) throws Exception {
+	private void upload(File file, String fileName) throws Exception {
 		if (file.isDirectory()) {
 			ftp.makeDirectory(file.getName());
 			ftp.changeWorkingDirectory(file.getName());
@@ -369,12 +369,12 @@ public class MaterialLocalController extends BaseController {
 			for (int i = 0; i < files.length; i++) {
 				File file1 = new File(file.getPath() + "\\" + files[i]);
 				if (file1.isDirectory()) {
-					upload(file1);
+					upload(file1,fileName);
 					ftp.changeToParentDirectory();
 				} else {
 					File file2 = new File(file.getPath() + "\\" + files[i]);
 					FileInputStream input = new FileInputStream(file2);
-					ftp.storeFile(file2.getName(), input);
+					ftp.storeFile(fileName, input);
 					input.close();
 				}
 			}
@@ -382,8 +382,8 @@ public class MaterialLocalController extends BaseController {
 			File file2 = new File(file.getPath());
 			System.out.print("file.getPath() ---------- " + file.getPath());
 			FileInputStream input = new FileInputStream(file2);
-			System.out.print("file2 ---------- " + file2.getName());
-			ftp.storeFile(file2.getName(), input);
+			System.out.print("file2 ---------- " + fileName);
+			ftp.storeFile(fileName, input);
 			input.close();
 		}
 	}
