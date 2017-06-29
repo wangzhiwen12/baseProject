@@ -84,7 +84,7 @@ public class MaterialLocalController extends BaseController {
 								+ ftpPwd);
 						connect(ftpPath, ftpAddr, Integer.parseInt(ftpPort), ftpUserName, ftpPwd);
 						File file1 = new File(path);
-						upload(file1,fileName);
+						upload(file1,trueFileName);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -157,7 +157,7 @@ public class MaterialLocalController extends BaseController {
 								+ ftpPwd);
 						connect(ftpPath, ftpAddr, Integer.parseInt(ftpPort), ftpUserName, ftpPwd);
 						File file1 = new File(path);
-						upload(file1,fileName);
+						upload(file1,trueFileName);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
