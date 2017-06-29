@@ -11,15 +11,6 @@ $(function () {
 
     $("#btngroup").click("click", function (e) {
         popFun();
-        // groupFun($(this));
-        // alert($(document));
-        // stopPropagation(e);
-        // $(document).not(".btn-group").click(function(e){
-        //     alert("22222222222222");
-        //     // if($("#popTip").css('display')=='block'){
-        //     //     $("#popTip").hide();
-        //     // }
-        // });
 
     });
 });

@@ -512,8 +512,6 @@ $("#save")
 					$(".head-style-1").html("");
 					$("ui-form-horizontal").html("");
 					$(".ui-shadow").html("");
-				
-					$(".img-navigation>div").removeClass("handle");
 					//去掉所有组件编辑状态
 					$(".common").removeClass("cur");
 					
@@ -553,7 +551,7 @@ $("#save")
 $("#saveDraft")
 .click(
 		function() {
-			var wPageId, wPageTitle="";
+			var wPageId,translation, wPageTitle="";
 			var title,proCodes="default";
 			var input = document.getElementsByTagName("input");
 			wPageTitle=$('.wx_title').html();
@@ -583,8 +581,12 @@ $("#saveDraft")
 			$(".head-style-1").html("");
 			$("ui-form-horizontal").html("");
 			$(".ui-shadow").html("");
-		
-			$(".img-navigation>div").removeClass("handle");
+			paras = document.getElementsByClassName('handle');
+			for(i=0;i<paras.length;i++){
+			     //删除元素 元素.parentNode.removeChild(元素);
+			    if (paras[i] != null) 
+			          paras[i].parentNode.removeChild( paras[i]); 
+			}
 			//去掉所有组件编辑状态
 			$(".common").removeClass("cur");
 			
@@ -593,6 +595,7 @@ $("#saveDraft")
 				"wPageTitle" : wPageTitle,
 				"proCodes":proCodes,
 				"title":title
+//				"translation":translation
 			});
 			var odata = JSON.stringify({
 				"param" : data,

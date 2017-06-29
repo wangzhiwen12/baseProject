@@ -99,6 +99,7 @@
                 /shoppePro/** = anon
                 /cart/** = anon
                 /order/** = anon
+                /wechatpage/** = anon
 
             </value>
         </property>

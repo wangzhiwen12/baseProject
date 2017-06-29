@@ -9,13 +9,12 @@ import com.wechat.manage.pojo.system.entity.ResFormMap;
 import com.wechat.manage.pojo.system.vo.UserBaseInfoDto;
 import com.wechat.manage.pojo.wechat.entity.MsgReply;
 import com.wechat.manage.pojo.wechat.entity.WechatMenu;
+import com.wechat.manage.service.util.WechatUtil;
 import com.wechat.manage.service.wechat.intf.IAppAccountInfoService;
 import com.wechat.manage.service.wechat.intf.IMenuService;
 import com.wechat.manage.service.wechat.intf.MsgReplyService;
 import com.wechat.manage.utils.Common;
 import com.wechat.manage.utils.MenuUtil;
-import com.wechat.manage.utils.PropertiesUtils;
-import com.wechat.manage.service.util.WechatUtil;
 import com.wechat.manage.utils.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,7 +91,9 @@ public class MenuController extends BaseController {
     public List<WechatMenu> reslists(Model model) throws Exception {
         ResFormMap resFormMap = getFormMap(ResFormMap.class);
         WechatMenu menuModel = new WechatMenu();
-        menuModel.setAppid(PropertiesUtils.findPropertiesKey("appid"));
+        UserBaseInfoDto curUser = getCurUserInfo();
+        String appid = curUser.getAppId();
+        menuModel.setAppid(appid);
         List<WechatMenu> list = menuService.queryMenus(menuModel);
        /* List<TreeObject> list = new ArrayList<TreeObject>();
         for (WechatMenu menu : mps) {

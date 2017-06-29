@@ -22,6 +22,14 @@ public class TPage implements Serializable {
 	 private Timestamp createTime; //datetime NOT NULL,
 	 private Timestamp updateTime;//datetime NOT NULL,
 	 private Integer seqNo; //页面的序号',
+	 private String translation;//页面描述
+	 
+	public String getTranslation() {
+		return translation;
+	}
+	public void setTranslation(String translation) {
+		this.translation = translation;
+	}
 	public String getSid() {
 		return sid;
 	}
@@ -96,9 +104,4 @@ public class TPage implements Serializable {
 		this.seqNo = seqNo;
 	}
 	 
-	 
-	 
-	 
-	 
-
 }

@@ -110,11 +110,11 @@ function getProYeInfoBySpuCode() {
                     console.log(stanName);
                     $.each(stanList, function (index, content) {
                         if (!!stanName && stanName != null && stanName == content.stanName) {
-                            console.log(index+":"+content.stanName);
+                            console.log(index + ":" + content.stanName);
                             $(".sys_item_spec .sys_item_specpara .sys_spec_img li").each(function () {
                                 var licolor = $(this);
                                 var licolorname = licolor.attr("data-aid");
-                                console.log("licolorname:",licolorname);
+                                console.log("licolorname:", licolorname);
                                 var flag = false;
                                 $.each(content.colorNewList, function (index1, colorList) {
                                     if (licolorname == colorList.colorName) {
@@ -130,7 +130,7 @@ function getProYeInfoBySpuCode() {
                                     if (licolor.find("a").hasClass("disabled")) {
                                         licolor.find("a").removeClass("disabled");
                                         licolor.click(function () {
-                                            console.log("click","22222222222");
+                                            console.log("click", "22222222222");
                                             if (!!$(this).hasClass("selected")) {
                                                 $(this).removeClass("selected");
                                                 i.removeAttr("data-attrval");
