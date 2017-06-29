@@ -71,7 +71,7 @@ public class UploadController extends BaseController {
 			msgReply.setMsgKey(msgKey);
 			msgReply.setRuleName(ruleName);
 			int iORu = msgReplyService.msgReplyInsertOrUpdate(msgReply);
-			logger.info(iORu);
+			System.out.print(iORu);
 		} else {// 回复类型(0文本,1图片,2语音,3视频,4音频,5图文)
 			String imgMedia = request.getParameter("imgMedia");
 			Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -100,7 +100,7 @@ public class UploadController extends BaseController {
 				msgReply.setMediaId(material.getMedia_id());
 				msgReply.setPicUrl(material.getUrl());
 				int iORu = msgReplyService.msgReplyInsertOrUpdate(msgReply);
-				logger.info(iORu);
+				System.out.print(iORu);
 			}
 		}
 		return null;
@@ -118,13 +118,13 @@ public class UploadController extends BaseController {
 			String path = null;// 文件路径
 			String type = null;// 文件类型
 			String fileName = file.getOriginalFilename();// 文件原名称
-			logger.info("上传的文件原名称:" + fileName);
+			System.out.print("上传的文件原名称:" + fileName);
 			// 判断文件类型
 			type = fileName.indexOf(".") != -1
 					? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()) : null;
 			if (type != null) {// 判断文件类型是否为空
 				if (!"PNG".equals(type.toUpperCase()) && !"JPG".equals(type.toUpperCase())) {
-					logger.info("不是我们想要的文件类型,请按要求重新上传");
+					System.out.print("不是我们想要的文件类型,请按要求重新上传");
 					paramMap.put("errMsg", "不是我们想要的文件类型,请按要求重新上传");
 					return paramMap;
 				}
@@ -136,10 +136,10 @@ public class UploadController extends BaseController {
 				String trueFileName = String.valueOf(System.currentTimeMillis()) + fileName;
 				// 设置存放图片文件的路径
 				path = realPath + /* System.getProperty("file.separator")+ */trueFileName;
-				logger.info("存放图片文件的路径:" + path);
+				System.out.print("存放图片文件的路径:" + path);
 				// 转存文件到指定的路径
 				file.transferTo(new File(path));
-				logger.info("文件成功上传到指定目录下");
+				System.out.print("文件成功上传到指定目录下");
 				String url = materialService.imageInsert(null, path, curUserInfo);
 				if (url != null) {
 					paramMap.put("success", "success");
@@ -147,12 +147,12 @@ public class UploadController extends BaseController {
 					return paramMap;
 				}
 			} else {
-				logger.info("文件类型为空");
+				System.out.print("文件类型为空");
 				paramMap.put("errorMsg", "文件类型为空");
 				return paramMap;
 			}
 		} else {
-			logger.info("没有找到相对应的文件");
+			System.out.print("没有找到相对应的文件");
 			paramMap.put("errorMsg", "没有找到相对应的文件");
 			return paramMap;
 		}
@@ -160,7 +160,7 @@ public class UploadController extends BaseController {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
@@ -176,14 +176,14 @@ public class UploadController extends BaseController {
 			String introduction = null;// 视频内容
 			String fileName = file.getOriginalFilename();// 文件原名称
 			String fileType = request.getParameter("fileType");
-			logger.info("上传的文件原名称:" + fileName);
+			System.out.print("上传的文件原名称:" + fileName);
 			// 判断文件类型
 			type = fileName.indexOf(".") != -1
 					? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()) : null;
 			if (type != null) {// 判断文件类型是否为空
 				if (fileType.equals("image")) {
 					if (!"PNG".equals(type.toUpperCase()) && !"JPG".equals(type.toUpperCase())) {
-						logger.info("不是我们想要的文件类型,请按要求重新上传");
+						System.out.print("不是我们想要的文件类型,请按要求重新上传");
 						paramMap.put("errMsg", "不是我们想要的文件类型,请按要求重新上传");
 						return paramMap;
 					}
@@ -198,10 +198,10 @@ public class UploadController extends BaseController {
 				String trueFileName = String.valueOf(System.currentTimeMillis()) + fileName;
 				// 设置存放图片文件的路径
 				path = realPath + trueFileName;
-				logger.info("存放图片文件的路径:" + path);
+				System.out.print("存放图片文件的路径:" + path);
 				// 转存文件到指定的路径
 				file.transferTo(new File(path));
-				logger.info("文件成功上传到指定目录下");
+				System.out.print("文件成功上传到指定目录下");
 				MediaDto material = materialService.materialInsert(path, fileType, title,
 						introduction, curUserInfo);
 				if (material.getMedia_id() != null && material.getMedia_id() != "") {
@@ -223,12 +223,12 @@ public class UploadController extends BaseController {
 				}
 				return paramMap;
 			} else {
-				logger.info("文件类型为空");
+				System.out.print("文件类型为空");
 				paramMap.put("errMsg", "文件类型为空");
 				return paramMap;
 			}
 		} else {
-			logger.info("没有找到相对应的文件");
+			System.out.print("没有找到相对应的文件");
 			paramMap.put("errMsg", "没有找到相对应的文件");
 			return paramMap;
 		}

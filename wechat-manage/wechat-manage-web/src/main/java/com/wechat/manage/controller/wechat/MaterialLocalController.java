@@ -142,10 +142,10 @@ public class MaterialLocalController extends BaseController {
 				// 转存文件到指定的路径
 				file.transferTo(new File(path));
 				System.out.print("文件成功上传到指定目录下");
-				MediaDto material = materialService.imageMaterialInsert(path, fileType,
-						curUserInfo);// 上传到微信
-				System.out.print("material-----------" + material);
-				if (material != null && !material.equals("")) {
+				//MediaDto material = materialService.imageMaterialInsert(path, fileType,
+				//		curUserInfo);// 上传到微信
+				//System.out.print("material-----------" + material);
+				//if (material != null && !material.equals("")) {
 					// 上传到ftp服务器
 					try {
 						String ftpPath = PropertiesUtils.findPropertiesKey("ftp.path");
@@ -165,8 +165,8 @@ public class MaterialLocalController extends BaseController {
 					try {
 						Material record = new Material();
 						record.setMaterialType("image");
-						record.setMediaId(material.getMedia_id());
-						record.setPicUrl(material.getUrl());
+						//record.setMediaId(material.getMedia_id());
+						//record.setPicUrl(material.getUrl());
 						record.setLocalUrl(trueFileName);
 						record.setStoreCode(curUserInfo.getStoreCode());
 						record.setImageName(trueFileName);
@@ -177,7 +177,7 @@ public class MaterialLocalController extends BaseController {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-				}
+				//}
 				return paramMap;
 			} else {
 				System.out.print("文件类型为空");
@@ -380,7 +380,9 @@ public class MaterialLocalController extends BaseController {
 			}
 		} else {
 			File file2 = new File(file.getPath());
+			System.out.print("file.getPath() ---------- " + file.getPath());
 			FileInputStream input = new FileInputStream(file2);
+			System.out.print("file2 ---------- " + file2.getName());
 			ftp.storeFile(file2.getName(), input);
 			input.close();
 		}
