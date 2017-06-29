@@ -49,13 +49,13 @@ public class MaterialLocalController extends BaseController {
 			String path = null;// 文件路径
 			String type = null;// 文件类型
 			String fileName = file.getOriginalFilename();// 文件原名称
-			logger.info("上传的文件原名称:" + fileName);
+			System.out.print("上传的文件原名称:" + fileName);
 			// 判断文件类型
 			type = fileName.indexOf(".") != -1
 					? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()) : null;
 			if (type != null) {// 判断文件类型是否为空
 				if (!"PNG".equals(type.toUpperCase()) && !"JPG".equals(type.toUpperCase())) {
-					logger.info("不是我们想要的文件类型,请按要求重新上传");
+					System.out.print("不是我们想要的文件类型,请按要求重新上传");
 					paramMap.put("errMsg", "不是我们想要的文件类型,请按要求重新上传");
 					return paramMap;
 				}
@@ -67,10 +67,10 @@ public class MaterialLocalController extends BaseController {
 				String trueFileName = String.valueOf(System.currentTimeMillis()) + fileName;
 				// 设置存放图片文件的路径
 				path = realPath + /* System.getProperty("file.separator")+ */trueFileName;
-				logger.info("存放图片文件的路径:" + path);
+				System.out.print("存放图片文件的路径:" + path);
 				// 转存文件到指定的路径
 				file.transferTo(new File(path));
-				logger.info("文件成功上传到指定目录下");
+				System.out.print("文件成功上传到指定目录下");
 				String url = materialService.imageInsert(path, "image", curUserInfo);
 				String localUrl = null;
 				if (url != null) {
@@ -81,7 +81,7 @@ public class MaterialLocalController extends BaseController {
 						String ftpUserName = PropertiesUtils.findPropertiesKey("ftp.username");
 						String ftpPwd = PropertiesUtils.findPropertiesKey("ftp.password");
 						localUrl = "http://" + ftpAddr + "/" + ftpPath + "/" + trueFileName;
-						logger.info("ftp----------" + ftpPath + ftpAddr + ftpPort + ftpUserName
+						System.out.print("ftp----------" + ftpPath + ftpAddr + ftpPort + ftpUserName
 								+ ftpPwd);
 						connect(ftpPath, ftpAddr, Integer.parseInt(ftpPort), ftpUserName, ftpPwd);
 						File file1 = new File(path);
@@ -97,12 +97,12 @@ public class MaterialLocalController extends BaseController {
 					paramMap.put("errorMsg", "已达到上限");
 				}
 			} else {
-				logger.info("文件类型为空");
+				System.out.print("文件类型为空");
 				paramMap.put("errorMsg", "文件类型为空");
 				return paramMap;
 			}
 		} else {
-			logger.info("没有找到相对应的文件");
+			System.out.print("没有找到相对应的文件");
 			paramMap.put("errorMsg", "没有找到相对应的文件");
 			return paramMap;
 		}
@@ -122,14 +122,14 @@ public class MaterialLocalController extends BaseController {
 			String type = null;// 文件类型
 			String fileName = file.getOriginalFilename();// 文件原名称
 			String fileType = request.getParameter("fileType");
-			logger.info("上传的文件原名称:" + fileName);
+			System.out.print("上传的文件原名称:" + fileName);
 			// 判断文件类型
 			type = fileName.indexOf(".") != -1
 					? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()) : null;
 			if (type != null) {// 判断文件类型是否为空
 				if (fileType.equals("image")) {
 					if (!"PNG".equals(type.toUpperCase()) && !"JPG".equals(type.toUpperCase())) {
-						logger.info("不是我们想要的文件类型,请按要求重新上传");
+						System.out.print("不是我们想要的文件类型,请按要求重新上传");
 						paramMap.put("errMsg", "不是我们想要的文件类型,请按要求重新上传");
 						return paramMap;
 					}
@@ -139,13 +139,13 @@ public class MaterialLocalController extends BaseController {
 				String trueFileName = String.valueOf(System.currentTimeMillis()) + fileName;
 				// 设置存放图片文件的路径
 				path = realPath + trueFileName;
-				logger.info("存放图片文件的路径:" + path);
+				System.out.print("存放图片文件的路径:" + path);
 				// 转存文件到指定的路径
 				file.transferTo(new File(path));
-				logger.info("文件成功上传到指定目录下");
+				System.out.print("文件成功上传到指定目录下");
 				MediaDto material = materialService.imageMaterialInsert(path, fileType,
 						curUserInfo);// 上传到微信
-				logger.info("material-----------" + material);
+				System.out.print("material-----------" + material);
 				if (material != null && !material.equals("")) {
 					// 上传到ftp服务器
 					try {
@@ -154,7 +154,7 @@ public class MaterialLocalController extends BaseController {
 						String ftpPort = PropertiesUtils.findPropertiesKey("ftp.port");
 						String ftpUserName = PropertiesUtils.findPropertiesKey("ftp.username");
 						String ftpPwd = PropertiesUtils.findPropertiesKey("ftp.password");
-						logger.info("ftp----------" + ftpPath + ftpAddr + ftpPort + ftpUserName
+						System.out.print("ftp----------" + ftpPath + ftpAddr + ftpPort + ftpUserName
 								+ ftpPwd);
 						connect(ftpPath, ftpAddr, Integer.parseInt(ftpPort), ftpUserName, ftpPwd);
 						File file1 = new File(path);
@@ -181,12 +181,12 @@ public class MaterialLocalController extends BaseController {
 				}
 				return paramMap;
 			} else {
-				logger.info("文件类型为空");
+				System.out.print("文件类型为空");
 				paramMap.put("errMsg", "文件类型为空");
 				return paramMap;
 			}
 		} else {
-			logger.info("没有找到相对应的文件");
+			System.out.print("没有找到相对应的文件");
 			paramMap.put("errMsg", "没有找到相对应的文件");
 			return paramMap;
 		}
@@ -223,7 +223,7 @@ public class MaterialLocalController extends BaseController {
 				materials.add(material);
 			}
 		} else {
-			logger.info("暂不提供转换");
+			System.out.print("暂不提供转换");
 		}
 		return materials;
 	}
