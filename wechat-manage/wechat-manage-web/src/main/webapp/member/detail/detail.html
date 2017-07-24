@@ -377,6 +377,10 @@
             border-left: none;
             border-radius: 0 0px 0px 0;
         }
+        .active
+        {
+            background-color: #A7AFB4;
+        }
     </style>
 </head>
 <body>
@@ -393,7 +397,7 @@
                     <span class="tab-label">收藏</span>
                 </a>
                 <a href="#" class="tab-item addcart">加入购物车 </a>
-                <a href="#" class="tab-item buynow">立即购买 </a>
+                <a id="buynoww" href="#" class="tab-item buynow">立即购买 </a>
             </div>
         </nav>
         <div class="content">
@@ -467,7 +471,7 @@
         <nav class="bar bar-tab">
             <div class="row no-gutter">
                 <a href="#" class="tab-item addcart">加入购物车 </a>
-                <a id="buy-now" href="#" class="tab-item buynow">立即购买 </a>
+                <a id="buynown" href="#" class="tab-item buynow">立即购买 </a>
             </div>
         </nav>
         <div class="content">
@@ -528,6 +532,11 @@
 <script src="../js/detail.js"></script>
 <script type='text/javascript'>
     $(function () {
+
+
+        //16250613
+//        document.getElementById("buy-now1").className();
+
         $.init();
         $(document).on('click', '.create-popup', function () {
             $.popup('.popup');
@@ -552,7 +561,8 @@
             })
         })
 
-
+        $("#buynoww").addClass("active"); //没有选择尺码和颜色 立即购买按钮置灰色 外立即购买
+        $("#buynown").addClass("active"); //没有选择尺码和颜色 立即购买按钮置灰色 选择尺码和颜色里边立即购买
     });
     //获取对应属性的价格
     function getattrprice() {
@@ -612,6 +622,8 @@
         $(_resp.price).text(_price);
     }
     function order(productCode,price,productCode){
+        $("#buynoww").removeClass("active"); //没有选择尺码和颜色 立即购买按钮置灰色 外立即购买
+        $("#buynown").removeClass("active"); //没有选择尺码和颜色 立即购买按钮置灰色 选择尺码和颜色里边立即购买
         //商品码    sku_code[_val];
         //购买数量  input-number
         //商品名称  id pro-name
@@ -633,6 +645,7 @@
         console.log("尺码 :"+_productSize);
                 var ahref=rootPath+"/member/order/order.html?productCode="+_productCode+"&productPrice="+_productPrice+"&productNum="+_productNum+"&productName="+_productName+"&productUrl="+_productUrl+"&productSize="+_productSize;
         document.getElementById("buy-now").href=ahref;
+        document.getElementById("buy-now1").href=ahref;
 //        document.getElementById("buy-now").arrt("href",ahref);
 
     }
