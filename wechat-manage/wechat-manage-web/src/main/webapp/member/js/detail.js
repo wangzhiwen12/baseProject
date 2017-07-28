@@ -25,7 +25,7 @@ function getProYeInfoBySpuCode() {
                     var proPicList = picList[i].picList;
                     for (var j = 0; j < proPicList.length; j++) {
                         var pic = '<div class="swiper-slide">' +
-                            '<img style="width: 320px;height: 320px;" src="http://10.6.100.100/' + proPicList[j].picUrl + '" alt="">' +
+                            '<img style="width: 100%;" src="http://10.6.100.100/' + proPicList[j].picUrl + '" alt="">' +
                             '</div>';
                         $('#pic-list-div').append(pic);
                     }
