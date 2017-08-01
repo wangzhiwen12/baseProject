@@ -44,7 +44,7 @@
                     <div class="box-container sam-box-container">
                         <div class="sitem-l">
                             <div class="sl-img samsl-img">
-                                <img src="111"/>
+                                <img src=""/>
                             </div>
                         </div>
 
@@ -192,6 +192,8 @@
         var productName="";
         var productPrice="";
         var productNum="";
+        var productColor="";
+        var productSize="";
 
         var urlinfo=window.location.href;
         len=urlinfo.length;//获取url的长度
@@ -226,14 +228,18 @@
             }
             else if("productSize"==sp[0]){
                 productSize=sp[1];
-                $(".sitem-weight").html("尺码："+productSize);
                 console.log("productSize:"+productSize);
+            }
+            else if("productColor"==sp[0]){
+                productColor=decodeURI(sp[1]);
+                console.log("productColor:"+productColor);
             }
             else if("productNum"==sp[0]){
                 productNum=sp[1];
                 $("#numNow").val(productNum);
                 console.log("productNum:"+productNum);
             }
+            $(".sitem-weight").html("颜色："+productColor+"       尺码："+productSize);
 
             //计算总价
             var sum=productPrice * productNum;
