@@ -2,7 +2,6 @@ var rootPath = getContextPath();
 var skuCode = getUrlDataByKey("skuCode");
 var sku_code;
 $(function () {
-    $.init();
     $(document).on('click', '.create-popup', function () {
         $.popup('.popup');
     });
