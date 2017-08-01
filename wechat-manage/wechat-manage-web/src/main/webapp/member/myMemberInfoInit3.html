@@ -17,6 +17,20 @@
         var registType = getUrlDataByKey("registType");//注册类型（全渠道0或者非全渠道1）
         var storeCode = getUrlDataByKey("storeCode");//门店号
         var secret = getUrlDataByKey("secret");//appsecret秘钥
+        console.log(rootPath);
+//        appId="wx7aec942c6742752d";
+//        openId="osah_wDFjU51xZ2Lm99ETeBBXTns";
+//        unionId="oXnn2v7pYd5O-LdIIvaUB1jZcp7M";
+//        registType="0";
+//        storeCode="9999";
+//        secret="c27b7472a3bb1e9874c240a681b87880";
+
+        console.log(appId);
+        console.log(unionId);
+        console.log(registType);
+        console.log(storeCode);
+        console.log(secret);
+
     </script>
     <script type="text/javascript">
         //初始化
@@ -34,7 +48,11 @@
             param += "&storeCode=" + storeCode;
             param += "&registType=" + getUrlDataByKey("registType");
             var regUrl = rootPath + "/member/userRegister3.html" + param;
+
             $("#userRegister").attr("href", encodeURI(regUrl));
+//            $("#userRegister").click(function (){
+//                alert(regUrl);
+//            });
         }
         //绑定实体卡
         function bindEntityCard() {

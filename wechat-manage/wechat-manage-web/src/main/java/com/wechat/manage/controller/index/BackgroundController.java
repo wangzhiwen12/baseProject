@@ -66,7 +66,7 @@ public class BackgroundController extends BaseController {
 	 */
 	@RequestMapping(value = "login", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
 	public String login(HttpServletRequest request) {
-		request.removeAttribute("error");
+			request.removeAttribute("error");
 		return "/login";
 	}
 

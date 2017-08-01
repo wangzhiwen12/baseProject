@@ -23,6 +23,7 @@ public class ProOrder {
     private BigDecimal salesAmount;
     private     BigDecimal    paymentAmount;
     private String receptProvName;
+    private Integer isCod;
 
     public String getAccountNo() {
         return accountNo;
@@ -158,5 +159,19 @@ public class ProOrder {
 
     public void setPaymentAmount(BigDecimal paymentAmount) {
         this.paymentAmount = paymentAmount;
+    }
+
+    public void setRequiredDeliveryDate(String requiredDeliveryDate) {
+        this.requiredDeliveryDate = requiredDeliveryDate;
+    }
+
+
+
+    public Integer getIsCod() {
+        return isCod;
+    }
+
+    public void setIsCod(Integer isCod) {
+        this.isCod = isCod;
     }
 }

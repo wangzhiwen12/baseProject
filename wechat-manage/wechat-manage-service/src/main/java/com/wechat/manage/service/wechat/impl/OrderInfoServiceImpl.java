@@ -49,7 +49,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
         order.setDeliveryMode("SHIPPING");
         order.setFromSystem("PC");
         order.setIntegral("0.0");
-        order.setIsCod(0);
+        order.setIsCod(proOrder.getIsCod());
         order.setMemberNo(proOrder.getMemberNo());
         order.setNeedInvoice("0");
         order.setNeedSendCost(new BigDecimal(0.0));
@@ -77,6 +77,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
         String json= JSON.toJSONString(order);
 //        String url = "http://10.6.4.23:8087/oms-core-sdc/order/createCartOrder.htm"; //pre
 //        String url = "http://10.6.2.46:8087/oms-core-sdc/order/createCartOrder.htm"; //sit
+//        String url = "http://127.0.0.1:8087/oms-core-sdc/order/createCartOrder.htm"; //sit
             String url= PropertiesUtils.findPropertiesKey("oms-core-sdc")+"/order/createCartOrder.htm";
         String response = "";
         try {

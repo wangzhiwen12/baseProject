@@ -132,6 +132,7 @@
 //        var openId ="59rujlkfjlskf";
 
         var storeCode = getUrlDataByKey("storeCode");//门店号
+        storeCode="9999";
         var openId = getUrlDataByKey("openId");
         $("#tstoreCode").val(storeCode);
         $("#topenId").val(openId);
@@ -142,6 +143,7 @@
 
 
     function initialization() {
+        alert("initialization 开始");
         $.ajax({
             type: "post",
             contentType: "application/x-www-form-urlencoded;charset=utf-8",
@@ -149,6 +151,8 @@
             dataType: "json",
             data: "ncity=" + ncity,
             success: function (response) {
+                alert("json");
+                alert( JSON.stringify(response));
 //                alert(response.list[0].backImage);
                 console.log(" title:" + response.list[0].title + " city:" + response.list[0].city + " birthday:" + response.list[0].birthday + " name:" + response.list[0].name + " gender:" + response.list[0].gender+" backImage:"+response.list[0].backImage);
                 document.title = response.list[0].title;
@@ -260,9 +264,11 @@
 
 
             }, error: function (response) {
-                alert("error");
+                alert("error:"+JSON.stringify(response));
             }
         });
+
+        alert("initialization 结束");
     }
 
 

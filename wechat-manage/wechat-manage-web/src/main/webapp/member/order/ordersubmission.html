@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <title>提交订单</title>
+</head>
+<body>
+<div class="common-wrapper">
+    <div class="checkout">
+        <div class="step1">
+            <div class="step1-in ">
+                <a href="/norder/address.action?sid=2afc38a974b2d5c3cd9caad91885521d&amp;isExposedPay=true"
+                   class="s-href">
+                    <div class="mt_new">
+                        <div class="s1-name">
+                            <span id="address-name">王府井</span>
+                        </div>
+                        <div class="s1-phone">
+                            <span id="address-mobile">189****8010</span>
+                        </div>
+                        <div class="s1-default-new" id="address-default" style="display: none">
+                            默认
+                        </div>
+                    </div>
+                    <div class="mc step1-in-con">
+                        <i class="location-pic"></i>
+                        <span id="address-where">北京市东城区王府井大街255号</span>
+                    </div>
+                    <input id="addressId" value="138430008" type="hidden">
+                </a>
+            </div>
+            <b class="s1-borderB"></b>
+            <span class="s-point"></span>
+        </div>
+        <div class="middle-box border-1px-top">
+            <div class="step3">
+
+                <div class="s-item">
+                    <div class="box-container sam-box-container">
+                        <div class="sitem-l">
+                            <div class="sl-img samsl-img">
+                                <img src="">
+                            </div>
+                        </div>
+
+                        <div class="sitem-m" style="position: relative">
+
+                            <div class="oneline-tit"></div>
+
+                            <div class="sitem-weight">
+                                0.790kg×1
+                            </div>
+
+
+                            <div class="sitem-btm-detail edit-wrapper cf">
+                                <div class="sitem-sam-l cf">
+                                    <span class="sam-cost-price sam-cost-red"><span class="sam-y">￥</span><span
+                                            class="sam-hund">69</span><span></span></span>
+                                    <em class="icon-detailed margrt" id="moneyTip2"></em>
+                                </div>
+
+
+                                <div class="quantity-wrapper">
+                                    <a class="quantity-decrease" id="subnum">-</a>
+                                    <input size="4" value="1" name="num" id="numNow" class="quantity" type="tel" min="1"
+                                           max="5">
+                                    <a class="quantity-increase" id="addnum">+</a>
+                                </div>
+                            </div>
+                            <div class="sam-server">
+                                <span class="seven-return rtn-ok">
+                                    <div style="color:#f15353">
+                                        <img src="css/img/sevenokno.png" width="15" height="15">
+                                        不支持7天无理由退货
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="step2">
+                <div class="pay-deliver">
+                    <a href="#" class="pay-href">
+                        <div class="potive">
+                            <span class="pay-item cf">
+                                <p class="pay-deliver-title">配送方式</p>
+                                <p class="pay-deliver-way">
+                                    <span class="pay-way" id="paymentMassageID">申通快递</span>
+                                </p>
+                            </span>
+                            <span class="point-left"></span>
+                        </div>
+                        <span class="deliver-time">
+                            <p class="small-goods-deliver">
+                                <span class="small-goods-deliver-time">
+                                    <i class="clock-pic"></i>
+                                    <!--7月26日 [今天] 15:00-19:00-->
+                                </span>
+                            </p>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="step3"><a href="#" class="s-href">
+            <div class="receipt-info border-1px-top-middle">
+                <div class="m s-item ">
+                    <span class="receipt-info-left">发票信息</span>
+
+                    <div class="re-info">
+                        <div class="mt_new re-info01" id="reInfo02">电子发票-个人</div>
+                        <div class="mc re-info02">
+
+                        </div>
+                        <div class="mc re-info02">
+                            非图书商品-明细
+                        </div>
+
+                    </div>
+                    <span class="s-point"></span>
+                </div>
+            </div>
+        </a>
+        </div>
+    </div>
+    <div class="step4 border-1px-top">
+        <a href="#" class="s-href clearfix">
+            <div class="s-item border-1px-bottom-middle">
+                <div class="sitem-l">
+                    优惠券
+                    <i class="sitem-tip">0张可用</i>
+                </div>
+                <div class="sitem-r">未使用</div>
+                <span class="s-point"></span>
+            </div>
+        </a>
+        <a href="#" class="s-href clearfix">
+            <div class="s-item border-1px-bottom-middle">
+                <div class="sitem-l">
+                    其他卡券
+                    <i class="sitem-tip">0张可用</i>
+                </div>
+                <div class="sitem-r">未使用</div>
+                <span class="s-point"></span>
+            </div>
+        </a>
+    </div>
+    <div class="step5 border-1px-top outpay-items" id="yunfeeList">
+        <div class="price-items">
+                        <span class="price-items-all" id="pay-amount">
+
+                            <span><em>总价:</em><b>￥</b><i id="sumcount"></i></span>
+                            <span   class="yfpriceweight">
+                                <span><em>(运费:</em><b>￥</b><i id="yunfei"></i>) </span>
+
+<!--<i class="carriage-info" id="carriage-info" style="left:0px; top:3px;"></i>-->
+                            </span>
+
+                                                                                                                                                                                                                                                        </span>
+        </div>
+        <a href="javascript:;">
+        <!--onclick="checkAndSubmitOrder('true', '4','','checkPayBtn')-->
+            <div class="pay-leak-btn-red">在线支付</div>
+        </a>
+        <a href="javascript:;" onclick="checkAndSubmitOrder('true', '1','','checkPayBtn')">
+            <div class="pay-leak-btn">货到付款</div>
+        </a>
+    </div>
+</div>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/public.js"></script>
+<script src="js/m_common_header_bottom2.1.js" type="text/javascript"></script>
+<!--<script src="js/ordersubmission.js" type="text/javascript"></script>-->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#yunfei").html("6.00");
+        var sid="";
+        var productCode="";
+        var productname="";
+        var productUrl="";
+        var productName="";
+        var productPrice="";
+        var productNum="";
+
+        var urlinfo=window.location.href;
+        len=urlinfo.length;//获取url的长度
+        offset=urlinfo.indexOf("?");
+        newsidinfo=urlinfo.substr(offset+1,len)
+        //  alert(newsidinfo);
+        newsids=newsidinfo.split("&");//对获得的参数字符串按照“=”进行分割 newsid=newsids[1];//得到参数值
+
+        for(var i=0;i<newsids.length;i++){
+            var  sp=  newsids[i].split("=");
+            if("productCode"==sp[0]){
+
+                productCode=sp[1];
+                $("#productno").val(productCode);
+                console.log("productCode:"+productCode);
+            }else if("productName"==sp[0]){
+                productName=sp[1];
+                var ss=decodeURI(productName);
+                $(".oneline-tit").html(ss);
+                console.log(productName);
+            }else if("productUrl"==sp[0]){
+                productUrl=sp[1];
+                var ss=decodeURI(productUrl);
+                var aa=$(".middle-box .bg_sign .border-1px-bottom-middle .sam-box-container .samwid .samsl-img img").attr("src",productUrl);
+                console.log("_productUrl"+aa);
+            }
+            else if("productPrice"==sp[0]){
+                productPrice=sp[1];
+                $(".sam-hund").html(productPrice);
+                console.log("productPrice:"+productPrice);
+            }
+            else if("productSize"==sp[0]){
+                productSize=sp[1];
+                $(".sitem-weight").html("尺码："+productSize);
+                console.log("productSize:"+productSize);
+            }
+            else if("productNum"==sp[0]){
+                productNum=sp[1];
+                $("#numNow").val(productNum);
+                console.log("productNum:"+productNum);
+            }
+
+            //计算总价
+            var sum=productPrice * productNum;
+
+            var yunfei=$(".yfpriceweight span i").html();
+            var sumcount=parseFloat(sum)+ parseFloat(yunfei);
+
+            var countnum=sumcount.toFixed(2);
+            $("#sumcount").html(countnum);
+
+        }
+
+
+
+
+        inputNumber($('.quantity'));
+        //在线支付
+        $(".pay-leak-btn-red").click(function(){
+            alert("在线支付");
+            createOrder(0);
+        });
+        //货到付款
+        $(".pay-leak-btn").click(function(){
+            alert("货到付款");
+            createOrder(1);
+        });
+    });
+
+    function createOrder(isCod) {
+
+
+        var paymentAmount=$(".price-items-all span i").html();;
+        var accountNo="2000001";
+        var supplyProductNo="000000030047796005";
+//        var supplyProductNo=$("#productno").val();
+        var saleSum= $("#numNow").val();
+        var receptProvName="北京";
+        var receptCityName="北京市";
+        var receptAddress="王府井大街253";
+        var receptPhone="18600007777";
+        var receptName="张三啊啊啊";
+        console.log("paymentAmount:"+paymentAmount+
+                " accountNo："+accountNo+
+                " supplyProductNo:"+supplyProductNo+
+                " saleSum:"+saleSum+
+                " receptProvName:"+receptProvName+
+                " receptCityName:"+receptCityName+
+                " receptCityName："+receptCityName+
+                " receptAddress ："+receptAddress+
+                " receptPhone:"+receptPhone+
+                " receptName:"+receptName,
+                 "isCod:"+isCod
+        );
+        var json={
+            "paymentAmount": paymentAmount,
+            "accountNo": accountNo,
+            "supplyProductNo": supplyProductNo,
+            "saleSum": saleSum,
+            "receptPhone": receptPhone,
+            "receptName": receptName,
+            "receptCityName": receptCityName,
+            "receptProvName": receptProvName,
+            "receptAddress": receptAddress,
+            "isCod":isCod
+        }
+        //   alert(JSON.stringify(json));
+
+        $.ajax({
+            type: "post",
+            contentType: "application/json",
+            url: getContextPath() + "/order/createOrder.json",
+            dataType: "json",
+            async: false,
+            data:  JSON.stringify(json) ,
+            success: function (pro) {
+//                var proYe = JSON.parse(pro);
+                if(pro.success=="true"){
+                    alert("提交订单成功，订单号为："+pro.orderNo);
+                }else {
+                    alert("提交订单失败！");
+                }
+            }
+        });
+    }
+
+
+
+
+
+
+    //    数量增加事件
+    function checkLimitToast() {
+        var member = $(".quantity").val();
+        var price = $(".sam-hund").html();
+        console.log("数量：" + member);
+        console.log("价格：" + price);
+        var sum = "";
+        if (member <= 0) {
+            sum = 1 * price;
+            $("#numNow").val(1)
+        } else if (member >= 10) {
+            sum = 10 * price;
+            $("#numNow").val(10)
+        }
+
+        else {
+            sum = member * price;
+        }
+        var yunfei=$(".yfpriceweight span i").html();
+         var sumcount=parseFloat(sum)+ parseFloat(yunfei);
+       var countnum= sumcount.toFixed(2);
+        $("#sumcount").html(countnum);
+        console.log("sum：" + countnum);
+    }
+
+
+    (function () {
+        window.inputNumber = function (el) {
+            var min = el.attr('min') || false;
+            var max = el.attr('max') || false;
+            var els = {};
+            els.dec = el.prev();
+            els.inc = el.next();
+            el.each(function () {
+                init($(this));
+            });
+
+            function init(el) {
+                els.dec.on('click', decrement);
+                els.inc.on('click', increment);
+                function decrement() {
+                    var value = el[0].value;
+                    value--;
+                    if (!min || value >= min) {
+                        el[0].value = value;
+                    }
+                    checkLimitToast();
+                }
+
+                function increment() {
+                    var value = el[0].value;
+                    value++;
+                    if (!max || value <= max) {
+                        el[0].value = value++;
+                        checkLimitToast();
+                    }
+                }
+            }
+
+        }
+    })();
+</script>
+</body>
+</html>

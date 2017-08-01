@@ -8,7 +8,9 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/??sm.min.css,sm-extend.min.css">
+
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
     <style type="text/css">
         * {
             box-sizing: content-box;
@@ -528,7 +530,124 @@
 <script src="../js/public.js"></script>
 <script src="../js/detail.js"></script>
 <script type='text/javascript'>
+    $(function () {
 
+
+        //16250613
+//        document.getElementById("buy-now1").className();
+
+        $.init();
+        $(document).on('click', '.create-popup', function () {
+            $.popup('.popup');
+        });
+
+        inputNumber($('.input-number'));
+
+        //商品规格选择
+        $(".sys_item_spec .sys_item_specpara").each(function () {
+            var i = $(this);
+            var p = i.find("ul>li");
+            p.click(function () {
+                if (!!$(this).hasClass("selected")) {
+                    $(this).removeClass("selected");
+                    i.removeAttr("data-attrval");
+                } else {
+                    $(this).addClass("selected").siblings("li").removeClass("selected");
+                    i.attr("data-attrval", $(this).attr("data-aid"))
+                }
+                getattrprice() //输出价格
+
+            })
+        })
+
+        $("#orderbuynoww").addClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 外立即购买
+        $("#orderbuynown").addClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 选择尺码和颜色里边立即购买
+    });
+    //获取对应属性的价格
+    function getattrprice() {
+        var defaultstats = true;
+        var _val = '';
+        var _resp = {
+            mktprice: ".sys_item_mktprice",
+            price: ".sys_item_price"
+        }  //输出对应的class
+        $(".sys_item_spec .sys_item_specpara").each(function () {
+            var i = $(this);
+            var v = i.attr("data-attrval");
+            if (!v) {
+                defaultstats = false;
+            } else {
+                _val += _val != "" ? "_" : "";
+                _val += v;
+            }
+        })
+        if (!!defaultstats) {
+            $.ajax({
+                type: "post",
+                contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                url: rootPath + "/shoppePro/selectStockAndPriceByProDetail.shtml",
+                dataType: "json",
+                async: false,
+                data: {
+                    "skuCode": sku_code[_val]
+                },
+                success: function (pro) {
+                    var proYe = JSON.parse(pro);
+                    var proData = proYe.data;
+                    $('#pro-price').html(proData.price);
+                    _mktprice = proData.price;
+                    _price = proData.price;  //价格
+                    var color_stan = _val.split("_");
+                    $('#pro-stan-color').html(color_stan[0] + "  ,  " + color_stan[1] + "  ,  1件");
+                    $('#spsid').attr('value',proData.spsid);
+                     //商品码    sku_code[_val];
+                     //购买数量  input-number
+                     //商品名称  id pro-name
+                     //商品在·图片 sys_spec_img  selected
+                     // 价格     _price
+                     //尺码   sys_spec_text
+                    order(sku_code[_val],_price,proData.spsid);
+                },
+                error: function (XMLHttpRequest, textStatus) {
+
+                }
+            });
+        } else {
+            _mktprice = $('.sys_item_price').text();
+            _price = $('.sys_item_price').text();
+        }
+        //输出价格
+        $(_resp.mktprice).text(_mktprice);  ///其中的math.round为截取小数点位数
+        $(_resp.price).text(_price);
+    }
+    function order(productCode,price,productCode){
+        $("#orderbuynoww").removeClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 外立即购买
+        $("#orderbuynown").removeClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 选择尺码和颜色里边立即购买
+        //商品码    sku_code[_val];
+        //购买数量  input-number
+        //商品名称  id pro-name
+        //商品在·图片 sys_spec_img  selected
+        // 价格     _price
+        //尺码   sys_spec_text
+        var _productCode=productCode;
+        var _productPrice=price;
+        var _productNum=$(".input-number").val();
+        var _productName=document.getElementById('pro-name').innerText;
+        var _productName=encodeURI(document.getElementById('pro-name').innerText);// window.location.assign();
+        var _productUrl=$(".sys_item_spec .sys_item_specpara .sys_spec_img .selected img").attr("src");
+        var _productSize=$(".sys_item_spec .sys_item_specpara .sys_spec_text .selected a").html();
+        console.log("商品码 :"+_productCode);
+        console.log("价格 :"+_productPrice);
+        console.log("购买数量 :"+_productNum);
+        console.log("商品名称 :"+_productName);
+        console.log("图片 :"+_productUrl);
+        console.log("尺码 :"+_productSize);
+                var ahref=rootPath+"/member/order/ordersubmission.html?productCode="+_productCode+"&productPrice="+_productPrice+"&productNum="+_productNum+"&productName="+_productName+"&productUrl="+_productUrl+"&productSize="+_productSize;
+        document.getElementById("orderbuynown").href=ahref;
+        document.getElementById("orderbuynoww").href=ahref;
+//        document.getElementById("buy-now").arrt("href",ahref);
+
+    }
 
 </script>
 </html>

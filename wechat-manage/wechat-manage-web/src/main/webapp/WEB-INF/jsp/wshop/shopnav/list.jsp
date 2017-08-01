@@ -532,7 +532,7 @@
         {{each data as nav i}}
         <label class="checkbox inline">
             <input name="on_page" value="{{nav.sid}}" type="checkbox" {{if nav.shopId==1}} checked="checked" {{/if}}
-            >{{nav.pageTypeName}}
+            {{nav.pageTypeName}}
         </label>
         {{/each}}
     </div>

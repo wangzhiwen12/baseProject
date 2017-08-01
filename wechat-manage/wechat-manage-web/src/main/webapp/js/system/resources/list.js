@@ -18,6 +18,7 @@ $(function() {
 			} else {
 				bootbox.alert("查询资源列表出错！");
 			}
+			console.log(JSON.stringify(res));
 		}
 	});
 	$("#seach").click("click", function() {// 绑定查询按扭
@@ -133,6 +134,7 @@ function tree() {
 				data.instance.refresh();
 			});
 	}).*/on('select_node.jstree', function (e, data) {
+console.log(data);
 		id = new Map();
 			var idd = data.node.id;
 		id.put("id",idd);
