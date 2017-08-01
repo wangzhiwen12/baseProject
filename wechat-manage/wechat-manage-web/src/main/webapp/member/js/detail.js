@@ -27,8 +27,15 @@ $(function () {
         })
     });
 
-    $("#orderbuynoww").addClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 外立即购买
-    $("#orderbuynown").addClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 选择尺码和颜色里边立即购买
+
+    $(".input-number-decrement,.input-number-increment").click(function () {
+        var title = '';
+        $(".sys_item_spec .sys_item_specpara .selected a").each(function () {
+            title += $(this).attr("title") + " ,";
+        });
+        title += $(".input-number").val() + "件";
+        $('#pro-stan-color').html(title);
+    });
 
 });
 function getProYeInfoBySpuCode() {
@@ -44,7 +51,7 @@ function getProYeInfoBySpuCode() {
         success: function (pro) {
             var proYe = JSON.parse(pro);
             var proData = proYe.data;
-            console.log(JSON.stringify(proData));
+            // console.log(JSON.stringify(proData));
             var picList = proData.stanPicList;
             for (var i = 0; i < picList.length; i++) {
                 if (picList[i].picStan == '1000*1000') {
@@ -54,9 +61,9 @@ function getProYeInfoBySpuCode() {
                     break;
                 }
             }
-            $('#pro-name').html(proData.skuName);
-            $('#pro-short-desc').html(proData.shortDesc);
-            $('#pro-original-price').html(proData.originalPrice);
+            $('#pro-name').html(proData.shortDesc);
+            // $('#pro-short-desc').html(proData.shortDesc);
+            // $('#pro-original-price').html(proData.originalPrice);
             $('#pro-stan-color').html(proData.colorName + "  ,  " + proData.stanName + "  ,  1件");
 
             var colorTmpl = '{{each colorList as cl i}}<li data-aid="{{cl.colorName}}"><a href="javascript:;" title="{{cl.colorName}}"><img src="http://img.wfjimg.com/{{cl.thumbnailUrl}}" alt="{{cl.colorName}}" /></a><i></i></li>{{/each}}';
@@ -81,7 +88,6 @@ function getProYeInfoBySpuCode() {
             proJson = "{" + proJson + "}";
             // JSON.stringify(proJson);
             sku_code = JSON.parse(proJson);
-            console.log(JSON.stringify(proJson));
 
             $(".sys_item_spec .sys_item_specpara .sys_spec_img li").each(function () {
                 var colorName = $(this).attr("data-aid");
@@ -92,6 +98,8 @@ function getProYeInfoBySpuCode() {
                 if (!!colorName && colorName != null && colorName == proData.colorName) {
                     $(this).addClass("selected").siblings("li").removeClass("selected");
                     $(this).parent().parent().parent().attr("data-attrval", $(this).attr("data-aid"))
+                    $("#orderbuynoww").removeClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 外立即购买
+                    $("#orderbuynown").removeClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 选择尺码和颜色里边立即购买
                 }
             });
             $(".sys_item_spec .sys_item_specpara .sys_spec_text li").each(function () {
@@ -103,6 +111,8 @@ function getProYeInfoBySpuCode() {
                 if (!!stanName && stanName != null && stanName == proData.stanName) {
                     $(this).addClass("selected").siblings("li").removeClass("selected");
                     $(this).parent().parent().parent().attr("data-attrval", $(this).attr("data-aid"))
+                    $("#orderbuynoww").removeClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 外立即购买
+                    $("#orderbuynown").removeClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 选择尺码和颜色里边立即购买
                 }
             });
         },
@@ -201,10 +211,12 @@ function selectStockAndPriceByProDetail() {
         success: function (pro) {
             var proYe = JSON.parse(pro);
             var proData = proYe.data;
-            console.log(proData);
-            $('.sys_item_price').html(proData.price);
-            $('.sys_item_mktprice').html(proData.price);
-            $('#pro-price').html(proData.price);
+
+            var proPrice = "￥" + proData.price;
+            console.log("selectStockAndPriceByProDetail", proPrice);
+            $('.sys_item_price').html(proPrice);
+            // $('.sys_item_mktprice').html(proPrice);
+            $('#pro-price').html(proPrice);
         },
         error: function (XMLHttpRequest, textStatus) {
 
@@ -243,11 +255,16 @@ function getattrprice() {
             success: function (pro) {
                 var proYe = JSON.parse(pro);
                 var proData = proYe.data;
-                $('#pro-price').html(proData.price);
-                _mktprice = proData.price;
-                _price = proData.price;  //价格
+                var proPrice = "￥" + proData.price;
+                $('#pro-price').html(proPrice);
+                $('.sys_item_price').html(proPrice);
+
+                var _mktprice = proData.prvarice;
+                var _price = proData.price;  //价格
                 var color_stan = _val.split("_");
-                $('#pro-stan-color').html(color_stan[0] + "  ,  " + color_stan[1] + "  ,  1件");
+                var proNum = $(".input-number").val();
+
+                $('#pro-stan-color').html(color_stan[0] + "  ,  " + color_stan[1] + "  ,  " + proNum + "件");
                 $('#spsid').attr('value', proData.spsid);
                 //商品码    sku_code[_val];
                 //购买数量  input-number
