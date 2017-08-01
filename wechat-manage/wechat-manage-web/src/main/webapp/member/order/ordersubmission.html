@@ -44,7 +44,7 @@
                     <div class="box-container sam-box-container">
                         <div class="sitem-l">
                             <div class="sl-img samsl-img">
-                                <img src="">
+                                <img src="111"/>
                             </div>
                         </div>
 
@@ -170,7 +170,8 @@
         <!--onclick="checkAndSubmitOrder('true', '4','','checkPayBtn')-->
             <div class="pay-leak-btn-red">在线支付</div>
         </a>
-        <a href="javascript:;" onclick="checkAndSubmitOrder('true', '1','','checkPayBtn')">
+        <!--onclick="checkAndSubmitOrder('true', '1','','checkPayBtn')-->
+        <a href="javascript:;">
             <div class="pay-leak-btn">货到付款</div>
         </a>
     </div>
@@ -214,7 +215,8 @@
             }else if("productUrl"==sp[0]){
                 productUrl=sp[1];
                 var ss=decodeURI(productUrl);
-                var aa=$(".middle-box .bg_sign .border-1px-bottom-middle .sam-box-container .samwid .samsl-img img").attr("src",productUrl);
+//                alert(ss);
+                var aa=$(".sl-img.samsl-img img").attr("src",ss);
                 console.log("_productUrl"+aa);
             }
             else if("productPrice"==sp[0]){
@@ -250,12 +252,12 @@
         inputNumber($('.quantity'));
         //在线支付
         $(".pay-leak-btn-red").click(function(){
-            alert("在线支付");
+//            alert("在线支付");
             createOrder(0);
         });
         //货到付款
         $(".pay-leak-btn").click(function(){
-            alert("货到付款");
+//            alert("货到付款");
             createOrder(1);
         });
     });

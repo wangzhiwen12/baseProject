@@ -291,9 +291,9 @@ function order(productCode, price, productCode) {
     console.log("商品名称 :" + _productName);
     console.log("图片 :" + _productUrl);
     console.log("尺码 :" + _productSize);
-    var ahref = rootPath + "/member/order/order.html?productCode=" + _productCode + "&productPrice=" + _productPrice + "&productNum=" + _productNum + "&productName=" + _productName + "&productUrl=" + _productUrl + "&productSize=" + _productSize;
-    document.getElementById("buy-now").href = ahref;
-    document.getElementById("buy-now1").href = ahref;
+    var ahref = rootPath + "/member/order/ordersubmission.html?productCode=" + _productCode + "&productPrice=" + _productPrice + "&productNum=" + _productNum + "&productName=" + _productName + "&productUrl=" + _productUrl + "&productSize=" + _productSize;
+    document.getElementById("orderbuynoww").href = ahref;
+    document.getElementById("orderbuynown").href = ahref;
     //document.getElementById("buy-now").arrt("href",ahref);
 
 }
