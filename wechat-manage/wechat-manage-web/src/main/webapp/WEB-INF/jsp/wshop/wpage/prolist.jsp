@@ -142,7 +142,7 @@ input {
 								if(p=="data"){
 									for(var i=0;i<jsonObj[p].length;i++){
 										console.log(jsonObj[p][i]);
-										goodsHTML+=' <li class="goods-li"><a href="${pageContext.request.contextPath}/member/detail/detail.html?skuCode='+jsonObj[p][i].skuCode+'" class="goods-a"><div class="goods-product"><div class="goods-product-img">';
+										goodsHTML+=' <li class="goods-li"><a href="'+getContextPath()+'/member/detail/detail.html?skuCode='+jsonObj[p][i].skuCode+'" class="goods-a"><div class="goods-product"><div class="goods-product-img">';
 										goodsHTML+='<img src="http://img.wfjimg.com/'+jsonObj[p][i].picUrl+'">';
 										goodsHTML+='</div><div class="goods-product-text">'+jsonObj[p][i].proName+'</div>';
 										goodsHTML+='<p class="goods-product-text" >'+jsonObj[p][i].price+'</p></a></li>';
@@ -166,4 +166,10 @@ input {
 					parent.layer.close(index);
 				}
 			});
+	function getContextPath() {
+		var pathName = document.location.pathname;
+		var index = pathName.substr(1).indexOf("/");
+		var result = pathName.substr(0, index + 1);
+		return result;
+	}
 </script>
