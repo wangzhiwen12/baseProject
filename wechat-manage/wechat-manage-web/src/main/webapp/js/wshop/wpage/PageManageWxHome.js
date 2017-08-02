@@ -511,8 +511,10 @@ $("#save")
 					$(".ui-shadow").html("");
 					//去掉所有组件编辑状态
 					$(".common").removeClass("cur");
+					$(".comheader").html("");
 					
 					var html = $("#P").html();
+					
 					var data = JSON.stringify({
 						"wPageTitle" : wPageTitle,
 						"proCodes":proCodes,

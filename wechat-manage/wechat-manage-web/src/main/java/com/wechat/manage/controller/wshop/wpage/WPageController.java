@@ -26,6 +26,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONPObject;
 import com.wechat.manage.controller.index.BaseController;
 import com.wechat.manage.pojo.system.entity.UserFormMap;
 import com.wechat.manage.pojo.usercenter.entity.TPage;
@@ -534,7 +535,14 @@ public class WPageController extends BaseController {
 		json.remove("html");
 		String data = json.getString("param").toString().replace("\\", "");
 		TPage tPage = com.alibaba.fastjson.JSON.parseObject(data, TPage.class);
-
+		
+		TPageEdit  tpe= new TPageEdit();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("wpageTitle", tPage.getWpageTitle());
+		
+		tpe.setParam(map.toString());
+		//改成页面标题
+		
 		UserFormMap userFormMap = (UserFormMap) Common.findUserSession(request);
 		userId = String.valueOf(userFormMap.get("id"));
 		tPage.setCreateUser(userId);
@@ -565,6 +573,8 @@ public class WPageController extends BaseController {
 			tPage.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 			tPage.setSeqNo(1);
 			tWPageService.insertSelective(tPage);
+			tpe.setId(uuid);
+			tpPageService.insertSelective(tpe);
 		} else {
 			tPage.setPageLink(rootPath + "wechatShopPage/wpageInfo.shtml?id="+tPage.getSid());
 			flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
@@ -575,6 +585,8 @@ public class WPageController extends BaseController {
 					tPage.getSid()+"S" + ".html", inputS);
 			
 			tPage.setStatus("1");
+			tpe.setId(tPage.getSid());
+			tpPageService.insertSelective(tpe);
 			tWPageService.updateWpage(tPage);
 		}
 		if (flag == true&&flagS==true) {
