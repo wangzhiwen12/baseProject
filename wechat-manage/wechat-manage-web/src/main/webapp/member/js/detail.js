@@ -50,7 +50,7 @@ function getProYeInfoBySpuCode() {
         success: function (pro) {
             var proYe = JSON.parse(pro);
             var proData = proYe.data;
-            // console.log(JSON.stringify(proData));
+            console.log(JSON.stringify(proData));
             var picList = proData.stanPicList;
             for (var i = 0; i < picList.length; i++) {
                 if (picList[i].picStan == '1000*1000') {
