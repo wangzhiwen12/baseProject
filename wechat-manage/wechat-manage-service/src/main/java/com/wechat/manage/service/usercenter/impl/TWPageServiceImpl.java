@@ -127,7 +127,8 @@ public class TWPageServiceImpl implements TWPageService {
 			tPage.setUpdateTime(updateTime);
 			wPageMapper.insertSelective(tPage);
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.error(e.getMessage(), e);
+			throw e;
 		}
 	}
 

@@ -9,7 +9,7 @@ public interface IUserCenterService {
 	 * @param html		页面html代码
 	 * @return			是否成功
 	 */
-	public boolean saveUserCenterPage(TPage page,String html,String data, String storeCode);
+	public boolean saveUserCenterPage(TPage page,String html,String data, String storeCode, String path);
 
 	/**
 	 * 修改会员页面数据内容

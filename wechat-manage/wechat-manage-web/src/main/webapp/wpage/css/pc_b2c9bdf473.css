@@ -556,7 +556,6 @@ img::after {
 }
 
 .page-content, .app__content {
-	width: 1120px;
 	min-height: 420px;
 	zoom: 1
 }
