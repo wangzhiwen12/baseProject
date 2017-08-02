@@ -30,13 +30,12 @@ $(function () {
 
     $(".input-number-decrement,.input-number-increment").click(function () {
         var title = '';
-        $(".sys_item_spec .sys_item_specpara .selected a").each(function () {
-            title += $(this).attr("title") + " ,";
+        $(".sys_item_spec .sys_item_specpara").each(function () {
+            title += $(this).attr("data-attrval") + " ,";
         });
         title += $(".input-number").val() + "件";
         $('#pro-stan-color').html(title);
     });
-
 });
 function getProYeInfoBySpuCode() {
     $.ajax({
@@ -56,8 +55,11 @@ function getProYeInfoBySpuCode() {
             for (var i = 0; i < picList.length; i++) {
                 if (picList[i].picStan == '1000*1000') {
                     var imageTmpl = '{{each picList as pic i}}<div class="swiper-slide"><img src="http://img.wfjimg.com/{{pic.picUrl}}" alt="" width="100%"/></div>{{/each}}';
+                    var detailTmpl = '{{each picList as pic i}}<img src="http://img.wfjimg.com/{{pic.picUrl}}" width="100%">{{/each}}';
                     var render = template.compile(imageTmpl);
+                    var detailRender = template.compile(detailTmpl);
                     $('#pic-list-div').append(render(picList[i]));
+                    $('.jsProDetail').append(detailRender(picList[i]));
                     break;
                 }
             }
@@ -70,7 +72,7 @@ function getProYeInfoBySpuCode() {
             var colorRender = template.compile(colorTmpl);
             $('.sys_spec_img').append(colorRender(proData));
 
-            var stanTmpl = '{{each stanNewList as stan i}}<li data-aid="{{stan.stanName}}"><a href="javascript:;" title="S">{{stan.stanName}}</a><i></i></li>{{/each}}';
+            var stanTmpl = '{{each stanNewList as stan i}}<li data-aid="{{stan.stanName}}"><a href="javascript:;" title="{{stan.stanName}}">{{stan.stanName}}</a><i></i></li>{{/each}}';
             var stanRender = template.compile(stanTmpl);
             $('.sys_spec_text').append(stanRender(proData));
 
@@ -213,8 +215,7 @@ function selectStockAndPriceByProDetail() {
             var proData = proYe.data;
 
             var proPrice = "￥" + proData.price;
-            console.log("selectStockAndPriceByProDetail", proPrice);
-            $('.sys_item_price').html(proPrice);
+            $('.sys_item_price').html(proData.price);
             // $('.sys_item_mktprice').html(proPrice);
             $('#pro-price').html(proPrice);
         },
@@ -259,8 +260,8 @@ function getattrprice() {
                 $('#pro-price').html(proPrice);
                 $('.sys_item_price').html(proPrice);
 
-                var _mktprice = proData.prvarice;
-                var _price = proData.price;  //价格
+                _mktprice = proData.prvarice;
+                _price = proData.price;  //价格
                 var color_stan = _val.split("_");
                 var proNum = $(".input-number").val();
 
@@ -310,7 +311,7 @@ function order(productCode, price, productCode) {
     console.log("图片 :" + _productUrl);
     console.log("尺码 :" + _productSize);
     console.log("颜色 :" + _productColer);
-    var ahref = rootPath + "/member/order/ordersubmission.html?productCode=" + _productCode + "&productPrice=" + _productPrice + "&productNum=" + _productNum + "&productName=" + _productName + "&productUrl=" + _productUrl + "&productSize=" + _productSize+"&productColor="+_productColer;
+    var ahref = rootPath + "/member/order/ordersubmission.html?productCode=" + _productCode + "&productPrice=" + _productPrice + "&productNum=" + _productNum + "&productName=" + _productName + "&productUrl=" + _productUrl + "&productSize=" + _productSize + "&productColor=" + _productColer;
     document.getElementById("orderbuynoww").href = ahref;
     document.getElementById("orderbuynown").href = ahref;
     //document.getElementById("buy-now").arrt("href",ahref);
