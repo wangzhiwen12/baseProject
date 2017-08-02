@@ -100,6 +100,7 @@
                 /cart/** = anon
                 /order/** = anon
                 /wechatpage/** = anon
+                /wechatShopPage/preview.shtml = anon
 
             </value>
         </property>
