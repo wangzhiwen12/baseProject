@@ -87,6 +87,7 @@
         </dependency>
     </dependencies>
     <build>
+        <finalName>notebook</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

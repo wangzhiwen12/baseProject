@@ -101,7 +101,10 @@
                 /order/** = anon
                 /wechatpage/** = anon
                 /wechatShopPage/preview.shtml = anon
-
+                /wechatShopPage/queryHomePage.shtml = anon
+                /wShop/** = anon
+                /wpage/css/** = anon
+                /wpage/js/** = anon
             </value>
         </property>
     </bean>

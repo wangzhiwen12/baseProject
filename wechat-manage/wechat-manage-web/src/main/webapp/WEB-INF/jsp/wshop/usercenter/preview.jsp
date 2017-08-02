@@ -16,19 +16,13 @@
     <title id="js-meta-title">
           会员主页</title>
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/wpage/css/chosen.jquery.20150826.min.css"
-          onerror="_cdnFallback(this)" media="screen">
-    <!-- ▼ Common CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/wpage/css/jquery.ui.20151022.min.css" onerror="_cdnFallback(this)"
-          media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/wpage/css/bootstrap_140705.min.css"
-          onerror="_cdnFallback(this)" media="screen">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/wpage/css/usercenter_preview.css"
           onerror="_cdnFallback(this)" media="screen">
+    <link href="${pageContext.request.contextPath}/member/css/css/style.css"
+		rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/member/css/css/bootstrap.min.css"
+		rel="stylesheet" />
     <!-- ▲ Common CSS -->
-    
-    <script type="text/javascript" src="${pageContext.request.contextPath}/wpage/js/libs/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/wshop/wpage/wpageOperation.js"></script>
     
     <!-- ▼ App CSS -->
     <link rel="stylesheet"
@@ -54,6 +48,12 @@
 	    </div>
 	</div>
 	
-	<jsp:include page="../shopnav/shopnav.jsp"></jsp:include>
+	<div class="container v-floor">
+        <div class="row">
+            <div class="col-xs-4 v-floor-nav"><a href="#"><img src="${pageContext.request.contextPath}/member/css/img/n-find.png"></a></div>
+            <div class="col-xs-4 v-floor-nav"><a href="#"><img src="${pageContext.request.contextPath}/member/css/img/n-catergry.png"></a></div>
+            <div class="col-xs-4 v-floor-nav"><a href="${pageContext.request.contextPath}/wShop/preview.shtml"><img src="${pageContext.request.contextPath}/member/css/img/n-me.png"></a></div>
+        </div>
+    </div>
 </body>
 </html>

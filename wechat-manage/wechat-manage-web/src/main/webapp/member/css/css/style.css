@@ -868,19 +868,19 @@ body{/*min-width: 300px;max-width: 640px;*/margin: 0 auto;color: #666;background
     top: 2px;
 }
 .app-preview .order-related .uc-order.list-horizon .link-topay {
-    background-image: url("../css/img/icon_topay@2x.png");
+    background-image: url("../img/icon_topay@2x.png");
 }
 .app-preview .order-related .uc-order.list-horizon .link-totuan {
-    background-image: url("../css/img/icon_daijiedan@2x.png");
+    background-image: url("../img/icon_daijiedan@2x.png");
 }
 .app-preview .order-related .uc-order.list-horizon .link-tosend {
-    background-image: url("../css/img/icon_tosend@2x.png");
+    background-image: url("../img/icon_tosend@2x.png");
 }
 .app-preview .order-related .uc-order.list-horizon .link-send {
-    background-image: url("../css/img/icon_send@2x.png");
+    background-image: url("../img/icon_send@2x.png");
 }
 .app-preview .order-related .uc-order.list-horizon .link-sign {
-    background-image: url("../css/img/icon_sign@2x.png");
+    background-image: url("../img/icon_sign@2x.png");
 }
 .app-preview .order-related .uc-order.list-horizon .title-info {
     line-height: 20px;
@@ -891,7 +891,7 @@ body{/*min-width: 300px;max-width: 640px;*/margin: 0 auto;color: #666;background
     padding-right: 28px;
 }
 .app-preview .order-related .block.block-list.list-vertical > a.link::before {
-    background-image: url("img/uc_icon.png");
+    background-image: url("../img/uc_icon.png");
     background-repeat: no-repeat;
     background-size: 18px 218px;
     content: "";

@@ -1,8 +1,8 @@
 package com.wechat.manage.service.usercenter.intf;
 
-import java.util.List;
-
 import com.wechat.manage.pojo.usercenter.entity.TPage;
+
+import java.util.List;
 /**
  * 微页面
  * @author Administrator
@@ -84,5 +84,12 @@ public interface TWPageService {
 	 * @param newName
 	 */
 	public void inestCopyFile(TPage tPage,String newName);
+
+	/**
+	 * 获取首页地址
+	 *
+	 * @return
+	 */
+	public String queryHomePage();
 
 }

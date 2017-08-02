@@ -1,15 +1,14 @@
 package com.wechat.manage.service.usercenter.impl;
 
-import java.sql.Timestamp;
-import java.util.List;
-
+import com.wechat.manage.mapper.wechat.WPageMapper;
+import com.wechat.manage.pojo.usercenter.entity.TPage;
+import com.wechat.manage.service.usercenter.intf.TWPageService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wechat.manage.mapper.wechat.WPageMapper;
-import com.wechat.manage.pojo.usercenter.entity.TPage;
-import com.wechat.manage.service.usercenter.intf.TWPageService;
+import java.sql.Timestamp;
+import java.util.List;
 /**
  * 微页面
  * @author Administrator
@@ -127,7 +126,8 @@ public class TWPageServiceImpl implements TWPageService {
 			tPage.setUpdateTime(updateTime);
 			wPageMapper.insertSelective(tPage);
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.error(e.getMessage(), e);
+			throw e;
 		}
 	}
 
@@ -162,5 +162,18 @@ public class TWPageServiceImpl implements TWPageService {
 		
 	}
 
+	/**
+	 * 获取首页地址
+	 * @return
+	 */
+	@Override
+	public String queryHomePage() {
+		TPage tPage=wPageMapper.selectHomePage(null);
+		if(tPage!=null)
+		{
+			return tPage.getPageLink();
+		}
+		return null;
+	}
 
 }
