@@ -545,20 +545,20 @@
 
             <div class="w-goods-nav">
                 <div class="list">
-					<span data-repeat="add_goods_{{temp}}.list" class="repeat-wrapper" id="add_goods-wrapper">
+						<ul data-repeat="add_goods_{{temp}}.list" class="find-goods-ul clearfix" id="add_goods-wrapper">
 
-			    		<a href="javascript:;" class="w-goods-nav-item" data-tgt="href" data-scope="add_goods_{{temp}}.list.link" way-data="link">
-				            <div class="w-goodsNav_icon">
-				                <img src="${pageContext.request.contextPath}/images/page/icon/pro.jpg" alt="" class="ezp-cell-icon"  data-scope="add_goods_{{temp}}.list.picture" data-tgt="src">
-				            </div>
-							  <input type="hidden" id="de" value ="default"/>
-							  <p class="w-goodsNav_label" data-scope="add_goods_{{temp}}.list.title"  data-tgt="cot">商品名称</p>
-							  <br>
-							  <p class="w-goodsNav_label" data-scope="add_goods_{{temp}}.list.title" data-tgt="cot">888.99</p>
-				          
-				        </a>
-
-					</span>
+			 <li class="goods-li">
+                <a class="goods-a" href="http://www.baidu.com">
+				<input type="hidden" id="de" value ="default"/>
+                    <div class="goods-product">
+                        <div class="goods-product-img"><img src="member/css/img/1.jpg">
+                        </div>
+                        <div class="goods-product-text">【正版授权小黄人】MEE 梦洁家纺出品床上四件套卡通纯棉被套新品欧美风 Jerry 1.5m(200*230)cm</div>
+                        <p class="goods-product-price">￥499.00</p>
+                    </div>
+                </a>
+            </li>
+					</ul>
                 </div>
             </div>
 
