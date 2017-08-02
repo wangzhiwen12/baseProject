@@ -150,7 +150,6 @@ M = {}, _M = {};
  * 通过后台获取配置数据，利用前台模板引擎加载页面
  */
 function loadCfgData() {
-
 	var wPageId;
 	var input = document.getElementsByTagName("input");
 	for (i = 0; i < input.length; i++) {
@@ -167,7 +166,7 @@ function loadCfgData() {
 					console.log(data);
 				
 					$('#P').append(data);
-				}else{
+			}else {
 					M = _M['actual'] = {
 							"comheader__default" : {
 								"title" : "页面名称"
@@ -177,7 +176,7 @@ function loadCfgData() {
 					for (key in M) {
 						tpls.push(key);
 					}
-					var html0,html1,html2;
+					var html0,html1;
 					for (var i = 0; i < tpls.length; i++) {
 						(function(i) {
 							var a = tpls[i].split('__');
@@ -188,14 +187,12 @@ function loadCfgData() {
 								});
 							}
 							else{
-								 html2 += template(a[0], {
+								 html1 += template(a[0], {
 										'temp' : a[1]
-									});
-							}
-							
+								});}
 						})(i)
 					}
-					$('#P').append(html0+html1);
+					$('#P').append(html0);
 				}
 					$(".common").removeClass("cur");
 					$('.common:first').addClass('cur');
