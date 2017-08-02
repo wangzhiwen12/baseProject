@@ -1,0 +1,368 @@
+* {
+    box-sizing: content-box;
+}
+
+.padding-bottom-0 {
+    padding-bottom: 0;
+}
+
+.padding-0 {
+    padding: 0 !important;
+}
+
+.margin-top-0 {
+    margin-top: 0 !important;
+}
+
+.margin-0 {
+    margin: 0 !important;
+}
+
+.popup {
+    bottom: 0px;
+}
+
+/* basic style */
+.close {
+    /* still bad on picking color */
+    background: #ffffff;
+    /*color: red;*/
+    /* make a round button */
+    border-radius: 12px;
+    /* center text */
+    line-height: 20px;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    font-size: 18px;
+    padding: 1px;
+    cursor: pointer;
+}
+
+/* use cross as close button */
+.close::before {
+    content: "\2716";
+}
+
+/* place the button on top-right */
+.close {
+    top: 5px;
+    right: 5px;
+    position: absolute;
+}
+
+.addcart {
+    background-color: #f60;
+    font-size: 12px;
+    color: #FFFFFF !important;
+}
+
+.buynow {
+    background-color: #f6383a;
+    font-size: 12px;
+    color: #FFFFFF !important;
+}
+
+.popup {
+    background: #fff;
+    font-size: 12px;
+    color: #555;
+    font-family: Tahoma, Geneva, sans-serif;
+    padding: 100px 100px;
+}
+
+.popup * {
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: none;
+}
+
+.popup li {
+    list-style: none;
+}
+
+.popup a {
+    color: #555;
+    text-decoration: none;
+}
+
+.popup a:hover {
+    color: #c00;
+    text-decoration: underline;
+}
+
+.popup img {
+    border: none;
+}
+
+.popup .clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.popup * html .clearfix {
+    zoom: 1;
+}
+
+/* IE6 */
+.popup *:first-child + html .clearfix {
+    zoom: 1;
+}
+
+/* IE7 */
+.popup .tab {
+    line-height: 56px;
+    font-size: 14px;
+}
+
+.popup .tab a {
+    color: #07c;
+}
+
+.popup .tab a:hover {
+    color: #c00;
+}
+
+.popup .tab a.cur {
+    font-weight: bold;
+}
+
+/*商品详细页*/
+/*iteminfo*/
+.iteminfo {
+}
+
+.iteminfo_tit {
+    color: #333;
+    font-size: 22px;
+    font-family: "微软雅黑", Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #e3e3e3;
+    font-weight: normal;
+    padding-bottom: 12px;
+    line-height: 32px;
+}
+
+.iteminfo_parameter {
+    padding: 8px 0;
+    padding-left: 70px;
+}
+
+.iteminfo_parameter_default {
+    color: #888;
+}
+
+.iteminfo_parameter dt {
+    margin-left: -70px;
+    float: left;
+    display: inline;
+    width: 60px;
+    white-space: nowrap;
+    text-align: right;
+    color: #888;
+}
+
+.iteminfo_mktprice {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: line-through;
+}
+
+.lh32 {
+    line-height: 32px;
+}
+
+.iteminfo_price {
+    color: #c00;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    vertical-align: middle;
+}
+
+.sys_item_price {
+    color: #c00;
+    font-size: 22px;
+    vertical-align: middle;
+}
+
+.iteminfo_buying {
+    background: #f7f7f7;
+    padding: 12px 0;
+}
+
+/*规格*/
+.sys_item_spec dl.iteminfo_parameter {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.sys_item_spec dl.iteminfo_parameter dt {
+    line-height: 32px;
+}
+
+/*一下正对图片*/
+.sys_spec_img {
+}
+
+.sys_spec_img li {
+    float: left;
+    height: 54px;
+    position: relative;
+    margin: 2px 6px 2px 0;
+}
+
+.sys_spec_img li a {
+    height: 50px;
+    width: 50px;
+    padding: 1px;
+    border: 1px solid #ccc;
+    float: left;
+    background: #fff;
+    display: inline-block;
+    outline: none;
+}
+
+.sys_spec_img li a img {
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+
+.sys_spec_img li a:hover {
+    border: 2px solid #e4393c;
+    padding: 0;
+    text-decoration: none;
+}
+
+.sys_spec_img li i {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    font-size: 0;
+    line-height: 0;
+    right: 2px;
+    bottom: 2px;
+    background: url(img/sys_item_selected.gif) no-repeat right bottom;
+    z-index: 99;
+    display: none;
+}
+
+.sys_spec_img li.selected a {
+    border: 2px solid #e4393c;
+    padding: 0;
+}
+
+.sys_spec_img li.selected i {
+    display: block;
+}
+
+.sys_spec_text {
+}
+
+.sys_spec_text li {
+    float: left;
+    height: 28px;
+    position: relative;
+    margin: 2px 6px 2px 0;
+    outline: none;
+}
+
+.sys_spec_text li a {
+    height: 24px;
+    padding: 1px 6px;
+    border: 1px solid #ccc;
+    background: #fff;
+    display: inline-block;
+    line-height: 24px;
+}
+
+.sys_spec_text li a:hover {
+    border: 2px solid #e4393c;
+    padding: 0 5px;
+    text-decoration: none;
+}
+
+.sys_spec_text li i {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    font-size: 0;
+    line-height: 0;
+    right: 2px;
+    bottom: 2px;
+    background: url(img/sys_item_selected.gif) no-repeat right bottom;
+    z-index: 99;
+    display: none;
+}
+
+.sys_spec_text li.selected a {
+    border: 2px solid #e4393c;
+    padding: 0 5px;
+}
+
+.sys_spec_text li.selected i {
+    display: block;
+}
+
+.sys_spec_text li.disabled a {
+    border: 1px dashed #ccc;
+    color: #999;
+}
+
+a.disabled {
+    pointer-events: none;
+    filter: alpha(opacity=50); /*IE滤镜，透明度50%*/
+    -moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+    opacity: 0.5; /*其他，透明度50%*/
+    border: dashed 1px #ccc !important;
+}
+
+.input-number {
+    width: 60px;
+    padding: 0 12px;
+    vertical-align: top;
+    text-align: center;
+    outline: none;
+}
+
+.input-number,
+.input-number-decrement,
+.input-number-increment {
+    border: 1px solid #cccccc;
+    height: 30px;
+    user-select: none;
+}
+
+.input-number-decrement,
+.input-number-increment {
+    display: inline-block;
+    width: 25px;
+    line-height: 28px;
+    background: #f1f1f1;
+    color: #444444;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.input-number-decrement:active,
+.input-number-increment:active {
+    background: #dddddd;
+}
+
+.input-number-decrement {
+    border-right: none;
+    border-radius: 0px 0 0 0px;
+}
+
+.input-number-increment {
+    border-left: none;
+    border-radius: 0 0px 0px 0;
+}
+
+.buynowactive {
+    background-color: #A7AFB4;
+}

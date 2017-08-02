@@ -17,6 +17,8 @@
 	rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/wx-pc.css"
 	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/member/css/css/style.css"
+	rel="stylesheet" />
 
 <div class="table-responsive">
 	<div class="tabbable-line">
