@@ -1,6 +1,10 @@
 package com.wechat.manage.service.usercenter.impl;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -21,9 +25,11 @@ import com.wechat.manage.service.exception.BleException;
 import com.wechat.manage.service.usercenter.intf.IUserCenterService;
 import com.wechat.manage.service.usercenter.intf.TWPageService;
 import com.wechat.manage.service.util.ComErrorCodeConstants;
+import com.wechat.manage.service.util.Common;
 import com.wechat.manage.service.util.FTPUtils;
 import com.wechat.manage.service.util.PropertiesUtils;
 import com.wechat.manage.service.util.UUIDUtils;
+import com.wechat.manage.utils.HttpUtil;
 import com.wechat.manage.utils.StringUtils;
 
 /**
@@ -49,7 +55,7 @@ public class UserCenterServiceImpl implements IUserCenterService {
 	private TUserCenterMapper userCenterMapper;
 
 	@Override
-	public boolean saveUserCenterPage(TPage page, String html, String data, String storeCode) {
+	public boolean saveUserCenterPage(TPage page, String html, String data, String storeCode, String path) {
 		boolean flag = false;
 		List<String> propertiesKeys = new ArrayList<String>();
 		propertiesKeys.add("ftp.addr");
@@ -64,6 +70,7 @@ public class UserCenterServiceImpl implements IUserCenterService {
 		List<TPage> list = pageService.selectTPage(paramPage);
 		if (list.isEmpty()) {
 			String uuid = UUIDUtils.generateUUID();
+			page.setSid(uuid);
 			page.setIsHome("0");
 			page.setPageCode("");
 			page.setPageLink("http://" + valueMap.get("ftp.addr") + "/usercenter/" + uuid + ".html");
@@ -74,13 +81,25 @@ public class UserCenterServiceImpl implements IUserCenterService {
 			// 1、保存页面信息到t_shop
 			pageService.insertSelective(page);
 			// 2、将页面静态话并上传到ftp
-			InputStream input = new ByteArrayInputStream(html.getBytes());
-			FTPUtils util = FTPUtils.getInstance();
-			flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")), valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/usercenter",
-					uuid + ".html", input);
+			flag = uploadFtp(valueMap, uuid + ".html", html);
 			if (!flag) {
 				throw new BleException(ComErrorCodeConstants.ErrorCode.USERCENTER_ADD_FAILED_ERROR.getErrorCode(),
 						ComErrorCodeConstants.ErrorCode.USERCENTER_ADD_FAILED_ERROR.getMemo());
+			}
+			//静态化预览页静态化
+			String privewHtml = null;
+			try {
+				privewHtml = HttpUtil.sendGet(path, null);
+			} catch (Exception e) {
+				logger.info("会员主页获取展示页错误");
+				logger.error(e.toString(), e);
+			}
+			if (privewHtml != null) {
+				flag = uploadFtp(valueMap, "member.html", privewHtml);
+				if (!flag) {
+					throw new BleException(ComErrorCodeConstants.ErrorCode.USERCENTER_ADD_FAILED_ERROR.getErrorCode(),
+							ComErrorCodeConstants.ErrorCode.USERCENTER_ADD_FAILED_ERROR.getMemo());
+				}
 			}
 		} else {
 			TPage oTPage = list.get(0);
@@ -88,13 +107,25 @@ public class UserCenterServiceImpl implements IUserCenterService {
 			oTPage.setWpageTitle(page.getWpageTitle());
 			pageService.updateWpage(oTPage);
 			// 2、将页面静态话并上传到ftp
-			InputStream input = new ByteArrayInputStream(html.getBytes());
-			FTPUtils util = FTPUtils.getInstance();
-			flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")), valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/usercenter",
-					oTPage.getPageLink().substring(oTPage.getPageLink().lastIndexOf("/")+1), input);
+			flag = uploadFtp(valueMap, oTPage.getPageLink().substring(oTPage.getPageLink().lastIndexOf("/")+1), html);
 			if (!flag) {
 				throw new BleException(ComErrorCodeConstants.ErrorCode.USERCENTER_ADD_FAILED_ERROR.getErrorCode(),
 						ComErrorCodeConstants.ErrorCode.USERCENTER_ADD_FAILED_ERROR.getMemo());
+			}
+			//静态化预览页静态化
+			String privewHtml = null;
+			try {
+				privewHtml = HttpUtil.sendGet(path, null);
+			} catch (Exception e) {
+				logger.info("会员主页获取展示页错误");
+				logger.error(e.toString(), e);
+			}
+			if (privewHtml != null) {
+				flag = uploadFtp(valueMap, "member.html", privewHtml);
+				if (!flag) {
+					throw new BleException(ComErrorCodeConstants.ErrorCode.USERCENTER_ADD_FAILED_ERROR.getErrorCode(),
+							ComErrorCodeConstants.ErrorCode.USERCENTER_ADD_FAILED_ERROR.getMemo());
+				}
 			}
 		}
 
@@ -147,5 +178,22 @@ public class UserCenterServiceImpl implements IUserCenterService {
 			return userCenter.getData();
 		} 
 		return null;
+	}
+	
+	/**
+	 * 上传到ftp
+	 * @param valueMap
+	 * @param path
+	 * @param html
+	 * @return
+	 */
+	public Boolean uploadFtp(Map<String, String> valueMap, String path, String html) {
+		boolean flag = false;
+		// 2、将页面静态话并上传到ftp
+		InputStream input = new ByteArrayInputStream(html.getBytes());
+		FTPUtils util = FTPUtils.getInstance();
+		flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")), valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/usercenter",
+				path, input);
+		return flag;
 	}
 }

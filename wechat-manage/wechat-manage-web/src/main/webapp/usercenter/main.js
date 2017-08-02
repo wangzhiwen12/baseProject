@@ -88,7 +88,7 @@ require(['tpl','text!templates/usertenter_init.html'],function (T,html) {
     		});
     		var data = data;
     		if (data.success == "true") {
-    			window.open("wShop/preview.json");
+    			window.open("wShop/preview.shtml");
     		} else {
     			alert("预览失败!");
     		}

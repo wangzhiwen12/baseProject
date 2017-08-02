@@ -83,6 +83,8 @@ public class UserCenterController extends BaseController{
         	logger.error(ex.toString(),ex);
         }
         try{
+        	String requestUrl = request.getRequestURL().toString();
+        	String path = requestUrl.substring(0, requestUrl.lastIndexOf("/")+1) + "preview.shtml";
         	UserBaseInfoDto curUser = getCurUserInfo();
             boolean flag = false;
             if (curUser != null && StringUtils.isNotEmpty(html)) {
@@ -90,7 +92,7 @@ public class UserCenterController extends BaseController{
             	page.setShopId(shopId);
             	page.setWpageTitle(pageName);
             	page.setCreateUser(curUser.getUserId());
-            	flag = userCenterService.saveUserCenterPage(page, html, data, curUser.getStoreCode());
+            	flag = userCenterService.saveUserCenterPage(page, html, data, curUser.getStoreCode(), path);
             }
             if (!flag) {
                 return ResultUtil.creComErrorResult(ComErrorCodeConstants.ErrorCode.PAGE_ADD_FAILED_ERROR.getErrorCode(),
@@ -102,7 +104,6 @@ public class UserCenterController extends BaseController{
                     ComErrorCodeConstants.ErrorCode.PAGE_ADD_FAILED_ERROR.getMemo());
         }
         
-
         return ResultUtil.creComSucResult("");
     }
 	
