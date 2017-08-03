@@ -36,11 +36,7 @@ $(function () {
         title += $(".input-number").val() + "件";
         $('#pro-stan-color').html(title);
     });
-    $('.tab-item.addcart').click(function () {
-        alert($(".input-number").val());
-    });
-
-
+    getHomePageUrl($(".jsHomePage"));
 });
 function getProYeInfoBySpuCode() {
     $.ajax({
@@ -55,7 +51,7 @@ function getProYeInfoBySpuCode() {
         success: function (pro) {
             var proYe = JSON.parse(pro);
             var proData = proYe.data;
-            console.log(JSON.stringify(proData));
+            // console.log(JSON.stringify(proData));
             var picList = proData.stanPicList;
             for (var i = 0; i < picList.length; i++) {
                 if (picList[i].picStan == '1000*1000') {
@@ -304,7 +300,7 @@ function order(productCode, price) {
     //价格     _price
     //尺码   sys_spec_text
     var _productCode = productCode;
-    var _productPrice =price;
+    var _productPrice = price;
     var _productNum = $(".input-number").val();
     // var _productName = document.getElementById('pro-name').innerText;
     var _productName = encodeURI(document.getElementById('pro-name').innerText);// window.location.assign();
@@ -325,8 +321,8 @@ function order(productCode, price) {
 
 }
 function orderCart() {
-    var producecode=$("#producecode").val();
-    var price=$(".sys_item_price").html();
+    var producecode = $("#producecode").val();
+    var price = $(".sys_item_price").html();
     order(producecode, price);
 }
 

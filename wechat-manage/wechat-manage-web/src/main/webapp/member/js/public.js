@@ -68,3 +68,18 @@ function loadIndex() {
         }
     });
 }
+
+//首页URL
+function getHomePageUrl(obj) {
+    $.ajax({
+        type: "get",
+        contentType: "application/x-www-form-urlencoded;charset=utf-8",
+        url: rootPath + "/wechatShopPage/queryHomePage.shtml",
+        async: false,
+        dataType: "json",
+        success: function (response) {
+            $(obj).attr('href',response);
+            console.log("home url:", response);
+        }
+    });
+}

@@ -168,7 +168,7 @@ public class TWPageServiceImpl implements TWPageService {
 	 */
 	@Override
 	public String queryHomePage() {
-		TPage tPage=wPageMapper.selectHomePage(null);
+		TPage tPage=wPageMapper.selectHomePage2();
 		if(tPage!=null)
 		{
 			return tPage.getPageLink();

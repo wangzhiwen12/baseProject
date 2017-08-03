@@ -64,6 +64,7 @@ public interface WPageMapper {
 	 * @return
 	 */
 	public TPage selectHomePage(@Param("createUser")Integer createUser);
+	public TPage selectHomePage2();
 
 	 /**
 	 * 插入

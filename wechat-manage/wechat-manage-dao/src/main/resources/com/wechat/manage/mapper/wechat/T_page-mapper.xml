@@ -134,6 +134,13 @@
         </where>
     </select>
 
+    <select id="selectHomePage2" resultMap="tPage">
+        SELECT * from t_page tp
+        <where>
+           tp.is_home=1 and tp.status=1
+        </where>
+    </select>
+
 
     <insert id="insertSelective" parameterType="com.wechat.manage.pojo.usercenter.entity.TPage">
         insert into t_page
