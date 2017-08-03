@@ -100,7 +100,7 @@
                 /cart/** = anon
                 /order/** = anon
                 /wechatpage/** = anon
-                /wechatShopPage/wpageInfo.shtml = anon
+                /wechatShopPage/preview.shtml = anon
                 /wechatShopPage/queryHomePage.shtml = anon
                 /wShop/** = anon
                 /wpage/css/** = anon
