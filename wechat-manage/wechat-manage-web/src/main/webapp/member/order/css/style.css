@@ -587,7 +587,7 @@ body{/*min-width: 300px;max-width: 640px;*/margin: 0 auto;color: #666;background
     width: 15px;
 }
 .small-goods-deliver-time .clock-pic {
-    background: rgba(0, 0, 0, 0) url("../../../../../../../../../../../../../Users/XS/Desktop/微商城DOM/css/img/check-sprites-5.png") no-repeat scroll -58px 0 / 100px 100px;
+    background: rgba(0, 0, 0, 0) url("../css/img/check-sprites-5.png") no-repeat scroll -58px 0 / 100px 100px;
     height: 15px;
     left: -22px;
     position: absolute;
@@ -686,7 +686,7 @@ body{/*min-width: 300px;max-width: 640px;*/margin: 0 auto;color: #666;background
     font-size: 14px;
 }
 .point-left {
-    background: url("../../../../../../../../../../../../../Users/XS/Desktop/微商城DOM/css/img/index.png") no-repeat 0 0 / 100% auto;
+    background: url("../css/img/index.png") no-repeat 0 0 / 100% auto;
     display: block;
     height: 16px;
     margin-top: -3px;

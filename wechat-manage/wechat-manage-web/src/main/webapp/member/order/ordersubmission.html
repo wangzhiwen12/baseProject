@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!--<link href="css/font-awesome.min.css" rel="stylesheet">-->
     <title>提交订单</title>
 </head>
 <body>
@@ -66,7 +66,7 @@
 
 
                                 <div class="quantity-wrapper">
-                                    <a class="quantity-decrease" id="subnum">-</a>
+                                    <a class="quantity-decrease disabled" id="subnum">-</a>
                                     <input size="4" value="1" name="num" id="numNow" class="quantity" type="tel" min="1"
                                            max="5">
                                     <a class="quantity-increase" id="addnum">+</a>
@@ -168,12 +168,12 @@
         </div>
         <a href="javascript:;">
         <!--onclick="checkAndSubmitOrder('true', '4','','checkPayBtn')-->
-            <div class="pay-leak-btn-red">在线支付</div>
+            <div class="pay-leak-btn-red">提交订单</div>
         </a>
         <!--onclick="checkAndSubmitOrder('true', '1','','checkPayBtn')-->
-        <a href="javascript:;">
-            <div class="pay-leak-btn">货到付款</div>
-        </a>
+        <!--<a href="javascript:;">-->
+            <!--<div class="pay-leak-btn">货到付款</div>-->
+        <!--</a>-->
     </div>
 </div>
 <script src="../js/jquery-1.9.1.min.js"></script>

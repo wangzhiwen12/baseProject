@@ -587,7 +587,7 @@ body{/*min-width: 300px;max-width: 640px;*/margin: 0 auto;color: #666;background
     width: 15px;
 }
 .small-goods-deliver-time .clock-pic {
-    background: rgba(0, 0, 0, 0) url("../../../../../../../../../../../../../Users/XS/Desktop/微商城DOM/css/img/check-sprites-5.png") no-repeat scroll -58px 0 / 100px 100px;
+    background: rgba(0, 0, 0, 0) url("../../css/img/check-sprites-5.png") no-repeat scroll -58px 0 / 100px 100px;
     height: 15px;
     left: -22px;
     position: absolute;
@@ -868,19 +868,19 @@ body{/*min-width: 300px;max-width: 640px;*/margin: 0 auto;color: #666;background
     top: 2px;
 }
 .app-preview .order-related .uc-order.list-horizon .link-topay {
-    background-image: url("../img/icon_topay@2x.png");
+    background-image: url("../../css/img/icon_topay@2x.png");
 }
 .app-preview .order-related .uc-order.list-horizon .link-totuan {
-    background-image: url("../img/icon_daijiedan@2x.png");
+    background-image: url("../../css/img/icon_daijiedan@2x.png");
 }
 .app-preview .order-related .uc-order.list-horizon .link-tosend {
-    background-image: url("../img/icon_tosend@2x.png");
+    background-image: url("../../css/img/icon_tosend@2x.png");
 }
 .app-preview .order-related .uc-order.list-horizon .link-send {
-    background-image: url("../img/icon_send@2x.png");
+    background-image: url("../../css/img/icon_send@2x.png");
 }
 .app-preview .order-related .uc-order.list-horizon .link-sign {
-    background-image: url("../img/icon_sign@2x.png");
+    background-image: url("../../css/img/icon_sign@2x.png");
 }
 .app-preview .order-related .uc-order.list-horizon .title-info {
     line-height: 20px;
