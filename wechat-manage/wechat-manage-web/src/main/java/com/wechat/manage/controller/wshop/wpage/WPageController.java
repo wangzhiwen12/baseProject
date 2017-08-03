@@ -447,7 +447,7 @@ public class WPageController extends BaseController {
             tPage.setSeqNo(1);
             tWPageService.insertSelective(tPage);
         } else {
-            tPage.setPageLink(rootPath + "/wechatShopPage/wpageInfo.shtml?id=" + tPage.getSid());
+            tPage.setPageLink(rootPath + "/wechatShopPage/preview.shtml?id=" + tPage.getSid());
             flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
                     valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page",
                     tPage.getSid() + ".html", input);
@@ -539,7 +539,7 @@ public class WPageController extends BaseController {
         FTPUtils util = FTPUtils.getInstance();
         if (tWPageService.selectTPage(tPage).size() == 0) {
 
-            tPage.setPageLink(rootPath + "wechatShopPage/wpageInfo.shtml?id=" + uuid);
+            tPage.setPageLink(rootPath + "wechatShopPage/preview.shtml?id=" + uuid);
             flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
                     valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page", uuid + ".html", input);
             flagS = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
@@ -563,7 +563,7 @@ public class WPageController extends BaseController {
             tPage.setSeqNo(1);
             tWPageService.insertSelective(tPage);
         } else {
-            tPage.setPageLink(rootPath + "wechatShopPage/wpageInfo.shtml?id=" + tPage.getSid());
+            tPage.setPageLink(rootPath + "wechatShopPage/preview.shtml?id=" + tPage.getSid());
             flag = util.uploadFile(valueMap.get("ftp.addr"), Integer.valueOf(valueMap.get("ftp.port")),
                     valueMap.get("ftp.username"), valueMap.get("ftp.password"), "/wshop/page",
                     tPage.getSid() + ".html", input);
