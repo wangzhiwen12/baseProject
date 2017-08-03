@@ -305,7 +305,7 @@ function order(productCode, price) {
     // var _productName = document.getElementById('pro-name').innerText;
     var _productName = encodeURI(document.getElementById('pro-name').innerText);// window.location.assign();
     var _productUrl = $(".sys_item_spec .sys_item_specpara .sys_spec_img .selected img").attr("src");
-    var _productSize = $(".sys_item_spec .sys_item_specpara .sys_spec_text .selected a").html();
+    var _productSize = encodeURI($(".sys_item_spec .sys_item_specpara .sys_spec_text .selected a").html());
     var _productColer = encodeURI($(".sys_item_spec .sys_item_specpara .sys_spec_img .selected a").attr("title"));
     console.log("商品码 :" + _productCode);
     console.log("价格 :" + _productPrice);

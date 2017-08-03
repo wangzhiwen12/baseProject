@@ -376,6 +376,7 @@ body{/*min-width: 300px;max-width: 640px;*/margin: 0 auto;color: #666;background
     clear: both;
     float: none;
     width: auto;
+    -webkit-box-flex:1.0; box-flex:1.0;
 }
 .sitem-weight {
     color: #848689;

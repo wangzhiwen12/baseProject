@@ -227,7 +227,7 @@
                 console.log("productPrice:"+productPrice);
             }
             else if("productSize"==sp[0]){
-                productSize=sp[1];
+                productSize=decodeURI(sp[1]);
                 console.log("productSize:"+productSize);
             }
             else if("productColor"==sp[0]){
