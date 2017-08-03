@@ -36,6 +36,11 @@ $(function () {
         title += $(".input-number").val() + "件";
         $('#pro-stan-color').html(title);
     });
+    $('.tab-item.addcart').click(function () {
+        alert($(".input-number").val());
+    });
+
+
 });
 function getProYeInfoBySpuCode() {
     $.ajax({
@@ -102,6 +107,7 @@ function getProYeInfoBySpuCode() {
                     $(this).parent().parent().parent().attr("data-attrval", $(this).attr("data-aid"))
                     $("#orderbuynoww").removeClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 外立即购买
                     $("#orderbuynown").removeClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 选择尺码和颜色里边立即购买
+                    orderCart();
                 }
             });
             $(".sys_item_spec .sys_item_specpara .sys_spec_text li").each(function () {
@@ -115,6 +121,7 @@ function getProYeInfoBySpuCode() {
                     $(this).parent().parent().parent().attr("data-attrval", $(this).attr("data-aid"))
                     $("#orderbuynoww").removeClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 外立即购买
                     $("#orderbuynown").removeClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 选择尺码和颜色里边立即购买
+                    orderCart();
                 }
             });
         },
@@ -273,7 +280,8 @@ function getattrprice() {
                 //商品在·图片 sys_spec_img  selected
                 // 价格     _price
                 //尺码   sys_spec_text
-                order(sku_code[_val], _price, proData.spsid);
+                order(sku_code[_val], _price);
+                $("#producecode").val(sku_code[_val]);
             },
             error: function (XMLHttpRequest, textStatus) {
 
@@ -287,9 +295,8 @@ function getattrprice() {
     $(_resp.mktprice).text(_mktprice);  ///其中的math.round为截取小数点位数
     $(_resp.price).text(_price);
 }
-function order(productCode, price, productCode) {
-    $("#orderbuynoww").removeClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 外立即购买
-    $("#orderbuynown").removeClass("buynowactive"); //没有选择尺码和颜色 立即购买按钮置灰色 选择尺码和颜色里边立即购买
+function order(productCode, price) {
+
     //商品码    sku_code[_val];
     //购买数量  input-number
     //商品名称  id pro-name
@@ -297,7 +304,7 @@ function order(productCode, price, productCode) {
     //价格     _price
     //尺码   sys_spec_text
     var _productCode = productCode;
-    var _productPrice = price;
+    var _productPrice =price;
     var _productNum = $(".input-number").val();
     // var _productName = document.getElementById('pro-name').innerText;
     var _productName = encodeURI(document.getElementById('pro-name').innerText);// window.location.assign();
@@ -316,6 +323,11 @@ function order(productCode, price, productCode) {
     document.getElementById("orderbuynown").href = ahref;
     //document.getElementById("buy-now").arrt("href",ahref);
 
+}
+function orderCart() {
+    var producecode=$("#producecode").val();
+    var price=$(".sys_item_price").html();
+    order(producecode, price);
 }
 
 (function () {
@@ -338,6 +350,7 @@ function order(productCode, price, productCode) {
                 if (!min || value >= min) {
                     el[0].value = value;
                 }
+                orderCart();
             }
 
             function increment() {
@@ -346,6 +359,7 @@ function order(productCode, price, productCode) {
                 if (!max || value <= max) {
                     el[0].value = value++;
                 }
+                orderCart();
             }
         }
     }
