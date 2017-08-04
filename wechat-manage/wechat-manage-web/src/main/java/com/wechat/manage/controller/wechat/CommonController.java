@@ -205,6 +205,53 @@ public class CommonController {
         return url + para;
     }
 
+    /**
+     * 新会员页面接口
+     *
+     * @param request
+     * @param response
+     * @param code
+     * @param state
+     */
+    @RequestMapping(value = "wShopEntrance", method = RequestMethod.GET)
+    public void wShopEntrance(HttpServletRequest request, HttpServletResponse response,
+                              @RequestParam(value = "code", required = true) String code,
+                              @RequestParam(value = "state", required = true) String state){
+        long starTime = System.currentTimeMillis();
+        String appid = "", secret = "", openid = "", storePara = "", pageType = "";
+        try {
+            String arrPara[] = state.split(";");
+            if (arrPara != null) {
+                storePara = arrPara[0];
+                pageType = arrPara[1];
+                System.out.println("storePara:" + storePara + "pageType:" + pageType);
+            }
+
+            // 1 通过门店接口获取appID,appSecret
+            StoreInfoDto storeInfo = appAccountInfoService.getStoreInfo(storePara);
+            System.out.println("storeInfo ================ " + storeInfo);
+            appid = storeInfo.getAppId();
+            secret = storeInfo.getSecret();
+
+            // 3 通过code或取网页授权access_token(暂时不用)及openID
+            AccessTokenDto atkDto = util.getOpenId(appid, secret, code);
+            System.out.println("atkDto ================ " + atkDto);
+            openid = atkDto.getOpenid();
+
+            response.setHeader("Content-type", "text/html;charset=UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            //String url = getCurMemberInfo(storeInfo.getStoreCode(), openid, pageType, appid);
+            String url = "http://wechat.wangfujing.com/notebook/wShop/preview.shtml?openId="+openid+"&storeCode="+storeInfo.getStoreCode();
+            long endTime = System.currentTimeMillis();
+            System.out.println("------------------------------------" + (endTime - starTime));
+            response.sendRedirect(url);
+            System.out.println("decoder ================ " + url);
+            PrintWriter out = response.getWriter();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 新会员页面接口

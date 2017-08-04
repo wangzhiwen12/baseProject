@@ -108,7 +108,7 @@ public class UserCenterController extends BaseController{
     }
 	
 	@RequestMapping("/preview")
-	public String toPreview(Model model) {
+	public String toPreview(Model model,HttpServletRequest request, HttpServletResponse response) {
 		TPage page = new TPage();
 		page.setShopId("1");
 		page.setType("3");
@@ -121,6 +121,8 @@ public class UserCenterController extends BaseController{
 			logger.error(e.toString(),e);
 		}
 		model.addAttribute("html", html);
+		model.addAttribute("openId", request.getAttribute("openId"));
+		model.addAttribute("storeCode", request.getAttribute("storeCode"));
 		return Common.BACKGROUND_PATH + "/wshop/usercenter/preview";
 	}
 }
