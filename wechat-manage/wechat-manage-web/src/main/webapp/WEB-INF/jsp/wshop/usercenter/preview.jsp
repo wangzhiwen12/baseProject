@@ -79,6 +79,7 @@
 				console.info("memberInfoVo =" + memberInfoVo);
 				if(memberInfoVo.memberCode == null){
 					console.info("无会员编码，需注册。");
+					cardUrl();
 				}
 			}
 		});
