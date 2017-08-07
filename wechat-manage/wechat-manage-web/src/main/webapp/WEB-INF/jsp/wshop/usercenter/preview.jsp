@@ -29,6 +29,8 @@
           href="https://b.yzcdn.cn/v2/build_css/stylesheets/www/pages/pc/showcase/feature_49b2879fa4.css"
           onerror="_cdnFallback(this)" media="screen">
     <!-- ▲ App CSS -->
+	<script src="${pageContext.request.contextPath}/member/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/member/js/public.js" type="text/javascript"></script>
     
 </head>
 <body>
@@ -58,7 +60,7 @@
 	<a id="ljjh" href="#">立即激活</a>
 </body>
 <script type="text/javascript">
-	var rootPath = "http://wechat.wangfujing.com/notebook";
+	var rootPath = getContextPath();
 	var openId = getUrlDataByKey("openId");
 	var storeCode = getUrlDataByKey("storeCode");
 	var appId = getUrlDataByKey("appId");

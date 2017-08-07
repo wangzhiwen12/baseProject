@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-xs-4 v-floor-nav"><a href="#"><img src="${pageContext.request.contextPath}/member/css/img/n-find.png"></a></div>
             <div class="col-xs-4 v-floor-nav"><a href="#"><img src="${pageContext.request.contextPath}/member/css/img/n-catergry.png"></a></div>
-            <div class="col-xs-4 v-floor-nav"><a id="myId" href="${pageContext.request.contextPath}/wShop/preview.shtml?openId='+${openId}+'&storeCode='+${storeCode}+'appId="+${appId}><img src="${pageContext.request.contextPath}/member/css/img/n-me.png"></a></div>
+            <div class="col-xs-4 v-floor-nav"><a id="myId" href="${pageContext.request.contextPath}/wShop/preview.shtml?openId=${openId}&storeCode=${storeCode}&appId=${appId}"><img src="${pageContext.request.contextPath}/member/css/img/n-me.png"></a></div>
         </div>
     </div>
 </body>

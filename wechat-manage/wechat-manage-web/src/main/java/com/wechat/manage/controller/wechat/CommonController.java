@@ -296,7 +296,7 @@ public class CommonController {
             e.printStackTrace();
         }
     }*/
-    @RequestMapping(value = "getCurMemberInfo_1", method = RequestMethod.GET)
+    @RequestMapping(value = "getCurMemberInfo_1", method = RequestMethod.POST)
     public MemberInfoVo getCurMemberInfo_1(String storeCode, String openid, String pageType, String appId){
         MemberInfoVo memberInfoVo = new MemberInfoVo();
         Map<String, Object> paraMap = new HashMap<String, Object>();
