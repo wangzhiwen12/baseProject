@@ -64,7 +64,10 @@
 	var openId = getUrlDataByKey("openId");
 	var storeCode = getUrlDataByKey("storeCode");
 	var appId = getUrlDataByKey("appId");
+	var url = "";
 	$(function(){
+		url = location.href.split('#')[0];
+		initializationConfig();
 		$.ajax({
 			type: "post",
 			contentType: "application/x-www-form-urlencoded;charset=utf-8",
@@ -107,6 +110,91 @@
 				} else {
 
 				}
+			}
+		});
+	}
+
+	function initializationConfig() {
+//        var appId = "wx7aec942c6742752d";
+		//获取 config 参数
+		$.ajax({
+			async: false,
+			type: "post",
+			contentType: "application/x-www-form-urlencoded;charset=utf-8",
+			url: rootPath + '/wechat/getSing2.json',
+			dataType: "json",
+			data: {
+				"url": url,
+				"storePara": appId
+			},
+			success: function (response) {
+				var timestamp = response.data.obj.timestamp;
+				var nonceStr = response.data.obj.nonceStr;
+				var signature = response.data.obj.signature;
+
+				//js sdk 初始化
+				// 开启debug  上线后关调debug（debug: true为开启，debug: false 关闭）
+				wx.config({
+					debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+					appId: appId, // 必填，公众号的唯一标识  wx871d0104ae72e615
+					timestamp: timestamp, // 必填，生成签名的时间戳
+					nonceStr: nonceStr, // 必填，生成签名的随机串
+					signature: signature,// 必填，签名，见附录1
+					jsApiList: ['addCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+				});
+				// config 初始化 走 wx.ready 方法
+				wx.ready(function () {
+					// 12.1 添加卡券
+					document.querySelector('.actPhone').onclick = function () {
+						var cards = "";
+						var card = "";
+						//获取 cardExt
+						$.ajax({
+							type: "post",
+							async: false,
+							contentType: "application/x-www-form-urlencoded;charset=utf-8",
+							url: rootPath + '/wechat/getCartSing2.shtml',
+							dataType: "json",
+							data: "storePara=" + appId,
+							success: function (response) {
+//                                alert(response.success == "true");
+								if (response.success == "true") {
+									cards = response.data.cardExts;
+									card = response.data.cards;
+//                                    alert("appId++++++:" + appId);
+//                                    alert("card++++++:" + card);
+//                                    alert("cardExt++++++:" + cards);
+									wx.addCard({
+										cardList: [
+											{
+												cardId: card,
+												cardExt: cards
+											}
+										],
+										success: function (res) {
+//                                alert('已添加卡券：' + JSON.stringify(res.cardList));
+										},
+										cancel: function (res) {
+//                                alert('res' + JSON.stringify(res))
+										}
+									});
+								}
+
+							},
+							error: function (response) {
+								alert("add error");
+							}
+						});
+					}
+				});
+				wx.error(function (res) {
+					// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+					alert('错误：' + res);
+				});
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				;
+				alert("初始化方法error");
 			}
 		});
 	}
