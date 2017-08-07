@@ -60,6 +60,9 @@
 	var rootPath = getContextPath();
 	var openId = getUrlDataByKey("openId");
 	var storeCode = getUrlDataByKey("storeCode");
-	$("#myId").attr("href",${pageContext.request.contextPath}"+/wShop/preview.shtml?openId"+openId+"&storeCode="+storeCode);
+	$("#mine").attr("href",${pageContext.request.contextPath}"+/wShop/preview.shtml?openId"+openId+"&storeCode="+storeCode);
+	$(function(){
+
+	})
 </script>
 </html>

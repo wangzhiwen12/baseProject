@@ -240,8 +240,8 @@ public class CommonController {
 
             response.setHeader("Content-type", "text/html;charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
-            //String url = getCurMemberInfo(storeInfo.getStoreCode(), openid, pageType, appid);
-            String url = "http://wechat.wangfujing.com/notebook/wechatShopPage/preview.shtml?openId="+openid+"&storeCode="+storeInfo.getStoreCode();
+            String url = getCurMemberInfo(storeInfo.getStoreCode(), openid, pageType, appid);
+            //String url = "http://wechat.wangfujing.com/notebook/wechatShopPage/preview.shtml?openId="+openid+"&storeCode="+storeInfo.getStoreCode();
             long endTime = System.currentTimeMillis();
             System.out.println("------------------------------------" + (endTime - starTime));
             response.sendRedirect(url);
