@@ -258,7 +258,7 @@ public class CommonController {
      * 新会员页面接口
      *
      */
-    /*@RequestMapping(value = "curMemberInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "curMemberInfo", method = RequestMethod.GET)
     public void curMemberInfo(HttpServletRequest request, HttpServletResponse response,
                               @RequestParam(value = "code", required = true) String code,
                               @RequestParam(value = "state", required = true) String state) {
@@ -295,7 +295,8 @@ public class CommonController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }*/
+    }
+
     @RequestMapping(value = "getCurMemberInfo_1", method = RequestMethod.POST)
     public MemberInfoVo getCurMemberInfo_1(String storeCode, String openid, String pageType, String appId){
         MemberInfoVo memberInfoVo = new MemberInfoVo();
