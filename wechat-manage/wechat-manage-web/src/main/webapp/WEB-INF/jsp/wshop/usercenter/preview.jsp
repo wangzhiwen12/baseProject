@@ -55,14 +55,58 @@
             <div class="col-xs-4 v-floor-nav"><a id="mine" href="${pageContext.request.contextPath}/wShop/preview.shtml"><img src="${pageContext.request.contextPath}/member/css/img/n-me.png"></a></div>
         </div>
     </div>
+	<a id="ljjh" href="#">立即激活</a>
 </body>
 <script type="text/javascript">
 	var rootPath = getContextPath();
 	var openId = getUrlDataByKey("openId");
 	var storeCode = getUrlDataByKey("storeCode");
+	var appId = getUrlDataByKey("appId");
 	$("#mine").attr("href",${pageContext.request.contextPath}"+/wShop/preview.shtml?openId"+openId+"&storeCode="+storeCode);
 	$(function(){
-
+		$.ajax({
+			type: "post",
+			contentType: "application/x-www-form-urlencoded;charset=utf-8",
+			url: rootPath + "/common/getCurMemberInfo_1.json",
+			async: false,
+			data: {
+				"storeCode": storeCode,
+				"openid": openId,
+				"pageType": 1,
+				"appId": appId
+			},
+			dataType: "json",
+			success: function (memberInfoVo) {
+				console.info("memberInfoVo =" + memberInfoVo);
+				if(memberInfoVo.memberCode == null){
+					console.info("无会员编码，需注册。");
+				}
+			}
+		});
 	})
+
+	//卡包链接
+	function cardUrl() {
+		$.ajax({
+			type: "post",
+			contentType: "application/x-www-form-urlencoded;charset=utf-8",
+			url: rootPath + "/appAccountInfo/findAppAccountInfoByPara.json",
+			async: false,
+			data: {
+				"storecode": storeCode
+			},
+			dataType: "json",
+			success: function (response) {
+				response = JSON.parse(response);
+				if (!!response && response.success) {
+//              	$(".actPhone2").attr("href", response.list[0].cardUrl);
+//              	$(".actPhone3").attr("href", "http://10.6.2.49:8080/notebook/member/userRegister3.html");
+					$('#ljjh').attr("href",response.list[0].cardUrl);
+				} else {
+
+				}
+			}
+		});
+	}
 </script>
 </html>

@@ -5,6 +5,7 @@ import com.wechat.manage.pojo.wechat.entity.MemberCard;
 import com.wechat.manage.pojo.wechat.vo.AccessTokenDto;
 import com.wechat.manage.pojo.wechat.vo.MemberInfo;
 import com.wechat.manage.pojo.wechat.vo.MemberInfoReturnDto;
+import com.wechat.manage.pojo.wechat.vo.MemberInfoVo;
 import com.wechat.manage.service.util.WechatUtil;
 import com.wechat.manage.utils.PropertiesUtils;
 import com.wechat.manage.utils.StringUtils;
@@ -256,12 +257,8 @@ public class CommonController {
     /**
      * 新会员页面接口
      *
-     * @param request
-     * @param response
-     * @param code
-     * @param state
      */
-    @RequestMapping(value = "curMemberInfo", method = RequestMethod.GET)
+    /*@RequestMapping(value = "curMemberInfo", method = RequestMethod.GET)
     public void curMemberInfo(HttpServletRequest request, HttpServletResponse response,
                               @RequestParam(value = "code", required = true) String code,
                               @RequestParam(value = "state", required = true) String state) {
@@ -298,6 +295,45 @@ public class CommonController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }*/
+    @RequestMapping(value = "getCurMemberInfo_1", method = RequestMethod.GET)
+    public MemberInfoVo getCurMemberInfo_1(String storeCode, String openid, String pageType, String appId){
+        MemberInfoVo memberInfoVo = new MemberInfoVo();
+        Map<String, Object> paraMap = new HashMap<String, Object>();
+        paraMap.put("openid", openid);
+        paraMap.put("storeCode", storeCode);
+        //MemberInfoReturnDto returnDto = memberInfoService.queryCurMemberInfo(paraMap);
+        com.wechat.manage.pojo.wechat.entity.MemberInfo returnDto = memberInfoService.findMemberInfoByParam(paraMap);
+        logger.info("===========MemberInfo:" + returnDto);
+        StringBuilder sbPara = new StringBuilder();
+
+        if (returnDto != null) {
+            MemberCard memberCard = null;
+            if (StringUtils.isNotEmpty(returnDto.getMemberCode())) {
+                Map<String, Object> cardPara = new HashMap<String, Object>();
+                cardPara.put("memberCode", returnDto.getMemberCode());
+                cardPara.put("storeCode", storeCode);
+                memberCard = memberCardService.findMemberCardByParam(cardPara);
+                logger.info("===========memberCard:" + returnDto);
+            }
+
+            if ("1".equals(pageType)) {//我的会员信息
+                String cardType = StringUtils.isNotEmpty(returnDto.getMemberCode()) ? "1" : "0";
+                memberInfoVo.setCardType(cardType);
+                memberInfoVo.setMemberCode(returnDto.getMemberCode());
+                memberInfoVo.setMobile(returnDto.getMobile());
+                memberInfoVo.setStoreCode(storeCode);
+                memberInfoVo.setOpenId(openid);
+                memberInfoVo.setAppId(appId);
+                if (memberCard != null) {
+                    memberInfoVo.setCardNo(memberCard.getCardCode());
+                    memberInfoVo.setCardNo(memberCard.getCardCode());
+                    memberInfoVo.setCustType(memberCard.getCardLevel());
+                }
+                logger.info("===========sbPara:" + sbPara.toString());
+            }
+        }
+        return memberInfoVo;
     }
 
 

@@ -273,12 +273,13 @@ public class WPageController extends BaseController {
     }
 
     @RequestMapping("/preview")
-    public String toPreview(Model model, String id,String openId,String storeCode) {
+    public String toPreview(Model model, String id,String openId,String storeCode,String appId) {
         String html = "";
         String link = null;
-        if (id != null && !"".equals(id)) {
-            link = "http://10.6.100.100/page/" + id + ".html";
-        }
+//        if (id != null && !"".equals(id)) {
+//            link = "http://10.6.100.100/page/" + id + ".html";
+//        }
+        link = "http://10.6.100.100/page/2d4bc56710b8456d873a8afc40b0ad79.html";
         try {
             html = HttpUtil.sendGet(link, null);
         } catch (Exception e) {
@@ -287,6 +288,7 @@ public class WPageController extends BaseController {
         model.addAttribute("html", html);
         model.addAttribute("openId", openId);
         model.addAttribute("storeCode", storeCode);
+        model.addAttribute("appId", appId);
         return Common.BACKGROUND_PATH + "/wshop/wpage/wpagePreviewNew";
     }
 
