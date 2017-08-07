@@ -57,7 +57,11 @@
             <div class="col-xs-4 v-floor-nav"><a id="mine" href="${pageContext.request.contextPath}/wShop/preview.shtml"><img src="${pageContext.request.contextPath}/member/css/img/n-me.png"></a></div>
         </div>
     </div>
-	<a id="ljjh" href="#">立即激活</a>
+	<p style="margin-top: 10px;">
+		<a class="actPhone">
+			立即激活手机号
+		</a>
+	</p>
 </body>
 <script type="text/javascript">
 	var rootPath = getContextPath();
