@@ -58,7 +58,7 @@
 	<a id="ljjh" href="#">立即激活</a>
 </body>
 <script type="text/javascript">
-	var rootPath = getContextPath();
+	var rootPath = "http://wechat.wangfujing.com/notebook";
 	var openId = getUrlDataByKey("openId");
 	var storeCode = getUrlDataByKey("storeCode");
 	var appId = getUrlDataByKey("appId");
