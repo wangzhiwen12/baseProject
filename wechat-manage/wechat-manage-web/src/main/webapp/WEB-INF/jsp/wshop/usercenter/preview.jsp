@@ -31,6 +31,7 @@
     <!-- ▲ App CSS -->
 	<script src="${pageContext.request.contextPath}/member/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath}/member/js/public.js" type="text/javascript"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     
 </head>
 <body>
@@ -58,9 +59,9 @@
         </div>
     </div>
 	<p style="margin-top: 10px;">
-		<a class="actPhone">
+		<p class="actPhone">
 			立即激活手机号
-		</a>
+		</p>
 	</p>
 </body>
 <script type="text/javascript">
@@ -85,10 +86,8 @@
 			},
 			dataType: "json",
 			success: function (memberInfoVo) {
-				console.info("memberInfoVo =" + memberInfoVo);
 				if(memberInfoVo.memberCode == null){
 					console.info("无会员编码，需注册。");
-					cardUrl();
 				}
 			}
 		});
@@ -139,7 +138,7 @@
 				//js sdk 初始化
 				// 开启debug  上线后关调debug（debug: true为开启，debug: false 关闭）
 				wx.config({
-					debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+					debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
 					appId: appId, // 必填，公众号的唯一标识  wx871d0104ae72e615
 					timestamp: timestamp, // 必填，生成签名的时间戳
 					nonceStr: nonceStr, // 必填，生成签名的随机串
@@ -190,6 +189,8 @@
 							}
 						});
 					}
+
+					//
 				});
 				wx.error(function (res) {
 					// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
