@@ -62,7 +62,6 @@
 	var openId = getUrlDataByKey("openId");
 	var storeCode = getUrlDataByKey("storeCode");
 	var appId = getUrlDataByKey("appId");
-	$("#mine").attr("href",${pageContext.request.contextPath}"+/wShop/preview.shtml?openId"+openId+"&storeCode="+storeCode);
 	$(function(){
 		$.ajax({
 			type: "post",
