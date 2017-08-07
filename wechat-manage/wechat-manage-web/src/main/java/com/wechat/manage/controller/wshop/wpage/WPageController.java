@@ -273,7 +273,7 @@ public class WPageController extends BaseController {
     }
 
     @RequestMapping("/preview")
-    public String toPreview(Model model, String id) {
+    public String toPreview(Model model, String id,String openId,String storeCode) {
         String html = "";
         String link = null;
         if (id != null && !"".equals(id)) {
@@ -285,6 +285,8 @@ public class WPageController extends BaseController {
             logger.error(e.toString(), e);
         }
         model.addAttribute("html", html);
+        model.addAttribute("openId", openId);
+        model.addAttribute("storeCode", storeCode);
         return Common.BACKGROUND_PATH + "/wshop/wpage/wpagePreviewNew";
     }
 
