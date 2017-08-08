@@ -5,10 +5,12 @@ import com.wechat.manage.pojo.system.vo.ReturnDto;
 import com.wechat.manage.pojo.system.vo.StoreInfoDto;
 import com.wechat.manage.pojo.wechat.vo.CardExt;
 import com.wechat.manage.service.util.WechatUtil;
+import com.wechat.manage.service.wechat.impl.AppAccountInfoServiceImpl;
 import com.wechat.manage.service.wechat.intf.IAppAccountInfoService;
 import com.wechat.manage.service.wechat.intf.ICartTicketService;
 import com.wechat.manage.utils.JsonUtil;
 import com.wechat.manage.utils.ResultUtil;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +26,7 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/wechat")
 public class CartTicketController {
-
+    private Logger logger = Logger.getLogger(CartTicketController.class);
     @Autowired
     private ICartTicketService cartTicketService;
     @Autowired
@@ -87,11 +89,13 @@ public class CartTicketController {
     @RequestMapping(value = "/getCartSing2", method = {RequestMethod.GET,
             RequestMethod.POST})
     public Map<String, Object> getCartSing2(String storePara) {
+
         // 1 通过门店接口获取appID,appSecret
         StoreInfoDto storeInfo = appAccountInfoService.getStoreInfo(storePara);
         System.out.println("storeInfo ================ " + storeInfo.toString());
+        logger.info("storeInfo ================" + storeInfo.toString());
         String accessToken = wechatUtil.getAccessToken(storeInfo.getAppId(), storeInfo.getSecret());
-        System.out.println("accessToken ================ " + accessToken);
+        logger.info("accessToken ================ " + accessToken);
 
         ReturnDto ro = new ReturnDto();
         Map<String, String> map;
@@ -110,6 +114,8 @@ public class CartTicketController {
            //String jsons = "nonce_str:" + map.get("nonce_str") + "timestamp:" + map.get("timestamp") + "signature:" + map.get("signature");
             maps.put("cardExts",json.toString());
             maps.put("cards", storeInfo.getCardId());
+            logger.info("cardExts:"+json.toString());
+            logger.info("cards:"+storeInfo.getCardId());
         } catch (Exception e) {
             ro.setCode("1");
             e.printStackTrace();
