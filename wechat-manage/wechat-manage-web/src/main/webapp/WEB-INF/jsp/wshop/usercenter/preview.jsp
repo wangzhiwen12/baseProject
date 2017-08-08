@@ -32,7 +32,22 @@
 	<script src="${pageContext.request.contextPath}/member/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath}/member/js/public.js" type="text/javascript"></script>
 	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-    
+	<style type="text/css">
+		.actPhone {
+			ont-size: 14px;
+			border: 1px solid #fff;
+			padding: 4px 7px;
+			border-radius: 3px;
+			color: #fff;
+		}
+		.activationModel {
+			width: 100%;
+			position:absolute;
+			z-index:999;
+			text-align: center;
+			top:15%;
+		}
+	</style>
 </head>
 <body>
 	<div class="app">
@@ -50,6 +65,11 @@
 	        </div>
 	    </div>
 	</div>
+	<div class="activationModel" hidden>
+		<a class="actPhone">
+			立即激活手机号
+		</a>
+	</div>
 	
 	<div class="container v-floor">
         <div class="row">
@@ -58,11 +78,7 @@
             <div class="col-xs-4 v-floor-nav"><a id="mine" href="${pageContext.request.contextPath}/wShop/preview.shtml"><img src="${pageContext.request.contextPath}/member/css/img/n-me.png"></a></div>
         </div>
     </div>
-	<p style="margin-top: 10px;">
-		<p class="actPhone">
-			立即激活手机号
-		</p>
-	</p>
+
 </body>
 <script type="text/javascript">
 	var rootPath = getContextPath();
@@ -86,36 +102,19 @@
 			},
 			dataType: "json",
 			success: function (memberInfoVo) {
-				if(memberInfoVo.memberCode == null){
-					console.info("无会员编码，需注册。");
+				if (typeof(memberInfoVo.cardType) == "undefined" || memberInfoVo.cardType == '0') {
+					console.info("无卡，需要激活");
+					//显示按钮
+					$('.activationModel').show();
+					//$('.custom-level-title-section').hide();
+				}else{
+					console.info("有卡，不需要激活");
+					re_custType = new RegExp("｛会员等级名｝", "g");
+					wxhtml = wxhtml.replace(re_custType, memberInfoVo.cardType);
 				}
 			}
 		});
 	})
-
-	//卡包链接
-	function cardUrl() {
-		$.ajax({
-			type: "post",
-			contentType: "application/x-www-form-urlencoded;charset=utf-8",
-			url: rootPath + "/appAccountInfo/findAppAccountInfoByPara.json",
-			async: false,
-			data: {
-				"storecode": storeCode
-			},
-			dataType: "json",
-			success: function (response) {
-				response = JSON.parse(response);
-				if (!!response && response.success) {
-//              	$(".actPhone2").attr("href", response.list[0].cardUrl);
-//              	$(".actPhone3").attr("href", "http://10.6.2.49:8080/notebook/member/userRegister3.html");
-					$('#ljjh').attr("href",response.list[0].cardUrl);
-				} else {
-
-				}
-			}
-		});
-	}
 
 	function initializationConfig() {
 //        var appId = "wx7aec942c6742752d";

@@ -241,7 +241,7 @@ public class CommonController {
 
             response.setHeader("Content-type", "text/html;charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
-            String url = getCurMemberInfo(storeInfo.getStoreCode(), openid, pageType, appid);
+            String url = getCurMemberInfo_2(storeInfo.getStoreCode(), openid, pageType, appid);
             //String url = "http://wechat.wangfujing.com/notebook/wechatShopPage/preview.shtml?openId="+openid+"&storeCode="+storeInfo.getStoreCode();
             long endTime = System.currentTimeMillis();
             System.out.println("------------------------------------" + (endTime - starTime));
@@ -424,4 +424,85 @@ public class CommonController {
         }
         return url + sbPara.toString();
     }
+
+
+    public String getCurMemberInfo_2(String storeCode, String openid, String pageType, String appId) throws Exception {
+        logger.info("===========pageType:" + pageType);
+        //cardType-1:已注册,0:已领取未注册或未领取
+        String url = "", para = "", cardType = "";
+
+        Map<String, Object> paraMap = new HashMap<String, Object>();
+        paraMap.put("openid", openid);
+        paraMap.put("storeCode", storeCode);
+        //MemberInfoReturnDto returnDto = memberInfoService.queryCurMemberInfo(paraMap);
+        com.wechat.manage.pojo.wechat.entity.MemberInfo returnDto = memberInfoService.findMemberInfoByParam(paraMap);
+        logger.info("===========MemberInfo:" + returnDto);
+        StringBuilder sbPara = new StringBuilder();
+        if (returnDto != null) {
+            MemberCard memberCard = null;
+            if (StringUtils.isNotEmpty(returnDto.getMemberCode())) {
+                Map<String, Object> cardPara = new HashMap<String, Object>();
+                cardPara.put("memberCode", returnDto.getMemberCode());
+                cardPara.put("storeCode", storeCode);
+                memberCard = memberCardService.findMemberCardByParam(cardPara);
+                logger.info("===========memberCard:" + returnDto);
+            }
+
+            if ("1".equals(pageType)) {//我的会员信息
+                url = PropertiesUtils.findPropertiesKey("MemberInfoUrl_1");
+                cardType = StringUtils.isNotEmpty(returnDto.getMemberCode()) ? "1" : "0";
+                logger.info("===========cardType:" + cardType);
+                sbPara.append("cardType=" + cardType);
+                sbPara.append("&memberCode=" + returnDto.getMemberCode());
+                sbPara.append("&mobile=" + returnDto.getMobile());
+                sbPara.append("&storeCode=" + storeCode);
+                sbPara.append("&openId=" + openid);
+                sbPara.append("&appId=" + appId);
+                if (memberCard != null) {
+                    sbPara.append("&qrcode=" + memberCard.getCardCode());
+                    sbPara.append("&cardNo=" + memberCard.getCardCode());
+                    sbPara.append("&custType=" + memberCard.getCardLevel());
+                }
+                logger.info("===========sbPara:" + sbPara.toString());
+            } else if ("2".equals(pageType)) {//激活链接
+                url = PropertiesUtils.findPropertiesKey("registurl3");
+                sbPara.append("headimgurl=" + returnDto.getHeadimgurl());
+                sbPara.append("&nickname=" + util.getURLEncoder(returnDto.getNickname()));
+                sbPara.append("&storeCode=" + storeCode);
+                sbPara.append("&registType=");
+                sbPara.append("&mobile=" + returnDto.getMobile());
+                sbPara.append("&openId=" + openid);
+                logger.info("===========sbPara:" + sbPara.toString());
+            } else if ("3".equals(pageType)) {//会员等级
+                url = PropertiesUtils.findPropertiesKey("memberLevelUrl");
+                sbPara.append("storeCode=" + storeCode);
+                sbPara.append("&openId=" + openid);
+                if (memberCard != null) {
+                    sbPara.append("&qrcode=" + memberCard.getCardCode());
+                    sbPara.append("&cardNo=" + memberCard.getCardCode());
+                    sbPara.append("&custType=" + memberCard.getCardLevel());
+                }
+                logger.info("sbPara:" + sbPara.toString());
+            } else if ("4".equals(pageType)) {//会员优惠券
+                url = PropertiesUtils.findPropertiesKey("userCoupon");
+                sbPara.append("storeCode=" + storeCode);
+                sbPara.append("&openId=" + openid);
+                logger.info("===========sbPara:" + sbPara.toString());
+            } else if ("5".equals(pageType)) {//我的特权
+                url = PropertiesUtils.findPropertiesKey("memberPrivilegeUrl");
+                url = url + storeCode + ".html";
+            } else if ("6".equals(pageType)) {//绑定会员卡
+                url = PropertiesUtils.findPropertiesKey("memberBindUrl");
+                sbPara.append("bindType=2");
+                sbPara.append("&unionId=" + returnDto.getUnionid());
+                sbPara.append("&appId=");
+                sbPara.append("&openId=" + openid);
+                sbPara.append("&storeCode=" + storeCode);
+                sbPara.append("&registType=");
+                logger.info("===========sbPara:" + sbPara.toString());
+            }
+        }
+        return url + sbPara.toString();
+    }
+
 }
