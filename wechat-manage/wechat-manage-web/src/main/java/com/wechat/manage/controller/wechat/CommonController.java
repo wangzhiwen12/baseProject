@@ -310,7 +310,6 @@ public class CommonController {
         //MemberInfoReturnDto returnDto = memberInfoService.queryCurMemberInfo(paraMap);
         com.wechat.manage.pojo.wechat.entity.MemberInfo returnDto = memberInfoService.findMemberInfoByParam(paraMap);
         logger.info("===========MemberInfo:" + returnDto);
-        StringBuilder sbPara = new StringBuilder();
 
         if (returnDto != null) {
             MemberCard memberCard = null;
@@ -335,9 +334,9 @@ public class CommonController {
                     memberInfoVo.setCardNo(memberCard.getCardCode());
                     memberInfoVo.setCustType(memberCard.getCardLevel());
                 }
-                logger.info("===========sbPara:" + sbPara.toString());
             }
         }
+        logger.info("memberInfoVo------------"+memberInfoVo);
         return memberInfoVo;
     }
 
