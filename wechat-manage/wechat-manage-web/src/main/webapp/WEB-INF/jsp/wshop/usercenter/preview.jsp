@@ -103,14 +103,13 @@
 			dataType: "json",
 			success: function (memberInfoVo) {
 				if (typeof(memberInfoVo.cardType) == "undefined" || memberInfoVo.cardType == '0') {
-					console.info("无卡，需要激活");
+					console.info("无卡，需要激活" + memberInfoVo.cardType);
 					//显示按钮
 					$('.activationModel').show();
 					//$('.custom-level-title-section').hide();
 				}else{
-					console.info("有卡，不需要激活");
-					re_custType = new RegExp("｛会员等级名｝", "g");
-					wxhtml = wxhtml.replace(re_custType, memberInfoVo.cardType);
+					console.info("有卡，不需要激活" + memberInfoVo.cardType);
+					$(".custom-level-title").replaceWith("尊贵的"+memberInfoVo.cardType+"<br/>你拥有本店积分：888");
 				}
 			}
 		});

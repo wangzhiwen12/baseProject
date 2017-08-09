@@ -6,6 +6,8 @@ import com.wechat.manage.pojo.wechat.vo.AccessTokenDto;
 import com.wechat.manage.pojo.wechat.vo.MemberInfo;
 import com.wechat.manage.pojo.wechat.vo.MemberInfoReturnDto;
 import com.wechat.manage.pojo.wechat.vo.MemberInfoVo;
+import com.wechat.manage.service.usercenter.impl.TWPageServiceImpl;
+import com.wechat.manage.service.usercenter.intf.TWPageService;
 import com.wechat.manage.service.util.WechatUtil;
 import com.wechat.manage.utils.PropertiesUtils;
 import com.wechat.manage.utils.StringUtils;
@@ -39,6 +41,8 @@ public class CommonController {
     private MemberInfoService memberInfoService;
     @Autowired
     private MemberCardService memberCardService;
+    @Autowired
+    private TWPageService twPageService;
 
     @RequestMapping(value = "memberInfo", method = RequestMethod.GET)
     public void memberInfo(HttpServletRequest request, HttpServletResponse response,
@@ -449,7 +453,8 @@ public class CommonController {
             }
 
             if ("1".equals(pageType)) {//我的会员信息
-                url = PropertiesUtils.findPropertiesKey("MemberInfoUrl_1");
+//                url = PropertiesUtils.findPropertiesKey("MemberInfoUrl_1");
+                url = twPageService.queryHomePage();
                 cardType = StringUtils.isNotEmpty(returnDto.getMemberCode()) ? "1" : "0";
                 logger.info("===========cardType:" + cardType);
                 sbPara.append("cardType=" + cardType);
