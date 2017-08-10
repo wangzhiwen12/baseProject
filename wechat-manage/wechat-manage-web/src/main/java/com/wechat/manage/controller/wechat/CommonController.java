@@ -301,12 +301,12 @@ public class CommonController {
 
     @ResponseBody
     @RequestMapping(value="getCurMemberInfo_1", method = {RequestMethod.GET,RequestMethod.POST})
-    public MemberInfoVo getCurMemberInfo_1(@RequestBody Map<String, Object> paramMap){
-        System.out.print(paramMap);
-        String storeCode = (String)paramMap.get("storeCode");
-        String openid = (String)paramMap.get("openid");
-        String pageType = (String)paramMap.get("pageType");
-        String appId = (String)paramMap.get("appId");
+    public MemberInfoVo getCurMemberInfo_1(String storeCode,String openid,String pageType,String appId){
+        System.out.print(storeCode);
+//        String storeCode = (String)paramMap.get("storeCode");
+//        String openid = (String)paramMap.get("openid");
+//        String pageType = (String)paramMap.get("pageType");
+//        String appId = (String)paramMap.get("appId");
         MemberInfoVo memberInfoVo = new MemberInfoVo();
         Map<String, Object> paraMap = new HashMap<String, Object>();
         paraMap.put("openid", openid);
@@ -317,6 +317,7 @@ public class CommonController {
         System.out.print("===========MemberInfo:" + returnDto);
 
         if (returnDto != null) {
+            memberInfoVo.setNickname(returnDto.getNickname());
             MemberCard memberCard = null;
             if (StringUtils.isNotEmpty(returnDto.getMemberCode())) {
                 Map<String, Object> cardPara = new HashMap<String, Object>();

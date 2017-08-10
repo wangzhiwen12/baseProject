@@ -13,6 +13,15 @@ public class MemberInfoVo {
     private String qrcode;
     private String cardNo;
     private Integer custType;
+    private String nickname;
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
     public String getCardType() {
         return cardType;

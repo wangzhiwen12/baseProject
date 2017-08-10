@@ -90,26 +90,26 @@
 		url = location.href.split('#')[0];
 		initializationConfig();
 		$.ajax({
-			type: "post",
-			contentType: "application/x-www-form-urlencoded;charset=utf-8",
-			url: rootPath + "/common/getCurMemberInfo_1.json",
-			async: false,
-			data: {
-				"storeCode": storeCode,
-				"openid": openId,
-				"pageType": 1,
-				"appId": appId
-			},
+			type : "POST",
 			dataType: "json",
+			async: false,
+			contentType : "application/x-www-form-urlencoded;charset=utf-8",
+			url: rootPath + "/common/getCurMemberInfo_1.shtml",
+			data: {
+				'storeCode': storeCode,
+				'openid': openId,
+				'pageType': "1",
+				'appId': appId
+			},
 			success: function (memberInfoVo) {
-				if (typeof(memberInfoVo.cardType) == "undefined" || memberInfoVo.cardType == '0') {
+				if (memberInfoVo.cardType == null || memberInfoVo.cardType == '0') {
 					console.info("无卡，需要激活" + memberInfoVo.cardType);
 					//显示按钮
 					$('.activationModel').show();
 					//$('.custom-level-title-section').hide();
 				}else{
 					console.info("有卡，不需要激活" + memberInfoVo.cardType);
-					$(".custom-level-title").replaceWith("尊贵的"+memberInfoVo.cardType+"<br/>你拥有本店积分：888");
+					$(".custom-level-title").replaceWith("<h5 class='custom-level-title'>尊贵的"+memberInfoVo.nickname+"<br/>你拥有本店积分：888</h5>");
 				}
 			}
 		});
