@@ -75,7 +75,7 @@
         <div class="row">
             <div class="col-xs-4 v-floor-nav"><a href="#"><img src="${pageContext.request.contextPath}/member/css/img/n-find.png"></a></div>
             <div class="col-xs-4 v-floor-nav"><a href="#"><img src="${pageContext.request.contextPath}/member/css/img/n-catergry.png"></a></div>
-            <div class="col-xs-4 v-floor-nav"><a id="mine" href="${pageContext.request.contextPath}/wShop/preview.shtml"><img src="${pageContext.request.contextPath}/member/css/img/n-me.png"></a></div>
+			<div class="col-xs-4 v-floor-nav"><a id="myId" href="${pageContext.request.contextPath}/wShop/preview.shtml"><img src="${pageContext.request.contextPath}/member/css/img/n-me.png"></a></div>
         </div>
     </div>
 
@@ -85,6 +85,7 @@
 	var openId = getUrlDataByKey("openId");
 	var storeCode = getUrlDataByKey("storeCode");
 	var appId = getUrlDataByKey("appId");
+	$('#myId').attr('href',"${pageContext.request.contextPath}/wShop/preview.shtml?openId="+openId+"&storeCode="+storeCode+"&appId="+appId+")
 	var url = "";
 	$(function(){
 		url = location.href.split('#')[0];
@@ -136,7 +137,7 @@
 				//js sdk 初始化
 				// 开启debug  上线后关调debug（debug: true为开启，debug: false 关闭）
 				wx.config({
-					debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+					debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
 					appId: appId, // 必填，公众号的唯一标识  wx871d0104ae72e615
 					timestamp: timestamp, // 必填，生成签名的时间戳
 					nonceStr: nonceStr, // 必填，生成签名的随机串
