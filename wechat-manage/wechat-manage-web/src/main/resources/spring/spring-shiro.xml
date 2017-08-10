@@ -105,6 +105,7 @@
                 /wShop/** = anon
                 /wpage/css/** = anon
                 /wpage/js/** = anon
+                /materialLocal/** = anon
             </value>
         </property>
     </bean>

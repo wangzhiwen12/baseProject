@@ -276,10 +276,10 @@ public class WPageController extends BaseController {
     public String toPreview(Model model, String id,String openId,String storeCode,String appId) {
         String html = "";
         String link = null;
-//        if (id != null && !"".equals(id)) {
-//            link = "http://10.6.100.100/page/" + id + ".html";
-//        }
-        link = "http://10.6.100.100/page/2d4bc56710b8456d873a8afc40b0ad79.html";
+        if (id != null && !"".equals(id)) {
+            link = "http://10.6.100.100/page/" + id + ".html";
+        }
+        //link = "http://10.6.100.100/page/2d4bc56710b8456d873a8afc40b0ad79.html";
         try {
             html = HttpUtil.sendGet(link, null);
         } catch (Exception e) {

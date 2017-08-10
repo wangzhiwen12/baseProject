@@ -18,9 +18,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -301,15 +299,22 @@ public class CommonController {
         }
     }
 
-    @RequestMapping(value = "getCurMemberInfo_1", method = RequestMethod.POST)
-    public MemberInfoVo getCurMemberInfo_1(String storeCode, String openid, String pageType, String appId){
+    @ResponseBody
+    @RequestMapping(value="getCurMemberInfo_1", method = {RequestMethod.GET,RequestMethod.POST})
+    public MemberInfoVo getCurMemberInfo_1(@RequestBody Map<String, Object> paramMap){
+        System.out.print(paramMap);
+        String storeCode = (String)paramMap.get("storeCode");
+        String openid = (String)paramMap.get("openid");
+        String pageType = (String)paramMap.get("pageType");
+        String appId = (String)paramMap.get("appId");
         MemberInfoVo memberInfoVo = new MemberInfoVo();
         Map<String, Object> paraMap = new HashMap<String, Object>();
         paraMap.put("openid", openid);
         paraMap.put("storeCode", storeCode);
         //MemberInfoReturnDto returnDto = memberInfoService.queryCurMemberInfo(paraMap);
+        System.out.print("===========paraMap:" + paraMap);
         com.wechat.manage.pojo.wechat.entity.MemberInfo returnDto = memberInfoService.findMemberInfoByParam(paraMap);
-        logger.info("===========MemberInfo:" + returnDto);
+        System.out.print("===========MemberInfo:" + returnDto);
 
         if (returnDto != null) {
             MemberCard memberCard = null;
@@ -336,7 +341,7 @@ public class CommonController {
                 }
             }
         }
-        logger.info("memberInfoVo------------"+memberInfoVo);
+        System.out.print("memberInfoVo------------"+memberInfoVo);
         return memberInfoVo;
     }
 
