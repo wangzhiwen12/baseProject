@@ -85,8 +85,8 @@
 	var openId = getUrlDataByKey("openId");
 	var storeCode = getUrlDataByKey("storeCode");
 	var appId = getUrlDataByKey("appId");
-	var url = rootPath+"/wShop/preview.shtml?openId="+openId+"&storeCode="+storeCode+"&appId="+appId;
-	$('#myId').attr('href',url);
+	var url_preview = rootPath+"/wShop/preview.shtml?openId="+openId+"&storeCode="+storeCode+"&appId="+appId;
+	$('#myId').attr('href',url_preview);
 	var url = "";
 	$(function(){
 		url = location.href.split('#')[0];
