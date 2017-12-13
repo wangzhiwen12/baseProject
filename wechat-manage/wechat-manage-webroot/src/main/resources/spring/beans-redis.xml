@@ -14,7 +14,7 @@
 					<property name="password" value="${redis1.password}" />
 					<property name="timeout" value="${redis1.timeout}" />
 				</bean>
-				<bean class="com.wechat.manage.utils.RedisURIFactory">
+			  <!-- <bean class="com.wechat.manage.utils.RedisURIFactory">
 					<property name="host" value="${redis2.host}" />
 					<property name="port" value="${redis2.port}" />
 					<property name="password" value="${redis1.password}" />
@@ -43,7 +43,7 @@
 					<property name="port" value="${redis6.port}" />
 					<property name="password" value="${redis1.password}" />
 					<property name="timeout" value="${redis1.timeout}" />
-				</bean>
+				</bean>-->
 			</list>
 		</constructor-arg>
 	</bean>

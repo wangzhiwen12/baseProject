@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.wfj.search-utils:curator-spring-mvc-simple-discovery:1.0.36.RELEASE">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/wfj/search-utils/curator-spring-mvc-simple-discovery/1.0.36.RELEASE/curator-spring-mvc-simple-discovery-1.0.36.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/wfj/search-utils/curator-spring-mvc-simple-discovery/1.0.36.RELEASE/curator-spring-mvc-simple-discovery-1.0.36.RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/wfj/search-utils/curator-spring-mvc-simple-discovery/1.0.36.RELEASE/curator-spring-mvc-simple-discovery-1.0.36.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

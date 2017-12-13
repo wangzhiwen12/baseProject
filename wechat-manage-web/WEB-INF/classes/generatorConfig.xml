@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 导入数据库相关的驱动包开始 -->
+    <classPathEntry
+            location="/data/apache-tomcat-7.0.52/webapps/home/mysql-connector-java-5.1.21.jar"/>
+    <!-- 导入数据库相关的驱动包结束 -->
+    <context id="context1">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 数据库相关驱动连接设置 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.163.239.120:3306/wechat1?characterEncoding=utf8" userId="root"
+                        password="123456"/>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+        NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 自动生成的实体类的设置 -->
+        <javaModelGenerator targetPackage="com.generator.pojo"
+                            targetProject="src/main/java"/>
+        <!-- 自动生成的mapper接口的设置 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources" />
+        <!-- 自动生成的mapper.xml文件的设置 -->
+        <javaClientGenerator targetPackage="com.generator.mapper"
+                             targetProject="src/main/java" type="XMLMAPPER"/>
+        <!-- 数据库中对应表格的设置 -->
+        <table schema="wechat" domainObjectName="TProGroupRelation" tableName="t_pro_group_relation"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/wechat-common/wechat-common.iml" filepath="$PROJECT_DIR$/wechat-common/wechat-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wechat-manage/wechat-manage.iml" filepath="$PROJECT_DIR$/wechat-manage/wechat-manage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wechat-manage/wechat-manage-dao/wechat-manage-dao.iml" filepath="$PROJECT_DIR$/wechat-manage/wechat-manage-dao/wechat-manage-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wechat-manage/wechat-manage-pojo/wechat-manage-pojo.iml" filepath="$PROJECT_DIR$/wechat-manage/wechat-manage-pojo/wechat-manage-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wechat-manage/wechat-manage-service/wechat-manage-service.iml" filepath="$PROJECT_DIR$/wechat-manage/wechat-manage-service/wechat-manage-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wechat-manage/wechat-manage-web/wechat-manage-web.iml" filepath="$PROJECT_DIR$/wechat-manage/wechat-manage-web/wechat-manage-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wechat-manage/wechat-manage-webroot/wechat-manage-webroot.iml" filepath="$PROJECT_DIR$/wechat-manage/wechat-manage-webroot/wechat-manage-webroot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wechat-parent/wechat-parent.iml" filepath="$PROJECT_DIR$/wechat-parent/wechat-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/wxshop.iml" filepath="$PROJECT_DIR$/.idea/wxshop.iml" />
+    </modules>
+  </component>
+</project>

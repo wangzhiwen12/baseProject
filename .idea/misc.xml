@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/wechat-manage/wechat-manage-web" />
+    <file type="web" url="file://$PROJECT_DIR$/wechat-manage/wechat-manage-webroot" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/wechat-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/wechat-manage/pom.xml" />
+        <option value="$PROJECT_DIR$/wechat-common/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="Osmorc">
+    <option name="bndAutoImport" value="true" />
+    <option name="bundlesOutputPath" value="/private/var/folders/qc/vj4yxwfn3j500rrpvbffv0700000gn/T" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="Go 1.8.1" project-jdk-type="Go SDK" />
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
